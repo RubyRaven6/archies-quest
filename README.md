@@ -1,2 +1,78 @@
 # Archie's Quest
 ## A demon-slaying fantasy adventure
+
+
+# CREDITS:
+Volcano Assets: Rahtak
+
+**Legend of Zelda House Secondary**
+Buildings: Hek-el-grande
+
+Assembler : Yumekua
+
+Main Creators:
+- Ekat99
+- Heartlessdragoon
+- Vurtax 
+
+More creators :
+- Redblueyellow
+- Heartless Dragoon
+- Morlockhater
+- Nemu
+- Ross Hawkins
+- Pokemon Dawn Team
+- Slimshady
+- Thedeadheroalistar
+- The-Red-Ex
+- Zein
+- Fabnt 
+- Idilio
+- Silverdeoxys563
+- Puggsoy
+- Aveontrainer
+- Alistar
+- Shyinn 
+- Dragoon
+- Zein
+- War8
+- SteamyJ
+- Anonaplacca
+- Dasani
+- Zeo
+- Pokémon Rejuvenation Team
+- Anonaplacca
+- 125scratch
+- aj nitro
+- Akiazurka
+- Aleclom
+- Anonalpacca
+- Bacon
+- Cuddlesthefatcat
+- Dawnbronze
+- french orange
+- J-Treecko252
+- Labs
+- Lennybitao
+- Matheus123
+- Mr. C
+- oceanside
+- ploaj
+- Pokemon Reborn Team
+- Random Talking Bush
+- Remy
+- robbydude
+- RocketSeviperShadow
+- Seiyouh
+- snuffles5
+- spherical ice
+- taka Digi and Joe Schmoe
+- The Purple Stuff
+- The Red-Ex
+- TheWildDeadHero
+- Tonberry2k
+- XDinky
+- Thewilddeadhero
+- Skidmarc25
+
+Insertable format: Rahtak
