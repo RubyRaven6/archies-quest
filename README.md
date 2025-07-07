@@ -3,9 +3,7 @@
 
 
 # CREDITS:
-Volcano Assets: Rahtak
-
-**Legend of Zelda House Secondary**
+**Legend of Zelda House Secondary**, **Volcano Secondary**
 Buildings: Hek-el-grande
 
 Assembler : Yumekua
