@@ -419,7 +419,8 @@
   ],
   "gMapGroup_DemonLairs": [
     "DemonLairs_Vhane",
-    "DemonLairs_Nessie"
+    "DemonLairs_Nessie",
+    "DemonLairs_Nessie_Interior"
   ],
   "gMapGroup_VanillaMap4": [
     "ContestHallCool",

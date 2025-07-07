@@ -4464,12 +4464,22 @@
     {
       "id": "LAYOUT_DEMON_LAIRS_NESSIE",
       "name": "DemonLairs_Nessie_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 21,
+      "height": 28,
       "primary_tileset": "gTileset_NessieLairPrimary",
       "secondary_tileset": "gTileset_NessieLairSecondary",
       "border_filepath": "data/layouts/DemonLairs_Nessie/border.bin",
       "blockdata_filepath": "data/layouts/DemonLairs_Nessie/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEMON_LAIRS_NESSIE_INTERIOR",
+      "name": "DemonLairs_Nessie_Interior_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_NessieLairPrimary",
+      "secondary_tileset": "gTileset_NessieLairSecondary",
+      "border_filepath": "data/layouts/DemonLairs_Nessie_Interior/border.bin",
+      "blockdata_filepath": "data/layouts/DemonLairs_Nessie_Interior/map.bin"
     }
   ]
 }
