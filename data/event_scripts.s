@@ -1163,3 +1163,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/ArchiesHouse_1F/scripts.inc"
 
 	.include "data/maps/ArchiesHouse_Backyard/scripts.inc"
+
+	.include "data/maps/DemonLairs_Vhane/scripts.inc"
+
+	.include "data/maps/HubWorld_Initial/scripts.inc"

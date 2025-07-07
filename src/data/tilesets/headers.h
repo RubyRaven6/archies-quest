@@ -852,3 +852,14 @@ const struct Tileset gTileset_ZeldaStyleHouse =
     .metatileAttributes = gMetatileAttributes_ZeldaStyleHouse,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_SpaceMeteor =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_SpaceMeteor,
+    .palettes = gTilesetPalettes_SpaceMeteor,
+    .metatiles = gMetatiles_SpaceMeteor,
+    .metatileAttributes = gMetatileAttributes_SpaceMeteor,
+    .callback = NULL,
+};

@@ -5,7 +5,9 @@
     "gMapGroup_VanillaMaps3",
     "gMapGroup_VanillaMaps4",
     "gMapGroup_Sample",
-    "gMapGroup_ArchiesHouse"
+    "gMapGroup_ArchiesHouse",
+    "gMapGroup_HubWorld",
+    "gMapGroup_DemonLairs"
   ],
   "gMapGroup_VanillaMaps1": [
     "PetalburgCity",
@@ -411,6 +413,12 @@
   "gMapGroup_ArchiesHouse": [
     "ArchiesHouse_1F",
     "ArchiesHouse_Backyard"
+  ],
+  "gMapGroup_HubWorld": [
+    "HubWorld_Initial"
+  ],
+  "gMapGroup_DemonLairs": [
+    "DemonLairs_Vhane"
   ],
   "gMapGroup_VanillaMap4": [
     "ContestHallCool",

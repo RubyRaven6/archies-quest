@@ -213,3 +213,6 @@ const u16 gMetatileAttributes_Volcano[] = INCBIN_U16("data/tilesets/secondary/vo
 
 const u16 gMetatiles_ZeldaStyleHouse[] = INCBIN_U16("data/tilesets/secondary/zelda_style_house/metatiles.bin");
 const u16 gMetatileAttributes_ZeldaStyleHouse[] = INCBIN_U16("data/tilesets/secondary/zelda_style_house/metatile_attributes.bin");
+
+const u16 gMetatiles_SpaceMeteor[] = INCBIN_U16("data/tilesets/secondary/space_meteor/metatiles.bin");
+const u16 gMetatileAttributes_SpaceMeteor[] = INCBIN_U16("data/tilesets/secondary/space_meteor/metatile_attributes.bin");

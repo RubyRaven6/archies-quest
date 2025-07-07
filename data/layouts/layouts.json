@@ -4434,12 +4434,32 @@
     {
       "id": "LAYOUT_ARCHIES_HOUSE_BACKYARD",
       "name": "ArchiesHouse_Backyard_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 13,
+      "height": 15,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/ArchiesHouse_Backyard/border.bin",
       "blockdata_filepath": "data/layouts/ArchiesHouse_Backyard/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEMON_LAIRS_VHANE",
+      "name": "DemonLairs_Vhane_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_SpaceMeteor",
+      "border_filepath": "data/layouts/DemonLairs_Vhane/border.bin",
+      "blockdata_filepath": "data/layouts/DemonLairs_Vhane/map.bin"
+    },
+    {
+      "id": "LAYOUT_HUB_WORLD_INITIAL",
+      "name": "HubWorld_Initial_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/HubWorld_Initial/border.bin",
+      "blockdata_filepath": "data/layouts/HubWorld_Initial/map.bin"
     }
   ]
 }
