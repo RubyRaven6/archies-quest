@@ -1159,3 +1159,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/scripts/dexnav.inc"
 
 	.include "data/maps/SampleMap/scripts.inc"
+
+	.include "data/maps/ArchiesHouse_1F/scripts.inc"
+
+	.include "data/maps/ArchiesHouse_Backyard/scripts.inc"

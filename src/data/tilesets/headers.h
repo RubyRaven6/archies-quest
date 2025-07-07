@@ -841,3 +841,14 @@ const struct Tileset gTileset_Volcano =
     .metatileAttributes = gMetatileAttributes_Volcano,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_ZeldaStyleHouse =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_ZeldaStyleHouse,
+    .palettes = gTilesetPalettes_ZeldaStyleHouse,
+    .metatiles = gMetatiles_ZeldaStyleHouse,
+    .metatileAttributes = gMetatileAttributes_ZeldaStyleHouse,
+    .callback = NULL,
+};
