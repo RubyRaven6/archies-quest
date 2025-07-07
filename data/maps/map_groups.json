@@ -418,7 +418,8 @@
     "HubWorld_Initial"
   ],
   "gMapGroup_DemonLairs": [
-    "DemonLairs_Vhane"
+    "DemonLairs_Vhane",
+    "DemonLairs_Nessie"
   ],
   "gMapGroup_VanillaMap4": [
     "ContestHallCool",

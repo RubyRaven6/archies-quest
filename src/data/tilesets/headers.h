@@ -863,3 +863,25 @@ const struct Tileset gTileset_SpaceMeteor =
     .metatileAttributes = gMetatileAttributes_SpaceMeteor,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_NessieLairPrimary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_NessieLairPrimary,
+    .palettes = gTilesetPalettes_NessieLairPrimary,
+    .metatiles = gMetatiles_NessieLairPrimary,
+    .metatileAttributes = gMetatileAttributes_NessieLairPrimary,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_NessieLairSecondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_NessieLairSecondary,
+    .palettes = gTilesetPalettes_NessieLairSecondary,
+    .metatiles = gMetatiles_NessieLairSecondary,
+    .metatileAttributes = gMetatileAttributes_NessieLairSecondary,
+    .callback = NULL,
+};
