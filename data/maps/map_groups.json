@@ -4,6 +4,7 @@
     "gMapGroup_VanillaMaps2",
     "gMapGroup_VanillaMaps3",
     "gMapGroup_VanillaMaps4",
+    "gMapGroup_VanillaMaps5",
     "gMapGroup_Sample",
     "gMapGroup_ArchiesHouse",
     "gMapGroup_HubWorld",
@@ -398,7 +399,7 @@
     "ContestHallBeauty",
     "ContestHallTough"
   ],
-  "gMapGroup_VanillaMaps4": [
+  "gMapGroup_VanillaMaps5": [
     "Route110_SeasideCyclingRoadNorthEntrance",
     "Route113_GlassWorkshop",
     "Route123_BerryMastersHouse",
@@ -422,7 +423,7 @@
     "DemonLairs_Nessie",
     "DemonLairs_Nessie_Interior"
   ],
-  "gMapGroup_VanillaMap4": [
+  "gMapGroup_VanillaMaps4": [
     "ContestHallCool",
     "ContestHallSmart",
     "ContestHallCute",
