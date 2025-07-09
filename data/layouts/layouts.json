@@ -4480,6 +4480,16 @@
       "secondary_tileset": "gTileset_GigagehsoolLairSecondary",
       "border_filepath": "data/layouts/DemonLairs_Gigagehsool_Interior/border.bin",
       "blockdata_filepath": "data/layouts/DemonLairs_Gigagehsool_Interior/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEMON_LAIRS_NESSIE",
+      "name": "DemonLairs_Nessie_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/DemonLairs_Nessie/border.bin",
+      "blockdata_filepath": "data/layouts/DemonLairs_Nessie/map.bin"
     }
   ]
 }

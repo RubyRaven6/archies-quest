@@ -1171,3 +1171,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/DemonLairs_Gigagehsool/scripts.inc"
 
 	.include "data/maps/DemonLairs_Gigagehsool_Interior/scripts.inc"
+
+	.include "data/maps/DemonLairs_Nessie/scripts.inc"

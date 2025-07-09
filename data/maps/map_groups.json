@@ -399,30 +399,6 @@
     "ContestHallBeauty",
     "ContestHallTough"
   ],
-  "gMapGroup_VanillaMaps5": [
-    "Route110_SeasideCyclingRoadNorthEntrance",
-    "Route113_GlassWorkshop",
-    "Route123_BerryMastersHouse",
-    "Route119_WeatherInstitute_1F",
-    "Route119_WeatherInstitute_2F",
-    "Route119_House",
-    "Route124_DivingTreasureHuntersHouse"
-  ],
-  "gMapGroup_Sample": [
-    "SampleMap"
-  ],
-  "gMapGroup_ArchiesHouse": [
-    "ArchiesHouse_1F",
-    "ArchiesHouse_Backyard"
-  ],
-  "gMapGroup_HubWorld": [
-    "HubWorld_Initial"
-  ],
-  "gMapGroup_DemonLairs": [
-    "DemonLairs_Vhane",
-    "DemonLairs_Gigagehsool",
-    "DemonLairs_Gigagehsool_Interior"
-  ],
   "gMapGroup_VanillaMaps4": [
     "ContestHallCool",
     "ContestHallSmart",
@@ -552,5 +528,30 @@
     "Route110_TrickHousePuzzle7",
     "Route110_TrickHousePuzzle8",
     "Route110_SeasideCyclingRoadSouthEntrance"
+  ],
+  "gMapGroup_VanillaMaps5": [
+    "Route110_SeasideCyclingRoadNorthEntrance",
+    "Route113_GlassWorkshop",
+    "Route123_BerryMastersHouse",
+    "Route119_WeatherInstitute_1F",
+    "Route119_WeatherInstitute_2F",
+    "Route119_House",
+    "Route124_DivingTreasureHuntersHouse"
+  ],
+  "gMapGroup_Sample": [
+    "SampleMap"
+  ],
+  "gMapGroup_ArchiesHouse": [
+    "ArchiesHouse_1F",
+    "ArchiesHouse_Backyard"
+  ],
+  "gMapGroup_HubWorld": [
+    "HubWorld_Initial"
+  ],
+  "gMapGroup_DemonLairs": [
+    "DemonLairs_Vhane",
+    "DemonLairs_Gigagehsool",
+    "DemonLairs_Gigagehsool_Interior",
+    "DemonLairs_Nessie"
   ]
 }

@@ -885,3 +885,14 @@ const struct Tileset gTileset_GigagehsoolLairSecondary =
     .metatileAttributes = gMetatileAttributes_GigagehsoolLairSecondary,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_NessereignLairPrimary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_NessereignLairPrimary,
+    .palettes = gTilesetPalettes_NessereignLairPrimary,
+    .metatiles = gMetatiles_NessereignLairPrimary,
+    .metatileAttributes = gMetatileAttributes_NessereignLairPrimary,
+    .callback = NULL,
+};
