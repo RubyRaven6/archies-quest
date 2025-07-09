@@ -4486,7 +4486,7 @@
       "name": "DemonLairs_Nessie_Layout",
       "width": 20,
       "height": 20,
-      "primary_tileset": "gTileset_General",
+      "primary_tileset": "gTileset_NessereignLairPrimary",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/DemonLairs_Nessie/border.bin",
       "blockdata_filepath": "data/layouts/DemonLairs_Nessie/map.bin"

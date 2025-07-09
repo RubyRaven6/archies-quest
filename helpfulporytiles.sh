@@ -3,17 +3,17 @@
 # CUSTOM PATHS
 
 ## WSL PATHS
-dir_raw_tilesets="/mnt/d/Decomps/tilesets/"
+dir_raw_tilesets="/mnt/c/Users/acer/Desktop/New_folder/Aseprite-v1.3.14.3-x64/stuff/tilesets/"
 dir_raw_tilesets_primary="${dir_raw_tilesets}primary/"
 dir_raw_tilesets_secondary="${dir_raw_tilesets}secondary/"
-dir_aseprite_folder="/mnt/d/Program Files/"
-dir_compiled_primary="/mnt/d/Decomps/pokeemerald-expansion/data/tilesets/primary/"
-dir_compiled_secondary="/mnt/d/Decomps/pokeemerald-expansion/data/tilesets/secondary/"
-metatile_behaviors="/mnt/d/Decomps/pokeemerald-expansion/include/constants/metatile_behaviors.h"
-normalize_py="/mnt/d/Decomps/tilesets/normalize.py"
+dir_aseprite_folder="/mnt/c/Users/acer/Desktop/New_folder/Aseprite-v1.3.14.3-x64"
+dir_compiled_primary="./data/tilesets/primary/"
+dir_compiled_secondary="./data/tilesets/secondary/"
+metatile_behaviors="./include/constants/metatile_behaviors.h"
+normalize_py="./normalize.py"
 
 ## WINDOWS PATH
-dir_aseprite_raw_tilesets="D:/Decomps/tilesets/" 
+dir_aseprite_raw_tilesets="C:\Users\acer\Desktop\New_folder\Aseprite-v1.3.14.3-x64\stuff\tilesets" 
 
 # END OF CUSTOM PATHS
 
@@ -75,7 +75,7 @@ while(true); do
             fi
 
             # separates each layer of the tileset into individual .png files
-            "${dir_aseprite_folder}Aseprite/aseprite.exe" -b ${dir_aseprite_raw_tilesets}primary/${tilesetsrc}/tilesetase.aseprite --save-as ${dir_aseprite_raw_tilesets}primary/${tilesetsrc}/{layer}.png
+            "${dir_aseprite_folder}/Aseprite.exe" -b ${dir_aseprite_raw_tilesets}primary/${tilesetsrc}/tilesetase.aseprite --save-as ${dir_aseprite_raw_tilesets}primary/${tilesetsrc}/{layer}.png
 
             # check if the above cmd worked by checking if the file bottom.png exists
             if [ ! -f "${dir_raw_tilesets_primary}${tilesetsrc}/bottom.png" ]; then
