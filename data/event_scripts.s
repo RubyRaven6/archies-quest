@@ -1168,6 +1168,6 @@ EventScript_VsSeekerChargingDone::
 
 	.include "data/maps/HubWorld_Initial/scripts.inc"
 
-	.include "data/maps/DemonLairs_Nessie/scripts.inc"
+	.include "data/maps/DemonLairs_Gigagehsool/scripts.inc"
 
-	.include "data/maps/DemonLairs_Nessie_Interior/scripts.inc"
+	.include "data/maps/DemonLairs_Gigagehsool_Interior/scripts.inc"

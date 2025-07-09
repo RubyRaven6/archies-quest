@@ -217,8 +217,8 @@ const u16 gMetatileAttributes_ZeldaStyleHouse[] = INCBIN_U16("data/tilesets/seco
 const u16 gMetatiles_SpaceMeteor[] = INCBIN_U16("data/tilesets/secondary/space_meteor/metatiles.bin");
 const u16 gMetatileAttributes_SpaceMeteor[] = INCBIN_U16("data/tilesets/secondary/space_meteor/metatile_attributes.bin");
 
-const u16 gMetatiles_NessieLairPrimary[] = INCBIN_U16("data/tilesets/primary/nessie_lair_primary/metatiles.bin");
-const u16 gMetatileAttributes_NessieLairPrimary[] = INCBIN_U16("data/tilesets/primary/nessie_lair_primary/metatile_attributes.bin");
+const u16 gMetatiles_GigagehsoolLairPrimary[] = INCBIN_U16("data/tilesets/primary/nessie_lair_primary/metatiles.bin");
+const u16 gMetatileAttributes_GigagehsoolLairPrimary[] = INCBIN_U16("data/tilesets/primary/nessie_lair_primary/metatile_attributes.bin");
 
-const u16 gMetatiles_NessieLairSecondary[] = INCBIN_U16("data/tilesets/secondary/nessie_lair_secondary/metatiles.bin");
-const u16 gMetatileAttributes_NessieLairSecondary[] = INCBIN_U16("data/tilesets/secondary/nessie_lair_secondary/metatile_attributes.bin");
+const u16 gMetatiles_GigagehsoolLairSecondary[] = INCBIN_U16("data/tilesets/secondary/nessie_lair_secondary/metatiles.bin");
+const u16 gMetatileAttributes_GigagehsoolLairSecondary[] = INCBIN_U16("data/tilesets/secondary/nessie_lair_secondary/metatile_attributes.bin");

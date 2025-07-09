@@ -1692,7 +1692,7 @@ const u16 gTilesetPalettes_SpaceMeteor[][16] =
 
 const u32 gTilesetTiles_SpaceMeteor[] = INCBIN_U32("data/tilesets/secondary/space_meteor/tiles.4bpp.lz");
 
-const u16 gTilesetPalettes_NessieLairPrimary[][16] =
+const u16 gTilesetPalettes_GigagehsoolLairPrimary[][16] =
 {
     INCBIN_U16("data/tilesets/primary/nessie_lair_primary/palettes/00.gbapal"),
     INCBIN_U16("data/tilesets/primary/nessie_lair_primary/palettes/01.gbapal"),
@@ -1709,9 +1709,9 @@ const u16 gTilesetPalettes_NessieLairPrimary[][16] =
     INCBIN_U16("data/tilesets/primary/nessie_lair_primary/palettes/12.gbapal"),
 };
 
-const u32 gTilesetTiles_NessieLairPrimary[] = INCBIN_U32("data/tilesets/primary/nessie_lair_primary/tiles.4bpp.lz");
+const u32 gTilesetTiles_GigagehsoolLairPrimary[] = INCBIN_U32("data/tilesets/primary/nessie_lair_primary/tiles.4bpp.lz");
 
-const u16 gTilesetPalettes_NessieLairSecondary[][16] =
+const u16 gTilesetPalettes_GigagehsoolLairSecondary[][16] =
 {
     INCBIN_U16("data/tilesets/secondary/nessie_lair_secondary/palettes/00.gbapal"),
     INCBIN_U16("data/tilesets/secondary/nessie_lair_secondary/palettes/01.gbapal"),
@@ -1728,4 +1728,4 @@ const u16 gTilesetPalettes_NessieLairSecondary[][16] =
     INCBIN_U16("data/tilesets/secondary/nessie_lair_secondary/palettes/12.gbapal"),
 };
 
-const u32 gTilesetTiles_NessieLairSecondary[] = INCBIN_U32("data/tilesets/secondary/nessie_lair_secondary/tiles.4bpp.lz");
+const u32 gTilesetTiles_GigagehsoolLairSecondary[] = INCBIN_U32("data/tilesets/secondary/nessie_lair_secondary/tiles.4bpp.lz");
