@@ -4420,6 +4420,66 @@
       "secondary_tileset": "gTileset_Volcano",
       "border_filepath": "data/layouts/SampleMap/border.bin",
       "blockdata_filepath": "data/layouts/SampleMap/map.bin"
+    },
+    {
+      "id": "LAYOUT_ARCHIES_HOUSE_1F",
+      "name": "ArchiesHouse_1F_Layout",
+      "width": 12,
+      "height": 9,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_ZeldaStyleHouse",
+      "border_filepath": "data/layouts/ArchiesHouse_1F/border.bin",
+      "blockdata_filepath": "data/layouts/ArchiesHouse_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_ARCHIES_HOUSE_BACKYARD",
+      "name": "ArchiesHouse_Backyard_Layout",
+      "width": 13,
+      "height": 15,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/ArchiesHouse_Backyard/border.bin",
+      "blockdata_filepath": "data/layouts/ArchiesHouse_Backyard/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEMON_LAIRS_VHANE",
+      "name": "DemonLairs_Vhane_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_SpaceMeteor",
+      "border_filepath": "data/layouts/DemonLairs_Vhane/border.bin",
+      "blockdata_filepath": "data/layouts/DemonLairs_Vhane/map.bin"
+    },
+    {
+      "id": "LAYOUT_HUB_WORLD_INITIAL",
+      "name": "HubWorld_Initial_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/HubWorld_Initial/border.bin",
+      "blockdata_filepath": "data/layouts/HubWorld_Initial/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEMON_LAIRS_NESSIE",
+      "name": "DemonLairs_Nessie_Layout",
+      "width": 21,
+      "height": 28,
+      "primary_tileset": "gTileset_NessieLairPrimary",
+      "secondary_tileset": "gTileset_NessieLairSecondary",
+      "border_filepath": "data/layouts/DemonLairs_Nessie/border.bin",
+      "blockdata_filepath": "data/layouts/DemonLairs_Nessie/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEMON_LAIRS_NESSIE_INTERIOR",
+      "name": "DemonLairs_Nessie_Interior_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_NessieLairPrimary",
+      "secondary_tileset": "gTileset_NessieLairSecondary",
+      "border_filepath": "data/layouts/DemonLairs_Nessie_Interior/border.bin",
+      "blockdata_filepath": "data/layouts/DemonLairs_Nessie_Interior/map.bin"
     }
   ]
 }

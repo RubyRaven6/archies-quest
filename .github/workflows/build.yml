@@ -9,6 +9,7 @@ on:
 
 jobs:
   build:
+    if: github.actor != 'allcontributors[bot]'
     runs-on: ubuntu-latest
     env:
       GAME_VERSION: EMERALD
@@ -26,10 +27,30 @@ jobs:
           sudo apt install -y binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev python3
         # build-essential and git are already installed
 
+      - name: Poryscript Download
+        uses: robinraju/release-downloader@v1
+        with:
+          repository: 'huderlem/poryscript'
+          latest: true
+          fileName: 'poryscript-linux.zip'
+          extract: true
+          out-file-path: 'tools'
+
+      - name: Poryscript Install
+        run: |
+          sudo mv tools/poryscript-linux tools/poryscript
+          sudo chmod +x tools/poryscript/poryscript-linux   
+
       - name: ROM
         env:
           COMPARE: 0
         run: make -j${nproc} -O all
+        
+      - name: LTO
+        run: |
+          make tidy
+          make -j${nproc} LTO=1
+        # make tidy to purge previous build
 
       - name: Test
         env:

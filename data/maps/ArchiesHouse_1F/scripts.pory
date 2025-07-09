@@ -1,0 +1,7 @@
+mapscripts ArchiesHouse_1F_MapScripts {
+    
+}
+
+script ArchieSaysHi {
+    msgbox("Hi!")
+}

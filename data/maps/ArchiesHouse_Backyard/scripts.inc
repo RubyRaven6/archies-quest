@@ -1,0 +1,2 @@
+ArchiesHouse_Backyard_MapScripts::
+	.byte 0

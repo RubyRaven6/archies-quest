@@ -841,3 +841,47 @@ const struct Tileset gTileset_Volcano =
     .metatileAttributes = gMetatileAttributes_Volcano,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_ZeldaStyleHouse =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_ZeldaStyleHouse,
+    .palettes = gTilesetPalettes_ZeldaStyleHouse,
+    .metatiles = gMetatiles_ZeldaStyleHouse,
+    .metatileAttributes = gMetatileAttributes_ZeldaStyleHouse,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_SpaceMeteor =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_SpaceMeteor,
+    .palettes = gTilesetPalettes_SpaceMeteor,
+    .metatiles = gMetatiles_SpaceMeteor,
+    .metatileAttributes = gMetatileAttributes_SpaceMeteor,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_NessieLairPrimary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_NessieLairPrimary,
+    .palettes = gTilesetPalettes_NessieLairPrimary,
+    .metatiles = gMetatiles_NessieLairPrimary,
+    .metatileAttributes = gMetatileAttributes_NessieLairPrimary,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_NessieLairSecondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_NessieLairSecondary,
+    .palettes = gTilesetPalettes_NessieLairSecondary,
+    .metatiles = gMetatiles_NessieLairSecondary,
+    .metatileAttributes = gMetatileAttributes_NessieLairSecondary,
+    .callback = NULL,
+};
