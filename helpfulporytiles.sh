@@ -3,7 +3,7 @@
 # CUSTOM PATHS
 
 ## WSL PATHS
-dir_raw_tilesets="/mnt/c/Users/acer/Desktop/New_folder/Aseprite-v1.3.14.3-x64/stuff/tilesets/"
+dir_raw_tilesets="../rubys-tilesets/raw_tilesets/"
 dir_raw_tilesets_primary="${dir_raw_tilesets}primary/"
 dir_raw_tilesets_secondary="${dir_raw_tilesets}secondary/"
 dir_aseprite_folder="/mnt/c/Users/acer/Desktop/New_folder/Aseprite-v1.3.14.3-x64"
@@ -74,9 +74,6 @@ while(true); do
                     read -p "folder containing the .aseprite file in ${dir_raw_tilesets_primary}: "   tilesetsrc
             fi
 
-            # separates each layer of the tileset into individual .png files
-            "${dir_aseprite_folder}/Aseprite.exe" -b ${dir_aseprite_raw_tilesets}primary/${tilesetsrc}/tilesetase.aseprite --save-as ${dir_aseprite_raw_tilesets}primary/${tilesetsrc}/{layer}.png
-
             # check if the above cmd worked by checking if the file bottom.png exists
             if [ ! -f "${dir_raw_tilesets_primary}${tilesetsrc}/bottom.png" ]; then
                 echo "Couldn't find the 'bottom.png' file. Make sure the 'tilesetase.aseprite' file is in the correct folder and that the layers in the .aseprite file are named correctly."
@@ -137,9 +134,6 @@ while(true); do
                         tilesetsrc2=$(cat "${dir_raw_tilesets_secondary}${tilesetsrc}/primarysrc.txt")
                     fi
             fi
-            
-            # separates each layer of the tileset into individual .png files
-            "${dir_aseprite_folder}Aseprite/aseprite.exe" -b ${dir_aseprite_raw_tilesets}secondary/${tilesetsrc}/tilesetase.aseprite --save-as ${dir_aseprite_raw_tilesets}secondary/${tilesetsrc}/{layer}.png
 
             # check if the above cmd worked by checking if the file bottom.png exists
             if [ ! -f "${dir_raw_tilesets_secondary}${tilesetsrc}/bottom.png" ]; then
