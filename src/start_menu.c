@@ -1515,6 +1515,6 @@ void Script_ForceSaveGame(struct ScriptContext *ctx)
 static bool8 StartMenuSampleUiCallback(void)
 {
     // Change which version of the UI is launched by changing which task is called from here
-    CreateTask(Task_OpenSampleUi_BlankTemplate, 0);
+    CreateTask(Task_OpenNessiePainting, 0);
     return TRUE;
 }
