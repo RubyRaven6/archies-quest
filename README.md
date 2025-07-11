@@ -1,7 +1,6 @@
 # Archie's Quest
 ## A demon-slaying fantasy adventure!
 
-
 # CREDITS:
 **Fence**
 - KyuZee
