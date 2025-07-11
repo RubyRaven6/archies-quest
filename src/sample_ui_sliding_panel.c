@@ -7,7 +7,7 @@
 #include "bg.h"
 #include "text_window.h"
 #include "window.h"
-#include "characters.h"
+#include "constants/characters.h"
 #include "palette.h"
 #include "task.h"
 #include "overworld.h"
@@ -36,17 +36,17 @@
 
 /*
  * Define dex regions here. We'll use an enum since that way we can use them to index into various arrays.
- * Recall that enums automatically assign starting from 0, so REGION_KANTO=0, REGION_JOHTO=1, etc.
+ * Recall that enums automatically assign starting from 0, so SAMPLES_REGION_KANTO=0, SAMPLES_REGION_JOHTO=1, etc.
  */
-enum Region
+enum SamplesRegion
 {
-    REGION_KANTO,
-    REGION_JOHTO,
-    REGION_HOENN,
-    REGION_SINNOH,
-    REGION_UNOVA,
-    REGION_KALOS,
-    REGION_NONE = 0xFF
+    SAMPLES_REGION_KANTO,
+    SAMPLES_REGION_JOHTO,
+    SAMPLES_REGION_HOENN,
+    SAMPLES_REGION_SINNOH,
+    SAMPLES_REGION_UNOVA,
+    SAMPLES_REGION_KALOS,
+    SAMPLES_REGION_NONE = 0xFF
 };
 
 struct SampleUiState
@@ -56,9 +56,9 @@ struct SampleUiState
     u8 mode;
 
     // Save the current dex region
-    enum Region region;
+    enum SamplesRegion region;
     // This will store not the current dex region, but which region button is "hovering" in the panel
-    enum Region selectedRegion;
+    enum SamplesRegion selectedRegion;
 
     u8 monIconSpriteId;
     u16 monIconDexNum;
@@ -91,14 +91,14 @@ static EWRAM_DATA u8 *sBg2TilemapBuffer = NULL;
 // Define the dex number start/end of each region for easy reference
 static const u16 sDexRanges[6][2] = {
     // Kanto goes from Bulbasaur to Mew
-    [REGION_KANTO]   = {NATIONAL_DEX_BULBASAUR, NATIONAL_DEX_MEW},
+    [SAMPLES_REGION_KANTO]   = {NATIONAL_DEX_BULBASAUR, NATIONAL_DEX_MEW},
     // Johto goes from Chikorita to Celebi
-    [REGION_JOHTO]   = {NATIONAL_DEX_CHIKORITA, NATIONAL_DEX_CELEBI},
+    [SAMPLES_REGION_JOHTO]   = {NATIONAL_DEX_CHIKORITA, NATIONAL_DEX_CELEBI},
     // Etc.
-    [REGION_HOENN]   = {NATIONAL_DEX_TREECKO, NATIONAL_DEX_DEOXYS},
-    [REGION_SINNOH]  = {NATIONAL_DEX_TURTWIG, NATIONAL_DEX_ARCEUS},
-    [REGION_UNOVA]   = {NATIONAL_DEX_VICTINI, NATIONAL_DEX_GENESECT},
-    [REGION_KALOS]   = {NATIONAL_DEX_CHESPIN, NATIONAL_DEX_VOLCANION}
+    [SAMPLES_REGION_HOENN]   = {NATIONAL_DEX_TREECKO, NATIONAL_DEX_DEOXYS},
+    [SAMPLES_REGION_SINNOH]  = {NATIONAL_DEX_TURTWIG, NATIONAL_DEX_ARCEUS},
+    [SAMPLES_REGION_UNOVA]   = {NATIONAL_DEX_VICTINI, NATIONAL_DEX_GENESECT},
+    [SAMPLES_REGION_KALOS]   = {NATIONAL_DEX_CHESPIN, NATIONAL_DEX_VOLCANION}
 };
 static const u8 sRegionNameKanto[] =  _("Kanto");
 static const u8 sRegionNameJohto[] =  _("Johto");
@@ -107,12 +107,12 @@ static const u8 sRegionNameSinnoh[] = _("Sinnoh");
 static const u8 sRegionNameUnova[] =  _("Unova");
 static const u8 sRegionNameKalos[] =  _("Kalos");
 static const u8 *const sRegionNames[6] = {
-    [REGION_KANTO]   = sRegionNameKanto,
-    [REGION_JOHTO]   = sRegionNameJohto,
-    [REGION_HOENN]   = sRegionNameHoenn,
-    [REGION_SINNOH]  = sRegionNameSinnoh,
-    [REGION_UNOVA]   = sRegionNameUnova,
-    [REGION_KALOS]   = sRegionNameKalos
+    [SAMPLES_REGION_KANTO]   = sRegionNameKanto,
+    [SAMPLES_REGION_JOHTO]   = sRegionNameJohto,
+    [SAMPLES_REGION_HOENN]   = sRegionNameHoenn,
+    [SAMPLES_REGION_SINNOH]  = sRegionNameSinnoh,
+    [SAMPLES_REGION_UNOVA]   = sRegionNameUnova,
+    [SAMPLES_REGION_KALOS]   = sRegionNameKalos
 };
 /*
  * Define some colors for the main bg, we will use the palette loading function to hotswap them when the user changes
@@ -121,12 +121,12 @@ static const u8 *const sRegionNames[6] = {
  * https://orangeglo.github.io/BGR555/
  */
 static const u16 sRegionBgColors[] = {
-    [REGION_KANTO]   = 0x6a93,
-    [REGION_JOHTO]   = 0x527a,
-    [REGION_HOENN]   = 0x4f55,
-    [REGION_SINNOH]  = 0x4b7c,
-    [REGION_UNOVA]   = 0x5ef7,
-    [REGION_KALOS]   = 0x76fb
+    [SAMPLES_REGION_KANTO]   = 0x6a93,
+    [SAMPLES_REGION_JOHTO]   = 0x527a,
+    [SAMPLES_REGION_HOENN]   = 0x4f55,
+    [SAMPLES_REGION_SINNOH]  = 0x4b7c,
+    [SAMPLES_REGION_UNOVA]   = 0x5ef7,
+    [SAMPLES_REGION_KALOS]   = 0x76fb
 };
 /*
  * We'll use this struct to define the button relationships. I.e. which button is above, to the left of, etc. Putting
@@ -146,41 +146,41 @@ static const struct RegionSelection sRegionSelections[] =
      * E.g. the Kanto button will be in the top left, so there is no region above it, Sinnoh will be below it, there is
      * no region to the left of it, and Johto will be right of it.
      */
-    [REGION_KANTO] = {
-        .upRegion    = REGION_NONE,
-        .downRegion  = REGION_SINNOH,
-        .leftRegion  = REGION_NONE,
-        .rightRegion = REGION_JOHTO
+    [SAMPLES_REGION_KANTO] = {
+        .upRegion    = SAMPLES_REGION_NONE,
+        .downRegion  = SAMPLES_REGION_SINNOH,
+        .leftRegion  = SAMPLES_REGION_NONE,
+        .rightRegion = SAMPLES_REGION_JOHTO
     },
-    [REGION_JOHTO] = {
-        .upRegion    = REGION_NONE,
-        .downRegion  = REGION_UNOVA,
-        .leftRegion  = REGION_KANTO,
-        .rightRegion = REGION_HOENN
+    [SAMPLES_REGION_JOHTO] = {
+        .upRegion    = SAMPLES_REGION_NONE,
+        .downRegion  = SAMPLES_REGION_UNOVA,
+        .leftRegion  = SAMPLES_REGION_KANTO,
+        .rightRegion = SAMPLES_REGION_HOENN
     },
-    [REGION_HOENN] = {
-        .upRegion    = REGION_NONE,
-        .downRegion  = REGION_KALOS,
-        .leftRegion  = REGION_JOHTO,
-        .rightRegion = REGION_NONE
+    [SAMPLES_REGION_HOENN] = {
+        .upRegion    = SAMPLES_REGION_NONE,
+        .downRegion  = SAMPLES_REGION_KALOS,
+        .leftRegion  = SAMPLES_REGION_JOHTO,
+        .rightRegion = SAMPLES_REGION_NONE
     },
-    [REGION_SINNOH] = {
-        .upRegion    = REGION_KANTO,
-        .downRegion  = REGION_NONE,
-        .leftRegion  = REGION_NONE,
-        .rightRegion = REGION_UNOVA
+    [SAMPLES_REGION_SINNOH] = {
+        .upRegion    = SAMPLES_REGION_KANTO,
+        .downRegion  = SAMPLES_REGION_NONE,
+        .leftRegion  = SAMPLES_REGION_NONE,
+        .rightRegion = SAMPLES_REGION_UNOVA
     },
-    [REGION_UNOVA] = {
-        .upRegion    = REGION_JOHTO,
-        .downRegion  = REGION_NONE,
-        .leftRegion  = REGION_SINNOH,
-        .rightRegion = REGION_KALOS
+    [SAMPLES_REGION_UNOVA] = {
+        .upRegion    = SAMPLES_REGION_JOHTO,
+        .downRegion  = SAMPLES_REGION_NONE,
+        .leftRegion  = SAMPLES_REGION_SINNOH,
+        .rightRegion = SAMPLES_REGION_KALOS
     },
-    [REGION_KALOS] = {
-        .upRegion    = REGION_HOENN,
-        .downRegion  = REGION_NONE,
-        .leftRegion  = REGION_UNOVA,
-        .rightRegion = REGION_NONE
+    [SAMPLES_REGION_KALOS] = {
+        .upRegion    = SAMPLES_REGION_HOENN,
+        .downRegion  = SAMPLES_REGION_NONE,
+        .leftRegion  = SAMPLES_REGION_UNOVA,
+        .rightRegion = SAMPLES_REGION_NONE
     }
 };
 
@@ -638,8 +638,8 @@ static void SampleUi_PrintUiButtonHints(void);
 static void SampleUi_PrintUiMonInfo(void);
 static void SampleUi_DrawMonIcon(u16 dexNum);
 static void SampleUi_CreateRegionButtons(void);
-static void SampleUi_StartRegionButtonAnim(enum Region region);
-static void SampleUi_StopRegionButtonAnim(enum Region region);
+static void SampleUi_StartRegionButtonAnim(enum SamplesRegion region);
+static void SampleUi_StopRegionButtonAnim(enum SamplesRegion region);
 static void SampleUi_FreeResources(void);
 
 // Declared in sample_ui.h
@@ -748,8 +748,8 @@ static void SampleUi_SetupCB(void)
         gMain.state++;
         break;
     case 5:
-        sSampleUiState->region = REGION_KANTO;
-        sSampleUiState->selectedRegion = REGION_KANTO;
+        sSampleUiState->region = SAMPLES_REGION_KANTO;
+        sSampleUiState->selectedRegion = SAMPLES_REGION_KANTO;
         sSampleUiState->monIconDexNum = sDexRanges[sSampleUiState->region][0];
 
         FreeMonIconPalettes();
@@ -887,7 +887,7 @@ static void Task_SampleUiPanelInput(u8 taskId)
     }
     else if (JOY_NEW(DPAD_UP))
     {
-        if (sRegionSelections[sSampleUiState->selectedRegion].upRegion != REGION_NONE)
+        if (sRegionSelections[sSampleUiState->selectedRegion].upRegion != SAMPLES_REGION_NONE)
         {
             SampleUi_StopRegionButtonAnim(sSampleUiState->selectedRegion);
             sSampleUiState->selectedRegion = sRegionSelections[sSampleUiState->selectedRegion].upRegion;
@@ -897,7 +897,7 @@ static void Task_SampleUiPanelInput(u8 taskId)
     }
     else if (JOY_NEW(DPAD_DOWN))
     {
-        if (sRegionSelections[sSampleUiState->selectedRegion].downRegion != REGION_NONE)
+        if (sRegionSelections[sSampleUiState->selectedRegion].downRegion != SAMPLES_REGION_NONE)
         {
             SampleUi_StopRegionButtonAnim(sSampleUiState->selectedRegion);
             sSampleUiState->selectedRegion = sRegionSelections[sSampleUiState->selectedRegion].downRegion;
@@ -907,7 +907,7 @@ static void Task_SampleUiPanelInput(u8 taskId)
     }
     else if (JOY_NEW(DPAD_LEFT))
     {
-        if (sRegionSelections[sSampleUiState->selectedRegion].leftRegion != REGION_NONE)
+        if (sRegionSelections[sSampleUiState->selectedRegion].leftRegion != SAMPLES_REGION_NONE)
         {
             SampleUi_StopRegionButtonAnim(sSampleUiState->selectedRegion);
             sSampleUiState->selectedRegion = sRegionSelections[sSampleUiState->selectedRegion].leftRegion;
@@ -917,7 +917,7 @@ static void Task_SampleUiPanelInput(u8 taskId)
     }
     else if (JOY_NEW(DPAD_RIGHT))
     {
-        if (sRegionSelections[sSampleUiState->selectedRegion].rightRegion != REGION_NONE)
+        if (sRegionSelections[sSampleUiState->selectedRegion].rightRegion != SAMPLES_REGION_NONE)
         {
             SampleUi_StopRegionButtonAnim(sSampleUiState->selectedRegion);
             sSampleUiState->selectedRegion = sRegionSelections[sSampleUiState->selectedRegion].rightRegion;
@@ -943,12 +943,12 @@ static void Task_SampleUiPanelSlide(u8 taskId)
         if (sSampleUiState->panelY > 0)
         {
             sSampleUiState->panelY -= 5;
-            gSprites[sSampleUiState->regionButtonSpriteIds[REGION_KANTO]].y += 5;
-            gSprites[sSampleUiState->regionButtonSpriteIds[REGION_JOHTO]].y += 5;
-            gSprites[sSampleUiState->regionButtonSpriteIds[REGION_HOENN]].y += 5;
-            gSprites[sSampleUiState->regionButtonSpriteIds[REGION_SINNOH]].y += 5;
-            gSprites[sSampleUiState->regionButtonSpriteIds[REGION_UNOVA]].y += 5;
-            gSprites[sSampleUiState->regionButtonSpriteIds[REGION_KALOS]].y += 5;
+            gSprites[sSampleUiState->regionButtonSpriteIds[SAMPLES_REGION_KANTO]].y += 5;
+            gSprites[sSampleUiState->regionButtonSpriteIds[SAMPLES_REGION_JOHTO]].y += 5;
+            gSprites[sSampleUiState->regionButtonSpriteIds[SAMPLES_REGION_HOENN]].y += 5;
+            gSprites[sSampleUiState->regionButtonSpriteIds[SAMPLES_REGION_SINNOH]].y += 5;
+            gSprites[sSampleUiState->regionButtonSpriteIds[SAMPLES_REGION_UNOVA]].y += 5;
+            gSprites[sSampleUiState->regionButtonSpriteIds[SAMPLES_REGION_KALOS]].y += 5;
         }
         else if (sSampleUiState->panelY == 0)
         {
@@ -963,12 +963,12 @@ static void Task_SampleUiPanelSlide(u8 taskId)
         if (sSampleUiState->panelY < PANEL_MAX_Y)
         {
             sSampleUiState->panelY += 5;
-            gSprites[sSampleUiState->regionButtonSpriteIds[REGION_KANTO]].y -= 5;
-            gSprites[sSampleUiState->regionButtonSpriteIds[REGION_JOHTO]].y -= 5;
-            gSprites[sSampleUiState->regionButtonSpriteIds[REGION_HOENN]].y -= 5;
-            gSprites[sSampleUiState->regionButtonSpriteIds[REGION_SINNOH]].y -= 5;
-            gSprites[sSampleUiState->regionButtonSpriteIds[REGION_UNOVA]].y -= 5;
-            gSprites[sSampleUiState->regionButtonSpriteIds[REGION_KALOS]].y -= 5;
+            gSprites[sSampleUiState->regionButtonSpriteIds[SAMPLES_REGION_KANTO]].y -= 5;
+            gSprites[sSampleUiState->regionButtonSpriteIds[SAMPLES_REGION_JOHTO]].y -= 5;
+            gSprites[sSampleUiState->regionButtonSpriteIds[SAMPLES_REGION_HOENN]].y -= 5;
+            gSprites[sSampleUiState->regionButtonSpriteIds[SAMPLES_REGION_SINNOH]].y -= 5;
+            gSprites[sSampleUiState->regionButtonSpriteIds[SAMPLES_REGION_UNOVA]].y -= 5;
+            gSprites[sSampleUiState->regionButtonSpriteIds[SAMPLES_REGION_KALOS]].y -= 5;
         }
         else if (sSampleUiState->panelY == PANEL_MAX_Y)
         {
@@ -1063,7 +1063,7 @@ static bool8 SampleUi_LoadGraphics(void)
          * BG color is stored in Palette 0, slot 2. So we hot swap that to our saved color for Kanto, since the UI
          * starts in Kanto region. We will need to perform this mini-swap each time the user changes regions.
          */
-        LoadPalette(&sRegionBgColors[REGION_KANTO], BG_PLTT_ID(0) + 2, 2);
+        LoadPalette(&sRegionBgColors[SAMPLES_REGION_KANTO], BG_PLTT_ID(0) + 2, 2);
         LoadPalette(gMessageBox_Pal, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
         sSampleUiState->loadState++;
     default:
@@ -1178,23 +1178,23 @@ static void SampleUi_CreateRegionButtons(void)
      * and Sprite B to 0 for that. But now suppose you also want Sprite A to draw on top of Sprite B. For that, set
      * Sprite A's subpriority to 0 and Sprite B's subpriority to 1.
      */
-    sSampleUiState->regionButtonSpriteIds[REGION_KANTO] =
+    sSampleUiState->regionButtonSpriteIds[SAMPLES_REGION_KANTO] =
         CreateSprite(&sKantoButtonSpriteTemplate, BUTTON_START_X, BUTTON_START_Y, 0);
-    sSampleUiState->regionButtonSpriteIds[REGION_JOHTO] =
+    sSampleUiState->regionButtonSpriteIds[SAMPLES_REGION_JOHTO] =
         CreateSprite(&sJohtoButtonSpriteTemplate, BUTTON_START_X + 70, BUTTON_START_Y, 0);
-    sSampleUiState->regionButtonSpriteIds[REGION_HOENN] =
+    sSampleUiState->regionButtonSpriteIds[SAMPLES_REGION_HOENN] =
         CreateSprite(&sHoennButtonSpriteTemplate, BUTTON_START_X + 2*70, BUTTON_START_Y, 0);
-    sSampleUiState->regionButtonSpriteIds[REGION_SINNOH] =
+    sSampleUiState->regionButtonSpriteIds[SAMPLES_REGION_SINNOH] =
         CreateSprite(&sSinnohButtonSpriteTemplate, BUTTON_START_X, BUTTON_START_Y + 40, 0);
-    sSampleUiState->regionButtonSpriteIds[REGION_UNOVA] =
+    sSampleUiState->regionButtonSpriteIds[SAMPLES_REGION_UNOVA] =
         CreateSprite(&sUnovaButtonSpriteTemplate, BUTTON_START_X + 70, BUTTON_START_Y + 40, 0);
-    sSampleUiState->regionButtonSpriteIds[REGION_KALOS] =
+    sSampleUiState->regionButtonSpriteIds[SAMPLES_REGION_KALOS] =
         CreateSprite(&sKalosButtonSpriteTemplate, BUTTON_START_X + 2*70, BUTTON_START_Y + 40, 0);
     #undef BUTTON_START_X
     #undef BUTTON_START_Y
 }
 
-static void SampleUi_StartRegionButtonAnim(enum Region region)
+static void SampleUi_StartRegionButtonAnim(enum SamplesRegion region)
 {
     /*
      * To start the button animation, the first thing we want to do is use the double-size affine mode. We need this for
@@ -1228,7 +1228,7 @@ static void SampleUi_StartRegionButtonAnim(enum Region region)
         SPRITE_SHAPE(64x32), SPRITE_SIZE(64x32), ST_OAM_AFFINE_DOUBLE);
 }
 
-static void SampleUi_StopRegionButtonAnim(enum Region region)
+static void SampleUi_StopRegionButtonAnim(enum SamplesRegion region)
 {
     /*
      * This function works just like the above function, but does everything in reverse.
