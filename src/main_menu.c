@@ -189,7 +189,8 @@ static void HighlightSelectedMainMenuItem(u8, u8, s16);
 static void Task_HandleMainMenuInput(u8);
 static void Task_HandleMainMenuAPressed(u8);
 static void Task_HandleMainMenuBPressed(u8);
-static void Task_NewGameBirchSpeech_Init(u8);
+static void Task_NewGameNoBirchSpeech(u8 taskId);
+// static void Task_NewGameBirchSpeech_Init(u8);
 static void Task_DisplayMainMenuInvalidActionError(u8);
 static void AddBirchSpeechObjects(u8);
 static void Task_NewGameBirchSpeech_WaitToShowBirch(u8);
@@ -1079,7 +1080,7 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
             default:
                 gPlttBufferUnfaded[0] = RGB_BLACK;
                 gPlttBufferFaded[0] = RGB_BLACK;
-                gTasks[taskId].func = Task_NewGameBirchSpeech_Init;
+                gTasks[taskId].func = Task_NewGameNoBirchSpeech;
                 break;
             case ACTION_CONTINUE:
                 gPlttBufferUnfaded[0] = RGB_BLACK;
@@ -1281,6 +1282,26 @@ static void HighlightSelectedMainMenuItem(u8 menuType, u8 selectedMenuItem, s16 
 #define tLotadSpriteId data[9]
 #define tBrendanSpriteId data[10]
 #define tMaySpriteId data[11]
+
+const u8 gText_DefaultPlayerName[] = _("Player");
+static void Task_NewGameNoBirchSpeech(u8 taskId)
+{
+    const u8 *name;
+    u8 i;
+
+    name = gText_DefaultPlayerName;
+
+    for (i = 0; i < PLAYER_NAME_LENGTH; i++)
+        gSaveBlock2Ptr->playerName[i] = name[i];
+    gSaveBlock2Ptr->playerName[PLAYER_NAME_LENGTH] = EOS;
+
+    gSaveBlock2Ptr->playerGender = MALE;
+
+    FreeAllWindowBuffers();
+    ResetAllPicSprites();
+    SetMainCallback2(CB2_NewGame);
+    DestroyTask(taskId);
+}
 
 static void Task_NewGameBirchSpeech_Init(u8 taskId)
 {
