@@ -1,5 +1,5 @@
 # Archie's Quest
-## A demon-slaying fantasy adventure
+## A demon-slaying fantasy adventure!
 
 
 # CREDITS:
