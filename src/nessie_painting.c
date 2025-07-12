@@ -29,20 +29,68 @@
 #include "pokedex.h"
 #include "gpu_regs.h"
 
-struct SampleUiState
+#include "event_data.h"
+
+static void SelectorCallback(struct Sprite *sprite);
+static u8 CreateSelector();
+static void DestroySelector();
+struct NessiePuzzleState
 {
     MainCallback savedCallback;
     u8 loadState;
-    u8 mode;
+    u16 daggerSpriteId;
+    u16 dagger_x;
+    u16 dagger_y;
 };
 
 enum WindowIds
 {
-    WINDOW_0
+    WINDOW_NO_STAB, // Instructions without stab
+    WINDOW_STAB, // Instructions with stab
+    WINDOW_STAB_AREA  // Window for cursor
 };
 
-static EWRAM_DATA struct SampleUiState *sSampleUiState = NULL;
+struct SpriteCordsStruct {
+    u8 x;
+    u8 y;
+};
+
+static EWRAM_DATA struct NessiePuzzleState *sNessiePuzzleState = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
+
+#define TAG_SELECTOR 30004
+
+static const u16 sDaggerCursor_Pal[] = INCBIN_U16("graphics/sample_ui/dagger.gbapal");
+static const u32 sDaggerCursor_Gfx[] = INCBIN_U16("graphics/sample_ui/dagger.4bpp.lz");
+
+static const struct OamData sOamData_Dagger =
+{
+    .size = SPRITE_SIZE(32x32),
+    .shape = SPRITE_SHAPE(32x32),
+    .priority = 0,
+};
+
+static const struct CompressedSpriteSheet sSpriteSheet_Dagger =
+{
+    .data = sDaggerCursor_Gfx,
+    .size = 32*32*4/2,
+    .tag = TAG_SELECTOR,
+};
+
+static const struct SpritePalette sSpritePal_Dagger =
+{
+    .data = sDaggerCursor_Pal,
+    .tag = TAG_SELECTOR
+};
+
+static const struct SpriteTemplate sSpriteTemplate_Dagger =
+{
+    .tileTag = TAG_SELECTOR,
+    .paletteTag = TAG_SELECTOR,
+    .oam = &sOamData_Dagger,
+    .images = NULL,
+    .callback = SelectorCallback
+};
 
 static const struct BgTemplate sSampleUiBgTemplates[] =
 {
@@ -62,15 +110,35 @@ static const struct BgTemplate sSampleUiBgTemplates[] =
 
 static const struct WindowTemplate sSampleUiWindowTemplates[] =
 {
-    [WINDOW_0] =
+    [WINDOW_NO_STAB] =
     {
         .bg = 0,
-        .tilemapLeft = 14,
-        .tilemapTop = 0,
-        .width = 16,
-        .height = 10,
+        .tilemapLeft = 13,
+        .tilemapTop = 16,
+        .width = 8,
+        .height = 2,
         .paletteNum = 15,
         .baseBlock = 1
+    },
+    [WINDOW_STAB] =
+    {
+        .bg = 0,
+        .tilemapLeft = 11,
+        .tilemapTop = 16,
+        .width = 8,
+        .height = 2,
+        .paletteNum = 15,
+        .baseBlock = 1
+    },
+    [WINDOW_STAB_AREA] =
+    {
+        .bg = 0,
+        .tilemapLeft = 2,
+        .tilemapTop = 2,
+        .width = 26,
+        .height = 14,
+        .paletteNum = 15,
+        .baseBlock = 17
     },
     DUMMY_WIN_TEMPLATE
 };
@@ -126,15 +194,16 @@ void Task_OpenNessiePainting(u8 taskId)
 
 static void SampleUi_Init(MainCallback callback)
 {
-    sSampleUiState = AllocZeroed(sizeof(struct SampleUiState));
-    if (sSampleUiState == NULL)
+    sNessiePuzzleState = AllocZeroed(sizeof(struct NessiePuzzleState));
+    if (sNessiePuzzleState == NULL)
     {
         SetMainCallback2(callback);
         return;
     }
 
-    sSampleUiState->loadState = 0;
-    sSampleUiState->savedCallback = callback;
+    sNessiePuzzleState->loadState = 0;
+    sNessiePuzzleState->savedCallback = callback;
+    sNessiePuzzleState->daggerSpriteId = 0xFF;
 
     SetMainCallback2(SampleUi_SetupCB);
 }
@@ -199,7 +268,7 @@ static void SampleUi_SetupCB(void)
     case 2:
         if (SampleUi_InitBgs())
         {
-            sSampleUiState->loadState = 0;
+            sNessiePuzzleState->loadState = 0;
             gMain.state++;
         }
         else
@@ -215,19 +284,27 @@ static void SampleUi_SetupCB(void)
         }
         break;
     case 4:
-        SampleUi_InitWindows();
+        LoadCompressedSpriteSheet(&sSpriteSheet_Dagger);
+        LoadSpritePalette(&sSpritePal_Dagger);
         gMain.state++;
         break;
     case 5:
+        SampleUi_InitWindows();
+        if(FlagGet(FLAG_NESSIE_FOUND_SOLUTION)){
+            CreateSelector();
+        };
+        gMain.state++;
+        break;
+    case 6:
         SampleUi_PrintUiSampleWindowText();
         CreateTask(Task_SampleUiWaitFadeIn, 0);
         gMain.state++;
         break;
-    case 6:
+    case 7:
         BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
         gMain.state++;
         break;
-    case 7:
+    default:
         SetVBlankCallback(SampleUi_VBlankCB);
         SetMainCallback2(SampleUi_MainCB);
         break;
@@ -276,7 +353,7 @@ static void Task_SampleUiWaitFadeAndBail(u8 taskId)
 {
     if (!gPaletteFade.active)
     {
-        SetMainCallback2(sSampleUiState->savedCallback);
+        SetMainCallback2(sNessiePuzzleState->savedCallback);
         SampleUi_FreeResources();
         DestroyTask(taskId);
     }
@@ -286,7 +363,7 @@ static void Task_SampleUiWaitFadeAndExitGracefully(u8 taskId)
 {
     if (!gPaletteFade.active)
     {
-        SetMainCallback2(sSampleUiState->savedCallback);
+        SetMainCallback2(sNessiePuzzleState->savedCallback);
         SampleUi_FreeResources();
         DestroyTask(taskId);
     }
@@ -308,7 +385,7 @@ static bool8 SampleUi_InitBgs(void)
     SetBgTilemapBuffer(1, sBg1TilemapBuffer);
     ScheduleBgCopyTilemapToVram(1);
 
-    //ShowBg(0);
+    ShowBg(0);
     ShowBg(1);
 
     return TRUE;
@@ -325,26 +402,26 @@ static void SampleUi_FadeAndBail(void)
 
 static bool8 SampleUi_LoadGraphics(void)
 {
-    switch (sSampleUiState->loadState)
+    switch (sNessiePuzzleState->loadState)
     {
     case 0:
         ResetTempTileDataBuffers();
         DecompressAndCopyTileDataToVram(1, sNessiePaintings, 0, 0, 0);
-        sSampleUiState->loadState++;
+        sNessiePuzzleState->loadState++;
         break;
     case 1:
         if (FreeTempTileDataBuffersIfPossible() != TRUE)
         {
             LZDecompressWram(sNessiePaintingMap, sBg1TilemapBuffer);
-            sSampleUiState->loadState++;
+            sNessiePuzzleState->loadState++;
         }
         break;
     case 2:
         LoadPalette(sNessiePaintingPalette, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
         LoadPalette(gMessageBox_Pal, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
-        sSampleUiState->loadState++;
+        sNessiePuzzleState->loadState++;
     default:
-        sSampleUiState->loadState = 0;
+        sNessiePuzzleState->loadState = 0;
         return TRUE;
     }
     return FALSE;
@@ -355,30 +432,51 @@ static void SampleUi_InitWindows(void)
     InitWindows(sSampleUiWindowTemplates);
     DeactivateAllTextPrinters();
     ScheduleBgCopyTilemapToVram(0);
-    FillWindowPixelBuffer(WINDOW_0, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    PutWindowTilemap(WINDOW_0);
-    CopyWindowToVram(WINDOW_0, 3);
+    if (!FlagGet(FLAG_NESSIE_FOUND_SOLUTION))
+    {
+        FillWindowPixelBuffer(WINDOW_NO_STAB, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+        PutWindowTilemap(WINDOW_NO_STAB);
+        CopyWindowToVram(WINDOW_NO_STAB, COPYWIN_FULL);
+    }
+    else
+    {
+        FillWindowPixelBuffer(WINDOW_STAB, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+        FillWindowPixelBuffer(WINDOW_STAB_AREA, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+        PutWindowTilemap(WINDOW_STAB);
+        PutWindowTilemap(WINDOW_STAB_AREA);
+        CopyWindowToVram(WINDOW_STAB, COPYWIN_FULL);
+        CopyWindowToVram(WINDOW_STAB_AREA, COPYWIN_FULL);
+    }
 }
 
-static const u8 sText_Text1[] = _("Hello, world!");
-static const u8 sText_Text2[] = _("Press {A_BUTTON} to make a sound!");
+static const u8 sText_Instructions1[] = _("{B_BUTTON} Exit");
+static const u8 sText_Instructions2[] = _("{A_BUTTON} Stab {B_BUTTON} Exit");
 static void SampleUi_PrintUiSampleWindowText(void)
 {
-    FillWindowPixelBuffer(WINDOW_0, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-
-    AddTextPrinterParameterized4(WINDOW_0, FONT_NORMAL, 0, 3, 0, 0,
-        sSampleUiWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, sText_Text1);
-    AddTextPrinterParameterized4(WINDOW_0, FONT_SMALL, 0, 15, 0, 0,
-        sSampleUiWindowFontColors[FONT_RED], TEXT_SKIP_DRAW, sText_Text2);
-
-    CopyWindowToVram(WINDOW_0, COPYWIN_GFX);
+    /* prints with no stabby */
+    if (!FlagGet(FLAG_NESSIE_FOUND_SOLUTION))
+    {
+        FillWindowPixelBuffer(WINDOW_NO_STAB, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+        AddTextPrinterParameterized4(WINDOW_NO_STAB, FONT_SMALL, 0, 0, 0, 0,
+            sSampleUiWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, sText_Instructions1);
+        CopyWindowToVram(WINDOW_NO_STAB, COPYWIN_GFX);
+    }
+    /* prints with stabby */
+    else
+    {
+        FillWindowPixelBuffer(WINDOW_STAB, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+        AddTextPrinterParameterized4(WINDOW_STAB, FONT_SMALL, 0, 0, 0, 0,
+            sSampleUiWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, sText_Instructions2);
+        CopyWindowToVram(WINDOW_STAB, COPYWIN_GFX);
+        CopyWindowToVram(WINDOW_STAB_AREA, COPYWIN_GFX);
+    }
 }
 
 static void SampleUi_FreeResources(void)
 {
-    if (sSampleUiState != NULL)
+    if (sNessiePuzzleState != NULL)
     {
-        Free(sSampleUiState);
+        Free(sNessiePuzzleState);
     }
     if (sBg1TilemapBuffer != NULL)
     {
@@ -386,4 +484,58 @@ static void SampleUi_FreeResources(void)
     }
     FreeAllWindowBuffers();
     ResetSpriteData();
+}
+
+static u8 CreateSelector()
+{
+    if (sNessiePuzzleState->daggerSpriteId == 0xFF)
+        sNessiePuzzleState->daggerSpriteId = CreateSprite(&sSpriteTemplate_Dagger, 183, 30, 0);
+
+    gSprites[sNessiePuzzleState->daggerSpriteId].invisible = FALSE;
+    StartSpriteAnim(&gSprites[sNessiePuzzleState->daggerSpriteId], 0);
+    return sNessiePuzzleState->daggerSpriteId;
+}
+
+static void DestroySelector()
+{
+    if (sNessiePuzzleState->daggerSpriteId != 0xFF)
+        DestroySprite(&gSprites[sNessiePuzzleState->daggerSpriteId]);
+    sNessiePuzzleState->daggerSpriteId = 0xFF;
+}
+
+static void SelectorCallback(struct Sprite *sprite)
+{
+    struct SpriteCordsStruct spriteCords[6][2] = {
+        {{183, 30 + 20},  {215, 30 + 20}},
+        {{183, 46 + 20},  {215, 46 + 20}},
+        {{183, 62 + 20},  {215, 62 + 20}},
+        {{183, 78 + 20},  {215, 78 + 20}},
+        {{183, 94 + 20},  {215, 94 + 20}},
+        {{183, 110 + 20}, {215, 110 + 20}}, // Thanks Jaizu
+    };
+
+
+    // if(sNessiePuzzleState->inputMode == INPUT_EDIT_STAT)
+    // {
+    //     if(sprite->data[0] == 32)
+    //     {
+    //         sprite->invisible = TRUE;
+    //     }
+    //     if(sprite->data[0] >= 48)
+    //     {
+    //         sprite->invisible = FALSE;
+    //         sprite->data[0] = 0;
+    //     }
+    //     sprite->data[0]++;
+    // }
+    // else
+    // {
+    //     sprite->invisible = FALSE;
+    //     sprite->data[0] = 0;
+    // }
+
+    // sNessiePuzzleState->selectedSquare = sNessiePuzzleState->dagger_x + (sNessiePuzzleState->dagger_y * 2);
+
+    sprite->x = spriteCords[sNessiePuzzleState->dagger_y][sNessiePuzzleState->dagger_x].x;
+    sprite->y = spriteCords[sNessiePuzzleState->dagger_y][sNessiePuzzleState->dagger_x].y;
 }
