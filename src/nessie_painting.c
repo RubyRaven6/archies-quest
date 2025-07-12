@@ -92,7 +92,7 @@ static const struct SpriteTemplate sSpriteTemplate_Dagger =
     .callback = SelectorCallback
 };
 
-static const struct BgTemplate sSampleUiBgTemplates[] =
+static const struct BgTemplate sNessiePuzzleBgTemplates[] =
 {
     {
         .bg = 0,
@@ -108,7 +108,7 @@ static const struct BgTemplate sSampleUiBgTemplates[] =
     }
 };
 
-static const struct WindowTemplate sSampleUiWindowTemplates[] =
+static const struct WindowTemplate sNessiePuzzleWindowTemplates[] =
 {
     [WINDOW_NO_STAB] =
     {
@@ -154,32 +154,32 @@ enum FontColor
     FONT_WHITE,
     FONT_RED
 };
-static const u8 sSampleUiWindowFontColors[][3] =
+static const u8 sNessiePuzzleWindowFontColors[][3] =
 {
     [FONT_WHITE]  = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE,      TEXT_COLOR_DARK_GRAY},
     [FONT_RED]    = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED,        TEXT_COLOR_LIGHT_GRAY},
 };
 
 // Callbacks for the sample UI
-static void SampleUi_SetupCB(void);
-static void SampleUi_MainCB(void);
-static void SampleUi_VBlankCB(void);
+static void NessiePuzzle_SetupCB(void);
+static void NessiePuzzle_MainCB(void);
+static void NessiePuzzle_VBlankCB(void);
 
 // Sample UI tasks
-static void Task_SampleUiWaitFadeIn(u8 taskId);
-static void Task_SampleUiMainInput(u8 taskId);
-static void Task_SampleUiWaitFadeAndBail(u8 taskId);
-static void Task_SampleUiWaitFadeAndExitGracefully(u8 taskId);
+static void Task_NessiePuzzleWaitFadeIn(u8 taskId);
+static void Task_NessiePuzzleMainInput(u8 taskId);
+static void Task_NessiePuzzleWaitFadeAndBail(u8 taskId);
+static void Task_NessiePuzzleWaitFadeAndExitGracefully(u8 taskId);
 
 // Sample UI helper functions
-static void SampleUi_Init(MainCallback callback);
-static void SampleUi_ResetGpuRegsAndBgs(void);
-static bool8 SampleUi_InitBgs(void);
-static void SampleUi_FadeAndBail(void);
-static bool8 SampleUi_LoadGraphics(void);
-static void SampleUi_InitWindows(void);
-static void SampleUi_PrintUiSampleWindowText(void);
-static void SampleUi_FreeResources(void);
+static void NessiePuzzle_Init(MainCallback callback);
+static void NessiePuzzle_ResetGpuRegsAndBgs(void);
+static bool8 NessiePuzzle_InitBgs(void);
+static void NessiePuzzle_FadeAndBail(void);
+static bool8 NessiePuzzle_LoadGraphics(void);
+static void NessiePuzzle_InitWindows(void);
+static void NessiePuzzle_PrintUiSampleWindowText(void);
+static void NessiePuzzle_FreeResources(void);
 
 // Declared in sample_ui.h
 void Task_OpenNessiePainting(u8 taskId)
@@ -187,12 +187,12 @@ void Task_OpenNessiePainting(u8 taskId)
     if (!gPaletteFade.active)
     {
         CleanupOverworldWindowsAndTilemaps();
-        SampleUi_Init(CB2_ReturnToField);
+        NessiePuzzle_Init(CB2_ReturnToField);
         DestroyTask(taskId);
     }
 }
 
-static void SampleUi_Init(MainCallback callback)
+static void NessiePuzzle_Init(MainCallback callback)
 {
     sNessiePuzzleState = AllocZeroed(sizeof(struct NessiePuzzleState));
     if (sNessiePuzzleState == NULL)
@@ -205,11 +205,11 @@ static void SampleUi_Init(MainCallback callback)
     sNessiePuzzleState->savedCallback = callback;
     sNessiePuzzleState->daggerSpriteId = 0xFF;
 
-    SetMainCallback2(SampleUi_SetupCB);
+    SetMainCallback2(NessiePuzzle_SetupCB);
 }
 
 // Credit: Jaizu, pret
-static void SampleUi_ResetGpuRegsAndBgs(void)
+static void NessiePuzzle_ResetGpuRegsAndBgs(void)
 {
     /*
      * TODO : these settings are overkill, and seem to be clearing some
@@ -247,12 +247,12 @@ static void SampleUi_ResetGpuRegsAndBgs(void)
     // CpuFill32(0, (void *)OAM, OAM_SIZE);
 }
 
-static void SampleUi_SetupCB(void)
+static void NessiePuzzle_SetupCB(void)
 {
     switch (gMain.state)
     {
     case 0:
-        SampleUi_ResetGpuRegsAndBgs();
+        NessiePuzzle_ResetGpuRegsAndBgs();
         SetVBlankHBlankCallbacksToNull();
         ClearScheduledBgCopiesToVram();
         gMain.state++;
@@ -266,19 +266,19 @@ static void SampleUi_SetupCB(void)
         gMain.state++;
         break;
     case 2:
-        if (SampleUi_InitBgs())
+        if (NessiePuzzle_InitBgs())
         {
             sNessiePuzzleState->loadState = 0;
             gMain.state++;
         }
         else
         {
-            SampleUi_FadeAndBail();
+            NessiePuzzle_FadeAndBail();
             return;
         }
         break;
     case 3:
-        if (SampleUi_LoadGraphics() == TRUE)
+        if (NessiePuzzle_LoadGraphics() == TRUE)
         {
             gMain.state++;
         }
@@ -289,15 +289,15 @@ static void SampleUi_SetupCB(void)
         gMain.state++;
         break;
     case 5:
-        SampleUi_InitWindows();
+        NessiePuzzle_InitWindows();
         if(FlagGet(FLAG_NESSIE_FOUND_SOLUTION)){
             CreateSelector();
         };
         gMain.state++;
         break;
     case 6:
-        SampleUi_PrintUiSampleWindowText();
-        CreateTask(Task_SampleUiWaitFadeIn, 0);
+        NessiePuzzle_PrintUiSampleWindowText();
+        CreateTask(Task_NessiePuzzleWaitFadeIn, 0);
         gMain.state++;
         break;
     case 7:
@@ -305,13 +305,13 @@ static void SampleUi_SetupCB(void)
         gMain.state++;
         break;
     default:
-        SetVBlankCallback(SampleUi_VBlankCB);
-        SetMainCallback2(SampleUi_MainCB);
+        SetVBlankCallback(NessiePuzzle_VBlankCB);
+        SetMainCallback2(NessiePuzzle_MainCB);
         break;
     }
 }
 
-static void SampleUi_MainCB(void)
+static void NessiePuzzle_MainCB(void)
 {
     RunTasks();
     AnimateSprites();
@@ -320,28 +320,28 @@ static void SampleUi_MainCB(void)
     UpdatePaletteFade();
 }
 
-static void SampleUi_VBlankCB(void)
+static void NessiePuzzle_VBlankCB(void)
 {
     LoadOam();
     ProcessSpriteCopyRequests();
     TransferPlttBuffer();
 }
 
-static void Task_SampleUiWaitFadeIn(u8 taskId)
+static void Task_NessiePuzzleWaitFadeIn(u8 taskId)
 {
     if (!gPaletteFade.active)
     {
-        gTasks[taskId].func = Task_SampleUiMainInput;
+        gTasks[taskId].func = Task_NessiePuzzleMainInput;
     }
 }
 
-static void Task_SampleUiMainInput(u8 taskId)
+static void Task_NessiePuzzleMainInput(u8 taskId)
 {
     if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_PC_OFF);
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
-        gTasks[taskId].func = Task_SampleUiWaitFadeAndExitGracefully;
+        gTasks[taskId].func = Task_NessiePuzzleWaitFadeAndExitGracefully;
     }
     if (JOY_NEW(A_BUTTON))
     {
@@ -349,27 +349,27 @@ static void Task_SampleUiMainInput(u8 taskId)
     }
 }
 
-static void Task_SampleUiWaitFadeAndBail(u8 taskId)
+static void Task_NessiePuzzleWaitFadeAndBail(u8 taskId)
 {
     if (!gPaletteFade.active)
     {
         SetMainCallback2(sNessiePuzzleState->savedCallback);
-        SampleUi_FreeResources();
+        NessiePuzzle_FreeResources();
         DestroyTask(taskId);
     }
 }
 
-static void Task_SampleUiWaitFadeAndExitGracefully(u8 taskId)
+static void Task_NessiePuzzleWaitFadeAndExitGracefully(u8 taskId)
 {
     if (!gPaletteFade.active)
     {
         SetMainCallback2(sNessiePuzzleState->savedCallback);
-        SampleUi_FreeResources();
+        NessiePuzzle_FreeResources();
         DestroyTask(taskId);
     }
 }
 #define TILEMAP_BUFFER_SIZE (1024 * 2)
-static bool8 SampleUi_InitBgs(void)
+static bool8 NessiePuzzle_InitBgs(void)
 {
     ResetAllBgsCoordinates();
 
@@ -380,7 +380,7 @@ static bool8 SampleUi_InitBgs(void)
     }
 
     ResetBgsAndClearDma3BusyFlags(0);
-    InitBgsFromTemplates(0, sSampleUiBgTemplates, NELEMS(sSampleUiBgTemplates));
+    InitBgsFromTemplates(0, sNessiePuzzleBgTemplates, NELEMS(sNessiePuzzleBgTemplates));
 
     SetBgTilemapBuffer(1, sBg1TilemapBuffer);
     ScheduleBgCopyTilemapToVram(1);
@@ -392,15 +392,15 @@ static bool8 SampleUi_InitBgs(void)
 }
 #undef TILEMAP_BUFFER_SIZE
 
-static void SampleUi_FadeAndBail(void)
+static void NessiePuzzle_FadeAndBail(void)
 {
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
-    CreateTask(Task_SampleUiWaitFadeAndBail, 0);
-    SetVBlankCallback(SampleUi_VBlankCB);
-    SetMainCallback2(SampleUi_MainCB);
+    CreateTask(Task_NessiePuzzleWaitFadeAndBail, 0);
+    SetVBlankCallback(NessiePuzzle_VBlankCB);
+    SetMainCallback2(NessiePuzzle_MainCB);
 }
 
-static bool8 SampleUi_LoadGraphics(void)
+static bool8 NessiePuzzle_LoadGraphics(void)
 {
     switch (sNessiePuzzleState->loadState)
     {
@@ -427,9 +427,9 @@ static bool8 SampleUi_LoadGraphics(void)
     return FALSE;
 }
 
-static void SampleUi_InitWindows(void)
+static void NessiePuzzle_InitWindows(void)
 {
-    InitWindows(sSampleUiWindowTemplates);
+    InitWindows(sNessiePuzzleWindowTemplates);
     DeactivateAllTextPrinters();
     ScheduleBgCopyTilemapToVram(0);
     if (!FlagGet(FLAG_NESSIE_FOUND_SOLUTION))
@@ -448,14 +448,14 @@ static void SampleUi_InitWindows(void)
 
 static const u8 sText_Instructions1[] = _("{B_BUTTON} Exit");
 static const u8 sText_Instructions2[] = _("{A_BUTTON} Stab {B_BUTTON} Exit");
-static void SampleUi_PrintUiSampleWindowText(void)
+static void NessiePuzzle_PrintUiSampleWindowText(void)
 {
     /* prints with no stabby */
     if (!FlagGet(FLAG_NESSIE_FOUND_SOLUTION))
     {
         FillWindowPixelBuffer(WINDOW_NO_STAB, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
         AddTextPrinterParameterized4(WINDOW_NO_STAB, FONT_SMALL, 0, 0, 0, 0,
-            sSampleUiWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, sText_Instructions1);
+            sNessiePuzzleWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, sText_Instructions1);
         CopyWindowToVram(WINDOW_NO_STAB, COPYWIN_GFX);
     }
     /* prints with stabby */
@@ -463,12 +463,12 @@ static void SampleUi_PrintUiSampleWindowText(void)
     {
         FillWindowPixelBuffer(WINDOW_STAB, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
         AddTextPrinterParameterized4(WINDOW_STAB, FONT_SMALL, 0, 0, 0, 0,
-            sSampleUiWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, sText_Instructions2);
+            sNessiePuzzleWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, sText_Instructions2);
         CopyWindowToVram(WINDOW_STAB, COPYWIN_GFX);
     }
 }
 
-static void SampleUi_FreeResources(void)
+static void NessiePuzzle_FreeResources(void)
 {
     if (sNessiePuzzleState != NULL)
     {
