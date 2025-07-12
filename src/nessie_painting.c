@@ -441,11 +441,8 @@ static void SampleUi_InitWindows(void)
     else
     {
         FillWindowPixelBuffer(WINDOW_STAB, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-        FillWindowPixelBuffer(WINDOW_STAB_AREA, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
         PutWindowTilemap(WINDOW_STAB);
-        PutWindowTilemap(WINDOW_STAB_AREA);
         CopyWindowToVram(WINDOW_STAB, COPYWIN_FULL);
-        CopyWindowToVram(WINDOW_STAB_AREA, COPYWIN_FULL);
     }
 }
 
@@ -468,7 +465,6 @@ static void SampleUi_PrintUiSampleWindowText(void)
         AddTextPrinterParameterized4(WINDOW_STAB, FONT_SMALL, 0, 0, 0, 0,
             sSampleUiWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, sText_Instructions2);
         CopyWindowToVram(WINDOW_STAB, COPYWIN_GFX);
-        CopyWindowToVram(WINDOW_STAB_AREA, COPYWIN_GFX);
     }
 }
 
@@ -492,7 +488,6 @@ static u8 CreateSelector()
         sNessiePuzzleState->daggerSpriteId = CreateSprite(&sSpriteTemplate_Dagger, 183, 30, 0);
 
     gSprites[sNessiePuzzleState->daggerSpriteId].invisible = FALSE;
-    StartSpriteAnim(&gSprites[sNessiePuzzleState->daggerSpriteId], 0);
     return sNessiePuzzleState->daggerSpriteId;
 }
 
@@ -513,28 +508,17 @@ static void SelectorCallback(struct Sprite *sprite)
         {{183, 94 + 20},  {215, 94 + 20}},
         {{183, 110 + 20}, {215, 110 + 20}}, // Thanks Jaizu
     };
-
-
-    // if(sNessiePuzzleState->inputMode == INPUT_EDIT_STAT)
-    // {
-    //     if(sprite->data[0] == 32)
-    //     {
-    //         sprite->invisible = TRUE;
-    //     }
-    //     if(sprite->data[0] >= 48)
-    //     {
-    //         sprite->invisible = FALSE;
-    //         sprite->data[0] = 0;
-    //     }
-    //     sprite->data[0]++;
-    // }
-    // else
-    // {
-    //     sprite->invisible = FALSE;
-    //     sprite->data[0] = 0;
-    // }
-
-    // sNessiePuzzleState->selectedSquare = sNessiePuzzleState->dagger_x + (sNessiePuzzleState->dagger_y * 2);
+  
+    if(sprite->data[0] == 32)
+    {
+        sprite->invisible = TRUE;
+    }
+    if(sprite->data[0] >= 48)
+    {
+        sprite->invisible = FALSE;
+        sprite->data[0] = 0;
+    }
+    sprite->data[0]++;
 
     sprite->x = spriteCords[sNessiePuzzleState->dagger_y][sNessiePuzzleState->dagger_x].x;
     sprite->y = spriteCords[sNessiePuzzleState->dagger_y][sNessiePuzzleState->dagger_x].y;
