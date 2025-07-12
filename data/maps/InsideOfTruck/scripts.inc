@@ -48,7 +48,7 @@ InsideOfTruck_EventScript_SetIntroFlagsFemale::
 	end
 
 InsideOfTruck_EventScript_MovingBox::
-	msgbox InsideOfTruck_Text_BoxPrintedWithMonLogo, MSGBOX_SIGN
+	special OpenNessiePuzzle
 	end
 
 InsideOfTruck_Text_BoxPrintedWithMonLogo:

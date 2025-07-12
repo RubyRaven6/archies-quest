@@ -75,7 +75,7 @@ static const struct WindowTemplate sSampleUiWindowTemplates[] =
     DUMMY_WIN_TEMPLATE
 };
 
-static const u32 sNessiePaintings[] = INCBIN_U32("graphics/sample_ui/nessie_painting.4bpp.lz");
+static const u32 sNessiePaintings[] = INCBIN_U32("graphics/sample_ui/nessie_painting_map.4bpp.lz");
 
 static const u32 sNessiePaintingMap[] = INCBIN_U32("graphics/sample_ui/nessie_painting_map.bin.lz");
 
@@ -119,7 +119,7 @@ void Task_OpenNessiePainting(u8 taskId)
     if (!gPaletteFade.active)
     {
         CleanupOverworldWindowsAndTilemaps();
-        SampleUi_Init(CB2_ReturnToFieldWithOpenMenu);
+        SampleUi_Init(CB2_ReturnToField);
         DestroyTask(taskId);
     }
 }
@@ -308,7 +308,7 @@ static bool8 SampleUi_InitBgs(void)
     SetBgTilemapBuffer(1, sBg1TilemapBuffer);
     ScheduleBgCopyTilemapToVram(1);
 
-    ShowBg(0);
+    //ShowBg(0);
     ShowBg(1);
 
     return TRUE;
