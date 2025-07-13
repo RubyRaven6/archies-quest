@@ -31,9 +31,9 @@
 
 #include "event_data.h"
 
-static void SelectorCallback(struct Sprite *sprite);
-static u8 CreateSelector();
-static void DestroySelector();
+static void DaggerCallback(struct Sprite *sprite);
+static u8 Createdagger();
+static void Destroydagger();
 struct NessiePuzzleState
 {
     MainCallback savedCallback;
@@ -58,38 +58,39 @@ struct SpriteCordsStruct {
 static EWRAM_DATA struct NessiePuzzleState *sNessiePuzzleState = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
 
-#define TAG_SELECTOR 30004
+#define TAG_dagger 30004
 
 static const u16 sDaggerCursor_Pal[] = INCBIN_U16("graphics/sample_ui/dagger.gbapal");
-static const u32 sDaggerCursor_Gfx[] = INCBIN_U16("graphics/sample_ui/dagger.4bpp.lz");
+static const u32 sDaggerCursor_Gfx[] = INCBIN_U32("graphics/sample_ui/dagger.4bpp.lz");
 
 static const struct OamData sOamData_Dagger =
 {
     .size = SPRITE_SIZE(32x32),
     .shape = SPRITE_SHAPE(32x32),
-    .priority = 0,
+    .priority = 1,
 };
 
 static const struct CompressedSpriteSheet sSpriteSheet_Dagger =
 {
     .data = sDaggerCursor_Gfx,
-    .size = 32*32*4/2,
-    .tag = TAG_SELECTOR,
+    .size = 32*32/2,
+    .tag = TAG_dagger,
 };
 
 static const struct SpritePalette sSpritePal_Dagger =
 {
     .data = sDaggerCursor_Pal,
-    .tag = TAG_SELECTOR
+    .tag = TAG_dagger
 };
 
 static const struct SpriteTemplate sSpriteTemplate_Dagger =
 {
-    .tileTag = TAG_SELECTOR,
-    .paletteTag = TAG_SELECTOR,
+    .tileTag = TAG_dagger,
+    .paletteTag = TAG_dagger,
     .oam = &sOamData_Dagger,
+    .anims = gDummySpriteAnimTable,
     .images = NULL,
-    .callback = SelectorCallback
+    .callback = DaggerCallback
 };
 
 static const struct BgTemplate sNessiePuzzleBgTemplates[] =
@@ -132,7 +133,7 @@ static const struct WindowTemplate sNessiePuzzleWindowTemplates[] =
     },
     [WINDOW_STAB_AREA] =
     {
-        .bg = 0,
+        .bg = 1,
         .tilemapLeft = 2,
         .tilemapTop = 2,
         .width = 26,
@@ -144,9 +145,7 @@ static const struct WindowTemplate sNessiePuzzleWindowTemplates[] =
 };
 
 static const u32 sNessiePaintings[] = INCBIN_U32("graphics/sample_ui/nessie_painting_map.4bpp.lz");
-
 static const u32 sNessiePaintingMap[] = INCBIN_U32("graphics/sample_ui/nessie_painting_map.bin.lz");
-
 static const u16 sNessiePaintingPalette[] = INCBIN_U16("graphics/sample_ui/nessie_painting.gbapal");
 
 enum FontColor
@@ -291,7 +290,7 @@ static void NessiePuzzle_SetupCB(void)
     case 5:
         NessiePuzzle_InitWindows();
         if(FlagGet(FLAG_NESSIE_FOUND_SOLUTION)){
-            CreateSelector();
+            Createdagger();
         };
         gMain.state++;
         break;
@@ -335,6 +334,29 @@ static void Task_NessiePuzzleWaitFadeIn(u8 taskId)
     }
 }
 
+static void DaggerCallback(struct Sprite *sprite)
+{
+    struct SpriteCordsStruct spriteCords[14][27] = { //Thanks Jaizu
+        {{32, 32},	{40, 32},	{48, 32},	{56, 32},	{64, 32},	{72, 32},	{80, 32},	{88, 32},	{96, 32},	{104, 32},	{112, 32},	{120, 32},	{128, 32},	{136, 32},	{144, 32},	{152, 32},	{160, 32},	{168, 32},	{176, 32},	{184, 32},	{192, 32},	{200, 32},	{208, 32},	{216, 32},	{224, 32},	{232, 32},	{240, 32}},
+        {{32, 40},	{40, 40},	{48, 40},	{56, 40},	{64, 40},	{72, 40},	{80, 40},	{88, 40},	{96, 40},	{104, 40},	{112, 40},	{120, 40},	{128, 40},	{136, 40},	{144, 40},	{152, 40},	{160, 40},	{168, 40},	{176, 40},	{184, 40},	{192, 40},	{200, 40},	{208, 40},	{216, 40},	{224, 40},	{232, 40},	{240, 40}},
+        {{32, 48},	{40, 48},	{48, 48},	{56, 48},	{64, 48},	{72, 48},	{80, 48},	{88, 48},	{96, 48},	{104, 48},	{112, 48},	{120, 48},	{128, 48},	{136, 48},	{144, 48},	{152, 48},	{160, 48},	{168, 48},	{176, 48},	{184, 48},	{192, 48},	{200, 48},	{208, 48},	{216, 48},	{224, 48},	{232, 48},	{240, 48}},
+        {{32, 56},	{40, 56},	{48, 56},	{56, 56},	{64, 56},	{72, 56},	{80, 56},	{88, 56},	{96, 56},	{104, 56},	{112, 56},	{120, 56},	{128, 56},	{136, 56},	{144, 56},	{152, 56},	{160, 56},	{168, 56},	{176, 56},	{184, 56},	{192, 56},	{200, 56},	{208, 56},	{216, 56},	{224, 56},	{232, 56},	{240, 56}},
+        {{32, 64},	{40, 64},	{48, 64},	{56, 64},	{64, 64},	{72, 64},	{80, 64},	{88, 64},	{96, 64},	{104, 64},	{112, 64},	{120, 64},	{128, 64},	{136, 64},	{144, 64},	{152, 64},	{160, 64},	{168, 64},	{176, 64},	{184, 64},	{192, 64},	{200, 64},	{208, 64},	{216, 64},	{224, 64},	{232, 64},	{240, 64}},
+        {{32, 72},	{40, 72},	{48, 72},	{56, 72},	{64, 72},	{72, 72},	{80, 72},	{88, 72},	{96, 72},	{104, 72},	{112, 72},	{120, 72},	{128, 72},	{136, 72},	{144, 72},	{152, 72},	{160, 72},	{168, 72},	{176, 72},	{184, 72},	{192, 72},	{200, 72},	{208, 72},	{216, 72},	{224, 72},	{232, 72},	{240, 72}},
+        {{32, 80},	{40, 80},	{48, 80},	{56, 80},	{64, 80},	{72, 80},	{80, 80},	{88, 80},	{96, 80},	{104, 80},	{112, 80},	{120, 80},	{128, 80},	{136, 80},	{144, 80},	{152, 80},	{160, 80},	{168, 80},	{176, 80},	{184, 80},	{192, 80},	{200, 80},	{208, 80},	{216, 80},	{224, 80},	{232, 80},	{240, 80}},
+        {{32, 88},	{40, 88},	{48, 88},	{56, 88},	{64, 88},	{72, 88},	{80, 88},	{88, 88},	{96, 88},	{104, 88},	{112, 88},	{120, 88},	{128, 88},	{136, 88},	{144, 88},	{152, 88},	{160, 88},	{168, 88},	{176, 88},	{184, 88},	{192, 88},	{200, 88},	{208, 88},	{216, 88},	{224, 88},	{232, 88},	{240, 88}},
+        {{32, 96},	{40, 96},	{48, 96},	{56, 96},	{64, 96},	{72, 96},	{80, 96},	{88, 96},	{96, 96},	{104, 96},	{112, 96},	{120, 96},	{128, 96},	{136, 96},	{144, 96},	{152, 96},	{160, 96},	{168, 96},	{176, 96},	{184, 96},	{192, 96},	{200, 96},	{208, 96},	{216, 96},	{224, 96},	{232, 96},	{240, 96}},
+        {{32, 104},	{40, 104},	{48, 104},	{56, 104},	{64, 104},	{72, 104},	{80, 104},	{88, 104},	{96, 104},	{104, 104},	{112, 104},	{120, 104},	{128, 104},	{136, 104},	{144, 104},	{152, 104},	{160, 104},	{168, 104},	{176, 104},	{184, 104},	{192, 104},	{200, 104},	{208, 104},	{216, 104},	{224, 104},	{232, 104},	{240, 104}},
+        {{32, 112},	{40, 112},	{48, 112},	{56, 112},	{64, 112},	{72, 112},	{80, 112},	{88, 112},	{96, 112},	{104, 112},	{112, 112},	{120, 112},	{128, 112},	{136, 112},	{144, 112},	{152, 112},	{160, 112},	{168, 112},	{176, 112},	{184, 112},	{192, 112},	{200, 112},	{208, 112},	{216, 112},	{224, 112},	{232, 112},	{240, 112}},
+        {{32, 120},	{40, 120},	{48, 120},	{56, 120},	{64, 120},	{72, 120},	{80, 120},	{88, 120},	{96, 120},	{104, 120},	{112, 120},	{120, 120},	{128, 120},	{136, 120},	{144, 120},	{152, 120},	{160, 120},	{168, 120},	{176, 120},	{184, 120},	{192, 120},	{200, 120},	{208, 120},	{216, 120},	{224, 120},	{232, 120},	{240, 120}},
+        {{32, 128},	{40, 128},	{48, 128},	{56, 128},	{64, 128},	{72, 128},	{80, 128},	{88, 128},	{96, 128},	{104, 128},	{112, 128},	{120, 128},	{128, 128},	{136, 128},	{144, 128},	{152, 128},	{160, 128},	{168, 128},	{176, 128},	{184, 128},	{192, 128},	{200, 128},	{208, 128},	{216, 128},	{224, 128},	{232, 128},	{240, 128}},
+        {{32, 136},	{40, 136},	{48, 136},	{56, 136},	{64, 136},	{72, 136},	{80, 136},	{88, 136},	{96, 136},	{104, 136},	{112, 136},	{120, 136},	{128, 136},	{136, 136},	{144, 136},	{152, 136},	{160, 136},	{168, 136},	{176, 136},	{184, 136},	{192, 136},	{200, 136},	{208, 136},	{216, 136},	{224, 136},	{232, 136},	{240, 136}},
+    };
+
+    sprite->x = spriteCords[sNessiePuzzleState->dagger_y][sNessiePuzzleState->dagger_x].x;
+    sprite->y = spriteCords[sNessiePuzzleState->dagger_y][sNessiePuzzleState->dagger_x].y;
+}
+
 static void Task_NessiePuzzleMainInput(u8 taskId)
 {
     if (JOY_NEW(B_BUTTON))
@@ -345,7 +367,51 @@ static void Task_NessiePuzzleMainInput(u8 taskId)
     }
     if (JOY_NEW(A_BUTTON))
     {
-        PlaySE(SE_SELECT);
+        if
+        (
+            ((sNessiePuzzleState->dagger_x == 20) && (sNessiePuzzleState->dagger_y == 10)) ||
+            ((sNessiePuzzleState->dagger_x == 21) && (sNessiePuzzleState->dagger_y == 10)) ||
+            ((sNessiePuzzleState->dagger_x == 20) && (sNessiePuzzleState->dagger_y == 11)) ||
+            ((sNessiePuzzleState->dagger_x == 21) && (sNessiePuzzleState->dagger_y == 11))
+        )
+        {
+            PlaySE(SE_SELECT);
+            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+            gTasks[taskId].func = Task_NessiePuzzleWaitFadeAndExitGracefully;
+        }
+        
+        else
+        {
+            PlaySE(SE_WALL_HIT);
+        }
+    }
+    if (JOY_NEW(DPAD_LEFT))
+    {
+        if (sNessiePuzzleState->dagger_x == 0)
+            sNessiePuzzleState->dagger_x = 26;
+        else
+            sNessiePuzzleState->dagger_x--;
+    }
+    if (JOY_NEW(DPAD_RIGHT))
+    {
+        if (sNessiePuzzleState->dagger_x == 26)
+            sNessiePuzzleState->dagger_x = 0;
+        else
+            sNessiePuzzleState->dagger_x++;
+    }
+    if (JOY_NEW(DPAD_UP))
+    {
+        if (sNessiePuzzleState->dagger_y == 0)
+            sNessiePuzzleState->dagger_y = 13;
+        else
+            sNessiePuzzleState->dagger_y--;
+    }
+    if (JOY_NEW(DPAD_DOWN))
+    {
+        if (sNessiePuzzleState->dagger_y == 13)
+            sNessiePuzzleState->dagger_y = 0;
+        else
+            sNessiePuzzleState->dagger_y++;
     }
 }
 
@@ -470,6 +536,7 @@ static void NessiePuzzle_PrintUiSampleWindowText(void)
 
 static void NessiePuzzle_FreeResources(void)
 {
+    Destroydagger();
     if (sNessiePuzzleState != NULL)
     {
         Free(sNessiePuzzleState);
@@ -482,44 +549,18 @@ static void NessiePuzzle_FreeResources(void)
     ResetSpriteData();
 }
 
-static u8 CreateSelector()
+static u8 Createdagger()
 {
     if (sNessiePuzzleState->daggerSpriteId == 0xFF)
-        sNessiePuzzleState->daggerSpriteId = CreateSprite(&sSpriteTemplate_Dagger, 183, 30, 0);
+        sNessiePuzzleState->daggerSpriteId = CreateSprite(&sSpriteTemplate_Dagger, 0, 0, 0);
 
     gSprites[sNessiePuzzleState->daggerSpriteId].invisible = FALSE;
     return sNessiePuzzleState->daggerSpriteId;
 }
 
-static void DestroySelector()
+static void Destroydagger()
 {
     if (sNessiePuzzleState->daggerSpriteId != 0xFF)
         DestroySprite(&gSprites[sNessiePuzzleState->daggerSpriteId]);
     sNessiePuzzleState->daggerSpriteId = 0xFF;
-}
-
-static void SelectorCallback(struct Sprite *sprite)
-{
-    struct SpriteCordsStruct spriteCords[6][2] = {
-        {{183, 30 + 20},  {215, 30 + 20}},
-        {{183, 46 + 20},  {215, 46 + 20}},
-        {{183, 62 + 20},  {215, 62 + 20}},
-        {{183, 78 + 20},  {215, 78 + 20}},
-        {{183, 94 + 20},  {215, 94 + 20}},
-        {{183, 110 + 20}, {215, 110 + 20}}, // Thanks Jaizu
-    };
-  
-    if(sprite->data[0] == 32)
-    {
-        sprite->invisible = TRUE;
-    }
-    if(sprite->data[0] >= 48)
-    {
-        sprite->invisible = FALSE;
-        sprite->data[0] = 0;
-    }
-    sprite->data[0]++;
-
-    sprite->x = spriteCords[sNessiePuzzleState->dagger_y][sNessiePuzzleState->dagger_x].x;
-    sprite->y = spriteCords[sNessiePuzzleState->dagger_y][sNessiePuzzleState->dagger_x].y;
 }
