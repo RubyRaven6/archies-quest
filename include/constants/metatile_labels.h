@@ -370,6 +370,16 @@
 // gTileset_MossdeepGym
 #define METATILE_MossdeepGym_YellowArrow_Right  0x250
 
+// gTileset_NessereignLairPrimary
+#define METATILE_NessereignLairPrimary_ENTRANCE_DNL  0x02D
+#define METATILE_NessereignLairPrimary_ENTRANCE_DNM  0x02E
+#define METATILE_NessereignLairPrimary_ENTRANCE_DNR  0x02F
+#define METATILE_NessereignLairPrimary_ENTRANCE_ML   0x025
+#define METATILE_NessereignLairPrimary_ENTRANCE_MM   0x026
+#define METATILE_NessereignLairPrimary_ENTRANCE_MR   0x027
+#define METATILE_NessereignLairPrimary_ENTRANCE_UPL  0x01F
+#define METATILE_NessereignLairPrimary_ENTRANCE_UPM  0x01E
+
 // gTileset_Pacifidlog
 #define METATILE_Pacifidlog_Door                               0x21A
 #define METATILE_Pacifidlog_FloatingLogs_HorizontalLeft        0x250
