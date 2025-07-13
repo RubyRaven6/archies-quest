@@ -1,4 +1,4 @@
-#include "sample_ui.h"
+#include "nessie_puzzle.h"
 
 #include "gba/types.h"
 #include "gba/defines.h"
@@ -55,8 +55,8 @@ static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
 
 #define TAG_DAGGER 30004
 
-static const u16 sDaggerCursor_Pal[] = INCBIN_U16("graphics/sample_ui/dagger.gbapal");
-static const u32 sDaggerCursor_Gfx[] = INCBIN_U32("graphics/sample_ui/dagger.4bpp.lz");
+static const u16 sDaggerCursor_Pal[] = INCBIN_U16("graphics/nessie_puzzle/dagger.gbapal");
+static const u32 sDaggerCursor_Gfx[] = INCBIN_U32("graphics/nessie_puzzle/dagger.4bpp.lz");
 
 static const struct OamData sOamData_Dagger =
 {
@@ -139,9 +139,9 @@ static const struct WindowTemplate sNessiePuzzleWindowTemplates[] =
     DUMMY_WIN_TEMPLATE
 };
 
-static const u32 sNessiePaintings[] = INCBIN_U32("graphics/sample_ui/nessie_painting_map.4bpp.lz");
-static const u32 sNessiePaintingMap[] = INCBIN_U32("graphics/sample_ui/nessie_painting_map.bin.lz");
-static const u16 sNessiePaintingPalette[] = INCBIN_U16("graphics/sample_ui/nessie_painting.gbapal");
+static const u32 sNessiePaintings[] = INCBIN_U32("graphics/nessie_puzzle/nessie_painting_map.4bpp.lz");
+static const u32 sNessiePaintingMap[] = INCBIN_U32("graphics/nessie_puzzle/nessie_painting_map.bin.lz");
+static const u16 sNessiePaintingPalette[] = INCBIN_U16("graphics/nessie_puzzle/nessie_painting.gbapal");
 
 enum FontColor
 {
@@ -175,7 +175,7 @@ static void NessiePuzzle_InitWindows(void);
 static void NessiePuzzle_PrintUiSampleWindowText(void);
 static void NessiePuzzle_FreeResources(void);
 
-// Declared in sample_ui.h
+// Declared in nessie_puzzle.h
 void Task_OpenNessiePainting(u8 taskId)
 {
     if (!gPaletteFade.active)
