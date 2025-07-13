@@ -4369,3 +4369,15 @@ void OpenNessiePuzzle(void)
     FadeScreen(FADE_TO_BLACK, 0);
     CreateTask(Task_OpenNessiePainting, 0);
 }
+
+void OpenSampleUi(void)
+{
+    FadeScreen(FADE_TO_BLACK, 0);
+    CreateTask(Task_OpenSampleUi_StartHere, 0);
+}
+
+void OpenSampleUiWithSlide(void)
+{
+    FadeScreen(FADE_TO_BLACK, 0);
+    CreateTask(Task_OpenSampleUi_SlidingPanel, 0);
+}
