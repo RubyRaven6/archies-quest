@@ -58,7 +58,7 @@ struct SpriteCordsStruct {
 static EWRAM_DATA struct NessiePuzzleState *sNessiePuzzleState = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
 
-#define TAG_dagger 30004
+#define TAG_DAGGER 30004
 
 static const u16 sDaggerCursor_Pal[] = INCBIN_U16("graphics/sample_ui/dagger.gbapal");
 static const u32 sDaggerCursor_Gfx[] = INCBIN_U32("graphics/sample_ui/dagger.4bpp.lz");
@@ -74,19 +74,19 @@ static const struct CompressedSpriteSheet sSpriteSheet_Dagger =
 {
     .data = sDaggerCursor_Gfx,
     .size = 32*32/2,
-    .tag = TAG_dagger,
+    .tag = TAG_DAGGER,
 };
 
 static const struct SpritePalette sSpritePal_Dagger =
 {
     .data = sDaggerCursor_Pal,
-    .tag = TAG_dagger
+    .tag = TAG_DAGGER
 };
 
 static const struct SpriteTemplate sSpriteTemplate_Dagger =
 {
-    .tileTag = TAG_dagger,
-    .paletteTag = TAG_dagger,
+    .tileTag = TAG_DAGGER,
+    .paletteTag = TAG_DAGGER,
     .oam = &sOamData_Dagger,
     .anims = gDummySpriteAnimTable,
     .images = NULL,
