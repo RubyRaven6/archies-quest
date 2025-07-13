@@ -896,3 +896,14 @@ const struct Tileset gTileset_NessereignLairPrimary =
     .metatileAttributes = gMetatileAttributes_NessereignLairPrimary,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_NessereignLairSecondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_NessereignLairSecondary,
+    .palettes = gTilesetPalettes_NessereignLairSecondary,
+    .metatiles = gMetatiles_NessereignLairSecondary,
+    .metatileAttributes = gMetatileAttributes_NessereignLairSecondary,
+    .callback = NULL,
+};

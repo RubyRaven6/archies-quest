@@ -225,3 +225,6 @@ const u16 gMetatileAttributes_GigagehsoolLairSecondary[] = INCBIN_U16("data/tile
 
 const u16 gMetatiles_NessereignLairPrimary[] = INCBIN_U16("data/tilesets/primary/nessereign_lair_primary/metatiles.bin");
 const u16 gMetatileAttributes_NessereignLairPrimary[] = INCBIN_U16("data/tilesets/primary/nessereign_lair_primary/metatile_attributes.bin");
+
+const u16 gMetatiles_NessereignLairSecondary[] = INCBIN_U16("data/tilesets/secondary/nessereign_lair_secondary/metatiles.bin");
+const u16 gMetatileAttributes_NessereignLairSecondary[] = INCBIN_U16("data/tilesets/secondary/nessereign_lair_secondary/metatile_attributes.bin");
