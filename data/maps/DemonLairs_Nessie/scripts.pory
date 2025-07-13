@@ -1,0 +1,11 @@
+mapscripts DemonLairs_Nessie_MapScripts{
+
+}
+
+script DemonLairs_Nessie_EventScript_NessiePuzzle{
+    msgbox("It's an impressive painting.\nView it closer?", MSGBOX_YESNO)
+    if(var(VAR_RESULT) == TRUE){
+        special(OpenNessiePuzzle)
+    }
+    end
+}
