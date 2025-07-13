@@ -1283,7 +1283,7 @@ static void HighlightSelectedMainMenuItem(u8 menuType, u8 selectedMenuItem, s16 
 #define tBrendanSpriteId data[10]
 #define tMaySpriteId data[11]
 
-const u8 gText_DefaultPlayerName[] = _("Player");
+const u8 gText_DefaultPlayerName[] = _("Archie");
 static void Task_NewGameNoBirchSpeech(u8 taskId)
 {
     const u8 *name;

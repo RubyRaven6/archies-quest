@@ -1,4 +1,4 @@
-#include "sample_ui.h"
+#include "puzzles.h"
 
 #include "gba/types.h"
 #include "gba/defines.h"

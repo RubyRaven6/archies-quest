@@ -1,4 +1,4 @@
-#include "nessie_puzzle.h"
+#include "puzzles.h"
 
 #include "gba/types.h"
 #include "gba/defines.h"

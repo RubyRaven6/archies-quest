@@ -4,8 +4,42 @@ mapscripts DemonLairs_Nessie_MapScripts{
 
 script DemonLairs_Nessie_EventScript_NessiePuzzle{
     msgbox("It's an impressive painting.\nView it closer?", MSGBOX_YESNO)
-    if(var(VAR_RESULT) == TRUE){
+    if(var(VAR_RESULT) == YES){
         special(OpenNessiePuzzle)
+    }
+    end
+}
+
+script DemonLairs_Nessie_EventScript_Knife {
+    msgbox("You find a small dagger on the table.\p Take it?", MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES){
+        setmetatile(3, 7, METATILE_NessereignLairPrimary_TableCorner, TRUE)
+        special(DrawWholeMapView)
+        closemessage
+    }
+    end
+}
+
+script DemonLairs_Nessie_EventScript_Chair {
+    msgbox("This chair inhumanely huge.")
+    closemessage
+    end
+}
+
+script DemonLairs_Nessie_EventScript_Book {
+    if(!flag(FLAG_NESSIE_FOUND_SOLUTION))
+    {
+        msgbox("It's an ancient tome with yellowed pages.\nThere are no words, but merely looking\lmakes you feel nauseous.\pContinue?", MSGBOX_YESNO)
+        if(var(VAR_RESULT) == YES)
+        {
+            msgbox("You strain your eyes, and through the\ngrotesque images, you see a phrase.\p“Sheathing sharpness through screams”.\pIt feels like you learned something\nimportant.")
+            setflag(FLAG_NESSIE_FOUND_SOLUTION)
+            closemessage
+        }
+    }
+    else{
+        msgbox("It's a dizzying tome.\nNo need to reread it.")
+        closemessage
     }
     end
 }

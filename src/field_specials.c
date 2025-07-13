@@ -73,7 +73,7 @@
 #include "battle_util.h"
 #include "naming_screen.h"
 
-#include "sample_ui.h"
+#include "puzzles.h"
 
 #define TAG_ITEM_ICON 5500
 
