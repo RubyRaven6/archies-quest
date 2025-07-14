@@ -32,7 +32,7 @@
 #include "event_data.h"
 
 static void DaggerCallback(struct Sprite *sprite);
-static u8 Createdagger();
+static u8 CreateDagger();
 static void Destroydagger();
 struct NessiePuzzleState
 {
@@ -284,8 +284,8 @@ static void NessiePuzzle_SetupCB(void)
         break;
     case 5:
         NessiePuzzle_InitWindows();
-        if(FlagGet(FLAG_NESSIE_FOUND_SOLUTION)){
-            Createdagger();
+        if(FlagGet(FLAG_NESSIE_READ_BOOK) && FlagGet(FLAG_NESSIE_GOT_DAGGER)){
+            CreateDagger();
         };
         gMain.state++;
         break;
@@ -496,7 +496,7 @@ static void NessiePuzzle_InitWindows(void)
     InitWindows(sNessiePuzzleWindowTemplates);
     DeactivateAllTextPrinters();
     ScheduleBgCopyTilemapToVram(0);
-    if (!FlagGet(FLAG_NESSIE_FOUND_SOLUTION))
+    if (!(FlagGet(FLAG_NESSIE_READ_BOOK) && FlagGet(FLAG_NESSIE_GOT_DAGGER)))
     {
         FillWindowPixelBuffer(WINDOW_NO_STAB, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
         PutWindowTilemap(WINDOW_NO_STAB);
@@ -515,7 +515,7 @@ static const u8 sText_Instructions2[] = _("{A_BUTTON} Stab {B_BUTTON} Exit");
 static void NessiePuzzle_PrintUiSampleWindowText(void)
 {
     /* prints with no stabby */
-    if (!FlagGet(FLAG_NESSIE_FOUND_SOLUTION))
+    if (!(FlagGet(FLAG_NESSIE_READ_BOOK) && FlagGet(FLAG_NESSIE_GOT_DAGGER)))
     {
         FillWindowPixelBuffer(WINDOW_NO_STAB, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
         AddTextPrinterParameterized4(WINDOW_NO_STAB, FONT_SMALL, 0, 0, 0, 0,
@@ -547,7 +547,7 @@ static void NessiePuzzle_FreeResources(void)
     ResetSpriteData();
 }
 
-static u8 Createdagger()
+static u8 CreateDagger()
 {
     if (sNessiePuzzleState->daggerSpriteId == 0xFF)
         sNessiePuzzleState->daggerSpriteId = CreateSprite(&sSpriteTemplate_Dagger, 0, 0, 0);
