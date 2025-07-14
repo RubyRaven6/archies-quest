@@ -181,7 +181,7 @@ void Task_OpenNessiePainting(u8 taskId)
     if (!gPaletteFade.active)
     {
         CleanupOverworldWindowsAndTilemaps();
-        NessiePuzzle_Init(CB2_ReturnToField);
+        NessiePuzzle_Init(CB2_ReturnToFieldContinueScript);
         DestroyTask(taskId);
     }
 }
@@ -373,6 +373,7 @@ static void Task_NessiePuzzleMainInput(u8 taskId)
             ((sNessiePuzzleState->dagger_x == 21) && (sNessiePuzzleState->dagger_y == 11))
         )
         {
+            FlagSet(FLAG_NESSIE_PUZZLE_SOLVED);
             PlaySE(SE_SELECT);
             BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
             gTasks[taskId].func = Task_NessiePuzzleWaitFadeAndExitGracefully;
@@ -383,28 +384,28 @@ static void Task_NessiePuzzleMainInput(u8 taskId)
             PlaySE(SE_WALL_HIT);
         }
     }
-    if (JOY_NEW(DPAD_LEFT) || JOY_HELD(DPAD_LEFT))
+    if (JOY_NEW(DPAD_LEFT))
     {
         if (sNessiePuzzleState->dagger_x == 0)
             sNessiePuzzleState->dagger_x = 26;
         else
             sNessiePuzzleState->dagger_x--;
     }
-    if (JOY_NEW(DPAD_RIGHT) || JOY_HELD(DPAD_RIGHT))
+    if (JOY_NEW(DPAD_RIGHT))
     {
         if (sNessiePuzzleState->dagger_x == 26)
             sNessiePuzzleState->dagger_x = 0;
         else
             sNessiePuzzleState->dagger_x++;
     }
-    if (JOY_NEW(DPAD_UP) || JOY_HELD(DPAD_UP))
+    if (JOY_NEW(DPAD_UP))
     {
         if (sNessiePuzzleState->dagger_y == 0)
             sNessiePuzzleState->dagger_y = 13;
         else
             sNessiePuzzleState->dagger_y--;
     }
-    if (JOY_NEW(DPAD_DOWN) || JOY_HELD(DPAD_DOWN))
+    if (JOY_NEW(DPAD_DOWN))
     {
         if (sNessiePuzzleState->dagger_y == 13)
             sNessiePuzzleState->dagger_y = 0;

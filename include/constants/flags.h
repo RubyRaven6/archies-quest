@@ -43,9 +43,9 @@
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 #define NUM_TEMP_FLAGS   (TEMP_FLAGS_END - TEMP_FLAGS_START + 1)
 
-#define FLAG_NESSIE_FOUND_SOLUTION    0x20 // Found solution to nessie puzzle: stabbing
-#define FLAG_UNUSED_0x021    0x21 // Unused Flag
-#define FLAG_UNUSED_0x022    0x22 // Unused Flag
+#define FLAG_NESSIE_READ_BOOK        0x20 // Read the book for the Nessie solution
+#define FLAG_NESSIE_GOT_DAGGER       0x21 // Got the dagger for Nessie solution
+#define FLAG_NESSIE_PUZZLE_SOLVED    0x22 // For when the painting solution is found
 #define FLAG_UNUSED_0x023    0x23 // Unused Flag
 #define FLAG_UNUSED_0x024    0x24 // Unused Flag
 #define FLAG_UNUSED_0x025    0x25 // Unused Flag
