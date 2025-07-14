@@ -1654,24 +1654,24 @@ const u16 gTilesetPalettes_Volcano[][16] =
 
 const u32 gTilesetTiles_Volcano[] = INCBIN_U32("data/tilesets/secondary/volcano/tiles.4bpp.lz");
 
-const u16 gTilesetPalettes_ZeldaStyleHouse[][16] =
+const u16 gTilesetPalettes_ArchiesHouse[][16] =
 {
-    INCBIN_U16("data/tilesets/secondary/zelda_style_house/palettes/00.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/zelda_style_house/palettes/01.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/zelda_style_house/palettes/02.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/zelda_style_house/palettes/03.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/zelda_style_house/palettes/04.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/zelda_style_house/palettes/05.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/zelda_style_house/palettes/06.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/zelda_style_house/palettes/07.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/zelda_style_house/palettes/08.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/zelda_style_house/palettes/09.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/zelda_style_house/palettes/10.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/zelda_style_house/palettes/11.gbapal"),
-    INCBIN_U16("data/tilesets/secondary/zelda_style_house/palettes/12.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/archies_house/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/archies_house/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/archies_house/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/archies_house/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/archies_house/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/archies_house/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/archies_house/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/archies_house/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/archies_house/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/archies_house/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/archies_house/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/archies_house/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/archies_house/palettes/12.gbapal"),
 };
 
-const u32 gTilesetTiles_ZeldaStyleHouse[] = INCBIN_U32("data/tilesets/secondary/zelda_style_house/tiles.4bpp.lz");
+const u32 gTilesetTiles_ArchiesHouse[] = INCBIN_U32("data/tilesets/secondary/archies_house/tiles.4bpp.lz");
 
 const u16 gTilesetPalettes_SpaceMeteor[][16] =
 {
