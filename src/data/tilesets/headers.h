@@ -842,14 +842,14 @@ const struct Tileset gTileset_Volcano =
     .callback = NULL,
 };
 
-const struct Tileset gTileset_ZeldaStyleHouse =
+const struct Tileset gTileset_ArchiesHouse =
 {
     .isCompressed = TRUE,
     .isSecondary = TRUE,
-    .tiles = gTilesetTiles_ZeldaStyleHouse,
-    .palettes = gTilesetPalettes_ZeldaStyleHouse,
-    .metatiles = gMetatiles_ZeldaStyleHouse,
-    .metatileAttributes = gMetatileAttributes_ZeldaStyleHouse,
+    .tiles = gTilesetTiles_ArchiesHouse,
+    .palettes = gTilesetPalettes_ArchiesHouse,
+    .metatiles = gMetatiles_ArchiesHouse,
+    .metatileAttributes = gMetatileAttributes_ArchiesHouse,
     .callback = NULL,
 };
 
@@ -864,24 +864,46 @@ const struct Tileset gTileset_SpaceMeteor =
     .callback = NULL,
 };
 
-const struct Tileset gTileset_NessieLairPrimary =
+const struct Tileset gTileset_GigagehsoolLairPrimary =
 {
     .isCompressed = TRUE,
     .isSecondary = FALSE,
-    .tiles = gTilesetTiles_NessieLairPrimary,
-    .palettes = gTilesetPalettes_NessieLairPrimary,
-    .metatiles = gMetatiles_NessieLairPrimary,
-    .metatileAttributes = gMetatileAttributes_NessieLairPrimary,
+    .tiles = gTilesetTiles_GigagehsoolLairPrimary,
+    .palettes = gTilesetPalettes_GigagehsoolLairPrimary,
+    .metatiles = gMetatiles_GigagehsoolLairPrimary,
+    .metatileAttributes = gMetatileAttributes_GigagehsoolLairPrimary,
     .callback = NULL,
 };
 
-const struct Tileset gTileset_NessieLairSecondary =
+const struct Tileset gTileset_GigagehsoolLairSecondary =
 {
     .isCompressed = TRUE,
     .isSecondary = TRUE,
-    .tiles = gTilesetTiles_NessieLairSecondary,
-    .palettes = gTilesetPalettes_NessieLairSecondary,
-    .metatiles = gMetatiles_NessieLairSecondary,
-    .metatileAttributes = gMetatileAttributes_NessieLairSecondary,
+    .tiles = gTilesetTiles_GigagehsoolLairSecondary,
+    .palettes = gTilesetPalettes_GigagehsoolLairSecondary,
+    .metatiles = gMetatiles_GigagehsoolLairSecondary,
+    .metatileAttributes = gMetatileAttributes_GigagehsoolLairSecondary,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_NessereignLairPrimary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_NessereignLairPrimary,
+    .palettes = gTilesetPalettes_NessereignLairPrimary,
+    .metatiles = gMetatiles_NessereignLairPrimary,
+    .metatileAttributes = gMetatileAttributes_NessereignLairPrimary,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_NessereignLairSecondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_NessereignLairSecondary,
+    .palettes = gTilesetPalettes_NessereignLairSecondary,
+    .metatiles = gMetatiles_NessereignLairSecondary,
+    .metatileAttributes = gMetatileAttributes_NessereignLairSecondary,
     .callback = NULL,
 };

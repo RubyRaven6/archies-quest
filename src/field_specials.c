@@ -73,6 +73,8 @@
 #include "battle_util.h"
 #include "naming_screen.h"
 
+#include "puzzles.h"
+
 #define TAG_ITEM_ICON 5500
 
 #define GFXTAG_MULTICHOICE_SCROLL_ARROWS 2000
@@ -4360,4 +4362,22 @@ void GetCodeFeedback(void)
         gSpecialVar_Result = 1;
     else
         gSpecialVar_Result = 0;
+}
+
+void OpenNessiePuzzle(void)
+{
+    FadeScreen(FADE_TO_BLACK, 0);
+    CreateTask(Task_OpenNessiePainting, 0);
+}
+
+void OpenSampleUi(void)
+{
+    FadeScreen(FADE_TO_BLACK, 0);
+    CreateTask(Task_OpenSampleUi_StartHere, 0);
+}
+
+void OpenSampleUiWithSlide(void)
+{
+    FadeScreen(FADE_TO_BLACK, 0);
+    CreateTask(Task_OpenSampleUi_SlidingPanel, 0);
 }

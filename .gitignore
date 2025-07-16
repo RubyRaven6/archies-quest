@@ -47,3 +47,6 @@ tools/trainerproc/trainerproc
 *.smolTM
 __pycache__
 tools/poryscript/poryscript
+/log.txt
+# Porylive
+.porylive/

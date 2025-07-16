@@ -68,6 +68,7 @@ enum
     MENU_ACTION_PYRAMID_BAG,
     MENU_ACTION_DEBUG,
     MENU_ACTION_DEXNAV,
+    MENU_ACTION_SAMPLE_UI,
 };
 
 // Save status
@@ -176,6 +177,7 @@ static const struct WindowTemplate sWindowTemplate_PyramidFloor = {
     .baseBlock = 0x8
 };
 
+static const u8 gText_MenuDebug[] = _("DEBUG");
 static const struct WindowTemplate sWindowTemplate_PyramidPeak = {
     .bg = 0,
     .tilemapLeft = 1,
@@ -185,8 +187,6 @@ static const struct WindowTemplate sWindowTemplate_PyramidPeak = {
     .paletteNum = 15,
     .baseBlock = 0x8
 };
-
-static const u8 sText_MenuDebug[] = _("DEBUG");
 
 static const struct MenuAction sStartMenuItems[] =
 {
@@ -203,7 +203,7 @@ static const struct MenuAction sStartMenuItems[] =
     [MENU_ACTION_REST_FRONTIER]   = {gText_MenuRest,    {.u8_void = StartMenuSaveCallback}},
     [MENU_ACTION_RETIRE_FRONTIER] = {gText_MenuRetire,  {.u8_void = StartMenuBattlePyramidRetireCallback}},
     [MENU_ACTION_PYRAMID_BAG]     = {gText_MenuBag,     {.u8_void = StartMenuBattlePyramidBagCallback}},
-    [MENU_ACTION_DEBUG]           = {sText_MenuDebug,   {.u8_void = StartMenuDebugCallback}},
+    [MENU_ACTION_DEBUG]           = {gText_MenuDebug,   {.u8_void = StartMenuDebugCallback}},
     [MENU_ACTION_DEXNAV]          = {gText_MenuDexNav,  {.u8_void = StartMenuDexNavCallback}},
 };
 
@@ -343,6 +343,8 @@ static void BuildNormalStartMenu(void)
 
     if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKENAV);
+
+    AddStartMenuAction(MENU_ACTION_SAMPLE_UI);
 
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_SAVE);

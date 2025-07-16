@@ -1,0 +1,127 @@
+mapscripts DemonLairs_Nessie_MapScripts{
+
+}
+
+script DemonLairs_Nessie_EventScript_NessiePuzzle{
+    msgbox("It's an impressive painting.\nView it closer?", MSGBOX_YESNO)
+    closemessage
+    if(var(VAR_RESULT) == YES){
+        special(OpenNessiePuzzle)
+    }
+    waitstate
+    if(flag(FLAG_NESSIE_PUZZLE_SOLVED)){
+        lockall
+        msgbox("The wall is collapsing!", MSGBOX_DEFAULT)
+        waitmessage
+        closemessage
+        setvar(VAR_0x8004, 1)  // vertical pan
+        setvar(VAR_0x8005, 1)  // horizontal pan
+        setvar(VAR_0x8006, 8)  // num shakes
+        setvar(VAR_0x8007, 5)  // shake delay
+        special(ShakeCamera)
+        waitstate
+        playse(SE_M_ROCK_THROW)
+        setmetatile(2, 0, METATILE_NessereignLairPrimary_ENTRANCE_UPL, TRUE)
+        setmetatile(3, 0, METATILE_NessereignLairPrimary_ENTRANCE_UPM, TRUE)
+        setmetatile(4, 0, METATILE_NessereignLairPrimary_ENTRANCE_UPR, TRUE)
+        setmetatile(2, 1, METATILE_NessereignLairPrimary_ENTRANCE_ML, TRUE)
+        setmetatile(3, 1, METATILE_NessereignLairPrimary_ENTRANCE_MM, TRUE)
+        setmetatile(4, 1, METATILE_NessereignLairPrimary_ENTRANCE_MR, TRUE)
+        setmetatile(2, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNL, TRUE)
+        setmetatile(3, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNM, FALSE)
+        setmetatile(4, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNR, TRUE)
+        special(DrawWholeMapView)
+    }
+    end
+}
+
+script DemonLairs_Nessie_EventScript_Knife {
+    if(flag(FLAG_NESSIE_GOT_DAGGER) == FALSE){
+        msgbox("You find a small dagger on the table.\p Take it?", MSGBOX_YESNO)
+        if(var(VAR_RESULT) == YES){
+            setflag(FLAG_NESSIE_GOT_DAGGER)
+            setmetatile(3, 7, METATILE_NessereignLairPrimary_TableCorner, TRUE)
+            special(DrawWholeMapView)
+            closemessage
+        }
+    } else {
+        goto(DemonLairs_Nessie_EventScript_Table)
+    }
+    end
+}
+
+script DemonLairs_Nessie_EventScript_Book {
+    if(!flag(FLAG_NESSIE_READ_BOOK))
+    {
+        msgbox("It is an ancient tome whose pages are\nyellow with age. There are no words, but\lmerely looking makes you feel nauseous.\pContinue?", MSGBOX_YESNO)
+        if(var(VAR_RESULT) == YES)
+        {
+            msgbox("You thumb through and find gross\nand disgusting images. You strain until\lyou see a phrase.\p“Sheathing sharpness\nthrough screams.”\pIt feels like you learned something\nimportant.")
+            setflag(FLAG_NESSIE_READ_BOOK)
+            closemessage
+        }
+    }
+    else{
+        msgbox("“Sheathing sharpness\nthrough screams.”\pIt's a dizzying tome.\nNo need to see the rest.")
+        closemessage
+    }
+    end
+}
+
+script DemonLairs_Nessie_EventScript_Fireplace {
+    msgbox("It's a fireplace.\nThere's ash, but no sign of burning.", MSGBOX_SIGN)
+    closemessage
+    end
+}
+
+script DemonLairs_Nessie_EventScript_Chair {
+    switch(var(VAR_TEMP_1)){
+        case 0:
+            msgbox("It's a humongous chair.\nFar too big for you.", MSGBOX_SIGN)
+            addvar(VAR_TEMP_1, 1)
+        case 1:
+            msgbox("Thinking about how big the chair looks\nis giving you a headache.", MSGBOX_SIGN)
+            addvar(VAR_TEMP_1, 1)
+        default:
+            msgbox("Thinking about how the table looks\nnormal but the chair doesn't gives you\lan even bigger headache.", MSGBOX_SIGN)
+    }
+    end
+}
+
+script DemonLairs_Nessie_EventScript_Table {
+    switch(var(VAR_TEMP_2)){
+        case 0:
+            msgbox("It's an impressively made table.", MSGBOX_SIGN)
+            addvar(VAR_TEMP_2, 1)
+        case 1:
+            msgbox("Unlike everything else in the room, you\nactually quite like the table.", MSGBOX_SIGN)
+            addvar(VAR_TEMP_2, 1)
+        default:
+            msgbox("You wish you could take the table home,\nbut alas, it'd clash with your decor.", MSGBOX_SIGN)
+    }
+    closemessage
+    end
+}
+
+script DemonLairs_Nessie_EventScript_Rug {
+    
+    switch(var(VAR_TEMP_3)){
+        case 0:
+            msgbox("It's a garish rug.", MSGBOX_SIGN)
+            addvar(VAR_TEMP_3, 1)
+        case 1:
+            msgbox("It's still a garish rug.", MSGBOX_SIGN)
+            addvar(VAR_TEMP_3, 1)
+        case 2:
+            msgbox("To no one's surprise, it's a garish rug.", MSGBOX_SIGN)
+            addvar(VAR_TEMP_3, 1)
+        case 3:
+            msgbox("Unastonishingly, it's a garish rug.", MSGBOX_SIGN)
+            addvar(VAR_TEMP_3, 1)
+        default:
+            msgbox("It's not getting any less garish.\nYou should move on.", MSGBOX_SIGN)
+            addvar(VAR_TEMP_3, 1)
+    }    
+    closemessage
+    end
+}
