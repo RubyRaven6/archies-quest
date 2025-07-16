@@ -2144,19 +2144,19 @@ static void Task_NewGameNoBirchSpeech(u8 taskId)
 //     return Menu_ProcessInputNoWrap();
 // }
 
-// void NewGameBirchSpeech_SetDefaultPlayerName(u8 nameId)
-// {
-//     const u8 *name;
-//     u8 i;
+void NewGameBirchSpeech_SetDefaultPlayerName(u8 nameId)
+{
+    const u8 *name;
+    u8 i;
 
-//     if (gSaveBlock2Ptr->playerGender == MALE)
-//         name = sMalePresetNames[nameId];
-//     else
-//         name = sFemalePresetNames[nameId];
-//     for (i = 0; i < PLAYER_NAME_LENGTH; i++)
-//         gSaveBlock2Ptr->playerName[i] = name[i];
-//     gSaveBlock2Ptr->playerName[PLAYER_NAME_LENGTH] = EOS;
-// }
+    if (gSaveBlock2Ptr->playerGender == MALE)
+        name = sMalePresetNames[nameId];
+    else
+        name = sFemalePresetNames[nameId];
+    for (i = 0; i < PLAYER_NAME_LENGTH; i++)
+        gSaveBlock2Ptr->playerName[i] = name[i];
+    gSaveBlock2Ptr->playerName[PLAYER_NAME_LENGTH] = EOS;
+}
 
 static void CreateMainMenuErrorWindow(const u8 *str)
 {
