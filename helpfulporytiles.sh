@@ -83,14 +83,6 @@ while(true); do
                 break
             fi
 
-            # replace transparency with #ff00ff 
-            python3 ${normalize_py} ${dir_raw_tilesets_primary}${tilesetsrc}/bottom.png ${dir_raw_tilesets_primary}${tilesetsrc}/bottom.png
-            
-            python3 ${normalize_py} ${dir_raw_tilesets_primary}${tilesetsrc}/middle.png ${dir_raw_tilesets_primary}${tilesetsrc}/middle.png
-
-            python3 ${normalize_py} ${dir_raw_tilesets_primary}${tilesetsrc}/top.png ${dir_raw_tilesets_primary}${tilesetsrc}/top.png
-
-
             # run porytiles
             porytiles compile-primary ${attribute_generation} -Wall -o ${dir_compiled_primary}${tileset} ${dir_raw_tilesets_primary}${tilesetsrc} ${metatile_behaviors}
 
@@ -143,14 +135,7 @@ while(true); do
                 # break the loop and go back to the main menu
                 break
             fi
-
-            # replace transparency with #ff00ff
-            python3 ${normalize_py} ${dir_raw_tilesets_secondary}${tilesetsrc}/bottom.png ${dir_raw_tilesets_secondary}${tilesetsrc}/bottom.png
             
-            python3 ${normalize_py} ${dir_raw_tilesets_secondary}${tilesetsrc}/middle.png ${dir_raw_tilesets_secondary}${tilesetsrc}/middle.png
-
-            python3 ${normalize_py} ${dir_raw_tilesets_secondary}${tilesetsrc}/top.png ${dir_raw_tilesets_secondary}${tilesetsrc}/top.png
-
             # run porytiles
             porytiles compile-secondary ${attribute_generation} -Wall -o ${dir_compiled_secondary}${tileset} ${dir_raw_tilesets_secondary}${tilesetsrc} ${dir_raw_tilesets_primary}${tilesetsrc2} ${metatile_behaviors}
 

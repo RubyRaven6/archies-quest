@@ -228,3 +228,6 @@ const u16 gMetatileAttributes_NessereignLairPrimary[] = INCBIN_U16("data/tileset
 
 const u16 gMetatiles_NessereignLairSecondary[] = INCBIN_U16("data/tilesets/secondary/nessereign_lair_secondary/metatiles.bin");
 const u16 gMetatileAttributes_NessereignLairSecondary[] = INCBIN_U16("data/tilesets/secondary/nessereign_lair_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_RecompiledBuilding[] = INCBIN_U16("data/tilesets/primary/recompiled_building/metatiles.bin");
+const u16 gMetatileAttributes_RecompiledBuilding[] = INCBIN_U16("data/tilesets/primary/recompiled_building/metatile_attributes.bin");

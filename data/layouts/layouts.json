@@ -4426,7 +4426,7 @@
       "name": "ArchiesHouse_1F_Layout",
       "width": 12,
       "height": 9,
-      "primary_tileset": "gTileset_Building",
+      "primary_tileset": "gTileset_RecompiledBuilding",
       "secondary_tileset": "gTileset_ArchiesHouse",
       "border_filepath": "data/layouts/ArchiesHouse_1F/border.bin",
       "blockdata_filepath": "data/layouts/ArchiesHouse_1F/map.bin"
