@@ -32,7 +32,7 @@
 #include "event_data.h"
 
 static void DaggerCallback(struct Sprite *sprite);
-static u8 Createdagger();
+static u8 CreateDagger();
 static void Destroydagger();
 struct NessiePuzzleState
 {
@@ -181,7 +181,7 @@ void Task_OpenNessiePainting(u8 taskId)
     if (!gPaletteFade.active)
     {
         CleanupOverworldWindowsAndTilemaps();
-        NessiePuzzle_Init(CB2_ReturnToField);
+        NessiePuzzle_Init(CB2_ReturnToFieldContinueScript);
         DestroyTask(taskId);
     }
 }
@@ -284,8 +284,8 @@ static void NessiePuzzle_SetupCB(void)
         break;
     case 5:
         NessiePuzzle_InitWindows();
-        if(FlagGet(FLAG_NESSIE_FOUND_SOLUTION)){
-            Createdagger();
+        if(FlagGet(FLAG_NESSIE_READ_BOOK) && FlagGet(FLAG_NESSIE_GOT_DAGGER)){
+            CreateDagger();
         };
         gMain.state++;
         break;
@@ -373,6 +373,7 @@ static void Task_NessiePuzzleMainInput(u8 taskId)
             ((sNessiePuzzleState->dagger_x == 21) && (sNessiePuzzleState->dagger_y == 11))
         )
         {
+            FlagSet(FLAG_NESSIE_PUZZLE_SOLVED);
             PlaySE(SE_SELECT);
             BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
             gTasks[taskId].func = Task_NessiePuzzleWaitFadeAndExitGracefully;
@@ -383,28 +384,28 @@ static void Task_NessiePuzzleMainInput(u8 taskId)
             PlaySE(SE_WALL_HIT);
         }
     }
-    if (JOY_NEW(DPAD_LEFT) || JOY_HELD(DPAD_LEFT))
+    if (JOY_NEW(DPAD_LEFT))
     {
         if (sNessiePuzzleState->dagger_x == 0)
             sNessiePuzzleState->dagger_x = 26;
         else
             sNessiePuzzleState->dagger_x--;
     }
-    if (JOY_NEW(DPAD_RIGHT) || JOY_HELD(DPAD_RIGHT))
+    if (JOY_NEW(DPAD_RIGHT))
     {
         if (sNessiePuzzleState->dagger_x == 26)
             sNessiePuzzleState->dagger_x = 0;
         else
             sNessiePuzzleState->dagger_x++;
     }
-    if (JOY_NEW(DPAD_UP) || JOY_HELD(DPAD_UP))
+    if (JOY_NEW(DPAD_UP))
     {
         if (sNessiePuzzleState->dagger_y == 0)
             sNessiePuzzleState->dagger_y = 13;
         else
             sNessiePuzzleState->dagger_y--;
     }
-    if (JOY_NEW(DPAD_DOWN) || JOY_HELD(DPAD_DOWN))
+    if (JOY_NEW(DPAD_DOWN))
     {
         if (sNessiePuzzleState->dagger_y == 13)
             sNessiePuzzleState->dagger_y = 0;
@@ -496,7 +497,7 @@ static void NessiePuzzle_InitWindows(void)
     InitWindows(sNessiePuzzleWindowTemplates);
     DeactivateAllTextPrinters();
     ScheduleBgCopyTilemapToVram(0);
-    if (!FlagGet(FLAG_NESSIE_FOUND_SOLUTION))
+    if (!(FlagGet(FLAG_NESSIE_READ_BOOK) && FlagGet(FLAG_NESSIE_GOT_DAGGER)))
     {
         FillWindowPixelBuffer(WINDOW_NO_STAB, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
         PutWindowTilemap(WINDOW_NO_STAB);
@@ -515,7 +516,7 @@ static const u8 sText_Instructions2[] = _("{A_BUTTON} Stab {B_BUTTON} Exit");
 static void NessiePuzzle_PrintUiSampleWindowText(void)
 {
     /* prints with no stabby */
-    if (!FlagGet(FLAG_NESSIE_FOUND_SOLUTION))
+    if (!(FlagGet(FLAG_NESSIE_READ_BOOK) && FlagGet(FLAG_NESSIE_GOT_DAGGER)))
     {
         FillWindowPixelBuffer(WINDOW_NO_STAB, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
         AddTextPrinterParameterized4(WINDOW_NO_STAB, FONT_SMALL, 0, 0, 0, 0,
@@ -547,7 +548,7 @@ static void NessiePuzzle_FreeResources(void)
     ResetSpriteData();
 }
 
-static u8 Createdagger()
+static u8 CreateDagger()
 {
     if (sNessiePuzzleState->daggerSpriteId == 0xFF)
         sNessiePuzzleState->daggerSpriteId = CreateSprite(&sSpriteTemplate_Dagger, 0, 0, 0);
