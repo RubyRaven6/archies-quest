@@ -4434,8 +4434,8 @@
     {
       "id": "LAYOUT_ARCHIES_HOUSE_BACKYARD",
       "name": "ArchiesHouse_Backyard_Layout",
-      "width": 13,
-      "height": 15,
+      "width": 28,
+      "height": 28,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/ArchiesHouse_Backyard/border.bin",

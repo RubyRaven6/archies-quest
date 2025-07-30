@@ -24,6 +24,7 @@
 #include "pokeball.h"
 #include "pokedex.h"
 #include "pokemon.h"
+#include "puzzles.h"
 #include "random.h"
 #include "rtc.h"
 #include "save.h"
@@ -1080,7 +1081,11 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
             default:
                 gPlttBufferUnfaded[0] = RGB_BLACK;
                 gPlttBufferFaded[0] = RGB_BLACK;
-                gTasks[taskId].func = Task_NewGameNoBirchSpeech;
+                #ifdef ENABLE_INTRO
+                    gTasks[taskId].func = Task_OpenSampleUi_NewCutscene;
+                #else
+                    gTasks[taskId].func = Task_NewGameNoBirchSpeech;
+                #endif
                 break;
             case ACTION_CONTINUE:
                 gPlttBufferUnfaded[0] = RGB_BLACK;

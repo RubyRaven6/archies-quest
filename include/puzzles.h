@@ -4,6 +4,9 @@
 #include "gba/types.h"
 #include "main.h"
 
+//Comment out to disable intro cutscene.
+//#define ENABLE_INTRO
+
 /*
  * Entry tasks for the different versions of the UI. In `start_menu.c', we'll launch a task using one of
  * these functions. You can change which is used to change which menu is launched.
@@ -17,6 +20,9 @@ void Task_OpenSampleUi_SlidingPanel(u8 taskId);
 
 // Launch the blank template version of the UI
 void Task_OpenSampleUi_BlankTemplate(u8 taskId);
+
+//For the new cutscene
+void Task_OpenSampleUi_NewCutscene(u8 taskId);
 
 //For the Nessie Painting version
 void Task_OpenNessiePainting(u8 taskId);
