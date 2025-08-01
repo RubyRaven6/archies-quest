@@ -6,6 +6,7 @@
 
 //Comment out to disable intro cutscene.
 //#define ENABLE_INTRO
+//#define ACTUAL_INTRO
 
 /*
  * Entry tasks for the different versions of the UI. In `start_menu.c', we'll launch a task using one of
@@ -22,7 +23,6 @@ void Task_OpenSampleUi_SlidingPanel(u8 taskId);
 void Task_OpenSampleUi_BlankTemplate(u8 taskId);
 
 //For the new cutscene
-void Task_OpenSampleUi_NewCutscene(u8 taskId);
 
 //For the Nessie Painting version
 void Task_OpenNessiePainting(u8 taskId);

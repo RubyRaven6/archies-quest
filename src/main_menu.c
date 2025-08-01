@@ -1081,11 +1081,7 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
             default:
                 gPlttBufferUnfaded[0] = RGB_BLACK;
                 gPlttBufferFaded[0] = RGB_BLACK;
-                #ifdef ENABLE_INTRO
-                    gTasks[taskId].func = Task_OpenSampleUi_NewCutscene;
-                #else
-                    gTasks[taskId].func = Task_NewGameNoBirchSpeech;
-                #endif
+                gTasks[taskId].func = Task_NewGameNoBirchSpeech;
                 break;
             case ACTION_CONTINUE:
                 gPlttBufferUnfaded[0] = RGB_BLACK;
@@ -1304,8 +1300,11 @@ static void Task_NewGameNoBirchSpeech(u8 taskId)
 
     FreeAllWindowBuffers();
     ResetAllPicSprites();
-    SetMainCallback2(CB2_NewGame);
-    DestroyTask(taskId);
+    #ifdef ENABLE_INTRO
+        //gTasks[taskId].func = Task_OpenFireBg;
+    #else
+        SetMainCallback2(CB2_NewGame);
+    #endif
 }
 
 // static void Task_NewGameBirchSpeech_Init(u8 taskId)
