@@ -46,7 +46,7 @@
 #define FLAG_NESSIE_READ_BOOK        0x20 // Read the book for the Nessie solution
 #define FLAG_NESSIE_GOT_DAGGER       0x21 // Got the dagger for Nessie solution
 #define FLAG_NESSIE_PUZZLE_SOLVED    0x22 // For when the painting solution is found
-#define FLAG_UNUSED_0x023    0x23 // Unused Flag
+#define FLAG_HIDE_ARCHIE             0x23 // Unused Flag
 #define FLAG_UNUSED_0x024    0x24 // Unused Flag
 #define FLAG_UNUSED_0x025    0x25 // Unused Flag
 #define FLAG_UNUSED_0x026    0x26 // Unused Flag

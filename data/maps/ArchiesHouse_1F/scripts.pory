@@ -1,13 +1,23 @@
 mapscripts ArchiesHouse_1F_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_TEMP_0, 0 {
-            call(ArchieSaysHi)
+            call(EventScript_ArchiesHouse_BeginningCutscene)
             setvar(VAR_TEMP_0, 1)
         }
     ]
 }
 
-script ArchieSaysHi {
-    msgbox("Hi!")
+script EventScript_ArchiesHouse_BeginningCutscene {
+    msgbox(format("…\n Sure is nice to have such a peaceful life…\pI sure hope nothing comes in to ruin it."))
     closemessage
+    delay(60)
+    playbgm(MUS_DUMMY, FALSE)
+    playse(SE_RG_DOOR)
+    fadescreen(FADE_TO_WHITE)
+    waitse
+    fadescreen(FADE_FROM_WHITE)
+    clearflag(FLAG_HIDE_ARCHIE)
+    addobject(OBJ_FUTUREARCHIE)
+    playbgm(MUS_WEATHER_GROUDON, FALSE)
+    msgbox("What the?!")
 }

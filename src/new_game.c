@@ -213,6 +213,7 @@ void NewGameInitData(void)
     ResetItemFlags();
     ResetDexNav();
     ClearFollowerNPCData();
+    FlagSet(FLAG_HIDE_ARCHIE);
 }
 
 static void ResetMiniGamesRecords(void)

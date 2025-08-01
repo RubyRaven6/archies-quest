@@ -112,7 +112,6 @@ static const u8 sFieldBgText_Window3[] = _(
     "The world was put in a persistent form\n"
     "of stasis, never to change."
 );
-*/
 
 static const u16 sBlackBg_BgGfx[] = INCBIN_U16("graphics/intro_sequence/black_bg.4bpp");
 // static const u16 sBlackBg_BgPal[] = INCBIN_U16("graphics/intro_sequence/black_bg.gbapal");
@@ -240,7 +239,7 @@ static void IntroSequence_Init(MainCallback callback)
 // Credit: Jaizu, pret
 static void IntroSequence_ResetGpuRegsAndBgs(void)
 {
-    /*
+    
      * TODO : these settings are overkill, and seem to be clearing some
      * important values. I need to come back and investigate this. For now, they
      * are disabled. Note: by not resetting the various BG and GPU regs, we are
@@ -248,7 +247,7 @@ static void IntroSequence_ResetGpuRegsAndBgs(void)
      * overworld. If this UI is entered from a different screen, it's possible
      * some regs won't be set correctly. In that case, you'll need to figure
      * out which ones you need.
-     */
+    
     // SetGpuReg(REG_OFFSET_DISPCNT, 0);
     // SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON);
     // SetGpuReg(REG_OFFSET_BG3CNT, 0);
