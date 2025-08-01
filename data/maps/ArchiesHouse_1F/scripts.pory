@@ -8,7 +8,7 @@ mapscripts ArchiesHouse_1F_MapScripts {
 }
 
 script EventScript_ArchiesHouse_BeginningCutscene {
-    msgbox(format("…\n Sure is nice to have such a peaceful life…\pI sure hope nothing comes in to ruin it."))
+    msgbox(format("…\p Sure is nice to have such a peaceful life…\pI sure hope nothing comes in to ruin it."))
     closemessage
     delay(60)
     playbgm(MUS_DUMMY, FALSE)
@@ -20,4 +20,5 @@ script EventScript_ArchiesHouse_BeginningCutscene {
     addobject(OBJ_FUTUREARCHIE)
     playbgm(MUS_WEATHER_GROUDON, FALSE)
     msgbox("What the?!")
+    closemessage
 }

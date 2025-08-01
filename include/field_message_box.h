@@ -24,6 +24,7 @@ u8 GetFieldMessageBoxMode(void);
 void StopFieldMessage(void);
 void InitFieldMessageBox(void);
 void SetSpeakerName(const u8* name);
+void FillDialogFramePlate(void);
 
 extern u8 gWalkAwayFromSignpostTimer;
 extern const u8* gSpeakerName;
