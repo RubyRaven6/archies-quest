@@ -1,24 +1,46 @@
 mapscripts ArchiesHouse_1F_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_TEMP_0, 0 {
+        VAR_ARCHIE_ARRIVES, 0 {
             call(EventScript_ArchiesHouse_BeginningCutscene)
-            setvar(VAR_TEMP_0, 1)
+            setvar(VAR_ARCHIE_ARRIVES, 1)
         }
     ]
+    MAP_SCRIPT_ON_TRANSITION {
+        if(var(VAR_ARCHIE_ARRIVES) == 1){clearflag(FLAG_HIDE_ARCHIE)}
+    }
 }
 
 script EventScript_ArchiesHouse_BeginningCutscene {
+    speakername("Archie")
     msgbox(format("…\p Sure is nice to have such a peaceful life…\pI sure hope nothing comes in to ruin it."))
     closemessage
     delay(60)
     playbgm(MUS_DUMMY, FALSE)
     playse(SE_RG_DOOR)
+    clearflag(FLAG_HIDE_ARCHIE)
     fadescreen(FADE_TO_WHITE)
     waitse
     fadescreen(FADE_FROM_WHITE)
-    clearflag(FLAG_HIDE_ARCHIE)
     addobject(OBJ_FUTUREARCHIE)
     playbgm(MUS_WEATHER_GROUDON, FALSE)
+    speakername("Archie")
     msgbox("What the?!")
     closemessage
+    applymovement(OBJ_FUTUREARCHIE, moves(walk_up * 4, walk_right * 3))
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(face_left))
+    waitmovement(OBJ_FUTUREARCHIE)
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+    speakername("Archie")
+    msgbox("Who are you…?")
+    applymovement(OBJ_FUTUREARCHIE, moves(walk_in_place_fast_right))
+    speakername("Old Archie")
+    msgbox(format("We don't have time."))
+    waitmovement(0)
+    msgbox(format("I'm you from a different future. One where you're free from the Bai'Narii, and I've come here to help you."))
+    speakername("Archie")
+    msgbox(format("Defeat the Bai'Narii? But… how?"))
+    speakername("Old Archie")
+    msgbox(format("You have to trust me. But you can't go alone. I know you have your friends outside, so go get whoever you want, and come back to me."))
+    closemessage
+    return
 }
