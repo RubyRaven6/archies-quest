@@ -1,8 +1,8 @@
 mapscripts ArchiesHouse_1F_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
-        FLAG_UNUSED_0x031, FALSE {
+        VAR_ARCHIE_ARRIVES, 0 {
             call(EventScript_ArchiesHouse_BeginningCutscene)
-            setflag(FLAG_UNUSED_0x031)
+            setvar(VAR_ARCHIE_ARRIVES, 1)
         }
     ]
     MAP_SCRIPT_ON_TRANSITION {
