@@ -46,20 +46,20 @@
 #define FLAG_NESSIE_READ_BOOK        0x20 // Read the book for the Nessie solution
 #define FLAG_NESSIE_GOT_DAGGER       0x21 // Got the dagger for Nessie solution
 #define FLAG_NESSIE_PUZZLE_SOLVED    0x22 // For when the painting solution is found
-#define FLAG_HIDE_ARCHIE             0x23 // Unused Flag
-#define FLAG_UNUSED_0x024    0x24 // Unused Flag
-#define FLAG_UNUSED_0x025    0x25 // Unused Flag
-#define FLAG_UNUSED_0x026    0x26 // Unused Flag
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
-#define FLAG_UNUSED_0x028    0x28 // Unused Flag
-#define FLAG_UNUSED_0x029    0x29 // Unused Flag
-#define FLAG_UNUSED_0x02A    0x2A // Unused Flag
-#define FLAG_UNUSED_0x02B    0x2B // Unused Flag
-#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
-#define FLAG_UNUSED_0x02D    0x2D // Unused Flag
-#define FLAG_UNUSED_0x02E    0x2E // Unused Flag
-#define FLAG_UNUSED_0x02F    0x2F // Unused Flag
-#define FLAG_UNUSED_0x030    0x30 // Unused Flag
+#define FLAG_HIDE_ARCHIE             0x23 // Hides Archie at the start of the game
+#define FLAG_HIDE_SCEPTILE           0x24 // Hides Sceptile
+#define FLAG_HIDE_SWAMPERT           0x25 // Hides Swampert
+#define FLAG_HIDE_BLAZIKEN           0x26 // Hides Blaziken
+#define FLAG_HIDE_BRELOOM            0x27 // Hide Breloom
+#define FLAG_HIDE_MACHAMP            0x28 // Hides Machamp
+#define FLAG_HIDE_SWELLOW            0x29 // Hides Swellow
+#define FLAG_HIDE_HERACROSS          0x2A // Hides Heracross
+#define FLAG_HIDE_SNORLAX            0x2B // Hides Snorlax
+#define FLAG_HIDE_SKARMORY           0x2C // Hides Skarmory
+#define FLAG_HIDE_ANNIHILAPE         0x2D // Hides Annihilape
+#define FLAG_HIDE_TINKATON           0x2E // Hides Tinkaton
+#define FLAG_HIDE_EXCADRILL          0x2F // Hides Excadrill
+#define FLAG_HIDE_GARGANACL          0x30 // Hides Garganacl
 #define FLAG_UNUSED_0x031    0x31 // Unused Flag
 #define FLAG_UNUSED_0x032    0x32 // Unused Flag
 #define FLAG_UNUSED_0x033    0x33 // Unused Flag

@@ -1,4 +1,23 @@
-raw `
-ArchiesHouse_Backyard_MapScripts::
-	.byte 0
-`
+mapscripts ArchiesHouse_Backyard_MapScripts {
+	
+}
+
+script ArchiesHouse_Backyard_EventScripts_Sceptile {
+	msgbox(format("Sceptile"), MSGBOX_YESNO)
+	if(var(VAR_RESULT) == TRUE){
+		givemon(SPECIES_SCEPTILE, 40, abilityNum=1)
+		msgbox("Sceptile joined your party!")
+		closemessage
+		}
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Lucario {
+	msgbox(format("Lucario is just standing here, aura farming. Will you take him in?"), MSGBOX_YESNO)
+	if(var(VAR_RESULT) == TRUE){
+		givemon(SPECIES_LUCARIO, 40, abilityNum=1)
+		msgbox("Lucario joined your party!")
+		closemessage
+		}
+	end
+}
