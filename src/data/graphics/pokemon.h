@@ -26734,8 +26734,9 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
 
     const u32 gMonFrontPic_Nessereign[] = INCBIN_U32("graphics/pokemon/nessereign/front.4bpp.lz");
     const u16 gMonPalette_Nessereign[] = INCBIN_U16("graphics/pokemon/nessereign/normal.gbapal");
-    const u32 gObjectEventPic_Nessereign[] = INCBIN_COMP("graphics/pokemon/bulbasaur/overworld.4bpp");
-    const u16 gOverworldPalette_Nessereign[] = INCBIN_U16("graphics/pokemon/bulbasaur/overworld_normal.gbapal");
+
+    const u32 gMonFrontPic_Addisamap[] = INCBIN_U32("graphics/pokemon/addivhan_samap/front.4bpp.lz");
+    const u16 gMonPalette_Addisamap[] = INCBIN_U16("graphics/pokemon/addivhan_samap/normal.gbapal");
 
     const u32 gMonFrontPic_Egg[] = INCBIN_U32("graphics/pokemon/egg/anim_front.4bpp.lz");
     const u16 gMonPalette_Egg[] = INCBIN_U16("graphics/pokemon/egg/normal.gbapal");
