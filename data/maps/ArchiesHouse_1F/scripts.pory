@@ -1,7 +1,7 @@
 mapscripts ArchiesHouse_1F_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_ARCHIE_ARRIVES, 0 {
-            call(EventScript_ArchiesHouse_BeginningCutscene)
+            call(ArchiesHouse_EventScript_BeginningCutscene)
             setvar(VAR_ARCHIE_ARRIVES, 1)
         }
     ]
@@ -10,7 +10,7 @@ mapscripts ArchiesHouse_1F_MapScripts {
     }
 }
 
-script EventScript_ArchiesHouse_BeginningCutscene {
+script ArchiesHouse_EventScript_BeginningCutscene {
     speakername("Archie")
     msgbox(format("…\p Sure is nice to have such a peaceful life…\pI sure hope nothing comes in to ruin it."))
     closemessage
@@ -43,4 +43,9 @@ script EventScript_ArchiesHouse_BeginningCutscene {
     msgbox(format("You have to trust me. But you can't go alone. I know you have your friends outside, so go get whoever you want, and come back to me."))
     closemessage
     return
+}
+
+script ArchiesHouse_EventScript_Archie {
+    speakername("")
+    msgbox(format(""))
 }
