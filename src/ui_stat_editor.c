@@ -440,11 +440,13 @@ static bool8 StatEditor_LoadGraphics(void)
     switch (sStatEditorDataPtr->gfxLoadState)
     {
     case 0:
+        DebugPrintf("StatEditor_LoadGraphics case 0");
         ResetTempTileDataBuffers();
         DecompressAndCopyTileDataToVram(1, sStatEditorBgTiles, 0, 0, 0);
         sStatEditorDataPtr->gfxLoadState++;
         break;
     case 1:
+        DebugPrintf("StatEditor_LoadGraphics case 1");
         if (FreeTempTileDataBuffersIfPossible() != TRUE)
         {
             LZDecompressWram(sStatEditorBgTilemap, sBg1TilemapBuffer);
@@ -452,10 +454,12 @@ static bool8 StatEditor_LoadGraphics(void)
         }
         break;
     case 2:
+        DebugPrintf("StatEditor_LoadGraphics case 2");
         LoadPalette(sStatEditorBgPalette, 0, 32);
         sStatEditorDataPtr->gfxLoadState++;
         break;
     default:
+        DebugPrintf("StatEditor_LoadGraphics default case");
         sStatEditorDataPtr->gfxLoadState = 0;
         return TRUE;
     }
@@ -846,7 +850,6 @@ static void Task_StatEditorMain(u8 taskId) // input control when first loaded in
     }
     if ((JOY_NEW(DPAD_LEFT) || JOY_NEW(DPAD_RIGHT)) && FlagGet(FLAG_SANDBOX_MODE))
     {
-        DebugPrintf("Its here now");
         if(sStatEditorDataPtr->selector_x == 0)
             sStatEditorDataPtr->selector_x = 1;
         else
