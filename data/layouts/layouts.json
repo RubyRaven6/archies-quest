@@ -4504,8 +4504,8 @@
     {
       "id": "LAYOUT_ARCHIES_HOUSE_BACKYARD_POND",
       "name": "ArchiesHouse_Backyard_Pond_Layout",
-      "width": 18,
-      "height": 16,
+      "width": 30,
+      "height": 27,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Pacifidlog",
       "border_filepath": "data/layouts/ArchiesHouse_Backyard_Pond/border.bin",
@@ -4524,20 +4524,20 @@
     {
       "id": "LAYOUT_ARCHIES_HOUSE_BACKYARD_BEACH",
       "name": "ArchiesHouse_BackyardBeach_Layout",
-      "width": 25,
-      "height": 25,
+      "width": 39,
+      "height": 27,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_Slateport",
       "border_filepath": "data/layouts/ArchiesHouse_BackyardBeach/border.bin",
       "blockdata_filepath": "data/layouts/ArchiesHouse_BackyardBeach/map.bin"
     },
     {
       "id": "LAYOUT_ARCHIES_HOUSE_BACKYARD_CRAGGS",
       "name": "ArchiesHouse_BackyardCraggs_Layout",
-      "width": 25,
-      "height": 25,
+      "width": 21,
+      "height": 26,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_Lavaridge",
       "border_filepath": "data/layouts/ArchiesHouse_BackyardCraggs/border.bin",
       "blockdata_filepath": "data/layouts/ArchiesHouse_BackyardCraggs/map.bin"
     },
