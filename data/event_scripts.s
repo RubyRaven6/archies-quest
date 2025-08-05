@@ -1177,3 +1177,13 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/DemonLairs_Nessie_Interior/scripts.inc"
 
 	.include "data/maps/ArchiesHouse_Backyard_Pond/scripts.inc"
+
+	.include "data/maps/ArchiesHouse_BackyardForest/scripts.inc"
+
+	.include "data/maps/ArchiesHouse_BackyardBeach/scripts.inc"
+
+	.include "data/maps/ArchiesHouse_BackyardCraggs/scripts.inc"
+
+	.include "data/maps/ArchiesHouse_BackyardSea/scripts.inc"
+
+	.include "data/maps/ArchiesHouse_BackyardGarden/scripts.inc"

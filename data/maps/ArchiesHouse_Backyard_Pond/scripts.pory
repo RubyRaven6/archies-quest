@@ -1,3 +1,20 @@
 mapscripts ArchiesHouse_Backyard_Pond_MapScripts {
     
 }
+
+// script ArchiesHouse_Backyard_Pond_EventScripts_Sceptile {
+// 	getpartysize
+// 	if(var(VAR_RESULT) < 6){
+// 		msgbox(format("Sceptile is relaxing under the shade.\pAsk him to join?"), MSGBOX_YESNO)
+// 		closemessage
+// 		if(var(VAR_RESULT) == TRUE){
+// 			givemon(SPECIES_SCEPTILE, 40, abilityNum=1, gender=MALE)
+// 			removeobject(LOCALID_SCEPTILE)
+// 			msgbox("Sceptile joined your party!")
+// 			closemessage
+// 		}
+// 	} else {
+// 		goto(ArchiesHouse_Backyard_EventScripts_FullParty)
+// 	}
+// 	end
+// }

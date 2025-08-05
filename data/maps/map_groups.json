@@ -13,7 +13,12 @@
   "gMapGroup_ArchiesHouse": [
     "ArchiesHouse_1F",
     "ArchiesHouse_Backyard",
-    "ArchiesHouse_Backyard_Pond"
+    "ArchiesHouse_Backyard_Pond",
+    "ArchiesHouse_BackyardForest",
+    "ArchiesHouse_BackyardBeach",
+    "ArchiesHouse_BackyardCraggs",
+    "ArchiesHouse_BackyardGarden",
+    "ArchiesHouse_BackyardSea"
   ],
   "gMapGroup_HubWorld": [
     "HubWorld_Initial"
