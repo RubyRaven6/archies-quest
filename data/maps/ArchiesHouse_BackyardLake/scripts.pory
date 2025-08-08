@@ -1,0 +1,104 @@
+mapscripts ArchiesHouse_BackyardLake_MapScripts {
+    
+}
+
+script ArchiesHouse_Backyard_EventScripts_Gyarados {
+    lock
+	faceplayer
+    getpartysize
+	if(var(VAR_RESULT) < 6){
+		msgbox(format("Gyarados is simmering in anger in the lake.\pTell him about something he can divert it to?"), MSGBOX_YESNO)
+		closemessage
+		if(var(VAR_RESULT) == TRUE){
+			givemon(SPECIES_GYARADOS, 40, abilityNum=1, gender=)
+			removeobject(LOCALID_BACKYARD_LAKE_GYARADOS)
+			msgbox(" joined your party!")
+			closemessage
+		}
+	} else {
+		goto(CommonScript_Backyard_EventScripts_FullParty)
+	}
+    release
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Ludicolo {
+    lock
+	faceplayer
+    getpartysize
+	if(var(VAR_RESULT) < 6){
+		msgbox(format("Ludicolo is spinning happily.\pInvite her to tango?"), MSGBOX_YESNO)
+		closemessage
+		if(var(VAR_RESULT) == TRUE){
+			givemon(SPECIES_LUDICOLO, 40, abilityNum=1, gender=)
+			removeobject(LOCALID_BACKYARD_LAKE_LUDICOLO)
+			msgbox("Ludicolo joined your party!")
+			closemessage
+		}
+	} else {
+		goto(CommonScript_Backyard_EventScripts_FullParty)
+	}
+    release
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Azumarill {
+    lock
+	faceplayer
+    getpartysize
+	if(var(VAR_RESULT) < 6){
+		msgbox(format("Azumarill is doing his reps for swimming.\pGive him a better workout?"), MSGBOX_YESNO)
+		closemessage
+		if(var(VAR_RESULT) == TRUE){
+			givemon(SPECIES_AZUMARILL, 40, abilityNum=1, gender=)
+			removeobject(LOCALID_BACKYARD_LAKE_AZUMARILL)
+			msgbox("Azumarill joined your party!")
+			closemessage
+		}
+	} else {
+		goto(CommonScript_Backyard_EventScripts_FullParty)
+	}
+    release
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Gardevoir {
+    lock
+	faceplayer
+    getpartysize
+	if(var(VAR_RESULT) < 6){
+		msgbox(format("Gardevoir is watching his friends enjoy themselves in water.\pGive him his own fun?"), MSGBOX_YESNO)
+		closemessage
+		if(var(VAR_RESULT) == TRUE){
+			givemon(SPECIES_LUDICOLO, 40, abilityNum=1, gender=)
+			removeobject(LOCALID_BACKYARD_LAKE_LUDICOLO)
+			msgbox("Ludicolo joined your party!")
+			closemessage
+		}
+	} else {
+		goto(CommonScript_Backyard_EventScripts_FullParty)
+	}
+    release
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Uxie {
+    lock
+	msgbox(format("Uxie is looking at the lake peacefully."), MSGBOX_YESNO)
+	closemessage
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Mesprit {
+    lock
+	msgbox(format("Mesprit is looking at the lake happily."), MSGBOX_YESNO)
+	closemessage
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Azelf {
+    lock
+	msgbox(format("Azelf is looking at the lake haughtily."), MSGBOX_YESNO)
+	closemessage
+	end
+}

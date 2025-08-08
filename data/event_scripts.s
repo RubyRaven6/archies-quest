@@ -1197,7 +1197,7 @@ CommonScript_Backyard_EventScripts_FullParty_Text_1:
 
 	.include "data/maps/DemonLairs_Nessie_Interior/scripts.inc"
 
-	.include "data/maps/ArchiesHouse_Backyard_Pond/scripts.inc"
+	.include "data/maps/ArchiesHouse_BackyardLake/scripts.inc"
 
 	.include "data/maps/ArchiesHouse_BackyardForest/scripts.inc"
 

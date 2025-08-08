@@ -4503,13 +4503,13 @@
     },
     {
       "id": "LAYOUT_ARCHIES_HOUSE_BACKYARD_POND",
-      "name": "ArchiesHouse_Backyard_Pond_Layout",
+      "name": "ArchiesHouse_BackyardLake_Layout",
       "width": 30,
       "height": 23,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Pacifidlog",
-      "border_filepath": "data/layouts/ArchiesHouse_Backyard_Pond/border.bin",
-      "blockdata_filepath": "data/layouts/ArchiesHouse_Backyard_Pond/map.bin"
+      "border_filepath": "data/layouts/ArchiesHouse_BackyardLake/border.bin",
+      "blockdata_filepath": "data/layouts/ArchiesHouse_BackyardLake/map.bin"
     },
     {
       "id": "LAYOUT_ARCHIES_HOUSE_BACKYARD_FOREST",

@@ -1,0 +1,141 @@
+{
+  "id": "MAP_ARCHIES_HOUSE_BACKYARD_POND",
+  "name": "ArchiesHouse_BackyardLake",
+  "layout": "LAYOUT_ARCHIES_HOUSE_BACKYARD_POND",
+  "music": "MUS_VERDANTURF",
+  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [
+    {
+      "local_id": "LOCALID_BACKYARD_LAKE_UXIE",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(UXIE)",
+      "x": 4,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Uxie",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_LAKE_MESPRIT",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MESPRIT)",
+      "x": 4,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Mesprit",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_LAKE_AZELF",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(AZELF)",
+      "x": 4,
+      "y": 11,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Azelf",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_LAKE_GYARADOS",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GYARADOS)",
+      "x": 10,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+      "movement_range_x": 1,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Gyarados",
+      "flag": "FLAG_HIDE_GYARADOS"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_LAKE_LUDICOLO",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(LUDICOLO)",
+      "x": 10,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+      "movement_range_x": 1,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Ludicolo",
+      "flag": "FLAG_HIDE_LUDICOLO"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_LAKE_AZUMARILL",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(AZUMARILL)",
+      "x": 17,
+      "y": 8,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+      "movement_range_x": 1,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Ludicolo",
+      "flag": "FLAG_HIDE_AZUMARILL"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_LAKE_GARDEVOIR",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GARDEVOIR)",
+      "x": 16,
+      "y": 15,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Ludicolo",
+      "flag": "FLAG_HIDE_GARDEVOIR"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 19,
+      "y": 17,
+      "elevation": 0,
+      "dest_map": "MAP_ARCHIES_HOUSE_BACKYARD",
+      "dest_warp_id": "3"
+    },
+    {
+      "x": 22,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_ARCHIES_HOUSE_BACKYARD_GARDEN",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 22,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_ARCHIES_HOUSE_BACKYARD_GARDEN",
+      "dest_warp_id": "1"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

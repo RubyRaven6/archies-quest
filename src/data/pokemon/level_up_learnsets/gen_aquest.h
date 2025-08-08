@@ -6890,7 +6890,8 @@ static const struct LevelUpMove sGrovyleLevelUpLearnset[] = {
 static const struct LevelUpMove sSceptileLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 0, MOVE_LEAF_BLADE),
     LEVEL_UP_MOVE( 1, MOVE_GRASSY_GLIDE),
-    LEVEL_UP_MOVE( 1, MOVE_FALSE_SWIPE),
+    LEVEL_UP_MOVE( 1, MOVE_BREAKING_SWIPE),
+    LEVEL_UP_MOVE( 1, MOVE_NIGHT_SLASH),
     LEVEL_UP_MOVE( 1, MOVE_FURY_CUTTER),
     LEVEL_UP_MOVE( 1, MOVE_X_SCISSOR),
     LEVEL_UP_MOVE( 1, MOVE_ENERGY_BALL),
@@ -6904,7 +6905,7 @@ static const struct LevelUpMove sSceptileLevelUpLearnset[] = {
     LEVEL_UP_MOVE(15, MOVE_QUICK_GUARD),
     LEVEL_UP_MOVE(20, MOVE_ASSURANCE),
     LEVEL_UP_MOVE(25, MOVE_GIGA_DRAIN),
-    LEVEL_UP_MOVE(30, MOVE_SLAM),
+    LEVEL_UP_MOVE(30, MOVE_DRAGON_TAIL),
     LEVEL_UP_MOVE(35, MOVE_DOUBLE_TEAM),
     LEVEL_UP_MOVE(42, MOVE_SCREECH),
     LEVEL_UP_MOVE(49, MOVE_ENDEAVOR),
@@ -7634,6 +7635,7 @@ static const struct LevelUpMove sShroomishLevelUpLearnset[] = {
 
 static const struct LevelUpMove sBreloomLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 0, MOVE_MACH_PUNCH),
+    LEVEL_UP_MOVE( 1, MOVE_CUT),
     LEVEL_UP_MOVE( 1, MOVE_SPORE),
     LEVEL_UP_MOVE( 1, MOVE_STUN_SPORE),
     LEVEL_UP_MOVE( 1, MOVE_TACKLE),
@@ -7652,6 +7654,7 @@ static const struct LevelUpMove sBreloomLevelUpLearnset[] = {
     LEVEL_UP_MOVE(44, MOVE_SEED_BOMB),
     LEVEL_UP_MOVE(50, MOVE_DYNAMIC_PUNCH),
     LEVEL_UP_MOVE(55, MOVE_FOCUS_PUNCH),
+    LEVEL_UP_MOVE(55, MOVE_BULLET_SEED),
     LEVEL_UP_END
 };
 #endif //P_FAMILY_SHROOMISH
@@ -8698,6 +8701,7 @@ static const struct LevelUpMove sAltariaLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_PECK),
     LEVEL_UP_MOVE( 1, MOVE_PLUCK),
     LEVEL_UP_MOVE( 1, MOVE_DISARMING_VOICE),
+    LEVEL_UP_MOVE( 1, MOVE_DRAGON_CLAW),
     LEVEL_UP_MOVE(12, MOVE_FURY_ATTACK),
     LEVEL_UP_MOVE(16, MOVE_ROUND),
     LEVEL_UP_MOVE(20, MOVE_DRAGON_BREATH),
@@ -19151,10 +19155,11 @@ static const struct LevelUpMove sHattremLevelUpLearnset[] = {
 
 static const struct LevelUpMove sHattereneLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 0, MOVE_PSYCHO_CUT),
+    LEVEL_UP_MOVE( 1, MOVE_FOCUS_BLAST),
     LEVEL_UP_MOVE( 1, MOVE_CONFUSION),
     LEVEL_UP_MOVE( 1, MOVE_DISARMING_VOICE),
     LEVEL_UP_MOVE( 1, MOVE_PLAY_NICE),
-    LEVEL_UP_MOVE( 1, MOVE_BRUTAL_SWING),
+    LEVEL_UP_MOVE( 1, MOVE_MOONBLAST),
     LEVEL_UP_MOVE( 1, MOVE_LIFE_DEW),
     LEVEL_UP_MOVE(15, MOVE_AROMATIC_MIST),
     LEVEL_UP_MOVE(20, MOVE_PSYBEAM),
