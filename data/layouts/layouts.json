@@ -4544,10 +4544,10 @@
     {
       "id": "LAYOUT_ARCHIES_HOUSE_BACKYARD_SEA",
       "name": "ArchiesHouse_BackyardSea_Layout",
-      "width": 25,
-      "height": 25,
+      "width": 32,
+      "height": 33,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_Slateport",
       "border_filepath": "data/layouts/ArchiesHouse_BackyardSea/border.bin",
       "blockdata_filepath": "data/layouts/ArchiesHouse_BackyardSea/map.bin"
     },

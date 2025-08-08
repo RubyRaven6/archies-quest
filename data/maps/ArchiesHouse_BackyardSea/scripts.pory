@@ -5,3 +5,33 @@ mapscripts ArchiesHouse_BackyardSea_MapScripts {
 		}
 	}
 }
+
+script ArchiesHouse_BackyardSea_Boat {
+    msgbox(("It's a boat to back home. Take it?"), MSGBOX_YESNO)
+    closemessage
+    if(var(VAR_RESULT) == YES){
+        warp(MAP_ARCHIES_HOUSE_BACKYARD_BEACH, 28, 10)
+    } else {
+        msgbox(("You decide to stay for a while longer."), MSGBOX_DEFAULT)
+        closemessage
+    }
+}
+
+script ArchiesHouse_Backyard_EventScripts_Milotic {
+    lock
+	faceplayer
+    getpartysize
+	if(var(VAR_RESULT) < 6){
+		msgbox(format("Milotic is grooming herself in the water's reflection.\pMaximize your joint slay?"), MSGBOX_YESNO)
+		closemessage
+		if(var(VAR_RESULT) == TRUE){
+			givemon(SPECIES_MILOTIC, 40, abilityNum=2, gender=FEMALE, move1=, move2=,move3=,move4=, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_SEA_MILOTIC)
+			msgbox("Milotic joined your party!")
+			closemessage
+		}
+	} else {
+		goto(CommonScript_Backyard_EventScripts_FullParty)
+	}
+	end
+}

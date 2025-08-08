@@ -38,7 +38,7 @@
       "y": 11,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "ArchiesHouse_BackyardBeach_Boat"
     },
     {
       "type": "sign",
@@ -46,7 +46,7 @@
       "y": 11,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "ArchiesHouse_BackyardBeach_Boat"
     },
     {
       "type": "sign",
@@ -54,7 +54,7 @@
       "y": 11,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "ArchiesHouse_BackyardBeach_Boat"
     },
     {
       "type": "sign",
