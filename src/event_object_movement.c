@@ -191,6 +191,7 @@ static void ResetObjectEventFldEffData(struct ObjectEvent *);
 static u8 LoadSpritePaletteIfTagExists(const struct SpritePalette *);
 static u8 FindObjectEventPaletteIndexByTag(u16);
 static bool8 ObjectEventDoesElevationMatch(struct ObjectEvent *, u8);
+static bool8 ObjectEventDoesElevationMatchOrWater(struct ObjectEvent *objectEvent, u8 elevation);
 static void SpriteCB_CameraObject(struct Sprite *);
 static void CameraObject_Init(struct Sprite *);
 static void CameraObject_UpdateMove(struct Sprite *);
@@ -3367,7 +3368,11 @@ u8 GetObjectEventIdByPosition(u16 x, u16 y, u8 elevation)
 
 static bool8 ObjectEventDoesElevationMatch(struct ObjectEvent *objectEvent, u8 elevation)
 {
-    if (objectEvent->currentElevation != 0 && elevation != 0 && objectEvent->currentElevation != elevation)
+    /* Water OW Interaction c/o Nicolas Aqvae*/
+    if (objectEvent->currentElevation != 0 && elevation != 0 && objectEvent->currentElevation != elevation && FlagGet(FLAG_TOGGLE_WATER_INTERACT) == TRUE)
+        return (objectEvent->currentElevation == 1 && elevation == 3) || (objectEvent->currentElevation == 3 && elevation == 1);   
+    
+    else if (objectEvent->currentElevation != 0 && elevation != 0 && objectEvent->currentElevation != elevation)
         return FALSE;
 
     return TRUE;

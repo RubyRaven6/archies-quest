@@ -1,5 +1,9 @@
 mapscripts ArchiesHouse_BackyardLake_MapScripts {
-    
+	MAP_SCRIPT_ON_TRANSITION {
+		if(!flag(FLAG_TOGGLE_WATER_INTERACT)){
+			setflag(FLAG_TOGGLE_WATER_INTERACT)
+		}
+	}
 }
 
 script ArchiesHouse_Backyard_EventScripts_Gyarados {

@@ -1123,6 +1123,15 @@ CommonScript_Backyard_EventScripts_FullParty_Text_1:
 	.string "Pokémon boxes haven't been invented\n"
 	.string "yet.$"
 
+CommonScript_TogglesFlagForWaterTalking::
+	goto_if_unset FLAG_TOGGLE_WATER_INTERACT, CommonScript_TogglesFlagForWaterTalking_1
+	clearflag FLAG_TOGGLE_WATER_INTERACT
+	return
+
+CommonScript_TogglesFlagForWaterTalking_1:
+	setflag FLAG_TOGGLE_WATER_INTERACT
+	return
+
 	.include "data/scripts/pc_transfer.inc"
 	.include "data/scripts/questionnaire.inc"
 	.include "data/scripts/abnormal_weather.inc"
