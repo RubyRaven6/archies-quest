@@ -1102,6 +1102,27 @@ EventScript_VsSeekerChargingDone::
 	releaseall
 	end
 
+CommonScript_Backyard_EventScripts_FullParty::
+	msgbox CommonScript_Backyard_EventScripts_FullParty_Text_0
+	closemessage
+	delay 30
+	msgbox CommonScript_Backyard_EventScripts_FullParty_Text_1
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, CommonScript_Backyard_EventScripts_FullParty_Movement_0
+	end
+
+
+CommonScript_Backyard_EventScripts_FullParty_Movement_0:
+	emote_x
+	step_end
+
+CommonScript_Backyard_EventScripts_FullParty_Text_0:
+	.string "You have a full party already!$"
+
+CommonScript_Backyard_EventScripts_FullParty_Text_1:
+	.string "Pokémon boxes haven't been invented\n"
+	.string "yet.$"
+
 	.include "data/scripts/pc_transfer.inc"
 	.include "data/scripts/questionnaire.inc"
 	.include "data/scripts/abnormal_weather.inc"
@@ -1187,3 +1208,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/ArchiesHouse_BackyardSea/scripts.inc"
 
 	.include "data/maps/ArchiesHouse_BackyardGarden/scripts.inc"
+
+	.include "data/maps/ArchiesHouse_BackyardCave/scripts.inc"

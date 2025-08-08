@@ -4560,6 +4560,16 @@
       "secondary_tileset": "gTileset_EverGrande",
       "border_filepath": "data/layouts/ArchiesHouse_BackyardGarden/border.bin",
       "blockdata_filepath": "data/layouts/ArchiesHouse_BackyardGarden/map.bin"
+    },
+    {
+      "id": "LAYOUT_ARCHIES_HOUSE_BACKYARD_CAVE",
+      "name": "ArchiesHouse_BackyardCave_Layout",
+      "width": 20,
+      "height": 13,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/ArchiesHouse_BackyardCave/border.bin",
+      "blockdata_filepath": "data/layouts/ArchiesHouse_BackyardCave/map.bin"
     }
   ]
 }

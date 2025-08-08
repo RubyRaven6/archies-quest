@@ -13,7 +13,78 @@
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
+  "object_events": [
+    {
+      "local_id": "LOCALID_BACKYARD_FOREST_SCEPTILE",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SCEPTILE)",
+      "x": 16,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Sceptile",
+      "flag": "FLAG_HIDE_SCEPTILE"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_FOREST_BRELOOM",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(BRELOOM)",
+      "x": 5,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Breloom",
+      "flag": "FLAG_HIDE_BRELOOM"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_FOREST_ALTARIA",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ALTARIA)",
+      "x": 18,
+      "y": 19,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Altaria",
+      "flag": "FLAG_HIDE_ALTARIA"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_FOREST_HATTERENE",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HATTERENE)",
+      "x": 5,
+      "y": 17,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Hatterene",
+      "flag": "FLAG_HIDE_HATTERENE"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_FOREST_CELEBI",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CELEBI)",
+      "x": 21,
+      "y": 25,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT",
+      "movement_range_x": 6,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Celebi",
+      "flag": "0"
+    }
+  ],
   "warp_events": [
     {
       "x": 20,
@@ -31,5 +102,14 @@
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 9,
+      "y": 19,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "ArchiesHouse_Backyard_EventScripts_WeirdAssRock"
+    }
+  ]
 }

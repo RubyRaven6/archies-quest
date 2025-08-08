@@ -52,19 +52,19 @@
 #define FLAG_HIDE_BLAZIKEN           0x26 // Hides Blaziken
 #define FLAG_HIDE_BRELOOM            0x27 // Hide Breloom
 #define FLAG_HIDE_MACHAMP            0x28 // Hides Machamp
-#define FLAG_HIDE_SWELLOW            0x29 // Hides Swellow
+#define FLAG_HIDE_ALTARIA            0x29 // Hides Swellow
 #define FLAG_HIDE_HERACROSS          0x2A // Hides Heracross
 #define FLAG_HIDE_SNORLAX            0x2B // Hides Snorlax
-#define FLAG_HIDE_SKARMORY           0x2C // Hides Skarmory
+#define FLAG_HIDE_HATTERENE          0x2C // Hides Haterene
 #define FLAG_HIDE_ANNIHILAPE         0x2D // Hides Annihilape
 #define FLAG_HIDE_TINKATON           0x2E // Hides Tinkaton
 #define FLAG_HIDE_EXCADRILL          0x2F // Hides Excadrill
 #define FLAG_HIDE_GARGANACL          0x30 // Hides Garganacl
-#define FLAG_HIDE_VIGOROTH           0x31 // Unused Flag
-#define FLAG_HIDE_LUCARIO    0x32 // Unused Flag
-#define FLAG_HIDE_WALREIN    0x33 // Unused Flag
-#define FLAG_HIDE_MILOTIC    0x34 // Unused Flag
-#define FLAG_HIDE_LANTURN    0x35 // Unused Flag
+#define FLAG_HIDE_VIGOROTH           0x31 // Hides
+#define FLAG_HIDE_LUCARIO            0x32 // Hides Lucario
+#define FLAG_HIDE_WALREIN            0x33 // Hides Walrein
+#define FLAG_HIDE_MILOTIC            0x34 // Hides Milotic
+#define FLAG_HIDE_LANTURN            0x35 // Unused Flag
 #define FLAG_UNUSED_0x036    0x36 // Unused Flag
 #define FLAG_UNUSED_0x037    0x37 // Unused Flag
 #define FLAG_UNUSED_0x038    0x38 // Unused Flag
