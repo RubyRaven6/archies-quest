@@ -2601,6 +2601,8 @@ BattleScript_EffectMagnetRise::
 	attackcanceler
 	attackstring
 	ppreduce
+	jumpifstatus3 BS_ATTACKER, STATUS3_ROOTED, BattleScript_ButItFailed
+	jumpifstatus3 BS_ATTACKER, STATUS3_SMACKED_DOWN, BattleScript_ButItFailed
 	setuserstatus3 STATUS3_MAGNET_RISE, BattleScript_ButItFailed
 	attackanimation
 	waitanimation
@@ -2841,13 +2843,7 @@ BattleScript_EffectNaturalGift::
 	jumpifability BS_ATTACKER, ABILITY_KLUTZ, BattleScript_ButItFailed
 	jumpifstatus3 BS_ATTACKER, STATUS3_EMBARGO, BattleScript_ButItFailed
 	accuracycheck BattleScript_MoveMissedPause, ACC_CURR_MOVE
-	call BattleScript_EffectHit_RetFromCritCalc
-	jumpifmovehadnoeffect BattleScript_EffectNaturalGiftEnd
-	checkparentalbondcounter 2, BattleScript_EffectNaturalGiftEnd
-	removeitem BS_ATTACKER
-BattleScript_EffectNaturalGiftEnd:
-	tryfaintmon BS_TARGET
-	goto BattleScript_MoveEnd
+	call BattleScript_HitFromCritCalc
 
 BattleScript_MakeMoveMissed::
 	setmoveresultflags MOVE_RESULT_MISSED
@@ -2861,12 +2857,6 @@ BattleScript_MoveMissed::
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
-
-BattleScript_EffectDarkVoid::
-.if B_DARK_VOID_FAIL >= GEN_7
-	jumpifspecies BS_ATTACKER, SPECIES_DARKRAI, BattleScript_EffectNonVolatileStatus
-	goto BattleScript_PokemonCantUseTheMove
-.endif
 
 BattleScript_TerrainPreventsEnd2::
 	pause B_WAIT_TIME_SHORT
@@ -3541,6 +3531,7 @@ BattleScript_PowerHerbActivation:
 BattleScript_EffectTwoTurnsAttack::
 	jumpifstatus2 BS_ATTACKER, STATUS2_MULTIPLETURNS, BattleScript_TwoTurnMovesSecondTurn
 	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_NO_ATTACKSTRING, BattleScript_TwoTurnMovesSecondTurn
+	jumpifword CMP_COMMON_BITS, gHitMarker, HITMARKER_ATTACKSTRING_PRINTED, BattleScript_EffectHit @ if it's not the first hit
 	tryfiretwoturnmovewithoutcharging BS_ATTACKER, BattleScript_EffectHit @ e.g. Solar Beam
 	call BattleScript_FirstChargingTurn
 	tryfiretwoturnmoveaftercharging BS_ATTACKER, BattleScript_TwoTurnMovesSecondTurn @ e.g. Electro Shot
@@ -4689,6 +4680,11 @@ BattleScript_FlatterTryConfuse::
 	seteffectprimary MOVE_EFFECT_CONFUSION
 	goto BattleScript_MoveEnd
 
+BattleScript_EffectDarkVoid::
+.if B_DARK_VOID_FAIL >= GEN_7
+	jumpifspecies BS_ATTACKER, SPECIES_DARKRAI, BattleScript_EffectNonVolatileStatus
+	goto BattleScript_PokemonCantUseTheMove
+.endif
 BattleScript_EffectNonVolatileStatus::
 	attackcanceler
 	attackstring
@@ -5780,6 +5776,7 @@ BattleScript_LeechSeedTurnDrainHealBlock::
 BattleScript_LeechSeedTurnDrainRecovery::
 	call BattleScript_LeechSeedTurnDrain
 BattleScript_LeechSeedTurnDrainGainHp:
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	healthbarupdate BS_TARGET
 	datahpupdate BS_TARGET
 	printfromtable gLeechSeedStringIds
@@ -6770,51 +6767,40 @@ BattleScript_UltraBurst::
 	end3
 
 BattleScript_GulpMissileFormChange::
-	call BattleScript_AttackerFormChange
+	call BattleScript_BattlerFormChange
 	goto BattleScript_FromTwoTurnMovesSecondTurnRet
 
-BattleScript_AttackerFormChange::
+BattleScript_BattlerFormChange::
 	pause 5
-	copybyte gBattlerAbility, gBattlerAttacker
-	call BattleScript_AbilityPopUp
+	call BattleScript_AbilityPopUpScripting
 	flushtextbox
-BattleScript_AttackerFormChangeNoPopup::
-	handleformchange BS_ATTACKER, 0
-	handleformchange BS_ATTACKER, 1
-	playanimation BS_ATTACKER, B_ANIM_FORM_CHANGE
+BattleScript_BattlerFormChangeNoPopup:
+	handleformchange BS_SCRIPTING, 0
+	handleformchange BS_SCRIPTING, 1
+	playanimation BS_SCRIPTING, B_ANIM_FORM_CHANGE
 	waitanimation
-	handleformchange BS_ATTACKER, 2
+	handleformchange BS_SCRIPTING, 2
 	return
 
-BattleScript_AttackerFormChangeEnd3::
-	call BattleScript_AttackerFormChange
+BattleScript_BattlerFormChangeEnd3::
+	call BattleScript_BattlerFormChange
 	end3
 
-BattleScript_AttackerFormChangeEnd3NoPopup::
-	call BattleScript_AttackerFormChangeNoPopup
+BattleScript_BattlerFormChangeEnd3NoPopup::
+	call BattleScript_BattlerFormChangeNoPopup
 	end3
 
-BattleScript_AttackerFormChangeWithString::
+BattleScript_BattlerFormChangeWithStringEnd3::
 	pause 5
-	copybyte gBattlerAbility, gBattlerAttacker
-	call BattleScript_AbilityPopUp
+	call BattleScript_AbilityPopUpScripting
 	flushtextbox
-BattleScript_AttackerFormChangeWithStringNoPopup::
-	handleformchange BS_ATTACKER, 0
-	handleformchange BS_ATTACKER, 1
-	playanimation BS_ATTACKER, B_ANIM_FORM_CHANGE
+	handleformchange BS_SCRIPTING, 0
+	handleformchange BS_SCRIPTING, 1
+	playanimation BS_SCRIPTING, B_ANIM_FORM_CHANGE
 	waitanimation
-	handleformchange BS_ATTACKER, 2
+	handleformchange BS_SCRIPTING, 2
 	printstring STRINGID_PKMNTRANSFORMED
 	waitmessage B_WAIT_TIME_LONG
-	return
-
-BattleScript_AttackerFormChangeWithStringEnd3::
-	call BattleScript_AttackerFormChangeWithString
-	end3
-
-BattleScript_AttackerFormChangeWithStringEnd3NoPopup::
-	call BattleScript_AttackerFormChangeWithStringNoPopup
 	end3
 
 BattleScript_AttackerFormChangeMoveEffect::
@@ -6880,19 +6866,6 @@ BattleScript_TargetFormChangeWithStringNoPopup::
 	waitmessage B_WAIT_TIME_LONG
 	return
 
-BattleScript_BattlerFormChangeWithStringEnd3::
-	pause 5
-	call BattleScript_AbilityPopUpScripting
-	flushtextbox
-	handleformchange BS_SCRIPTING, 0
-	handleformchange BS_SCRIPTING, 1
-	playanimation BS_SCRIPTING, B_ANIM_FORM_CHANGE, NULL
-	waitanimation
-	handleformchange BS_SCRIPTING, 2
-	printstring STRINGID_PKMNTRANSFORMED
-	waitmessage B_WAIT_TIME_LONG
-	end3
-
 BattleScript_IllusionOffAndTerastallization::
 	call BattleScript_IllusionOff
 	goto BattleScript_Terastallization
@@ -6919,7 +6892,7 @@ BattleScript_CottonDownActivates::
 	swapattackerwithtarget
 	setbyte gBattlerTarget, 0
 BattleScript_CottonDownLoop:
-	jumpiffainted BS_TARGET, TRUE, BattleScript_CottonDownLoopIncrement
+	jumpifabsent BS_TARGET, BattleScript_CottonDownLoopIncrement
 	setstatchanger STAT_SPEED, 1, TRUE
 	jumpifbyteequal gBattlerTarget, gEffectBattler, BattleScript_CottonDownLoopIncrement
 	statbuffchange STAT_CHANGE_NOT_PROTECT_AFFECTED | STAT_CHANGE_ALLOW_PTR, BattleScript_CottonDownLoopIncrement
@@ -7627,11 +7600,7 @@ BattleScript_TryIntimidateHoldEffectsRet:
 
 BattleScript_IntimidateActivates::
 	savetarget
-.if B_ABILITY_POP_UP == TRUE
-	showabilitypopup BS_ATTACKER
-	pause B_WAIT_TIME_LONG
-	destroyabilitypopup
-.endif
+	call BattleScript_AbilityPopUp
 	setbyte gBattlerTarget, 0
 BattleScript_IntimidateLoop:
 	jumpifbyteequal gBattlerTarget, gBattlerAttacker, BattleScript_IntimidateLoopIncrement
@@ -7662,6 +7631,7 @@ BattleScript_IntimidateLoopIncrement:
 	copybyte sBATTLER, gBattlerAttacker
 	destroyabilitypopup
 	restoretarget
+	restoreattacker
 	pause B_WAIT_TIME_MED
 	tryintimidateejectpack
 	end3
@@ -7696,11 +7666,7 @@ BattleScript_IntimidateInReverse::
 
 BattleScript_SupersweetSyrupActivates::
  	savetarget
-.if B_ABILITY_POP_UP == TRUE
-	showabilitypopup BS_ATTACKER
-	pause B_WAIT_TIME_LONG
-	destroyabilitypopup
-.endif
+	call BattleScript_AbilityPopUp
 	printstring STRINGID_SUPERSWEETAROMAWAFTS
 	waitmessage B_WAIT_TIME_LONG
 	setbyte gBattlerTarget, 0
@@ -7728,6 +7694,7 @@ BattleScript_SupersweetSyrupLoopIncrement:
 	copybyte sBATTLER, gBattlerAttacker
 	destroyabilitypopup
 	restoretarget
+	restoreattacker
 	pause B_WAIT_TIME_MED
 	tryintimidateejectpack
 	end3
@@ -7884,8 +7851,8 @@ BattleScript_HospitalityActivates::
 	printstring STRINGID_HOSPITALITYRESTORATION
 	waitmessage B_WAIT_TIME_LONG
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
-	healthbarupdate BS_TARGET
-	datahpupdate BS_TARGET
+	healthbarupdate BS_EFFECT_BATTLER
+	datahpupdate BS_EFFECT_BATTLER
 	end3
 
 BattleScript_AttackWeakenedByStrongWinds::
@@ -8226,6 +8193,8 @@ BattleScript_MummyActivates::
 	return
 
 BattleScript_WanderingSpiritActivates::
+	saveattacker
+	savetarget
 .if B_ABILITY_POP_UP == TRUE
 	copybyte gBattlerAbility, gBattlerTarget
 	sethword sABILITY_OVERWRITE, ABILITY_WANDERING_SPIRIT
@@ -8242,6 +8211,8 @@ BattleScript_WanderingSpiritActivates::
 	jumpiffainted BS_TARGET, TRUE, BattleScript_WanderingSpiritActivatesRet
 	switchinabilities BS_TARGET
 BattleScript_WanderingSpiritActivatesRet:
+	restoreattacker
+	restoretarget
 	return
 
 BattleScript_TargetsStatWasMaxedOut::
@@ -8352,6 +8323,7 @@ BattleScript_FellStingerRaisesAtkEnd:
 
 BattleScript_AttackerAbilityStatRaiseEnd3::
 	call BattleScript_AttackerAbilityStatRaise
+	restoreattacker
 	end3
 
 BattleScript_SwitchInAbilityMsg::
@@ -8402,6 +8374,8 @@ BattleScript_ImposterActivates::
 	waitanimation
 	printstring STRINGID_IMPOSTERTRANSFORM
 	waitmessage B_WAIT_TIME_LONG
+	restoreattacker
+	restoretarget
 	end3
 
 BattleScript_HurtAttacker:
@@ -9502,6 +9476,7 @@ BattleScript_PastelVeilLoopIncrement:
 	setallytonexttarget BattleScript_PastelVeil_TryCurePoison
 	goto BattleScript_PastelVeilEnd
 BattleScript_PastelVeilEnd:
+	restoretarget
 	end3
 
 BattleScript_NeutralizingGasExits::
