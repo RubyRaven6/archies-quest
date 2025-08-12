@@ -604,7 +604,7 @@ void CB2_GoToSellMenu(void)
 
 void CB2_GoToItemDepositMenu(void)
 {
-    GoToBagMenu(ITEMMENULOCATION_ITEMPC, POCKETS_COUNT, CB2_PlayerPCExitBagMenu);
+    GoToBagMenu(ITEMMENULOCATION_ITEMPC, ITEMS_POCKET, CB2_PlayerPCExitBagMenu);
 }
 
 void ApprenticeOpenBagMenu(void)

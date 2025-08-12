@@ -56,6 +56,7 @@ static void WarpToTruck(void);
 static void ResetMiniGamesRecords(void);
 static void ResetItemFlags(void);
 static void ResetDexNav(void);
+static void BountifulHarvestOfNature(void);
 
 EWRAM_DATA bool8 gDifferentSaveFile = FALSE;
 EWRAM_DATA bool8 gEnableContestDebugging = FALSE;
@@ -215,6 +216,8 @@ void NewGameInitData(void)
     ClearFollowerNPCData();
     FlagSet(FLAG_HIDE_ARCHIE);
     FlagSet(FLAG_SYS_POKEMON_GET);
+    FlagSet(FLAG_RECEIVED_RUNNING_SHOES);
+    BountifulHarvestOfNature();
 }
 
 static void ResetMiniGamesRecords(void)
@@ -238,4 +241,12 @@ static void ResetDexNav(void)
     memset(gSaveBlock3Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock3Ptr->dexNavSearchLevels));
 #endif
     gSaveBlock3Ptr->dexNavChain = 0;
+}
+
+static void BountifulHarvestOfNature(void)
+{
+    for (u16 berry = ITEM_CHERI_BERRY; berry < ITEM_MARANGA_BERRY; berry++)
+    {
+        AddBagItem(berry, 1);
+    }
 }

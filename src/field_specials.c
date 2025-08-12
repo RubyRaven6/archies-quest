@@ -4370,6 +4370,11 @@ void OpenNessiePuzzle(void)
     CreateTask(Task_OpenNessiePainting, 0);
 }
 
+void OpenBigChest(void)
+{
+    CreateTask(Task_OpenSampleUi_StartHere, 0);
+}
+
 void OpenSampleUi(void)
 {
     FadeScreen(FADE_TO_BLACK, 0);
