@@ -74,14 +74,14 @@
 #define FLAG_HIDE_TINKATON           0x2E // Hides Tinkaton
 /*Beach Mon Flags*/
 #define FLAG_HIDE_SWAMPERT           0x25 // Hides Swampert
-#define FLAG_HIDE_LINOONE            0x3D // Unused Flag
-#define FLAG_HIDE_HARIYAMA           0x3E // Unused Flag
-#define FLAG_HIDE_SLOWKING           0x3F // Unused Flag
+#define FLAG_HIDE_LINOONE            0x3D // Hides Linoone
+#define FLAG_HIDE_HARIYAMA           0x3E // Hides Hariyama
+#define FLAG_HIDE_SLOWKING           0x3F // Hides Slowking
 /*Garden Mon FLags*/
 #define FLAG_HIDE_ANNIHILAPE         0x2D // Hides Annihilape
 #define FLAG_HIDE_HERACROSS          0x2A // Hides Heracross
-#define FLAG_HIDE_RIBOMBEE           0x3B // Unused Flag
-#define FLAG_HIDE_VILEPLUME          0x3C // Unused Flag
+#define FLAG_HIDE_RIBOMBEE           0x3B // Hides Ribombee
+#define FLAG_HIDE_POLTCHAGEIST       0x3C // Hides Vileplume
 /**/
 #define FLAG_UNUSED_0x040    0x40 // Unused Flag
 #define FLAG_UNUSED_0x041    0x41 // Unused Flag

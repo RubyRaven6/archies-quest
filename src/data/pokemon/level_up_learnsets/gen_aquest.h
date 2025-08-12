@@ -3377,6 +3377,9 @@ static const struct LevelUpMove sSeadraLevelUpLearnset[] = {
 
 #if P_GEN_2_CROSS_EVOS
 static const struct LevelUpMove sKingdraLevelUpLearnset[] = {
+    LEVEL_UP_MOVE( 1, MOVE_ICE_BEAM),
+    LEVEL_UP_MOVE( 1, MOVE_HYPER_BEAM),
+    LEVEL_UP_MOVE( 1, MOVE_SNIPE_SHOT),
     LEVEL_UP_MOVE( 1, MOVE_LEER),
     LEVEL_UP_MOVE( 1, MOVE_WATER_GUN),
     LEVEL_UP_MOVE( 1, MOVE_SMOKESCREEN),
@@ -8420,6 +8423,7 @@ static const struct LevelUpMove sWailmerLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sWailordLevelUpLearnset[] = {
+    LEVEL_UP_MOVE( 1, MOVE_SURF),
     LEVEL_UP_MOVE( 1, MOVE_SOAK),
     LEVEL_UP_MOVE( 1, MOVE_NOBLE_ROAR),
     LEVEL_UP_MOVE( 1, MOVE_SPLASH),

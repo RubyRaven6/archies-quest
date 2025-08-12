@@ -25,6 +25,16 @@ mapscripts ArchiesHouse_Backyard_MapScripts {
 // 	end
 // }
 
+// script ArchiesHouse_Backyard_EventScripts_ {
+//     lock
+// 	faceplayer
+//     msgbox(format("."))
+//     closemessage
+//     applymovement(, moves(face_original_direction))
+//     release
+// 	end
+// }
+
 // script ArchiesHouse_Backyard_EventScripts_Blaziken {
 // 	getpartysize
 // 	if(var(VAR_RESULT) < 6){

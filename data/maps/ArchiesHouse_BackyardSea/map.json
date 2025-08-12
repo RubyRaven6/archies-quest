@@ -25,7 +25,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "ArchiesHouse_Backyard_EventScripts_Kyogre",
       "flag": "0"
     },
     {
@@ -39,8 +39,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "ArchiesHouse_Backyard_EventScripts_Kingdra",
+      "flag": "FLAG_HIDE_KINGDRA"
     },
     {
       "local_id": "LOCALID_BACKYARD_SEA_WAILORD",
@@ -53,8 +53,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "ArchiesHouse_Backyard_EventScripts_Wailord",
+      "flag": "FLAG_HIDE_WAILORD"
     },
     {
       "local_id": "LOCALID_BACKYARD_SEA_PELIPPER",
@@ -67,8 +67,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "ArchiesHouse_Backyard_EventScripts_Pelipper",
+      "flag": "FLAG_HIDE_PELIPPER"
     },
     {
       "local_id": "LOCALID_BACKYARD_SEA_MILOTIC",
@@ -81,8 +81,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "ArchiesHouse_Backyard_EventScripts_Milotic",
+      "flag": "FLAG_HIDE_MILOTIC"
     },
     {
       "local_id": "LOCALID_BACKYARD_SEA_LATIOS",
@@ -95,7 +95,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "ArchiesHouse_Backyard_EventScripts_Latios",
       "flag": "0"
     },
     {
@@ -109,7 +109,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "ArchiesHouse_Backyard_EventScripts_Latias",
       "flag": "0"
     }
   ],
