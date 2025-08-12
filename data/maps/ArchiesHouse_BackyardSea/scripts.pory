@@ -25,7 +25,7 @@ script ArchiesHouse_Backyard_EventScripts_Milotic {
 		msgbox(format("Milotic is grooming herself in the water's reflection.\pMaximize your joint slay?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
-			givemon(SPECIES_MILOTIC, 40, abilityNum=2, gender=FEMALE, move1=, move2=,move3=,move4=, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_MILOTIC, 40, abilityNum=0, gender=FEMALE, move1=MOVE_ICE_BEAM, move2=MOVE_DISARMING_VOICE, move3=MOVE_ATTRACT, move4=MOVE_LIFE_DEW, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_SEA_MILOTIC)
 			msgbox("Milotic joined your party!")
 			closemessage
