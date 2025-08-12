@@ -16,7 +16,7 @@ script ArchiesHouse_EventScript_BeginningCutscene {
     closemessage
     delay(60)
     playbgm(MUS_DUMMY, FALSE)
-    playse(SE_RG_DOOR)
+    playse(SE_M_THUNDERBOLT2)
     clearflag(FLAG_HIDE_ARCHIE)
     fadescreen(FADE_TO_WHITE)
     waitse
