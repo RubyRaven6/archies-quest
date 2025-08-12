@@ -1,7 +1,7 @@
 mapscripts ArchiesHouse_1F_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_ARCHIE_ARRIVES, 0 {
-            call(ArchiesHouse_EventScript_BeginningCutscene)
+            //call(ArchiesHouse_EventScript_BeginningCutscene)
             setvar(VAR_ARCHIE_ARRIVES, 1)
         }
     ]

@@ -234,3 +234,6 @@ const u16 gMetatileAttributes_RecompiledBuilding[] = INCBIN_U16("data/tilesets/p
 
 const u16 gMetatiles_HubWorld[] = INCBIN_U16("data/tilesets/primary/hub_world/metatiles.bin");
 const u16 gMetatileAttributes_HubWorld[] = INCBIN_U16("data/tilesets/primary/hub_world/metatile_attributes.bin");
+
+const u16 gMetatiles_HubWorld[] = INCBIN_U16("data/tilesets/secondary/hub_world/metatiles.bin");
+const u16 gMetatileAttributes_HubWorld[] = INCBIN_U16("data/tilesets/secondary/hub_world/metatile_attributes.bin");

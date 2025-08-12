@@ -922,7 +922,7 @@ const struct Tileset gTileset_RecompiledBuilding =
 const struct Tileset gTileset_HubWorld =
 {
     .isCompressed = TRUE,
-    .isSecondary = FALSE,
+    .isSecondary = TRUE,
     .tiles = gTilesetTiles_HubWorld,
     .palettes = gTilesetPalettes_HubWorld,
     .metatiles = gMetatiles_HubWorld,
