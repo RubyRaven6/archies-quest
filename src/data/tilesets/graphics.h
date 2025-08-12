@@ -1786,3 +1786,22 @@ const u16 gTilesetPalettes_RecompiledBuilding[][16] =
 };
 
 const u32 gTilesetTiles_RecompiledBuilding[] = INCBIN_U32("data/tilesets/primary/recompiled_building/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_HubWorld[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/hub_world/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hub_world/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hub_world/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hub_world/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hub_world/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hub_world/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hub_world/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hub_world/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hub_world/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hub_world/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hub_world/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hub_world/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/hub_world/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_HubWorld[] = INCBIN_U32("data/tilesets/primary/hub_world/tiles.4bpp.lz");

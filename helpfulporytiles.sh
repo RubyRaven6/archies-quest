@@ -6,14 +6,14 @@
 dir_raw_tilesets="../rubys-tilesets/raw_tilesets/"
 dir_raw_tilesets_primary="${dir_raw_tilesets}primary/"
 dir_raw_tilesets_secondary="${dir_raw_tilesets}secondary/"
-dir_aseprite_folder="/mnt/c/Users/acer/Desktop/New_folder/Aseprite-v1.3.14.3-x64"
+dir_aseprite_folder=""
 dir_compiled_primary="./data/tilesets/primary/"
 dir_compiled_secondary="./data/tilesets/secondary/"
 metatile_behaviors="./include/constants/metatile_behaviors.h"
 normalize_py="./normalize.py"
 
 ## WINDOWS PATH
-dir_aseprite_raw_tilesets="C:\Users\acer\Desktop\New_folder\Aseprite-v1.3.14.3-x64\stuff\tilesets" 
+dir_aseprite_raw_tilesets="" 
 
 # END OF CUSTOM PATHS
 

@@ -918,3 +918,14 @@ const struct Tileset gTileset_RecompiledBuilding =
     .metatileAttributes = gMetatileAttributes_RecompiledBuilding,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_HubWorld =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_HubWorld,
+    .palettes = gTilesetPalettes_HubWorld,
+    .metatiles = gMetatiles_HubWorld,
+    .metatileAttributes = gMetatileAttributes_HubWorld,
+    .callback = NULL,
+};

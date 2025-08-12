@@ -231,3 +231,6 @@ const u16 gMetatileAttributes_NessereignLairSecondary[] = INCBIN_U16("data/tiles
 
 const u16 gMetatiles_RecompiledBuilding[] = INCBIN_U16("data/tilesets/primary/recompiled_building/metatiles.bin");
 const u16 gMetatileAttributes_RecompiledBuilding[] = INCBIN_U16("data/tilesets/primary/recompiled_building/metatile_attributes.bin");
+
+const u16 gMetatiles_HubWorld[] = INCBIN_U16("data/tilesets/primary/hub_world/metatiles.bin");
+const u16 gMetatileAttributes_HubWorld[] = INCBIN_U16("data/tilesets/primary/hub_world/metatile_attributes.bin");

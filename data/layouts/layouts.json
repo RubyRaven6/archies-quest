@@ -4454,9 +4454,9 @@
     {
       "id": "LAYOUT_HUB_WORLD_INITIAL",
       "name": "HubWorld_Initial_Layout",
-      "width": 20,
-      "height": 20,
-      "primary_tileset": "gTileset_General",
+      "width": 17,
+      "height": 17,
+      "primary_tileset": "gTileset_HubWorld",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/HubWorld_Initial/border.bin",
       "blockdata_filepath": "data/layouts/HubWorld_Initial/map.bin"
