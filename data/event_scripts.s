@@ -1206,7 +1206,7 @@ EventScript_TheVoid_Text_0:
 
 	.include "data/maps/ArchiesHouse_Backyard/scripts.inc"
 
-	.include "data/maps/DemonLairs_Vhane/scripts.inc"
+	.include "data/maps/DemonLairs_Maxie/scripts.inc"
 
 	.include "data/maps/HubWorld_Initial/scripts.inc"
 
@@ -1231,3 +1231,5 @@ EventScript_TheVoid_Text_0:
 	.include "data/maps/ArchiesHouse_BackyardGarden/scripts.inc"
 
 	.include "data/maps/ArchiesHouse_BackyardCave/scripts.inc"
+
+	.include "data/maps/DemonLairs_Addisamap/scripts.inc"

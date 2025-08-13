@@ -928,3 +928,14 @@ const struct Tileset gTileset_HubWorld =
     .metatileAttributes = gMetatileAttributes_HubWorld,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_AddisamapLairPrimary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_AddisamapLairPrimary,
+    .palettes = gTilesetPalettes_AddisamapLairPrimary,
+    .metatiles = gMetatiles_AddisamapLairPrimary,
+    .metatileAttributes = gMetatileAttributes_AddisamapLairPrimary,
+    .callback = NULL,
+};

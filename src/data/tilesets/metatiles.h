@@ -234,3 +234,6 @@ const u16 gMetatileAttributes_RecompiledBuilding[] = INCBIN_U16("data/tilesets/p
 
 const u16 gMetatiles_HubWorld[] = INCBIN_U16("data/tilesets/primary/hub_world/metatiles.bin");
 const u16 gMetatileAttributes_HubWorld[] = INCBIN_U16("data/tilesets/primary/hub_world/metatile_attributes.bin");
+
+const u16 gMetatiles_AddisamapLairPrimary[] = INCBIN_U16("data/tilesets/primary/addisamap_lair_primary/metatiles.bin");
+const u16 gMetatileAttributes_AddisamapLairPrimary[] = INCBIN_U16("data/tilesets/primary/addisamap_lair_primary/metatile_attributes.bin");

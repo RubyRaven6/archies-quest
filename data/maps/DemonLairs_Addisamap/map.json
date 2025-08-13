@@ -1,0 +1,35 @@
+{
+  "id": "MAP_DEMON_LAIRS_ADDISAMAP",
+  "name": "DemonLairs_Addisamap",
+  "layout": "LAYOUT_DEMON_LAIRS_ADDISAMAP",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "x": 12,
+      "y": 27,
+      "elevation": 0,
+      "dest_map": "MAP_DEMON_LAIRS_ADDISAMAP",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 12,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_DEMON_LAIRS_ADDISAMAP",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

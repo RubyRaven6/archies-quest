@@ -25,11 +25,12 @@
     "HubWorld_Initial"
   ],
   "gMapGroup_DemonLairs": [
-    "DemonLairs_Vhane",
+    "DemonLairs_Maxie",
     "DemonLairs_Gigagehsool",
     "DemonLairs_Gigagehsool_Interior",
     "DemonLairs_Nessie",
-    "DemonLairs_Nessie_Interior"
+    "DemonLairs_Nessie_Interior",
+    "DemonLairs_Addisamap"
   ],
   "gMapGroup_VanillaMaps1": [
     "PetalburgCity",
