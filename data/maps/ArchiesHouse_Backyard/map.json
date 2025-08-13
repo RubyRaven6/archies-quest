@@ -3,7 +3,7 @@
   "name": "ArchiesHouse_Backyard",
   "layout": "LAYOUT_ARCHIES_HOUSE_BACKYARD",
   "music": "MUS_VERDANTURF",
-  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "region_map_section": "MAPSEC_ARCHIE_BACKYARD",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_NONE",

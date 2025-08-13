@@ -490,7 +490,7 @@
     },
     {
       "id": "MAPSEC_ABANDONED_SHIP",
-      "name": "Archie's Backyard",
+      "name": "Abandoned Ship",
       "x": 6,
       "y": 14,
       "width": 1,
@@ -1260,8 +1260,40 @@
       "height": 1
     },
     {
+      "id": "MAPSEC_ARCHIE_BACKYARD",
+      "name": "Archie's Backyard",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_MAXIE_LAIR",
+      "name": "Maxie's Lair",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
       "id": "MAPSEC_NESSIE_LAIR",
       "name": "Nessereign's Lair",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_GIGAGESHOOL_LAIR",
+      "name": "Gigageshool's Lair",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_ADDISAMAP_LAIR",
+      "name": "Addisamap's Lair",
       "x": 0,
       "y": 0,
       "width": 1,

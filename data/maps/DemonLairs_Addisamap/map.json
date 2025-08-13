@@ -3,7 +3,7 @@
   "name": "DemonLairs_Addisamap",
   "layout": "LAYOUT_DEMON_LAIRS_ADDISAMAP",
   "music": "MUS_DUMMY",
-  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "region_map_section": "MAPSEC_ADDISAMAP_LAIR",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_NONE",
