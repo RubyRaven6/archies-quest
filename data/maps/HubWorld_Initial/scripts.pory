@@ -1,4 +1,7 @@
-raw `
-HubWorld_Initial_MapScripts::
-	.byte 0
-`
+mapscripts HubWorld_Initial_MapScripts {
+	
+}
+
+script AccessPC {
+
+}

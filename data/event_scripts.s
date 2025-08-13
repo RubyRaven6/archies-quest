@@ -1132,6 +1132,18 @@ CommonScript_TogglesFlagForWaterTalking_1:
 	setflag FLAG_TOGGLE_WATER_INTERACT
 	return
 
+EventScript_TheVoid::
+	lockall
+	msgbox EventScript_TheVoid_Text_0
+	waitmessage
+	closemessage
+	return
+
+
+EventScript_TheVoid_Text_0:
+	.string "An endless, yawning void stares back at\n"
+	.string "you…$"
+
 	.include "data/scripts/pc_transfer.inc"
 	.include "data/scripts/questionnaire.inc"
 	.include "data/scripts/abnormal_weather.inc"
