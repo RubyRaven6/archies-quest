@@ -216,7 +216,7 @@ void NewGameInitData(void)
     ClearFollowerNPCData();
     FlagSet(FLAG_HIDE_ARCHIE);
     FlagSet(FLAG_SYS_POKEMON_GET);
-    FlagSet(FLAG_RECEIVED_RUNNING_SHOES);
+    FlagSet(FLAG_SYS_B_DASH);
     BountifulHarvestOfNature();
 }
 
