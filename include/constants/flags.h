@@ -46,8 +46,8 @@
 #define FLAG_NESSIE_READ_BOOK        0x20 // Read the book for the Nessie solution
 #define FLAG_NESSIE_GOT_DAGGER       0x21 // Got the dagger for Nessie solution
 #define FLAG_NESSIE_PUZZLE_SOLVED    0x22 // For when the painting solution is found
-#define FLAG_HIDE_ARCHIE             0x23 // Hides Old Archie at the start of the game
 /*Forest Mon Flags*/
+#define FLAG_HIDE_ARCHIE             0x23 // Hides Old Archie at the start of the game
 #define FLAG_HIDE_SCEPTILE           0x24 // Hides Sceptile
 #define FLAG_HIDE_BRELOOM            0x27 // Hide Breloom
 #define FLAG_HIDE_ALTARIA            0x29 // Hides Swellow
@@ -83,7 +83,7 @@
 #define FLAG_HIDE_RIBOMBEE           0x3B // Hides Ribombee
 #define FLAG_HIDE_POLTCHAGEIST       0x3C // Hides Vileplume
 /**/
-#define FLAG_UNUSED_0x040    0x40 // Unused Flag
+#define FLAG_GIGAGEHSOOL_PUZZLE_SOLVED    0x40 // Gigagesh Puzzle Flag
 #define FLAG_UNUSED_0x041    0x41 // Unused Flag
 #define FLAG_UNUSED_0x042    0x42 // Unused Flag
 #define FLAG_UNUSED_0x043    0x43 // Unused Flag

@@ -3,7 +3,7 @@
   "name": "DemonLairs_Gigagehsool",
   "layout": "LAYOUT_DEMON_LAIRS_GIGAGEHSOOL",
   "music": "MUS_DUMMY",
-  "region_map_section": "MAPSEC_GIGAGESHOOL_LAIR",
+  "region_map_section": "MAPSEC_GIGAGEHSOOL_LAIR",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_NONE",
