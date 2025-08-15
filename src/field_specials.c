@@ -4370,6 +4370,12 @@ void OpenNessiePuzzle(void)
     CreateTask(Task_OpenNessiePainting, 0);
 }
 
+void OpenGigageshoolPuzzle(void)
+{
+    FadeScreen(FADE_TO_BLACK, 0);
+    CreateTask(Task_OpenGigageshoolPuzzle, 0);
+}
+
 void OpenBigChest(void)
 {
     CreateTask(Task_OpenSampleUi_StartHere, 0);

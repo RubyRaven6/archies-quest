@@ -20,7 +20,10 @@ void Task_OpenSampleUi_BlankTemplate(u8 taskId);
 //For the new cutscene
 //TBD
 
-//For the Nessie Painting version
+//For the Nessie Painting
 void Task_OpenNessiePainting(u8 taskId);
+
+//For the Gigageshool
+void Task_OpenGigageshoolPuzzle(u8 taskId);
 
 #endif
