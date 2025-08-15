@@ -939,3 +939,14 @@ const struct Tileset gTileset_AddisamapLairPrimary =
     .metatileAttributes = gMetatileAttributes_AddisamapLairPrimary,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_GigagehsoolInterior =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_GigagehsoolInterior,
+    .palettes = gTilesetPalettes_GigagehsoolInterior,
+    .metatiles = gMetatiles_GigagehsoolInterior,
+    .metatileAttributes = gMetatileAttributes_GigagehsoolInterior,
+    .callback = NULL,
+};

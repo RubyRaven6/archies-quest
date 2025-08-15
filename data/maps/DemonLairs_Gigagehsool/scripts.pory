@@ -1,4 +1,7 @@
 mapscripts DemonLairs_Gigagehsool_MapScripts {
+	MAP_SCRIPT_ON_LOAD {
+		if(flag(FLAG_GIGAGEHSOOL_PUZZLE_SOLVED)){setmetatile(9, 8, 0x2c0, FALSE)}
+	}
 }
 
 script DemonLairs_Gigagehsool_EventScript_Door {
@@ -15,10 +18,11 @@ script DemonLairs_Gigagehsool_EventScript_Door {
 	} elif (!flag(FLAG_GIGAGEHSOOL_PUZZLE_SOLVED)){
 		call(DemonLairs_Gigagehsool_EventScript_Puzzle)
 	} else {
-		msgbox("Enter Gigagehsool's Lair?", MSGBOX_YESNO)
-		if(var(VAR_RESULT) == YES){warp(MAP_DEMON_LAIRS_GIGAGEHSOOL_INTERIOR, 0, 0)}
+		msgbox("Door's open.")
+		closemessage
 	}
 	releaseall
+	end
 }
 
 script DemonLairs_Gigagehsool_EventScript_Puzzle {
@@ -26,8 +30,6 @@ script DemonLairs_Gigagehsool_EventScript_Puzzle {
 	waitstate
 	if(flag(FLAG_GIGAGEHSOOL_PUZZLE_SOLVED)){
 		call(DemonLairs_Gigagehsool_EventScript_DoorIsOpen)
-		msgbox("Enter Gigagehsool's Lair?", MSGBOX_YESNO)
-		if(var(VAR_RESULT) == YES){warp(MAP_DEMON_LAIRS_GIGAGEHSOOL_INTERIOR, 0, 0)}
 	}
 	return
 }
@@ -40,5 +42,6 @@ script DemonLairs_Gigagehsool_EventScript_DoorIsOpen {
 	special(ShakeCamera)
 	waitstate
 	playse(SE_M_ROCK_THROW)
+	setmetatile(9, 8, 0x2c0, FALSE)
 	return
 }

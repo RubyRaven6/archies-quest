@@ -628,10 +628,11 @@ static void Task_GigagehsoolPuzzleMainInput(u8 taskId)
 
 static void Task_GigagehsoolWaitForPuzzleFade(u8 taskId)
 {
-    if (gTasks[taskId].data[0] < 180){ // thanks hedara
+    if (gTasks[taskId].data[0] < 120){ // thanks hedara
         gTasks[taskId].data[0]++;
     }
     else {
+        PlaySE(SE_M_ROCK_THROW);
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
         gTasks[taskId].func = Task_GigagehsoolPuzzleWaitFadeAndExitGracefully;
     }
