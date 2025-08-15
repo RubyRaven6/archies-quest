@@ -37,7 +37,7 @@ script DemonLairs_Nessie_EventScript_NessiePuzzle{
 
 script DemonLairs_Nessie_EventScript_Knife {
     if(flag(FLAG_NESSIE_GOT_DAGGER) == FALSE){
-        msgbox("You find a small dagger on the table.\p Take it?", MSGBOX_YESNO)
+        msgbox("You find a small dagger on the table.\pTake it?", MSGBOX_YESNO)
         if(var(VAR_RESULT) == YES){
             setflag(FLAG_NESSIE_GOT_DAGGER)
             setmetatile(3, 7, METATILE_NessereignLairPrimary_TableCorner, TRUE)
@@ -62,7 +62,7 @@ script DemonLairs_Nessie_EventScript_Book {
         }
     }
     else{
-        msgbox("“Sheathing sharpness\nthrough screams.”\pIt's a dizzying tome.\nNo need to see the rest.")
+        msgbox("“Sheathing sheathing sheathing sheathing\nSharpness sharpness sharpness sharpness\lThrough through through through\nScreams screams screams screams”\pIt's a dizzying tome.\nNo need to see the rest.")
         closemessage
     }
     end

@@ -4376,11 +4376,6 @@ void OpenGigagehsoolPuzzle(void)
     CreateTask(Task_OpenGigagehsoolPuzzle, 0);
 }
 
-void OpenBigChest(void)
-{
-    CreateTask(Task_OpenSampleUi_StartHere, 0);
-}
-
 void OpenSampleUi(void)
 {
     FadeScreen(FADE_TO_BLACK, 0);

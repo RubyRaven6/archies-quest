@@ -318,6 +318,7 @@ static void Task_GigagehsoolPuzzleWaitFadeIn(u8 taskId);
 static void Task_GigagehsoolPuzzleMainInput(u8 taskId);
 static void Task_GigagehsoolPuzzleWaitFadeAndBail(u8 taskId);
 static void Task_GigagehsoolPuzzleWaitFadeAndExitGracefully(u8 taskId);
+static void Task_GigagehsoolWaitForPuzzleFade(u8 taskId);
 
 // Sample UI helper functions
 static void GigagehsoolPuzzle_Init(MainCallback callback);
@@ -342,7 +343,7 @@ void Task_OpenGigagehsoolPuzzle(u8 taskId)
     if (!gPaletteFade.active)
     {
         CleanupOverworldWindowsAndTilemaps();
-        GigagehsoolPuzzle_Init(CB2_ReturnToFieldWithOpenMenu);
+        GigagehsoolPuzzle_Init(CB2_ReturnToFieldContinueScript);
         DestroyTask(taskId);
     }
 }
@@ -591,8 +592,7 @@ static void Task_GigagehsoolPuzzleMainInput(u8 taskId)
         if (sGigagehsoolPuzzleState->sevenPearlShell == 5 && sGigagehsoolPuzzleState->tenPearlShell == 5){
             FlagSet(FLAG_GIGAGEHSOOL_PUZZLE_SOLVED);
             PlaySE(SE_SELECT);
-            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
-            gTasks[taskId].func = Task_GigagehsoolPuzzleWaitFadeAndExitGracefully;
+            gTasks[taskId].func = Task_GigagehsoolWaitForPuzzleFade;
         }
     }
     if (JOY_NEW(DPAD_RIGHT)){
@@ -623,6 +623,17 @@ static void Task_GigagehsoolPuzzleMainInput(u8 taskId)
         DebugPrintf("*tenPearlShell: %u", *tenPearlShell);
         DebugPrintf("*sevenPearlShell: %u", *sevenPearlShell);
         DebugPrintf("*threePearlShell: %u", *threePearlShell);
+    }
+}
+
+static void Task_GigagehsoolWaitForPuzzleFade(u8 taskId)
+{
+    if (gTasks[taskId].data[0] < 180){ // thanks hedara
+        gTasks[taskId].data[0]++;
+    }
+    else {
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+        gTasks[taskId].func = Task_GigagehsoolPuzzleWaitFadeAndExitGracefully;
     }
 }
 
@@ -841,7 +852,7 @@ static void GigagehsoolPuzzle_HandleShellContents(void)
                 else {
                     *threeShell += *sevenShell;
                     *sevenShell = 0;
-                }                
+                }
                 *inputMode = INPUT_SELECT_SHELL;
             }
             else { //For Seven Shell back to Seven
@@ -852,8 +863,7 @@ static void GigagehsoolPuzzle_HandleShellContents(void)
             if(*cursorY == 2){ //For Three Shell back to Three
                 *inputMode = INPUT_SELECT_SHELL;
             }
-            else if (*cursorY == 1)
-            {
+            else if (*cursorY == 1){
                 if (*sevenShell == MAX_FIVE_SHELL){}
                 else //*cursorY == 1
                 {                    
