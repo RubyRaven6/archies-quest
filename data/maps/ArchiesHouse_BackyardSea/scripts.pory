@@ -21,7 +21,7 @@ script ArchiesHouse_Backyard_EventScripts_Milotic {
     lock
 	faceplayer
     getpartysize
-	if(var(VAR_RESULT) < 6){
+	if(var(VAR_RESULT) < 4){
 		msgbox(format("Milotic is grooming herself in the water's reflection.\pMaximize your joint slay?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
@@ -40,7 +40,7 @@ script ArchiesHouse_Backyard_EventScripts_Kingdra {
     lock
 	faceplayer
     getpartysize
-	if(var(VAR_RESULT) < 6){
+	if(var(VAR_RESULT) < 4){
 		msgbox(format("Kingdra seems to be brooding restlessly.\pGive an outlet for his frustrations?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
@@ -59,7 +59,7 @@ script ArchiesHouse_Backyard_EventScripts_Wailord {
     lock
 	faceplayer
     getpartysize
-	if(var(VAR_RESULT) < 6){
+	if(var(VAR_RESULT) < 4){
 		msgbox(format("Wailord is singing her higher pitched song as usual.\pHarmonize?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
@@ -78,7 +78,7 @@ script ArchiesHouse_Backyard_EventScripts_Pelipper {
     lock
 	faceplayer
     getpartysize
-	if(var(VAR_RESULT) < 6){
+	if(var(VAR_RESULT) < 4){
 		msgbox(format("Pelipper is resting from her mail delivery duties for the day.\pGive her a new duty for today?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){

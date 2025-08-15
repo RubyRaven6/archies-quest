@@ -4580,6 +4580,36 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/DemonLairs_Addisamap/border.bin",
       "blockdata_filepath": "data/layouts/DemonLairs_Addisamap/map.bin"
+    },
+    {
+      "id": "LAYOUT_HUB_WORLD_NESSIE_DEFEATED",
+      "name": "HubWorld_NessieDefeated",
+      "width": 17,
+      "height": 17,
+      "primary_tileset": "gTileset_HubWorld",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/HubWorld_NessieDefeated/border.bin",
+      "blockdata_filepath": "data/layouts/HubWorld_NessieDefeated/map.bin"
+    },
+    {
+      "id": "LAYOUT_HUB_WORLD_GIGAGEHSOOL_DEFEATED",
+      "name": "HubWorld_GigagehsoolDefeated",
+      "width": 17,
+      "height": 17,
+      "primary_tileset": "gTileset_HubWorld",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/HubWorld_GigagehsoolDefeated/border.bin",
+      "blockdata_filepath": "data/layouts/HubWorld_GigagehsoolDefeated/map.bin"
+    },
+    {
+      "id": "LAYOUT_HUB_WORLD_SAPPRILON_DEFEATED",
+      "name": "HubWorld_SapprilonDefeated",
+      "width": 17,
+      "height": 17,
+      "primary_tileset": "gTileset_HubWorld",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/HubWorld_SapprilonDefeated/border.bin",
+      "blockdata_filepath": "data/layouts/HubWorld_SapprilonDefeated/map.bin"
     }
   ]
 }

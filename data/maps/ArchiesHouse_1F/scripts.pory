@@ -1,7 +1,7 @@
 mapscripts ArchiesHouse_1F_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_ARCHIE_ARRIVES, 0 {
-            //call(ArchiesHouse_EventScript_BeginningCutscene)
+            call(ArchiesHouse_EventScript_BeginningCutscene)
             setvar(VAR_ARCHIE_ARRIVES, 1)
         }
     ]
@@ -46,6 +46,30 @@ script ArchiesHouse_EventScript_BeginningCutscene {
 }
 
 script ArchiesHouse_EventScript_Archie {
-    speakername("")
-    msgbox(format(""))
+    lock
+    faceplayer
+    getpartysize
+    copyvar(VAR_TEMP_0, VAR_RESULT)
+    speakername("Old Archie")
+    msgbox(format("So, are you ready to go face the Demon Lords?"), MSGBOX_YESNO)
+    waitmessage
+    if(var(VAR_RESULT) == YES){
+        if(var(VAR_TEMP_0) > 0)
+        {
+            msgbox(format("Well, follow me then! I'll use this device to transport us…"))
+            waitmessage
+            closemessage
+            warpwhitefade(MAP_HUB_WORLD_INITIAL, 8, 8)
+        } else {
+            msgbox(format("Don't lie to me with that stupid grin! You have no Pokémon to battle them with!"),MSGBOX_DEFAULT)
+            closemessage
+        }
+    }
+    elif(var(VAR_RESULT) == NO) {
+        msgbox(format("Hurry up, then! The fate of the world is waiting!"), MSGBOX_DEFAULT)
+        closemessage
+    }
+    applymovement(0, moves(face_original_direction))
+    waitmovement(0)
+    end
 }

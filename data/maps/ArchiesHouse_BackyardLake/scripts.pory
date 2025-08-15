@@ -10,7 +10,7 @@ script ArchiesHouse_Backyard_EventScripts_Gyarados {
     lock
 	faceplayer
     getpartysize
-	if(var(VAR_RESULT) < 6){
+	if(var(VAR_RESULT) < 4){
 		msgbox(format("Gyarados is simmering in anger in the lake.\pTell him about something he can divert it to?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
@@ -30,7 +30,7 @@ script ArchiesHouse_Backyard_EventScripts_Ludicolo {
     lock
 	faceplayer
     getpartysize
-	if(var(VAR_RESULT) < 6){
+	if(var(VAR_RESULT) < 4){
 		msgbox(format("Ludicolo is spinning happily.\pInvite her to tango?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
@@ -50,7 +50,7 @@ script ArchiesHouse_Backyard_EventScripts_Azumarill {
     lock
 	faceplayer
     getpartysize
-	if(var(VAR_RESULT) < 6){
+	if(var(VAR_RESULT) < 4){
 		msgbox(format("Azumarill is doing his reps for swimming.\pGive him a better workout?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
@@ -70,7 +70,7 @@ script ArchiesHouse_Backyard_EventScripts_Gardevoir {
     lock
 	faceplayer
     getpartysize
-	if(var(VAR_RESULT) < 6){
+	if(var(VAR_RESULT) < 4){
 		msgbox(format("Gardevoir is watching his friends enjoy themselves in water.\pGive him his own fun?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
