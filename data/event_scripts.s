@@ -1233,3 +1233,5 @@ EventScript_TheVoid_Text_0:
 	.include "data/maps/ArchiesHouse_BackyardCave/scripts.inc"
 
 	.include "data/maps/DemonLairs_Addisamap/scripts.inc"
+
+	.include "data/maps/DemonLairs_Addisamap_Interior/scripts.inc"

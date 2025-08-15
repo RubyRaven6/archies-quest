@@ -4610,6 +4610,16 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/HubWorld_SapprilonDefeated/border.bin",
       "blockdata_filepath": "data/layouts/HubWorld_SapprilonDefeated/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEMON_LAIRS_ADDISAMAP_INTERIOR",
+      "name": "DemonLairs_Addisamap_Interior_Layout",
+      "width": 25,
+      "height": 36,
+      "primary_tileset": "gTileset_AddisamapLairPrimary",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/DemonLairs_Addisamap_Interior/border.bin",
+      "blockdata_filepath": "data/layouts/DemonLairs_Addisamap_Interior/map.bin"
     }
   ]
 }
