@@ -4384,10 +4384,10 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
     X(MUS_RG_BERRY_PICK) \
     X(MUS_RG_SEVII_CAVE) \
     X(MUS_RG_TEACHY_TV_SHOW) \
-    X(MUS_RG_SEVII_ROUTE) \
-    X(MUS_RG_SEVII_DUNGEON) \
-    X(MUS_RG_SEVII_123) \
-    X(MUS_RG_SEVII_45) \
+    X(MUS_SAPPRILON1) \
+    X(MUS_SAPPRILON2) \
+    X(MUS_SAPPRILON3) \
+    X(MUS_SAPPRILON4) \
     X(MUS_RG_SEVII_67) \
     X(MUS_RG_POKE_FLUTE) \
     X(MUS_RG_VS_DEOXYS) \
