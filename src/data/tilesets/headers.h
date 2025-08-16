@@ -950,3 +950,14 @@ const struct Tileset gTileset_GigagehsoolInterior =
     .metatileAttributes = gMetatileAttributes_GigagehsoolInterior,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_SapprilonLairPrimary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_SapprilonLairPrimary,
+    .palettes = gTilesetPalettes_SapprilonLairPrimary,
+    .metatiles = gMetatiles_SapprilonLairPrimary,
+    .metatileAttributes = gMetatileAttributes_SapprilonLairPrimary,
+    .callback = NULL,
+};

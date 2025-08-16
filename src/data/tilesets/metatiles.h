@@ -240,3 +240,6 @@ const u16 gMetatileAttributes_AddisamapLairPrimary[] = INCBIN_U16("data/tilesets
 
 const u16 gMetatiles_GigagehsoolInterior[] = INCBIN_U16("data/tilesets/primary/gigagehsool_interior/metatiles.bin");
 const u16 gMetatileAttributes_GigagehsoolInterior[] = INCBIN_U16("data/tilesets/primary/gigagehsool_interior/metatile_attributes.bin");
+
+const u16 gMetatiles_SapprilonLairPrimary[] = INCBIN_U16("data/tilesets/primary/sapprilon_lair_primary/metatiles.bin");
+const u16 gMetatileAttributes_SapprilonLairPrimary[] = INCBIN_U16("data/tilesets/primary/sapprilon_lair_primary/metatile_attributes.bin");
