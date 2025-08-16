@@ -43,53 +43,56 @@
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 #define NUM_TEMP_FLAGS   (TEMP_FLAGS_END - TEMP_FLAGS_START + 1)
 
-#define FLAG_NESSIE_READ_BOOK             20 // Read the book for the Nessie solution
-#define FLAG_NESSIE_GOT_DAGGER            21 // Got the dagger for Nessie solution
-#define FLAG_NESSIE_PUZZLE_SOLVED         22 // For when the painting solution is found
-#define FLAG_GIGAGEHSOOL_PUZZLE_SOLVED    23 // Gigagesh Puzzle Flag
-#define FLAG_UNUSED_0x041                 24 // Sapprilon Puzzle Flag
+/* Puzzle Flags */
+#define FLAG_NESSIE_PUZZLE_SOLVED         20 // For when the painting solution is found
+#define FLAG_GIGAGEHSOOL_PUZZLE_SOLVED    21 // Gigagesh Puzzle Flag
+#define FLAG_SAPPRILON_PUZZLE_SOLVED      22 // Sapprilon Puzzle Flag
 /*Forest Mon Flags*/
-#define FLAG_HIDE_ARCHIE             25 // Hides Old Archie at the start of the game
-#define FLAG_HIDE_SCEPTILE           26 // Hides Sceptile
-#define FLAG_HIDE_BRELOOM            27 // Hide Breloom
-#define FLAG_HIDE_ALTARIA            28 // Hides Swellow
-#define FLAG_HIDE_HATTERENE          29 // Hides Haterene
+#define FLAG_HIDE_ARCHIE             23 // Hides Old Archie at the start of the game
+#define FLAG_HIDE_SCEPTILE           24 // Hides Sceptile
+#define FLAG_HIDE_BRELOOM            25 // Hide Breloom
+#define FLAG_HIDE_ALTARIA            26 // Hides Swellow
+#define FLAG_HIDE_HATTERENE          27 // Hides Haterene
 /*Lake Mon Flags*/
-#define FLAG_HIDE_LUDICOLO           30 // Hides Ludicolo
-#define FLAG_HIDE_GYARADOS           31 // Hides Gyarados
-#define FLAG_HIDE_AZUMARILL          32 // Hides Azumarill
-#define FLAG_HIDE_GARDEVOIR          33 // Hide Gardevoir
+#define FLAG_HIDE_LUDICOLO           28 // Hides Ludicolo
+#define FLAG_HIDE_GYARADOS           29 // Hides Gyarados
+#define FLAG_HIDE_AZUMARILL          30 // Hides Azumarill
+#define FLAG_HIDE_GARDEVOIR          31 // Hide Gardevoir
 /*Sea Mon Flags*/
-#define FLAG_HIDE_MILOTIC            34 // Hides Milotic
-#define FLAG_HIDE_KINGDRA            35 // Hide Kingdra
-#define FLAG_HIDE_PELIPPER           36 // Hides Walrein
-#define FLAG_HIDE_WAILORD            37 // Unused Flag
+#define FLAG_HIDE_MILOTIC            32 // Hides Milotic
+#define FLAG_HIDE_KINGDRA            33 // Hide Kingdra
+#define FLAG_HIDE_PELIPPER           34 // Hides Walrein
+#define FLAG_HIDE_WAILORD            35 // Hides Wailord
 /*Cave Mon Flags*/
-#define FLAG_HIDE_GALVANTULA         38 // Unused Flag
-#define FLAG_HIDE_SALAMANCE          39 // Unused Flag
-#define FLAG_HIDE_EXCADRILL          40 // Hides Excadrill
-#define FLAG_HIDE_GARGANACL          41 // Hides Garganacl
+#define FLAG_HIDE_GALVANTULA         36 // Hides Galvantula
+#define FLAG_HIDE_SALAMANCE          37 // Hides Salamence
+#define FLAG_HIDE_EXCADRILL          38 // Hides Excadrill
+#define FLAG_HIDE_GARGANACL          39 // Hides Garganacl
 /*Craggs Mon Flags*/
-#define FLAG_HIDE_BLAZIKEN           42 // Hides Blaziken
-#define FLAG_HIDE_LUCARIO            43 // Hides Lucario
-#define FLAG_HIDE_SNORLAX            44 // Hides Snorlax
-#define FLAG_HIDE_TINKATON           45 // Hides Tinkaton
+#define FLAG_HIDE_BLAZIKEN           40 // Hides Blaziken
+#define FLAG_HIDE_LUCARIO            41 // Hides Lucario
+#define FLAG_HIDE_SNORLAX            42 // Hides Snorlax
+#define FLAG_HIDE_TINKATON           43 // Hides Tinkaton
 /*Beach Mon Flags*/
-#define FLAG_HIDE_SWAMPERT           46 // Hides Swampert
-#define FLAG_HIDE_LINOONE            47 // Hides Linoone
-#define FLAG_HIDE_HARIYAMA           48 // Hides Hariyama
-#define FLAG_HIDE_SLOWKING           49 // Hides Slowking
+#define FLAG_HIDE_SWAMPERT           44 // Hides Swampert
+#define FLAG_HIDE_LINOONE            45 // Hides Linoone
+#define FLAG_HIDE_HARIYAMA           46 // Hides Hariyama
+#define FLAG_HIDE_SLOWKING           47 // Hides Slowking
 /*Garden Mon FLags*/
-#define FLAG_HIDE_ANNIHILAPE         50 // Hides Annihilape
-#define FLAG_HIDE_HERACROSS          51 // Hides Heracross
-#define FLAG_HIDE_RIBOMBEE           52 // Hides Ribombee
-#define FLAG_HIDE_POLTCHAGEIST       53 // Hides Vileplume
+#define FLAG_HIDE_ANNIHILAPE         48 // Hides Annihilape
+#define FLAG_HIDE_HERACROSS          49 // Hides Heracross
+#define FLAG_HIDE_RIBOMBEE           50 // Hides Ribombee
+#define FLAG_HIDE_POLTCHAGEIST       51 // Hides Vileplume
+/* Nessie Puzzle flags */
+#define FLAG_NESSIE_READ_BOOK             52 // Read the book for the Nessie solution
+#define FLAG_NESSIE_GOT_DAGGER            53 // Got the dagger for Nessie solution
+/*Sapprilon Puzzle Flags*/
+#define FLAG_UNUSED_0x043    54 // Unused Flag
+#define FLAG_UNUSED_0x044    55 // Unused Flag
+#define FLAG_UNUSED_0x045    56 // Unused Flag
+#define FLAG_UNUSED_0x046    57 // Unused Flag
+#define FLAG_UNUSED_0x047    58 // Unused Flag
 /**/
-#define FLAG_UNUSED_0x043    0x43 // Unused Flag
-#define FLAG_UNUSED_0x044    0x44 // Unused Flag
-#define FLAG_UNUSED_0x045    0x45 // Unused Flag
-#define FLAG_UNUSED_0x046    0x46 // Unused Flag
-#define FLAG_UNUSED_0x047    0x47 // Unused Flag
 #define FLAG_UNUSED_0x048    0x48 // Unused Flag
 #define FLAG_UNUSED_0x049    0x49 // Unused Flag
 #define FLAG_UNUSED_0x04A    0x4A // Unused Flag

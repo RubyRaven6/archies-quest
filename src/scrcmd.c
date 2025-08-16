@@ -3269,6 +3269,41 @@ bool8 ScrCmd_fwdweekday(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_handlesappypuzzle(struct ScriptContext *ctx)
+{
+    u32 output = VarGet(VAR_SAPPRILON_PUZZLE_VAL);
+    u32 choice = ScriptReadWord(ctx);
+     
+    switch(choice){
+        case 1:
+            output *= 10;
+            output += choice;
+            VarSet(VAR_SAPPRILON_PUZZLE_VAL, output);
+            DebugPrintf("Special Var: %u", VarGet(VAR_SAPPRILON_PUZZLE_VAL));
+            break;
+        case 2:
+            output *= 10;
+            output += choice;
+            VarSet(VAR_SAPPRILON_PUZZLE_VAL, output);
+            DebugPrintf("Special Var: %u", VarGet(VAR_SAPPRILON_PUZZLE_VAL));
+            break;
+        case 3:
+            output *= 10;
+            output += choice;
+            VarSet(VAR_SAPPRILON_PUZZLE_VAL, output);
+            DebugPrintf("Special Var: %u", VarGet(VAR_SAPPRILON_PUZZLE_VAL));
+            break;
+        case 4:
+            output *= 10;
+            output += choice;
+            VarSet(VAR_SAPPRILON_PUZZLE_VAL, output);
+            DebugPrintf("Special Var: %u", VarGet(VAR_SAPPRILON_PUZZLE_VAL));
+            break;
+    }
+
+    return FALSE;
+}
+
 void Script_EndTrainerCanSeeIf(struct ScriptContext *ctx)
 {
     u8 condition = ScriptReadByte(ctx);

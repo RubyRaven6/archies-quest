@@ -1,12 +1,13 @@
 mapscripts ArchiesHouse_1F_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_ARCHIE_ARRIVES, 0 {
+            removeobject(OBJ_FUTUREARCHIE)
             call(ArchiesHouse_EventScript_BeginningCutscene)
-            setvar(VAR_ARCHIE_ARRIVES, 1)
         }
     ]
     MAP_SCRIPT_ON_TRANSITION {
         if(var(VAR_ARCHIE_ARRIVES) == 1){clearflag(FLAG_HIDE_ARCHIE)}
+        else {}
     }
 }
 
@@ -17,10 +18,10 @@ script ArchiesHouse_EventScript_BeginningCutscene {
     delay(60)
     playbgm(MUS_DUMMY, FALSE)
     playse(SE_M_THUNDERBOLT2)
-    clearflag(FLAG_HIDE_ARCHIE)
     fadescreen(FADE_TO_WHITE)
     waitse
     fadescreen(FADE_FROM_WHITE)
+    clearflag(FLAG_HIDE_ARCHIE)
     addobject(OBJ_FUTUREARCHIE)
     playbgm(MUS_WEATHER_GROUDON, FALSE)
     speakername("Archie")
@@ -42,7 +43,8 @@ script ArchiesHouse_EventScript_BeginningCutscene {
     speakername("Old Archie")
     msgbox(format("You have to trust me. But you can't go alone. I know you have your friends outside, so go get whoever you want, and come back to me."))
     closemessage
-    return
+    setvar(VAR_ARCHIE_ARRIVES, 1)
+    end
 }
 
 script ArchiesHouse_EventScript_Archie {

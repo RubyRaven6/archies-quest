@@ -1,1 +1,353 @@
 mapscripts DemonLairs_Sapprilon_MapScripts {}
+
+script DemonLairs_Sapprilon_EventScript_CompactDisks {
+    msgbox("It's a stack of luminescent discs,\n
+            encased in a clear, durable case with\l
+            different illustrations on the front.", MSGBOX_SIGN)
+    waitmessage
+    closemessage
+}
+
+script DemonLairs_Sapprilon_EventScript_Monster {
+    if(var(VAR_TEMP_0) == 0) {
+            msgbox("There's a metallic cylinder on this table.\n
+                        On the front, you see a large\l
+                        MONSTER on the front.\p
+                        Examine it closer?", MSGBOX_YESNO)
+        waitmessage
+        closemessage
+        if(var(VAR_RESULT) == YES){
+            msgbox("You pick up the cylinder, and feel a\n
+                            liquid inside. In your infinite curiosity\l
+                            you try and take a sip.", MSGBOX_DEFAULT)
+            waitmessage
+            speakername("Archie")
+            msgbox("Ugh! This liquid is awful! It must be monster blood to taste so badly.")
+            waitmessage
+            closemessage
+            setvar(VAR_TEMP_0, 1)
+        } else {
+            msgbox("Feels like a good decision.", MSGBOX_DEFAULT)
+            waitmessage
+            closemessage
+        }
+    } else {
+        msgbox("There's a metallic cylinder on this table.\n
+                On the front, you see a large\l
+                MONSTER on the front.", MSGBOX_DEFAULT)
+        waitmessage
+        closemessage
+    }
+}
+
+script DemonLairs_Sapprilon_EventScript_RegularComputer {
+    msgbox(format("It's a machine you don't understand. It has an illustration of a skimpily dressed woman on it."), MSGBOX_SIGN)
+    waitmessage
+    closemessage
+}
+
+script DemonLairs_Sapprilon_EventScript_Bookshelf1 {
+    checkitem(ITEM_ACRO_BIKE, 1)
+    if(var(VAR_RESULT) == 0){
+        msgbox(format("It's a bookshelf wrought from metal. There seems to be a sleeve of waxen paper sticking out.\pTake it?"), MSGBOX_YESNO)
+        waitmessage
+        if(var(VAR_RESULT) == YES){
+            additem(ITEM_ACRO_BIKE, 1)
+            playse(MUS_OBTAIN_ITEM)
+            msgbox(format("You got the Black disk!"), MSGBOX_DEFAULT)
+            waitmessage
+            waitse
+            closemessage
+        }
+    } else {
+        msgbox(format("You already have the Black disk."))
+        waitmessage
+        closemessage
+    }
+    end
+}
+
+script DemonLairs_Sapprilon_EventScript_Bookshelf2 {
+    checkitem(ITEM_MACH_BIKE, 1)
+    if(var(VAR_RESULT) == 0){
+        msgbox(format("It's a bookshelf wrought from metal. There seems to be a sleeve of waxen paper sticking out.\pTake it?"), MSGBOX_YESNO)
+        waitmessage
+        if(var(VAR_RESULT) == YES){
+            additem(ITEM_MACH_BIKE, 1)
+            playse(MUS_OBTAIN_ITEM)
+            msgbox(format("You got the Yellow disk!"), MSGBOX_DEFAULT)
+            waitmessage
+            waitse
+            closemessage
+        }
+    } else {
+        msgbox(format("You already have the Yellow disk."))
+        waitmessage
+        closemessage
+    }
+    end
+}
+
+script DemonLairs_Sapprilon_EventScript_Bookshelf3 {
+    checkitem(ITEM_SS_TICKET, 1)
+    if(var(VAR_RESULT) == 0){
+        msgbox(format("It's a bookshelf wrought from metal. There seems to be a sleeve of waxen paper sticking out.\pTake it?"), MSGBOX_YESNO)
+        waitmessage
+        if(var(VAR_RESULT) == YES){
+            additem(ITEM_SS_TICKET, 1)
+            playse(MUS_OBTAIN_ITEM)
+            msgbox(format("You got the Cyan disk!"), MSGBOX_DEFAULT)
+            waitmessage
+            waitse
+            closemessage
+        }
+    } else {
+        msgbox(format("You already have the Cyan disk."))
+        waitmessage
+        closemessage
+    }
+    end
+}
+
+script DemonLairs_Sapprilon_EventScript_Bookshelf4 {
+    checkitem(ITEM_EON_TICKET, 1)
+    if(var(VAR_RESULT) == 0){
+        msgbox(format("It's a bookshelf wrought from metal. There seems to be a sleeve of waxen paper sticking out.\pTake it?"), MSGBOX_YESNO)
+        waitmessage
+        if(var(VAR_RESULT) == YES){
+            additem(ITEM_EON_TICKET, 1)
+            playse(MUS_OBTAIN_ITEM)
+            msgbox(format("You got the Magenta disk!"), MSGBOX_DEFAULT)
+            waitmessage
+            waitse
+            closemessage
+        }
+    } else {
+        msgbox(format("You already have the Magenta disk."))
+        waitmessage
+        closemessage
+    }
+    end
+}
+
+script DemonLairs_Sapprilon_EventScript_MainComputer {
+    msgbox(format("It's a strange contraption of glass and metal. Seems like you can select some options on it."), MSGBOX_DEFAULT)
+    waitmessage
+    closemessage
+    dynmultipush("MIDI", 0)
+    dynmultipush("DISKS", 1)
+    dynmultipush("PRINTER", 2)
+    if(flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){dynmultipush("TRANSPORT", 3)}
+    dynmultistack(16, 0, FALSE, 3, FALSE, 0, DYN_MULTICHOICE_CB_NONE)
+    switch(var(VAR_RESULT)){
+        case 0:
+            if(!flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){call(DemonLairs_Sapprilon_EventScript_Puzzle)}
+            else {
+                msgbox("No need to go over this again.")
+                waitmessage
+                closemessage
+            }
+            break
+        case 1:
+            if(!flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){call(DemonLairs_Sapprilon_EventScript_DiskInsert)}
+            else {
+                msgbox("The disks are stuck in the machine.")
+                waitmessage
+                closemessage
+            }
+            break
+        case 2:
+            call(DemonLairs_Sapprilon_EventScript_Printer)
+            break
+        case 3:
+            warpwhitefade(MAP_DEMONALIRS_SAPPRILON_INTERIOR, 5, 9)
+    }
+}
+
+script DemonLairs_Sapprilon_EventScript_Puzzle {
+    call(DemonLairs_ItemChecker)
+    msgbox("Use the program?",MSGBOX_YESNO)
+    if(var(VAR_RESULT) == TRUE && var(VAR_TEMP_1) == 1 && var(VAR_TEMP_2) == 1 && var(VAR_TEMP_3) == 1 && var(VAR_TEMP_4) == 1){
+        msgbox(format("Which disk will you select first?"))
+        call(DemonLairs_DiskInsertPuzzle)
+    } elif (var(VAR_RESULT) == NO){  
+    } else {
+        msgbox(format("Seems like you can't solve this yet."))
+    }
+}
+
+script DemonLairs_Sapprilon_EventScript_DiskInsert{
+    call(DemonLairs_ItemChecker)
+    if(var(VAR_TEMP_1) == 1 || var(VAR_TEMP_2) == 1 || var(VAR_TEMP_3) == 1 ||var(VAR_TEMP_4) == 1 ){
+        if(var(VAR_TEMP_1) == TRUE){
+            dynmultipush("Insert Black disk", 3)
+        }
+        if(var(VAR_TEMP_2) == TRUE){
+            dynmultipush("Insert Yellow disk", 2)
+        }
+        if(var(VAR_TEMP_3) == TRUE){
+            dynmultipush("Insert Cyan disk", 0)
+        }
+        if(var(VAR_TEMP_4) == TRUE){
+            dynmultipush("Insert Magenta disk", 1)
+        }
+        
+        dynmultistack(16, 1, FALSE, 3, FALSE, 0, DYN_MULTICHOICE_CB_NONE)
+        switch(var(VAR_RESULT)){
+            case 0:
+                playse(MUS_SAPPRILON1)
+                waitse
+                break
+            case 1:
+                playse(MUS_SAPPRILON2)
+                waitse
+                break
+            case 2:
+                playse(MUS_SAPPRILON3)
+                waitse
+                break
+            case 3:
+                playse(MUS_SAPPRILON4)
+                waitse
+                break
+        }
+    } else {
+        msgbox(format("It seems like you have to insert something for this option to work."), MSGBOX_SIGN)
+        waitmessage
+        closemessage
+    }
+}
+
+script DemonLairs_Sapprilon_EventScript_Printer {
+    msgbox("You select the option that's labelled\n“PRINTER.” After a while, a message\lappears on the glowing screen.\p
+            PRINTER CANNOT COMPLETE OPERATION.\nPLEASE REFILL CMYK CARTRIDGES.", MSGBOX_DEFAULT)
+    waitmessage
+    closemessage
+}
+
+script(local) DemonLairs_ItemChecker {
+    checkitem(ITEM_ACRO_BIKE, 1)
+    copyvar(VAR_TEMP_1, VAR_RESULT)
+    checkitem(ITEM_MACH_BIKE,1)
+    copyvar(VAR_TEMP_2, VAR_RESULT)
+    checkitem(ITEM_SS_TICKET,1)
+    copyvar(VAR_TEMP_3, VAR_RESULT)
+    checkitem(ITEM_EON_TICKET,1)
+    copyvar(VAR_TEMP_4, VAR_RESULT)
+    return
+}
+
+script(local) DemonLairs_DiskInsertPuzzle {
+    call(DemonLairs_ItemChecker)
+    dynmultichoice(16, 1, FALSE, 4, 0, DYN_MULTICHOICE_CB_NONE, "Insert Black disk", "Insert Yellow disk", "Insert Cyan disk", "Insert Magenta disk")
+    if(var(VAR_TEMP_1) == 1 || var(VAR_TEMP_2) == 1 || var(VAR_TEMP_3) == 1 || var(VAR_TEMP_4) == 1)
+    {
+        switch(var(VAR_RESULT)){
+        case 0:
+            call(DemonLairs_ItemChecker)
+            if(var(VAR_TEMP_1) == 1){
+                sappypuzzle(1)
+                removeitem(ITEM_ACRO_BIKE, 1)
+                msgbox("Inserted Black disk")
+                waitmessage
+                closemessage
+                if(var(VAR_TEMP_2) == 1 || var(VAR_TEMP_3) == 1 || var(VAR_TEMP_4) == 1){
+                    call(DemonLairs_DiskInsertPuzzle)
+                } else {
+                    goto(WinCondition)
+                }
+            } else {
+                msgbox("You already inserted that.")
+                waitmessage
+                closemessage
+                call(DemonLairs_DiskInsertPuzzle)
+            }
+            break
+        case 1:
+            call(DemonLairs_ItemChecker)
+            if(var(VAR_TEMP_2) == 1){
+                sappypuzzle(2)
+                removeitem(ITEM_MACH_BIKE, 1)
+                msgbox("Inserted Yellow disk")
+                waitmessage
+                closemessage
+                if(var(VAR_TEMP_2) == 1 || var(VAR_TEMP_3) == 1 || var(VAR_TEMP_4) == 1){
+                    call(DemonLairs_DiskInsertPuzzle)
+                } else {
+                    goto(WinCondition)
+                }
+            } else {
+                msgbox("You already inserted that.")
+                waitmessage
+                closemessage
+                call(DemonLairs_DiskInsertPuzzle)
+            }
+            break
+        case 2:
+            call(DemonLairs_ItemChecker)
+            if(var(VAR_TEMP_3) == 1){
+                sappypuzzle(3)
+                removeitem(ITEM_SS_TICKET, 1)
+                msgbox("Inserted Cyan disk")
+                waitmessage
+                closemessage
+                if(var(VAR_TEMP_1) == 1 || var(VAR_TEMP_2) == 1 || var(VAR_TEMP_4) == 1){
+                    call(DemonLairs_DiskInsertPuzzle)
+                } else {
+                    goto(WinCondition)
+                }
+            } else {
+                msgbox("You already inserted that.")
+                waitmessage
+                closemessage
+                call(DemonLairs_DiskInsertPuzzle)
+            }
+            break
+        case 3:
+            call(DemonLairs_ItemChecker)
+            if(var(VAR_TEMP_4) == 1){
+                sappypuzzle(4)
+                removeitem(ITEM_EON_TICKET, 1)
+                msgbox("Inserted Magneta disk")
+                waitmessage
+                closemessage
+                if(var(VAR_TEMP_1) == 1 || var(VAR_TEMP_2) == 1 || var(VAR_TEMP_3) == 1){
+                    call(DemonLairs_DiskInsertPuzzle)
+                } else {
+                    goto(WinCondition)
+                }
+            } else {
+                msgbox("You already inserted that.")
+                waitmessage
+                closemessage
+                call(DemonLairs_DiskInsertPuzzle)
+            }
+            break
+        }
+    }
+    goto(EarlyExit)
+}
+
+script(local) EarlyExit{
+    call(DemonLairs_ItemChecker)
+    if(var(VAR_TEMP_1) < 1){additem(ITEM_ACRO_BIKE,  1)}
+    if(var(VAR_TEMP_2) < 1){additem(ITEM_MACH_BIKE,  1)}
+    if(var(VAR_TEMP_3) < 1){additem(ITEM_SS_TICKET,  1)}
+    if(var(VAR_TEMP_4) < 1){additem(ITEM_EON_TICKET, 1)}
+    setvar(VAR_SAPPRILON_PUZZLE_VAL, 0)
+    end
+}
+
+script(local) WinCondition {
+    if (var(VAR_SAPPRILON_PUZZLE_VAL) == 3421) {
+        setflag(FLAG_SAPPRILON_PUZZLE_SOLVED)
+        msgbox("Congrats ur a great dev ruby")
+        waitmessage
+        closemessage
+    } else {
+        setvar(VAR_SAPPRILON_PUZZLE_VAL, 0)
+        msgbox("Hmm… that wasn't right")
+        waitmessage
+        closemessage
+    }
+}
