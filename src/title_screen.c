@@ -196,6 +196,16 @@ static const struct CompressedSpriteSheet sSpriteSheet_EmeraldVersion[] =
     {},
 };
 
+static const struct CompressedSpriteSheet sSpriteSheet_MaxieVersion[] =
+{
+    {
+        .data = gTitleScreenMaxieVersionGfx,
+        .size = 0x1000,
+        .tag = TAG_VERSION
+    },
+    {},
+};
+
 static const struct OamData sOamData_CopyrightBanner =
 {
     .y = DISPLAY_HEIGHT,
@@ -600,10 +610,13 @@ void CB2_InitTitleScreen(void)
         // bg2
         LZ77UnCompVram(gTitleScreenPokemonLogoGfx, (void *)(BG_CHAR_ADDR(0)));
         LZ77UnCompVram(gTitleScreenPokemonLogoTilemap, (void *)(BG_SCREEN_ADDR(9)));
-        LoadPalette(gTitleScreenBgPalettes, BG_PLTT_ID(0), 15 * PLTT_SIZE_4BPP);
+        if (VarGet(VAR_DEMON_LORD_PROGRESS) == 5){
+            LoadPalette(gTitleScreenFirePalette, BG_PLTT_ID(0), 15 * PLTT_SIZE_4BPP);
+        } else {
+            LoadPalette(gTitleScreenBgPalettes, BG_PLTT_ID(0), 15 * PLTT_SIZE_4BPP);
+        }
         // bg3
         if (VarGet(VAR_DEMON_LORD_PROGRESS) == 5){
-            DebugPrintf("Maxie If Statement");
             LZ77UnCompVram(sTitleScreenMaxieGfx, (void *)(BG_CHAR_ADDR(2)));
             LZ77UnCompVram(sTitleScreenMaxieTilemap, (void *)(BG_SCREEN_ADDR(26)));
         } else {
@@ -619,7 +632,11 @@ void CB2_InitTitleScreen(void)
         ResetSpriteData();
         FreeAllSpritePalettes();
         gReservedSpritePaletteCount = 9;
-        LoadCompressedSpriteSheet(&sSpriteSheet_EmeraldVersion[0]);
+        if (VarGet(VAR_DEMON_LORD_PROGRESS) == 5){
+            LoadCompressedSpriteSheet(&sSpriteSheet_MaxieVersion[0]);
+        } else {
+            LoadCompressedSpriteSheet(&sSpriteSheet_EmeraldVersion[0]);
+        }
         LoadCompressedSpriteSheet(&sSpriteSheet_PressStart[0]);
         LoadCompressedSpriteSheet(&sPokemonLogoShineSpriteSheet[0]);
         LoadPalette(gTitleScreenEmeraldVersionPal, OBJ_PLTT_ID(0), PLTT_SIZE_4BPP);
@@ -667,7 +684,10 @@ void CB2_InitTitleScreen(void)
                                     | DISPCNT_OBJ_ON
                                     | DISPCNT_WIN0_ON
                                     | DISPCNT_OBJWIN_ON);
-        m4aSongNumStart(MUS_TITLE);
+        if(VarGet(VAR_DEMON_LORD_PROGRESS) == 5)
+            m4aSongNumStart(MUS_AQUA_MAGMA_HIDEOUT);
+        else
+            m4aSongNumStart(MUS_TITLE);
         gMain.state = 5;
         break;
     case 5:

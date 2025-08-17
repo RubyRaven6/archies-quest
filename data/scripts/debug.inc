@@ -142,6 +142,9 @@ Debug_EventScript_Script_1::
 	end
 
 Debug_EventScript_Script_2::
+	setvar VAR_DEMON_LORD_PROGRESS 5
+	autosave
+	callnative 0
 	release
 	end
 
