@@ -21,13 +21,6 @@
       "elevation": 0,
       "dest_map": "MAP_DEMON_LAIRS_NESSIE_INTERIOR",
       "dest_warp_id": "0"
-    },
-    {
-      "x": 3,
-      "y": 2,
-      "elevation": 0,
-      "dest_map": "MAP_DEMON_LAIRS_NESSIE_INTERIOR",
-      "dest_warp_id": "0"
     }
   ],
   "coord_events": [],
