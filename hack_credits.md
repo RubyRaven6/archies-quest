@@ -1,4 +1,4 @@
-# CREDITS:
+# CREDITS
 
 ## Graphics
 **Puzzle UI Graphics**: ruby<br>
