@@ -1918,8 +1918,8 @@ static void Task_Saving(u8 taskId)
 static bool8 Saving_Init(struct Task *task)
 {
     struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
-    s16 x = playerObjEvent->currentCoords.x;
-    s16 y = playerObjEvent->currentCoords.y;
+    // s16 x = playerObjEvent->currentCoords.x;
+    // s16 y = playerObjEvent->currentCoords.y;
     s16 x2;
     s16 y2;    
     s16 x_diff;
