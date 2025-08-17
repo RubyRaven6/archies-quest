@@ -93,7 +93,6 @@
 #define FLAG_UNUSED_0x046    57 // Unused Flag
 #define FLAG_UNUSED_0x047    58 // Unused Flag
 /**/
-#define FLAG_UNUSED_0x048    0x48 // Unused Flag
 #define FLAG_UNUSED_0x049    0x49 // Unused Flag
 #define FLAG_UNUSED_0x04A    0x4A // Unused Flag
 #define FLAG_UNUSED_0x04B    0x4B // Unused Flag

@@ -9,15 +9,11 @@ u32 GetCurrentLevelCap(void)
 {
     static const u32 sLevelCapFlagMap[][2] =
     {
-        {FLAG_BADGE01_GET, 15},
-        {FLAG_BADGE02_GET, 19},
-        {FLAG_BADGE03_GET, 24},
-        {FLAG_BADGE04_GET, 29},
-        {FLAG_BADGE05_GET, 31},
-        {FLAG_BADGE06_GET, 33},
-        {FLAG_BADGE07_GET, 42},
-        {FLAG_BADGE08_GET, 46},
-        {FLAG_IS_CHAMPION, 58},
+        {(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN),   50},
+        {(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GIGAGEHSOOL),  60},
+        {(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON),    70},
+        {(TRAINER_FLAGS_START + TRAINER_DEMONLORD_ADDISAMAP),    80},
+        {(TRAINER_FLAGS_START + TRAINER_DEMONLORD_MAXIE),       100},
     };
 
     u32 i;
@@ -118,4 +114,16 @@ u32 GetCurrentEVCap(void)
     }
 
     return MAX_TOTAL_EVS;
+}
+
+void LevelMonsToCap(void)
+{
+    u32 currentCap = GetCurrentLevelCap();
+    
+    for (u32 i = 0; i < 3; i++)
+    {            
+        u32 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
+        SetMonData(&gPlayerParty[i], MON_DATA_EXP, &gExperienceTables[gSpeciesInfo[species].growthRate][currentCap]);
+        CalculateMonStats(&gPlayerParty[i]);
+    }
 }
