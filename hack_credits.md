@@ -143,10 +143,12 @@ Insertable format: Rahtak
 </table>
 
 ## Feature Branches and Code
-**UI Stat Editor, Party Screen**: [Archie (TeamAquasHideout)](https://github.com/TeamAquasHideout/pokeemerald/tree/sandbox)
-**BW Summary Screen**: [RavePossum](https://github.com/ravepossum/pokeemerald-expansion/tree/bw_summary_screen_expansion)
+**UI Stat Editor, Party Screen**: [Archie (TeamAquasHideout)](https://github.com/TeamAquasHideout/pokeemerald/tree/sandbox)<br>
+**BW Summary Screen**: [RavePossum](https://github.com/ravepossum/pokeemerald-expansion/tree/bw_summary_screen_expansion)<br>
+**Decapitalized branch**: [ProfHarpe](https://github.com/prof-harpe/pokeemerald-expansion/tree/Decapitalized)
 
 ## Special Thanks
 - James (ruby's bf)
 - MGriffin for help with UI code
 - SBird for Math of Sapprilon puzzle
+- Pokémon Expansion Senate
