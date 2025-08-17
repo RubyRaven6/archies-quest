@@ -1,8 +1,14 @@
 # CREDITS:
-**Fence**: KyuZee<br>
-**Archie ORAS OW Sprite**: hyo
 
-**Legend of Zelda House Secondary**, **Volcano Secondary**
+## Graphics
+**Puzzle UI Graphics**: ruby<br>
+**Demon Lord Sprites**: ryuuji<br>
+**Archie ORAS OW Sprite**: hyo<br>
+
+## Tilesets
+**Fence in Archie's Backyard**: KyuZee<br>
+
+**Legend of Zelda House Secondary**
 Buildings: Hek-el-grande
 
 Assembler : Yumekua
@@ -12,77 +18,135 @@ Main Creators:
 - Heartlessdragoon
 - Vurtax 
 
-More creators :
-- Redblueyellow
-- Heartless Dragoon
-- Morlockhater
-- Nemu
-- Ross Hawkins
-- Pokemon Dawn Team
-- Slimshady
-- Thedeadheroalistar
-- The-Red-Ex
-- Zein
-- Fabnt 
-- Idilio
-- Silverdeoxys563
-- Puggsoy
-- Aveontrainer
-- Alistar
-- Shyinn 
-- Dragoon
-- Zein
-- War8
-- SteamyJ
-- Anonaplacca
-- Dasani
-- Zeo
-- Pokémon Rejuvenation Team
-- Anonaplacca
-- 125scratch
-- aj nitro
-- Akiazurka
-- Aleclom
-- Anonalpacca
-- Bacon
-- Cuddlesthefatcat
-- Dawnbronze
-- french orange
-- J-Treecko252
-- Labs
-- Lennybitao
-- Matheus123
-- Mr. C
-- oceanside
-- ploaj
-- Pokemon Reborn Team
-- Random Talking Bush
-- Remy
-- robbydude
-- RocketSeviperShadow
-- Seiyouh
-- snuffles5
-- spherical ice
-- taka Digi and Joe Schmoe
-- The Purple Stuff
-- The Red-Ex
-- TheWildDeadHero
-- Tonberry2k
-- XDinky
-- Thewilddeadhero
-- Skidmarc25
+More creators:
+<table>
+    <tr>
+        <td>Redblueyellow</td>
+        <td>Aveontrainer</td>
+        <td>Akiazurka</td>
+        <td>Pokemon Reborn Team</td>
+    </tr>
+    <tr>
+        <td>Heartless Dragoon</td>
+        <td>Alistar</td>
+        <td>Aleclom</td>
+        <td>Random Talking Bush</td>
+    </tr>
+    <tr>
+        <td>Morlockhater</td>
+        <td>Shyinn</td>
+        <td>Anonalpacca</td>
+        <td>Remy</td>
+    </tr>
+    <tr>
+        <td>Nemu</td>
+        <td>Dragoon</td>
+        <td>Bacon</td>
+        <td>robbydude</td>
+    </tr>
+    <tr>
+        <td>Ross Hawkins</td>
+        <td>Zein</td>
+        <td>Cuddlesthefatcat</td>
+        <td>RocketSeviperShadow</td>
+    </tr>
+    <tr>
+        <td>Pokemon Dawn Team</td>
+        <td>War8</td>
+        <td>Dawnbronze</td>
+        <td>Seiyouh</td>
+    </tr>
+    <tr>
+        <td>Slimshady</td>
+        <td>SteamyJ</td>
+        <td>french orange</td>
+        <td>snuffles5</td>
+    </tr>
+    <tr>
+        <td>Thedeadheroalistar</td>
+        <td>Anonaplacca</td>
+        <td>J-Treecko252</td>
+        <td>spherical ice</td>
+    </tr>
+    <tr>
+        <td>The-Red-Ex</td>
+        <td>Dasani</td>
+        <td>Labs</td>
+        <td>taka Digi and Joe Schmoe</td>
+    </tr>
+    <tr>
+        <td>Zein</td>
+        <td>Zeo</td>
+        <td>Lennybitao</td>
+        <td>The Purple Stuff</td>
+    </tr>
+    <tr>
+        <td>Fabnt</td>
+        <td>Pokémon Rejuvenation Team</td>
+        <td>Matheus123</td>
+        <td>The Red-Ex</td>
+    </tr>
+    <tr>
+        <td>Idilio</td>
+        <td>Anonaplacca</td>
+        <td>Mr. C</td>
+        <td>TheWildDeadHero</td>
+    </tr>
+    <tr>
+        <td>Silverdeoxys563</td>
+        <td>125scratch</td>
+        <td>oceanside</td>
+        <td>Tonberry2k</td>
+    </tr>
+    <tr>
+        <td>Puggsoy /*/</td>
+        <td>aj nitro /*/</td>
+        <td>ploaj /*/</td>
+        <td>XDinky</td>
+    </tr>
+    <tr>
+        <td>Thewilddeadhero</td>
+        <td>Skidmarc25</td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
 
 Insertable format: Rahtak
 
 **Space Meteor Tileset**
-- Rahtak
-- TheDeadHeroAlistair
-- Serg!o
-- Remy
-- Fangking
-- Omega
-- Kyledove
-- J-Treecko252
-- Ekat99
-- KingTapir
-- Skillmen
+<table>
+    <tr>
+        <td> Rahtak</td>
+        <td> Kyledove</td>
+    </tr>
+    <tr>
+        <td> TheDeadHeroAlistair</td>
+        <td> J-Treecko252</td>
+    </tr>
+    <tr>
+        <td> Serg!o</td>
+        <td> Ekat99</td>
+    </tr>
+    <tr>
+        <td> Remy</td>
+        <td> KingTapir</td>
+    </tr>
+    <tr>
+        <td> Fangking</td>
+        <td> Skillmen</td>
+    </tr>
+    <tr>
+        <td> Omega</td>
+        <td></td>
+    </tr>
+</table>
+
+## Feature Branches and Code
+**UI Stat Editor, Party Screen**: [Archie (TeamAquasHideout)](https://github.com/TeamAquasHideout/pokeemerald/tree/sandbox)
+**BW Summary Screen**: [RavePossum](https://github.com/ravepossum/pokeemerald-expansion/tree/bw_summary_screen_expansion)
+
+## Special Thanks
+- James (ruby's bf)
+- MGriffin for help with UI code
+- SBird for Math of Sapprilon puzzle
