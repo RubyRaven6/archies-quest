@@ -4,6 +4,7 @@
 **Puzzle UI Graphics**: ruby<br>
 **Demon Lord Sprites**: ryuuji<br>
 **Archie ORAS OW Sprite**: hyo<br>
+**HGSS Ruin Maniac**: Delta231
 
 ## Tilesets
 **Fence in Archie's Backyard**: KyuZee<br>

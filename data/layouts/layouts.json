@@ -4614,8 +4614,8 @@
     {
       "id": "LAYOUT_DEMON_LAIRS_ADDISAMAP_INTERIOR",
       "name": "DemonLairs_Addisamap_Interior_Layout",
-      "width": 17,
-      "height": 24,
+      "width": 25,
+      "height": 28,
       "primary_tileset": "gTileset_AddisamapLairPrimary",
       "secondary_tileset": "gTileset_EverGrande",
       "border_filepath": "data/layouts/DemonLairs_Addisamap_Interior/border.bin",

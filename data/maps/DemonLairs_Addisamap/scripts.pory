@@ -1,1 +1,5 @@
-mapscripts DemonLairs_Addisamap_MapScripts {}
+mapscripts DemonLairs_Addisamap_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+		setvar(VAR_DEMON_LORD_PROGRESS, 4)
+	}
+}
