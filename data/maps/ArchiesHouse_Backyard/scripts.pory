@@ -4,6 +4,15 @@ mapscripts ArchiesHouse_Backyard_MapScripts {
 			clearflag(FLAG_TOGGLE_WATER_INTERACT)
 		}
     }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_ARCHIE_ARRIVES, 1 {
+            speakername("Archie")
+            msgbox(format("I better hurry… and only bring who I can.\pFour should be enough, I think."))
+            waitmessage
+            closemessage
+            setvar(VAR_ARCHIE_ARRIVES, 2)
+        }
+    ]
 }
 
 // script ArchiesHouse_Backyard_EventScripts_ {

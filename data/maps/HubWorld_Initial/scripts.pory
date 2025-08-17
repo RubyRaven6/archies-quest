@@ -1,4 +1,21 @@
 mapscripts HubWorld_Initial_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        switch(var(VAR_DEMON_LORD_PROGRESS)){
+            case 0:
+                setmaplayoutindex(LAYOUT_HUB_WORLD_INITIAL) // First Time
+            case 1:
+                setmaplayoutindex(LAYOUT_HUB_WORLD_NESSIE_DEFEATED) // After Defeating Nessie
+            case 2:
+                setmaplayoutindex(LAYOUT_HUB_WORLD_GIGAGEHSOOL_DEFEATED) // After defeating Gigageh
+            default:
+                setmaplayoutindex(LAYOUT_HUB_WORLD_SAPPRILON_DEFEATED) // After defeating Sapprilon and Addisamap
+        }
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_DEMON_LORD_PROGRESS, 4 {
+            goto(HubWorld_EventScript_Maxie)
+        }
+    ]
 }
 
 script HubWorld_EventScript_Archie {
@@ -11,4 +28,12 @@ script HubWorld_EventScript_Archie {
                 Lastly, I've brought a device from the future, containing many items to help make your Pokémon stornger.\p
                 And if I recall correctly, you also have berries as a farmer, right?\p
                 That's all for now. If you have any questions, just talk to me again."))
+}
+
+script HubWorld_EventScript_Maxie {
+    // Player comes back
+    // Screenshake
+    // Maxie talks
+    setvar(VAR_DEMON_LORD_PROGRESS, 5)
+    callnative(0)
 }

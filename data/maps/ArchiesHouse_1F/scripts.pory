@@ -6,7 +6,7 @@ mapscripts ArchiesHouse_1F_MapScripts {
         }
     ]
     MAP_SCRIPT_ON_TRANSITION {
-        if(var(VAR_ARCHIE_ARRIVES) == 1){clearflag(FLAG_HIDE_ARCHIE)}
+        if(var(VAR_ARCHIE_ARRIVES) > 0){clearflag(FLAG_HIDE_ARCHIE)}
         else {}
     }
 }
