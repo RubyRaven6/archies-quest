@@ -99,9 +99,9 @@ More creators:
         <td>Tonberry2k</td>
     </tr>
     <tr>
-        <td>Puggsoy /*/</td>
-        <td>aj nitro /*/</td>
-        <td>ploaj /*/</td>
+        <td>Puggsoy</td>
+        <td>aj nitro</td>
+        <td>ploaj</td>
         <td>XDinky</td>
     </tr>
     <tr>
