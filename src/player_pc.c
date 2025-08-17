@@ -181,14 +181,14 @@ static EWRAM_DATA u8 sTopMenuNumOptions = 0;
 EWRAM_DATA struct PlayerPCItemPageStruct gPlayerPCItemPageInfo = {};
 static EWRAM_DATA struct ItemStorageMenu *sItemStorageMenu = NULL;
 
-static const u8 sText_WithdrawItem[] = _("WITHDRAW ITEM");
-static const u8 sText_DepositItem[] = _("DEPOSIT ITEM");
-static const u8 sText_TossItem[] = _("TOSS ITEM");
-static const u8 sText_Mailbox[] = _("MAILBOX");
+static const u8 sText_WithdrawItem[] = _("Withdraw Item");
+static const u8 sText_DepositItem[] = _("Deposit Item");
+static const u8 sText_TossItem[] = _("Toss Item");
+static const u8 sText_Mailbox[] = _("Mailbox");
 
 static const u8 sText_WithdrawHowManyItems[] = _("Withdraw how many\n{STR_VAR_1}?");
 static const u8 sText_WithdrawXItems[] = _("Withdrew {STR_VAR_2}\n{STR_VAR_1}.");
-static const u8 sText_NoRoomInBag[] = _("There is no more\nroom in the BAG.");
+static const u8 sText_NoRoomInBag[] = _("There is no more\nroom in the Bag.");
 static const u8 sText_TooImportantToToss[] = _("That's much too\nimportant to toss\nout!");
 
 static const u8 *const sItemStorage_OptionDescriptions[] =
@@ -201,10 +201,10 @@ static const u8 *const sItemStorage_OptionDescriptions[] =
 
 static const struct MenuAction sPlayerPCMenuActions[] =
 {
-    [MENU_ITEMSTORAGE] = { COMPOUND_STRING("ITEM STORAGE"), {PlayerPC_ItemStorage} },
+    [MENU_ITEMSTORAGE] = { COMPOUND_STRING("Item Storage"), {PlayerPC_ItemStorage} },
     [MENU_MAILBOX]     = { sText_Mailbox,                   {PlayerPC_Mailbox} },
-    [MENU_DECORATION]  = { COMPOUND_STRING("DECORATION"),   {PlayerPC_Decoration} },
-    [MENU_TURNOFF]     = { COMPOUND_STRING("TURN OFF"),     {PlayerPC_TurnOff} }
+    [MENU_DECORATION]  = { COMPOUND_STRING("Decoration"),   {PlayerPC_Decoration} },
+    [MENU_TURNOFF]     = { COMPOUND_STRING("Turn Off"),     {PlayerPC_TurnOff} }
 };
 
 static const u8 sBedroomPC_OptionOrder[] =
@@ -219,7 +219,7 @@ static const u8 sBedroomPC_OptionOrder[] =
 static const u8 sPlayerPC_OptionOrder[] =
 {
     MENU_ITEMSTORAGE,
-    MENU_MAILBOX,
+    //MENU_MAILBOX,
     MENU_TURNOFF
 };
 #define NUM_PLAYER_PC_OPTIONS ARRAY_COUNT(sPlayerPC_OptionOrder)
@@ -234,15 +234,131 @@ static const struct MenuAction sItemStorage_MenuActions[] =
 
 static const u16 sNewGamePCItems[][2] =
 {
-    { ITEM_POTION, 1 },
+    // Gems
+    { ITEM_NORMAL_GEM, 1 },
+    { ITEM_FIRE_GEM, 1 },
+    { ITEM_WATER_GEM, 1 },
+    { ITEM_ELECTRIC_GEM, 1 },
+    { ITEM_GRASS_GEM, 1 },
+    { ITEM_ICE_GEM, 1 },
+    { ITEM_FIGHTING_GEM, 1 },
+    { ITEM_POISON_GEM, 1 },
+    { ITEM_GROUND_GEM, 1 },
+    { ITEM_FLYING_GEM, 1 },
+    { ITEM_PSYCHIC_GEM, 1 },
+    { ITEM_BUG_GEM, 1 },
+    { ITEM_ROCK_GEM, 1 },
+    { ITEM_GHOST_GEM, 1 },
+    { ITEM_DRAGON_GEM, 1 },
+    { ITEM_DARK_GEM, 1 },
+    { ITEM_STEEL_GEM, 1 },
+    { ITEM_FAIRY_GEM, 1 },
+
+    // Type-boosting Held Items
+    { ITEM_SILK_SCARF, 1 },
+    { ITEM_CHARCOAL, 1 },
+    { ITEM_MYSTIC_WATER, 1 },
+    { ITEM_MAGNET, 1 },
+    { ITEM_MIRACLE_SEED, 1 },
+    { ITEM_NEVER_MELT_ICE, 1 },
+    { ITEM_BLACK_BELT, 1 },
+    { ITEM_POISON_BARB, 1 },
+    { ITEM_SOFT_SAND, 1 },
+    { ITEM_SHARP_BEAK, 1 },
+    { ITEM_TWISTED_SPOON, 1 },
+    { ITEM_SILVER_POWDER, 1 },
+    { ITEM_HARD_STONE, 1 },
+    { ITEM_SPELL_TAG, 1 },
+    { ITEM_DRAGON_FANG, 1 },
+    { ITEM_BLACK_GLASSES, 1 },
+    { ITEM_METAL_COAT, 1 },
+
+    // Choice Items
+    { ITEM_CHOICE_BAND, 1 },
+    { ITEM_CHOICE_SPECS, 1 },
+    { ITEM_CHOICE_SCARF, 1 },
+
+    // Status Orbs
+    { ITEM_FLAME_ORB, 1 },
+    { ITEM_TOXIC_ORB, 1 },
+
+    // Weather Rocks
+    { ITEM_DAMP_ROCK, 1 },
+    { ITEM_HEAT_ROCK, 1 },
+    { ITEM_SMOOTH_ROCK, 1 },
+    { ITEM_ICY_ROCK, 1 },
+
+    // Terrain Seeds
+    { ITEM_ELECTRIC_SEED, 1 },
+    { ITEM_PSYCHIC_SEED, 1 },
+    { ITEM_MISTY_SEED, 1 },
+    { ITEM_GRASSY_SEED, 1 },
+
+    // Type-activated Stat Modifiers
+    { ITEM_ABSORB_BULB, 1 },
+    { ITEM_CELL_BATTERY, 1 },
+    { ITEM_LUMINOUS_MOSS, 1 },
+    { ITEM_SNOWBALL, 1 },
+
+    // Misc. Held Items
+    { ITEM_BRIGHT_POWDER, 1 },
+    { ITEM_WHITE_HERB, 1 },
+    { ITEM_QUICK_CLAW, 1 },
+    { ITEM_SOOTHE_BELL, 1 },
+    { ITEM_MENTAL_HERB, 1 },
+    { ITEM_KINGS_ROCK, 1 },
+    { ITEM_FOCUS_BAND, 1 },
+    { ITEM_SCOPE_LENS, 1 },
+    { ITEM_LEFTOVERS, 1 },
+    { ITEM_SHELL_BELL, 1 },
+    { ITEM_WIDE_LENS, 1 },
+    { ITEM_MUSCLE_BAND, 1 },
+    { ITEM_WISE_GLASSES, 1 },
+    { ITEM_EXPERT_BELT, 1 },
+    { ITEM_LIGHT_CLAY, 1 },
+    { ITEM_LIFE_ORB, 1 },
+    { ITEM_POWER_HERB, 1 },
+    { ITEM_FOCUS_SASH, 1 },
+    { ITEM_ZOOM_LENS, 1 },
+    { ITEM_METRONOME, 1 },
+    { ITEM_IRON_BALL, 1 },
+    { ITEM_LAGGING_TAIL, 1 },
+    { ITEM_DESTINY_KNOT, 1 },
+    { ITEM_BLACK_SLUDGE, 1 },
+    { ITEM_GRIP_CLAW, 1 },
+    { ITEM_STICKY_BARB, 1 },
+    { ITEM_SHED_SHELL, 1 },
+    { ITEM_BIG_ROOT, 1 },
+    { ITEM_RAZOR_CLAW, 1 },
+    { ITEM_RAZOR_FANG, 1 },
+    { ITEM_EVIOLITE, 1 },
+    { ITEM_FLOAT_STONE, 1 },
+    { ITEM_ROCKY_HELMET, 1 },
+    { ITEM_AIR_BALLOON, 1 },
+    { ITEM_RED_CARD, 1 },
+    { ITEM_RING_TARGET, 1 },
+    { ITEM_BINDING_BAND, 1 },
+    { ITEM_EJECT_BUTTON, 1 },
+    { ITEM_WEAKNESS_POLICY, 1 },
+    { ITEM_ASSAULT_VEST, 1 },
+    { ITEM_SAFETY_GOGGLES, 1 },
+    { ITEM_ADRENALINE_ORB, 1 },
+    { ITEM_TERRAIN_EXTENDER, 1 },
+    { ITEM_PROTECTIVE_PADS, 1 },
+    { ITEM_THROAT_SPRAY, 1 },
+    { ITEM_EJECT_PACK, 1 },
+    { ITEM_HEAVY_DUTY_BOOTS, 1 },
+    { ITEM_BLUNDER_POLICY, 1 },
+    { ITEM_ROOM_SERVICE, 1 },
+    { ITEM_UTILITY_UMBRELLA, 1 },
     { ITEM_NONE, 0 }
 };
 
 const struct MenuAction gMailboxMailOptions[] =
 {
-    { COMPOUND_STRING("READ"),        {Mailbox_DoMailRead} },
-    { COMPOUND_STRING("MOVE TO BAG"), {Mailbox_MoveToBag} },
-    { COMPOUND_STRING("GIVE"),        {Mailbox_Give} },
+    { COMPOUND_STRING("Read"),        {Mailbox_DoMailRead} },
+    { COMPOUND_STRING("Move to Bag"), {Mailbox_MoveToBag} },
+    { COMPOUND_STRING("Give"),        {Mailbox_Give} },
     { gText_Cancel2,                  {Mailbox_Cancel} }
 };
 
@@ -253,7 +369,7 @@ static const struct WindowTemplate sWindowTemplates_MainMenus[] =
         .tilemapLeft = 1,
         .tilemapTop = 1,
         .width = 9,
-        .height = 6,
+        .height = 4,
         .paletteNum = 15,
         .baseBlock = 1
     },
@@ -619,19 +735,19 @@ static void ItemStorage_Withdraw(u8 taskId)
 
 static void ItemStorage_Toss(u8 taskId)
 {
-    s16 *data = gTasks[taskId].data;
+    // s16 *data = gTasks[taskId].data;
 
-    tUsedSlots = CountUsedPCItemSlots();
-    if (tUsedSlots != 0)
-    {
-        ItemStorage_Enter(taskId, TRUE);
-    }
-    else
-    {
+    // tUsedSlots = CountUsedPCItemSlots();
+    // if (tUsedSlots != 0)
+    // {
+    //     ItemStorage_Enter(taskId, TRUE);
+    // }
+    // else
+    // {
         // Can't toss, no items in PC
         ItemStorage_EraseMainMenu(taskId);
-        DisplayItemMessageOnField(taskId, gText_NoItems, PlayerPC_ItemStorage);
-    }
+        DisplayItemMessageOnField(taskId, COMPOUND_STRING("Don't throw these away!\nAre you stupid?{PAUSE_UNTIL_PRESS}"), PlayerPC_ItemStorage);
+    //}
 }
 
 static void ItemStorage_Enter(u8 taskId, bool8 toss)

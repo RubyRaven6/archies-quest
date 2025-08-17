@@ -29,7 +29,7 @@ EventScript_AccessPlayersPC::
 	msgbox gText_AccessedPlayersPC, MSGBOX_DEFAULT
 	special PlayerPC
 	waitstate
-	goto EventScript_PCMainMenu
+	closemessage
 	end
 
 EventScript_AccessPokemonStorage::

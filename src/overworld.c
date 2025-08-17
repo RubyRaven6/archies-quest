@@ -916,7 +916,7 @@ static void LoadMapFromWarp(bool32 a1)
     ClearTempFieldEventData();
     ResetDexNavSearch();
     // reset hours override on every warp
-    sHoursOverride = 0; 
+    sHoursOverride = 0;
     ResetCyclingRoadChallengeData();
     RestartWildEncounterImmunitySteps();
 #if FREE_MATCH_CALL == FALSE
@@ -1559,7 +1559,7 @@ const struct BlendSettings gTimeOfDayBlend[] =
 };
 
 #define DEFAULT_WEIGHT 256
-#define TIME_BLEND_WEIGHT(begin, end) (DEFAULT_WEIGHT - (DEFAULT_WEIGHT * ((hours - begin) * MINUTES_PER_HOUR + minutes) / ((end - begin) * MINUTES_PER_HOUR)))
+#define TIME_BLEND_WEIGHT(begin, end) (DEFAULT_WEIGHT - (DEFAULT_WEIGHT * SAFE_DIV(((hours - begin) * MINUTES_PER_HOUR + minutes), ((end - begin) * MINUTES_PER_HOUR))))
 
 #define MORNING_HOUR_MIDDLE (MORNING_HOUR_BEGIN + ((MORNING_HOUR_END - MORNING_HOUR_BEGIN) / 2))
 
@@ -1790,7 +1790,8 @@ void CB2_NewGame(void)
     PlayTimeCounter_Start();
     ScriptContext_Init();
     UnlockPlayerFieldControls();
-    gFieldCallback = ExecuteTruckSequence;
+    // gFieldCallback = ExecuteTruckSequence;
+    gFieldCallback = NULL;
     gFieldCallback2 = NULL;
     DoMapLoadLoop(&gMain.state);
     SetFieldVBlankCallback();

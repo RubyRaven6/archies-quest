@@ -897,7 +897,10 @@ void HandleInputChooseMove(u32 battler)
     }
     else if (JOY_NEW(START_BUTTON))
     {
-        if (gBattleStruct->gimmick.usableGimmick[battler] != GIMMICK_NONE && !HasTrainerUsedGimmick(battler, gBattleStruct->gimmick.usableGimmick[battler]))
+        if (gBattleStruct->gimmick.usableGimmick[battler] != GIMMICK_NONE
+            && !HasTrainerUsedGimmick(battler, gBattleStruct->gimmick.usableGimmick[battler])
+            && !(gBattleStruct->gimmick.usableGimmick[battler] == GIMMICK_Z_MOVE
+                 && GetUsableZMove(battler, moveInfo->moves[gMoveSelectionCursor[battler]]) == MOVE_NONE))
         {
             gBattleStruct->gimmick.playerSelect ^= 1;
             ReloadMoveNames(battler);
@@ -1783,9 +1786,9 @@ static void MoveSelectionDisplayMoveDescription(u32 battler)
     u16 acc = GetMoveAccuracy(move);
 
     u8 pwr_num[3], acc_num[3];
-    u8 cat_desc[7] = _("CAT: ");
-    u8 pwr_desc[7] = _("PWR: ");
-    u8 acc_desc[7] = _("ACC: ");
+    u8 cat_desc[7] = _("Cat: ");
+    u8 pwr_desc[7] = _("Pwr: ");
+    u8 acc_desc[7] = _("Acc: ");
     u8 cat_start[] = _("{CLEAR_TO 0x03}");
     u8 pwr_start[] = _("{CLEAR_TO 0x38}");
     u8 acc_start[] = _("{CLEAR_TO 0x6D}");

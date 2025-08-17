@@ -7,6 +7,9 @@ const u16 gTrainerPalette_Hiker[] = INCBIN_U16("graphics/trainers/front_pics/hik
 const u32 gTrainerFrontPic_AquaGruntM[] = INCBIN_U32("graphics/trainers/front_pics/aqua_grunt_m.4bpp.lz");
 const u16 gTrainerPalette_AquaGruntM[] = INCBIN_U16("graphics/trainers/front_pics/aqua_grunt_m.gbapal");
 
+const u32 gTrainerFrontPic_Archie[] = INCBIN_U32("graphics/trainers/front_pics/cool_archie.4bpp.lz");
+const u16 gTrainerPalette_Archie[] = INCBIN_U16("graphics/trainers/front_pics/cool_archie.gbapal");
+
 const u32 gTrainerFrontPic_PokemonBreederF[] = INCBIN_U32("graphics/trainers/front_pics/pokemon_breeder_f.4bpp.lz");
 const u16 gTrainerPalette_PokemonBreederF[] = INCBIN_U16("graphics/trainers/front_pics/pokemon_breeder_f.gbapal");
 
@@ -309,7 +312,7 @@ const u16 gTrainerBackPicPalette_Leaf[] = INCBIN_U16("graphics/trainers/back_pic
 const struct TrainerSprite gTrainerSprites[] =
 {
     TRAINER_SPRITE(TRAINER_PIC_HIKER, gTrainerFrontPic_Hiker, gTrainerPalette_Hiker),
-    TRAINER_SPRITE(TRAINER_PIC_AQUA_GRUNT_M, gTrainerFrontPic_AquaGruntM, gTrainerPalette_AquaGruntM),
+    TRAINER_SPRITE(TRAINER_PIC_AQUA_GRUNT_M, gTrainerFrontPic_Archie, gTrainerPalette_Archie),
     TRAINER_SPRITE(TRAINER_PIC_POKEMON_BREEDER_F, gTrainerFrontPic_PokemonBreederF, gTrainerPalette_PokemonBreederF),
     TRAINER_SPRITE(TRAINER_PIC_COOLTRAINER_M, gTrainerFrontPic_CoolTrainerM, gTrainerPalette_CoolTrainerM),
     TRAINER_SPRITE(TRAINER_PIC_BIRD_KEEPER, gTrainerFrontPic_BirdKeeper, gTrainerPalette_BirdKeeper),

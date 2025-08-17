@@ -11,6 +11,7 @@
 #include "battle_setup.h"
 #include "battle_tower.h"
 #include "battle_z_move.h"
+#include "bw_summary_screen.h"
 #include "data.h"
 #include "dexnav.h"
 #include "event_data.h"
@@ -686,25 +687,27 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
 #include "data/pokemon/trainer_class_lookups.h"
 #include "data/pokemon/experience_tables.h"
 
-#if P_LVL_UP_LEARNSETS >= GEN_9
-#include "data/pokemon/level_up_learnsets/gen_9.h" // Scarlet/Violet
-#elif P_LVL_UP_LEARNSETS >= GEN_8
-#include "data/pokemon/level_up_learnsets/gen_8.h" // Sword/Shield
-#elif P_LVL_UP_LEARNSETS >= GEN_7
-#include "data/pokemon/level_up_learnsets/gen_7.h" // Ultra Sun/Ultra Moon
-#elif P_LVL_UP_LEARNSETS >= GEN_6
-#include "data/pokemon/level_up_learnsets/gen_6.h" // Omega Ruby/Alpha Sapphire
-#elif P_LVL_UP_LEARNSETS >= GEN_5
-#include "data/pokemon/level_up_learnsets/gen_5.h" // Black 2/White 2
-#elif P_LVL_UP_LEARNSETS >= GEN_4
-#include "data/pokemon/level_up_learnsets/gen_4.h" // HeartGold/SoulSilver
-#elif P_LVL_UP_LEARNSETS >= GEN_3
-#include "data/pokemon/level_up_learnsets/gen_3.h" // Ruby/Sapphire/Emerald
-#elif P_LVL_UP_LEARNSETS >= GEN_2
-#include "data/pokemon/level_up_learnsets/gen_2.h" // Crystal
-#elif P_LVL_UP_LEARNSETS >= GEN_1
-#include "data/pokemon/level_up_learnsets/gen_1.h" // Yellow
-#endif
+//#if P_LVL_UP_LEARNSETS >= GEN_AQUEST
+#include "data/pokemon/level_up_learnsets/gen_aquest.h" // Custom Movesets
+// #elif P_LVL_UP_LEARNSETS >= GEN_9
+// #include "data/pokemon/level_up_learnsets/gen_9.h" // Scarlet/Violet
+// #elif P_LVL_UP_LEARNSETS >= GEN_8
+// #include "data/pokemon/level_up_learnsets/gen_8.h" // Sword/Shield
+// #elif P_LVL_UP_LEARNSETS >= GEN_7
+// #include "data/pokemon/level_up_learnsets/gen_7.h" // Ultra Sun/Ultra Moon
+// #elif P_LVL_UP_LEARNSETS >= GEN_6
+// #include "data/pokemon/level_up_learnsets/gen_6.h" // Omega Ruby/Alpha Sapphire
+// #elif P_LVL_UP_LEARNSETS >= GEN_5
+// #include "data/pokemon/level_up_learnsets/gen_5.h" // Black 2/White 2
+// #elif P_LVL_UP_LEARNSETS >= GEN_4
+// #include "data/pokemon/level_up_learnsets/gen_4.h" // HeartGold/SoulSilver
+// #elif P_LVL_UP_LEARNSETS >= GEN_3
+// #include "data/pokemon/level_up_learnsets/gen_3.h" // Ruby/Sapphire/Emerald
+// #elif P_LVL_UP_LEARNSETS >= GEN_2
+// #include "data/pokemon/level_up_learnsets/gen_2.h" // Crystal
+// #elif P_LVL_UP_LEARNSETS >= GEN_1
+// #include "data/pokemon/level_up_learnsets/gen_1.h" // Yellow
+// #endif
 
 #include "data/pokemon/teachable_learnsets.h"
 #include "data/pokemon/egg_moves.h"
@@ -1146,7 +1149,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         {
             isShiny = TRUE;
         }
-        else if (P_ONLY_OBTAINABLE_SHINIES && InBattlePyramid())
+        else if (P_ONLY_OBTAINABLE_SHINIES && CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
         {
             isShiny = FALSE;
         }
@@ -1761,6 +1764,7 @@ static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon)
     SetMonData(mon, field, &n);                                 \
 }
 
+// 
 void CalculateMonStats(struct Pokemon *mon)
 {
     s32 oldMaxHP = GetMonData(mon, MON_DATA_MAX_HP, NULL);
@@ -1780,6 +1784,7 @@ void CalculateMonStats(struct Pokemon *mon)
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u8 friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
     s32 level = GetLevelFromMonExp(mon);
+    //u32 levelEVs = GetEVsForMonLevel(level);
     s32 newMaxHP;
 
     u8 nature = GetMonData(mon, MON_DATA_HIDDEN_NATURE, NULL);
@@ -1793,7 +1798,7 @@ void CalculateMonStats(struct Pokemon *mon)
     else
     {
         s32 n = 2 * gSpeciesInfo[species].baseHP + hpIV;
-        newMaxHP = (((n + hpEV / 4) * level) / 100) + level + 10;
+        newMaxHP = ((n * level) / 100) + level + (10 + hpEV);
     }
 
     gBattleScripting.levelUpHP = newMaxHP - oldMaxHP;
@@ -1823,6 +1828,25 @@ void CalculateMonStats(struct Pokemon *mon)
         currentHP = newMaxHP;
 
     SetMonData(mon, MON_DATA_HP, &currentHP);
+}
+
+u32 CalculateEvYield (s32 level)
+{     
+    if (level < 71 && (level % 10) == 0)
+        return 5;
+    else
+        return 1;
+}
+
+u32 GetEVsForMonLevel(s32 level) /* doesnt make mudskip cry */
+{
+    u32 cappedLevel = min(level, 70);
+    u32 numberOf10s = cappedLevel / 10;
+    u32 numberOfNon10s = level - numberOf10s;
+
+    u32 levelEvs = numberOf10s * 5 + numberOfNon10s * 1;
+
+    return levelEvs;
 }
 
 void BoxMonToMon(const struct BoxPokemon *src, struct Pokemon *dest)
@@ -5220,7 +5244,7 @@ u8 GetTrainerEncounterMusicId(u16 trainerOpponentId)
     u32 sanitizedTrainerId = SanitizeTrainerId(trainerOpponentId);
     enum DifficultyLevel difficulty = GetTrainerDifficultyLevel(sanitizedTrainerId);
 
-    if (InBattlePyramid())
+    if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
         return GetTrainerEncounterMusicIdInBattlePyramid(trainerOpponentId);
     else if (InTrainerHillChallenge())
         return GetTrainerEncounterMusicIdInTrainerHill(trainerOpponentId);
@@ -5320,7 +5344,7 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
     }
 }
 
-void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
+void UNUSED MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
 {
     u8 evs[NUM_STATS];
     u16 evIncrease = 0;
@@ -5423,7 +5447,8 @@ void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
 
         evs[i] += evIncrease;
         totalEVs += evIncrease;
-        SetMonData(mon, MON_DATA_HP_EV + i, &evs[i]);
+        u32 noEVs = 0;
+        SetMonData(mon, MON_DATA_HP_EV + i, &noEVs);
     }
 }
 
@@ -6196,12 +6221,20 @@ static void Task_AnimateAfterDelay(u8 taskId)
     }
 }
 
+#define tIsShadow data[4]
+
 static void Task_PokemonSummaryAnimateAfterDelay(u8 taskId)
 {
     if (--gTasks[taskId].sAnimDelay == 0)
     {
         StartMonSummaryAnimation(READ_PTR_FROM_TASK(taskId, 0), gTasks[taskId].sAnimId);
-        SummaryScreen_SetAnimDelayTaskId(TASK_NONE);
+        #if BW_SUMMARY_SCREEN == TRUE
+        if (gTasks[taskId].tIsShadow)
+            SummaryScreen_SetShadowAnimDelayTaskId_BW(TASK_NONE); // needed to track anim delay task for mon shadow in BW summary screen
+        else
+        #endif
+            SummaryScreen_SetAnimDelayTaskId(TASK_NONE);
+
         DestroyTask(taskId);
     }
 }
@@ -6261,7 +6294,7 @@ void DoMonFrontSpriteAnimation(struct Sprite *sprite, u16 species, bool8 noCry, 
     }
 }
 
-void PokemonSummaryDoMonAnimation(struct Sprite *sprite, u16 species, bool8 oneFrame)
+void PokemonSummaryDoMonAnimation(struct Sprite *sprite, u16 species, bool8 oneFrame, bool32 isShadow)
 {
     if (!oneFrame && HasTwoFramesAnimation(species))
         StartSpriteAnim(sprite, 1);
@@ -6272,7 +6305,15 @@ void PokemonSummaryDoMonAnimation(struct Sprite *sprite, u16 species, bool8 oneF
         STORE_PTR_IN_TASK(sprite, taskId, 0);
         gTasks[taskId].sAnimId = gSpeciesInfo[species].frontAnimId;
         gTasks[taskId].sAnimDelay = gSpeciesInfo[species].frontAnimDelay;
-        SummaryScreen_SetAnimDelayTaskId(taskId);
+        gTasks[taskId].tIsShadow = isShadow;  // needed to track anim delay task for mon shadow in BW summary screen
+
+        #if BW_SUMMARY_SCREEN == TRUE
+        if (isShadow)
+            SummaryScreen_SetShadowAnimDelayTaskId_BW(taskId);
+        else
+        #endif
+            SummaryScreen_SetAnimDelayTaskId(taskId);
+
         SetSpriteCB_MonAnimDummy(sprite);
     }
     else
@@ -6281,6 +6322,8 @@ void PokemonSummaryDoMonAnimation(struct Sprite *sprite, u16 species, bool8 oneF
         StartMonSummaryAnimation(sprite, gSpeciesInfo[species].frontAnimId);
     }
 }
+
+#define tIsShadow data[4]
 
 void StopPokemonAnimationDelayTask(void)
 {
@@ -6389,7 +6432,7 @@ static bool8 ShouldSkipFriendshipChange(void)
 {
     if (gMain.inBattle && gBattleTypeFlags & (BATTLE_TYPE_FRONTIER))
         return TRUE;
-    if (!gMain.inBattle && (InBattlePike() || InBattlePyramid()))
+    if (!gMain.inBattle && (InBattlePike() || CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE))
         return TRUE;
     return FALSE;
 }

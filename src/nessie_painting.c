@@ -47,7 +47,7 @@ enum WindowIds
 {
     WINDOW_NO_STAB, // Instructions without stab
     WINDOW_STAB, // Instructions with stab
-    WINDOW_STAB_AREA  // Window for cursor
+    WINDOW_STAB_AREA  // Window for where to stab
 };
 
 static EWRAM_DATA struct NessiePuzzleState *sNessiePuzzleState = NULL;

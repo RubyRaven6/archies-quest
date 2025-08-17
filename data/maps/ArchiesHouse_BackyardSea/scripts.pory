@@ -1,0 +1,124 @@
+mapscripts ArchiesHouse_BackyardSea_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		if(!flag(FLAG_TOGGLE_WATER_INTERACT)){
+			setflag(FLAG_TOGGLE_WATER_INTERACT)
+		}
+	}
+}
+
+script ArchiesHouse_BackyardSea_Boat {
+    msgbox(("It's a boat to back home. Take it?"), MSGBOX_YESNO)
+    closemessage
+    if(var(VAR_RESULT) == YES){
+        warp(MAP_ARCHIES_HOUSE_BACKYARD_BEACH, 28, 10)
+    } else {
+        msgbox(("You decide to stay for a while longer."), MSGBOX_DEFAULT)
+        closemessage
+    }
+}
+
+script ArchiesHouse_Backyard_EventScripts_Milotic {
+    lock
+	faceplayer
+    getpartysize
+	if(var(VAR_RESULT) < 4){
+		msgbox(format("Milotic is grooming herself in the water's reflection.\pMaximize your joint slay?"), MSGBOX_YESNO)
+		closemessage
+		if(var(VAR_RESULT) == TRUE){
+			givemon(SPECIES_MILOTIC, 40, abilityNum=0, gender=FEMALE, move1=MOVE_ICE_BEAM, move2=MOVE_DISARMING_VOICE, move3=MOVE_ATTRACT, move4=MOVE_LIFE_DEW, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_SEA_MILOTIC)
+			msgbox("Milotic joined your party!")
+			closemessage
+		}
+	} else {
+		goto(CommonScript_Backyard_EventScripts_FullParty)
+	}
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Kingdra {
+    lock
+	faceplayer
+    getpartysize
+	if(var(VAR_RESULT) < 4){
+		msgbox(format("Kingdra seems to be brooding restlessly.\pGive an outlet for his frustrations?"), MSGBOX_YESNO)
+		closemessage
+		if(var(VAR_RESULT) == TRUE){
+			givemon(SPECIES_KINGDRA, 40, abilityNum=1, gender=MALE, move1=MOVE_SNIPE_SHOT, move2=MOVE_DRAGON_PULSE, move3=MOVE_HYPER_BEAM, move4=MOVE_ICE_BEAM, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_SEA_KINGDRA)
+			msgbox("Kingdra joined your party!")
+			closemessage
+		}
+	} else {
+		goto(CommonScript_Backyard_EventScripts_FullParty)
+	}
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Wailord {
+    lock
+	faceplayer
+    getpartysize
+	if(var(VAR_RESULT) < 4){
+		msgbox(format("Wailord is singing her higher pitched song as usual.\pHarmonize?"), MSGBOX_YESNO)
+		closemessage
+		if(var(VAR_RESULT) == TRUE){
+			givemon(SPECIES_WAILORD, 40, abilityNum=0, gender=FEMALE, move1=MOVE_DIVE, move2=MOVE_SURF, move3=MOVE_SWALLOW, move4=MOVE_NOBLE_ROAR, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_SEA_WAILORD)
+			msgbox("Wailord joined your party!")
+			closemessage
+		}
+	} else {
+		goto(CommonScript_Backyard_EventScripts_FullParty)
+	}
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Pelipper {
+    lock
+	faceplayer
+    getpartysize
+	if(var(VAR_RESULT) < 4){
+		msgbox(format("Pelipper is resting from her mail delivery duties for the day.\pGive her a new duty for today?"), MSGBOX_YESNO)
+		closemessage
+		if(var(VAR_RESULT) == TRUE){
+			givemon(SPECIES_PELIPPER, 40, abilityNum=1, gender=FEMALE, move1=MOVE_WATER_PULSE, move2=MOVE_RAIN_DANCE, move3=MOVE_TAILWIND, move4=MOVE_AIR_SLASH, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_SEA_PELIPPER)
+			msgbox("Pelipper joined your party!")
+			closemessage
+		}
+	} else {
+		goto(CommonScript_Backyard_EventScripts_FullParty)
+	}
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Kyogre {
+    lock
+	faceplayer
+    msgbox(format("Kyogre's vibing. He seems to be playing a ROMhack that has him on the cover.\pHe doesn't want to be disturbed."))
+    closemessage
+    applymovement(LOCALID_BACKYARD_SEA_KYOGRE, moves(face_original_direction))
+    release
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Latias {
+    lock
+	faceplayer
+    msgbox(format("Latias seems to be telepathically receiving good news.\pHuh?\nShe's sending the images to you.\p…\p{PAUSE 60}You get a vision of a bunch of people in a subreddit simping over her."))
+    closemessage
+    applymovement(LOCALID_BACKYARD_SEA_LATIAS, moves(face_original_direction))
+    release
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Latios {
+    lock
+	faceplayer
+    msgbox(format("Latios is staring at you menacingly, as if you did something wrong."))
+    closemessage
+    applymovement(LOCALID_BACKYARD_SEA_LATIOS, moves(face_original_direction))
+    release
+	end
+}

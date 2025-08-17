@@ -43,46 +43,56 @@
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 #define NUM_TEMP_FLAGS   (TEMP_FLAGS_END - TEMP_FLAGS_START + 1)
 
-#define FLAG_NESSIE_READ_BOOK        0x20 // Read the book for the Nessie solution
-#define FLAG_NESSIE_GOT_DAGGER       0x21 // Got the dagger for Nessie solution
-#define FLAG_NESSIE_PUZZLE_SOLVED    0x22 // For when the painting solution is found
-#define FLAG_UNUSED_0x023    0x23 // Unused Flag
-#define FLAG_UNUSED_0x024    0x24 // Unused Flag
-#define FLAG_UNUSED_0x025    0x25 // Unused Flag
-#define FLAG_UNUSED_0x026    0x26 // Unused Flag
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
-#define FLAG_UNUSED_0x028    0x28 // Unused Flag
-#define FLAG_UNUSED_0x029    0x29 // Unused Flag
-#define FLAG_UNUSED_0x02A    0x2A // Unused Flag
-#define FLAG_UNUSED_0x02B    0x2B // Unused Flag
-#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
-#define FLAG_UNUSED_0x02D    0x2D // Unused Flag
-#define FLAG_UNUSED_0x02E    0x2E // Unused Flag
-#define FLAG_UNUSED_0x02F    0x2F // Unused Flag
-#define FLAG_UNUSED_0x030    0x30 // Unused Flag
-#define FLAG_UNUSED_0x031    0x31 // Unused Flag
-#define FLAG_UNUSED_0x032    0x32 // Unused Flag
-#define FLAG_UNUSED_0x033    0x33 // Unused Flag
-#define FLAG_UNUSED_0x034    0x34 // Unused Flag
-#define FLAG_UNUSED_0x035    0x35 // Unused Flag
-#define FLAG_UNUSED_0x036    0x36 // Unused Flag
-#define FLAG_UNUSED_0x037    0x37 // Unused Flag
-#define FLAG_UNUSED_0x038    0x38 // Unused Flag
-#define FLAG_UNUSED_0x039    0x39 // Unused Flag
-#define FLAG_UNUSED_0x03A    0x3A // Unused Flag
-#define FLAG_UNUSED_0x03B    0x3B // Unused Flag
-#define FLAG_UNUSED_0x03C    0x3C // Unused Flag
-#define FLAG_UNUSED_0x03D    0x3D // Unused Flag
-#define FLAG_UNUSED_0x03E    0x3E // Unused Flag
-#define FLAG_UNUSED_0x03F    0x3F // Unused Flag
-#define FLAG_UNUSED_0x040    0x40 // Unused Flag
-#define FLAG_UNUSED_0x041    0x41 // Unused Flag
-#define FLAG_UNUSED_0x042    0x42 // Unused Flag
-#define FLAG_UNUSED_0x043    0x43 // Unused Flag
-#define FLAG_UNUSED_0x044    0x44 // Unused Flag
-#define FLAG_UNUSED_0x045    0x45 // Unused Flag
-#define FLAG_UNUSED_0x046    0x46 // Unused Flag
-#define FLAG_UNUSED_0x047    0x47 // Unused Flag
+/* Puzzle Flags */
+#define FLAG_NESSIE_PUZZLE_SOLVED         20 // For when the painting solution is found
+#define FLAG_GIGAGEHSOOL_PUZZLE_SOLVED    21 // Gigagesh Puzzle Flag
+#define FLAG_SAPPRILON_PUZZLE_SOLVED      22 // Sapprilon Puzzle Flag
+/*Forest Mon Flags*/
+#define FLAG_HIDE_ARCHIE             23 // Hides Old Archie at the start of the game
+#define FLAG_HIDE_SCEPTILE           24 // Hides Sceptile
+#define FLAG_HIDE_BRELOOM            25 // Hide Breloom
+#define FLAG_HIDE_ALTARIA            26 // Hides Swellow
+#define FLAG_HIDE_HATTERENE          27 // Hides Haterene
+/*Lake Mon Flags*/
+#define FLAG_HIDE_LUDICOLO           28 // Hides Ludicolo
+#define FLAG_HIDE_GYARADOS           29 // Hides Gyarados
+#define FLAG_HIDE_AZUMARILL          30 // Hides Azumarill
+#define FLAG_HIDE_GARDEVOIR          31 // Hide Gardevoir
+/*Sea Mon Flags*/
+#define FLAG_HIDE_MILOTIC            32 // Hides Milotic
+#define FLAG_HIDE_KINGDRA            33 // Hide Kingdra
+#define FLAG_HIDE_PELIPPER           34 // Hides Walrein
+#define FLAG_HIDE_WAILORD            35 // Hides Wailord
+/*Cave Mon Flags*/
+#define FLAG_HIDE_GALVANTULA         36 // Hides Galvantula
+#define FLAG_HIDE_SALAMANCE          37 // Hides Salamence
+#define FLAG_HIDE_EXCADRILL          38 // Hides Excadrill
+#define FLAG_HIDE_GARGANACL          39 // Hides Garganacl
+/*Craggs Mon Flags*/
+#define FLAG_HIDE_BLAZIKEN           40 // Hides Blaziken
+#define FLAG_HIDE_LUCARIO            41 // Hides Lucario
+#define FLAG_HIDE_SNORLAX            42 // Hides Snorlax
+#define FLAG_HIDE_TINKATON           43 // Hides Tinkaton
+/*Beach Mon Flags*/
+#define FLAG_HIDE_SWAMPERT           44 // Hides Swampert
+#define FLAG_HIDE_LINOONE            45 // Hides Linoone
+#define FLAG_HIDE_HARIYAMA           46 // Hides Hariyama
+#define FLAG_HIDE_SLOWKING           47 // Hides Slowking
+/*Garden Mon FLags*/
+#define FLAG_HIDE_ANNIHILAPE         48 // Hides Annihilape
+#define FLAG_HIDE_HERACROSS          49 // Hides Heracross
+#define FLAG_HIDE_RIBOMBEE           50 // Hides Ribombee
+#define FLAG_HIDE_POLTCHAGEIST       51 // Hides Vileplume
+/* Nessie Puzzle flags */
+#define FLAG_NESSIE_READ_BOOK             52 // Read the book for the Nessie solution
+#define FLAG_NESSIE_GOT_DAGGER            53 // Got the dagger for Nessie solution
+/*Sapprilon Puzzle Flags*/
+#define FLAG_UNUSED_0x043    54 // Unused Flag
+#define FLAG_UNUSED_0x044    55 // Unused Flag
+#define FLAG_UNUSED_0x045    56 // Unused Flag
+#define FLAG_UNUSED_0x046    57 // Unused Flag
+#define FLAG_UNUSED_0x047    58 // Unused Flag
+/**/
 #define FLAG_UNUSED_0x048    0x48 // Unused Flag
 #define FLAG_UNUSED_0x049    0x49 // Unused Flag
 #define FLAG_UNUSED_0x04A    0x4A // Unused Flag
@@ -90,7 +100,7 @@
 #define FLAG_UNUSED_0x04C    0x4C // Unused Flag
 #define FLAG_UNUSED_0x04D    0x4D // Unused Flag
 #define FLAG_UNUSED_0x04E    0x4E // Unused Flag
-#define FLAG_UNUSED_0x04F    0x4F // Unused Flag
+#define FLAG_TOGGLE_WATER_INTERACT    0x4F // Unused Flag
 
 // Scripts
 #define FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL  0x50
@@ -1387,8 +1397,8 @@
 #define FLAG_IS_CHAMPION                            (SYSTEM_FLAGS + 0x1F) // Seems to be related to linking.
 #define FLAG_NURSE_UNION_ROOM_REMINDER              (SYSTEM_FLAGS + 0x20)
 
-#define FLAG_UNUSED_0x881                           (SYSTEM_FLAGS + 0x21) // Unused Flag
-#define FLAG_UNUSED_0x882                           (SYSTEM_FLAGS + 0x22) // Unused Flag
+#define FLAG_SUPPRESS_SPEAKER_NAME                  (SYSTEM_FLAGS + 0x21) // Unused Flag
+#define FLAG_SANDBOX_MODE                           (SYSTEM_FLAGS + 0x22) // When set, allows IV editing in stats menu
 #define FLAG_UNUSED_0x883                           (SYSTEM_FLAGS + 0x23) // Unused Flag
 #define FLAG_UNUSED_0x884                           (SYSTEM_FLAGS + 0x24) // Unused Flag
 #define FLAG_UNUSED_0x885                           (SYSTEM_FLAGS + 0x25) // Unused Flag
@@ -1397,6 +1407,7 @@
 
 #define FLAG_SYS_USE_FLASH                          (SYSTEM_FLAGS + 0x28)
 #define FLAG_SYS_USE_STRENGTH                       (SYSTEM_FLAGS + 0x29)
+// Sets abnormal weather on maps that check for it
 #define FLAG_SYS_WEATHER_CTRL                       (SYSTEM_FLAGS + 0x2A)
 #define FLAG_SYS_CYCLING_ROAD                       (SYSTEM_FLAGS + 0x2B)
 #define FLAG_SYS_SAFARI_MODE                        (SYSTEM_FLAGS + 0x2C)

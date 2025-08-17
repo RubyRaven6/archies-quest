@@ -1,0 +1,14 @@
+mapscripts HubWorld_Initial_MapScripts {
+}
+
+script HubWorld_EventScript_Archie {
+    speakername("Old Archie")
+    msgbox(format("This is going to be our base of operations.\p
+                It's an extra dimensional space away from the influence of the Bai'Narii.\p
+                I've opened a portal using the a magical anchor object.\p
+                When you're ready, interact with it and you'll be taken to a Demon Lord's lair.\p
+                Whenever you come back, talk to me so I can open a new one.\p
+                Lastly, I've brought a device from the future, containing many items to help make your Pokémon stornger.\p
+                And if I recall correctly, you also have berries as a farmer, right?\p
+                That's all for now. If you have any questions, just talk to me again."))
+}

@@ -4426,7 +4426,7 @@
       "name": "ArchiesHouse_1F_Layout",
       "width": 12,
       "height": 9,
-      "primary_tileset": "gTileset_Building",
+      "primary_tileset": "gTileset_RecompiledBuilding",
       "secondary_tileset": "gTileset_ArchiesHouse",
       "border_filepath": "data/layouts/ArchiesHouse_1F/border.bin",
       "blockdata_filepath": "data/layouts/ArchiesHouse_1F/map.bin"
@@ -4434,8 +4434,8 @@
     {
       "id": "LAYOUT_ARCHIES_HOUSE_BACKYARD",
       "name": "ArchiesHouse_Backyard_Layout",
-      "width": 13,
-      "height": 15,
+      "width": 29,
+      "height": 21,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/ArchiesHouse_Backyard/border.bin",
@@ -4443,21 +4443,21 @@
     },
     {
       "id": "LAYOUT_DEMON_LAIRS_VHANE",
-      "name": "DemonLairs_Vhane_Layout",
+      "name": "DemonLairs_Maxie_Layout",
       "width": 20,
       "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_SpaceMeteor",
-      "border_filepath": "data/layouts/DemonLairs_Vhane/border.bin",
-      "blockdata_filepath": "data/layouts/DemonLairs_Vhane/map.bin"
+      "border_filepath": "data/layouts/DemonLairs_Maxie/border.bin",
+      "blockdata_filepath": "data/layouts/DemonLairs_Maxie/map.bin"
     },
     {
       "id": "LAYOUT_HUB_WORLD_INITIAL",
       "name": "HubWorld_Initial_Layout",
-      "width": 20,
-      "height": 20,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "width": 17,
+      "height": 17,
+      "primary_tileset": "gTileset_HubWorld",
+      "secondary_tileset": "gTileset_EliteFour",
       "border_filepath": "data/layouts/HubWorld_Initial/border.bin",
       "blockdata_filepath": "data/layouts/HubWorld_Initial/map.bin"
     },
@@ -4465,7 +4465,7 @@
       "id": "LAYOUT_DEMON_LAIRS_GIGAGEHSOOL",
       "name": "DemonLairs_Gigagehsool_Layout",
       "width": 21,
-      "height": 28,
+      "height": 29,
       "primary_tileset": "gTileset_GigagehsoolLairPrimary",
       "secondary_tileset": "gTileset_GigagehsoolLairSecondary",
       "border_filepath": "data/layouts/DemonLairs_Gigagehsool/border.bin",
@@ -4474,9 +4474,9 @@
     {
       "id": "LAYOUT_DEMON_LAIRS_GIGAGEHSOOL_INTERIOR",
       "name": "DemonLairs_Gigagehsool_Interior_Layout",
-      "width": 20,
-      "height": 20,
-      "primary_tileset": "gTileset_GigagehsoolLairPrimary",
+      "width": 17,
+      "height": 17,
+      "primary_tileset": "gTileset_GigagehsoolInterior",
       "secondary_tileset": "gTileset_GigagehsoolLairSecondary",
       "border_filepath": "data/layouts/DemonLairs_Gigagehsool_Interior/border.bin",
       "blockdata_filepath": "data/layouts/DemonLairs_Gigagehsool_Interior/map.bin"
@@ -4500,6 +4500,146 @@
       "secondary_tileset": "gTileset_NessereignLairSecondary",
       "border_filepath": "data/layouts/DemonLairs_Nessie_Interior/border.bin",
       "blockdata_filepath": "data/layouts/DemonLairs_Nessie_Interior/map.bin"
+    },
+    {
+      "id": "LAYOUT_ARCHIES_HOUSE_BACKYARD_POND",
+      "name": "ArchiesHouse_BackyardLake_Layout",
+      "width": 30,
+      "height": 23,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/ArchiesHouse_BackyardLake/border.bin",
+      "blockdata_filepath": "data/layouts/ArchiesHouse_BackyardLake/map.bin"
+    },
+    {
+      "id": "LAYOUT_ARCHIES_HOUSE_BACKYARD_FOREST",
+      "name": "ArchiesHouse_BackyardForest_Layout",
+      "width": 25,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/ArchiesHouse_BackyardForest/border.bin",
+      "blockdata_filepath": "data/layouts/ArchiesHouse_BackyardForest/map.bin"
+    },
+    {
+      "id": "LAYOUT_ARCHIES_HOUSE_BACKYARD_BEACH",
+      "name": "ArchiesHouse_BackyardBeach_Layout",
+      "width": 39,
+      "height": 27,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Slateport",
+      "border_filepath": "data/layouts/ArchiesHouse_BackyardBeach/border.bin",
+      "blockdata_filepath": "data/layouts/ArchiesHouse_BackyardBeach/map.bin"
+    },
+    {
+      "id": "LAYOUT_ARCHIES_HOUSE_BACKYARD_CRAGGS",
+      "name": "ArchiesHouse_BackyardCraggs_Layout",
+      "width": 32,
+      "height": 32,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lavaridge",
+      "border_filepath": "data/layouts/ArchiesHouse_BackyardCraggs/border.bin",
+      "blockdata_filepath": "data/layouts/ArchiesHouse_BackyardCraggs/map.bin"
+    },
+    {
+      "id": "LAYOUT_ARCHIES_HOUSE_BACKYARD_SEA",
+      "name": "ArchiesHouse_BackyardSea_Layout",
+      "width": 32,
+      "height": 33,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Slateport",
+      "border_filepath": "data/layouts/ArchiesHouse_BackyardSea/border.bin",
+      "blockdata_filepath": "data/layouts/ArchiesHouse_BackyardSea/map.bin"
+    },
+    {
+      "id": "LAYOUT_ARCHIES_HOUSE_BACKYARD_GARDEN",
+      "name": "ArchiesHouse_BackyardGarden_Layout",
+      "width": 26,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_EverGrande",
+      "border_filepath": "data/layouts/ArchiesHouse_BackyardGarden/border.bin",
+      "blockdata_filepath": "data/layouts/ArchiesHouse_BackyardGarden/map.bin"
+    },
+    {
+      "id": "LAYOUT_ARCHIES_HOUSE_BACKYARD_CAVE",
+      "name": "ArchiesHouse_BackyardCave_Layout",
+      "width": 20,
+      "height": 13,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/ArchiesHouse_BackyardCave/border.bin",
+      "blockdata_filepath": "data/layouts/ArchiesHouse_BackyardCave/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEMON_LAIRS_ADDISAMAP",
+      "name": "DemonLairs_Addisamap_Layout",
+      "width": 25,
+      "height": 36,
+      "primary_tileset": "gTileset_AddisamapLairPrimary",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/DemonLairs_Addisamap/border.bin",
+      "blockdata_filepath": "data/layouts/DemonLairs_Addisamap/map.bin"
+    },
+    {
+      "id": "LAYOUT_HUB_WORLD_NESSIE_DEFEATED",
+      "name": "HubWorld_NessieDefeated",
+      "width": 17,
+      "height": 17,
+      "primary_tileset": "gTileset_HubWorld",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/HubWorld_NessieDefeated/border.bin",
+      "blockdata_filepath": "data/layouts/HubWorld_NessieDefeated/map.bin"
+    },
+    {
+      "id": "LAYOUT_HUB_WORLD_GIGAGEHSOOL_DEFEATED",
+      "name": "HubWorld_GigagehsoolDefeated",
+      "width": 17,
+      "height": 17,
+      "primary_tileset": "gTileset_HubWorld",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/HubWorld_GigagehsoolDefeated/border.bin",
+      "blockdata_filepath": "data/layouts/HubWorld_GigagehsoolDefeated/map.bin"
+    },
+    {
+      "id": "LAYOUT_HUB_WORLD_SAPPRILON_DEFEATED",
+      "name": "HubWorld_SapprilonDefeated",
+      "width": 17,
+      "height": 17,
+      "primary_tileset": "gTileset_HubWorld",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/HubWorld_SapprilonDefeated/border.bin",
+      "blockdata_filepath": "data/layouts/HubWorld_SapprilonDefeated/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEMON_LAIRS_ADDISAMAP_INTERIOR",
+      "name": "DemonLairs_Addisamap_Interior_Layout",
+      "width": 17,
+      "height": 24,
+      "primary_tileset": "gTileset_AddisamapLairPrimary",
+      "secondary_tileset": "gTileset_EverGrande",
+      "border_filepath": "data/layouts/DemonLairs_Addisamap_Interior/border.bin",
+      "blockdata_filepath": "data/layouts/DemonLairs_Addisamap_Interior/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEMON_LAIRS_SAPPRILON",
+      "name": "DemonLairs_Sapprilon_Layout",
+      "width": 12,
+      "height": 17,
+      "primary_tileset": "gTileset_SapprilonLairPrimary",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/DemonLairs_Sapprilon/border.bin",
+      "blockdata_filepath": "data/layouts/DemonLairs_Sapprilon/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEMONALIRS_SAPPRILON_INTERIOR",
+      "name": "Demonalirs_Sapprilon_Interior_Layout",
+      "width": 12,
+      "height": 10,
+      "primary_tileset": "gTileset_SapprilonLairPrimary",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Demonalirs_Sapprilon_Interior/border.bin",
+      "blockdata_filepath": "data/layouts/Demonalirs_Sapprilon_Interior/map.bin"
     }
   ]
 }

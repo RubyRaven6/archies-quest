@@ -546,10 +546,10 @@ gSongTable::
 	song mus_rg_berry_pick, 0, 0
 	song mus_rg_sevii_cave, 0, 0
 	song mus_rg_teachy_tv_show, 0, 0
-	song mus_rg_sevii_route, 0, 0
-	song mus_rg_sevii_dungeon, 0, 0
-	song mus_rg_sevii_123, 0, 0
-	song mus_rg_sevii_45, 0, 0
+	song mus_sapprilon1, 0, 0
+	song mus_sapprilon2, 0, 0
+	song mus_sapprilon3, 0, 0
+	song mus_sapprilon4, 0, 0
 	song mus_rg_sevii_67, 0, 0
 	song mus_rg_poke_flute, 2, 2
 	song mus_rg_vs_deoxys, 0, 0

@@ -6,14 +6,14 @@
 dir_raw_tilesets="../rubys-tilesets/raw_tilesets/"
 dir_raw_tilesets_primary="${dir_raw_tilesets}primary/"
 dir_raw_tilesets_secondary="${dir_raw_tilesets}secondary/"
-dir_aseprite_folder="/mnt/c/Users/acer/Desktop/New_folder/Aseprite-v1.3.14.3-x64"
+dir_aseprite_folder=""
 dir_compiled_primary="./data/tilesets/primary/"
 dir_compiled_secondary="./data/tilesets/secondary/"
 metatile_behaviors="./include/constants/metatile_behaviors.h"
 normalize_py="./normalize.py"
 
 ## WINDOWS PATH
-dir_aseprite_raw_tilesets="C:\Users\acer\Desktop\New_folder\Aseprite-v1.3.14.3-x64\stuff\tilesets" 
+dir_aseprite_raw_tilesets="" 
 
 # END OF CUSTOM PATHS
 
@@ -83,14 +83,6 @@ while(true); do
                 break
             fi
 
-            # replace transparency with #ff00ff 
-            python3 ${normalize_py} ${dir_raw_tilesets_primary}${tilesetsrc}/bottom.png ${dir_raw_tilesets_primary}${tilesetsrc}/bottom.png
-            
-            python3 ${normalize_py} ${dir_raw_tilesets_primary}${tilesetsrc}/middle.png ${dir_raw_tilesets_primary}${tilesetsrc}/middle.png
-
-            python3 ${normalize_py} ${dir_raw_tilesets_primary}${tilesetsrc}/top.png ${dir_raw_tilesets_primary}${tilesetsrc}/top.png
-
-
             # run porytiles
             porytiles compile-primary ${attribute_generation} -Wall -o ${dir_compiled_primary}${tileset} ${dir_raw_tilesets_primary}${tilesetsrc} ${metatile_behaviors}
 
@@ -143,14 +135,7 @@ while(true); do
                 # break the loop and go back to the main menu
                 break
             fi
-
-            # replace transparency with #ff00ff
-            python3 ${normalize_py} ${dir_raw_tilesets_secondary}${tilesetsrc}/bottom.png ${dir_raw_tilesets_secondary}${tilesetsrc}/bottom.png
             
-            python3 ${normalize_py} ${dir_raw_tilesets_secondary}${tilesetsrc}/middle.png ${dir_raw_tilesets_secondary}${tilesetsrc}/middle.png
-
-            python3 ${normalize_py} ${dir_raw_tilesets_secondary}${tilesetsrc}/top.png ${dir_raw_tilesets_secondary}${tilesetsrc}/top.png
-
             # run porytiles
             porytiles compile-secondary ${attribute_generation} -Wall -o ${dir_compiled_secondary}${tileset} ${dir_raw_tilesets_secondary}${tilesetsrc} ${dir_raw_tilesets_primary}${tilesetsrc2} ${metatile_behaviors}
 

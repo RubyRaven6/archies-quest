@@ -2,8 +2,8 @@
   "id": "MAP_ARCHIES_HOUSE_BACKYARD",
   "name": "ArchiesHouse_Backyard",
   "layout": "LAYOUT_ARCHIES_HOUSE_BACKYARD",
-  "music": "MUS_DUMMY",
-  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "music": "MUS_VERDANTURF",
+  "region_map_section": "MAPSEC_ARCHIE_BACKYARD",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_NONE",
@@ -14,7 +14,43 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
   "object_events": [],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "x": 12,
+      "y": 12,
+      "elevation": 0,
+      "dest_map": "MAP_ARCHIES_HOUSE_1F",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 17,
+      "y": 15,
+      "elevation": 0,
+      "dest_map": "MAP_ARCHIES_HOUSE_BACKYARD_BEACH",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 21,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_ARCHIES_HOUSE_BACKYARD_CRAGGS",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 13,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_ARCHIES_HOUSE_BACKYARD_POND",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 7,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_ARCHIES_HOUSE_BACKYARD_FOREST",
+      "dest_warp_id": "0"
+    }
+  ],
   "coord_events": [],
   "bg_events": []
 }

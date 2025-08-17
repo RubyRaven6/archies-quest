@@ -1,2 +1,0 @@
-DemonLairs_Vhane_MapScripts::
-	.byte 0

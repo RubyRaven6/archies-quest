@@ -1,0 +1,108 @@
+mapscripts ArchiesHouse_BackyardLake_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		if(!flag(FLAG_TOGGLE_WATER_INTERACT)){
+			setflag(FLAG_TOGGLE_WATER_INTERACT)
+		}
+	}
+}
+
+script ArchiesHouse_Backyard_EventScripts_Gyarados {
+    lock
+	faceplayer
+    getpartysize
+	if(var(VAR_RESULT) < 4){
+		msgbox(format("Gyarados is simmering in anger in the lake.\pTell him about something he can divert it to?"), MSGBOX_YESNO)
+		closemessage
+		if(var(VAR_RESULT) == TRUE){
+			givemon(SPECIES_GYARADOS, 40, abilityNum=1, gender=MALE, move1=MOVE_DRAGON_DANCE, move2=MOVE_WATERFALL, move3=MOVE_BOUNCE, move4=MOVE_ICE_FANG, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_LAKE_GYARADOS)
+			msgbox("Gyarados your party!")
+			closemessage
+		}
+	} else {
+		goto(CommonScript_Backyard_EventScripts_FullParty)
+	}
+    release
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Ludicolo {
+    lock
+	faceplayer
+    getpartysize
+	if(var(VAR_RESULT) < 4){
+		msgbox(format("Ludicolo is spinning happily.\pInvite her to tango?"), MSGBOX_YESNO)
+		closemessage
+		if(var(VAR_RESULT) == TRUE){
+			givemon(SPECIES_LUDICOLO, 40, abilityNum=0, gender=FEMALE, move1=MOVE_RAIN_DANCE, move2=MOVE_TEETER_DANCE, move3=MOVE_GIGA_DRAIN, move4=MOVE_HYDRO_PUMP, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_LAKE_LUDICOLO)
+			msgbox("Ludicolo joined your party!")
+			closemessage
+		}
+	} else {
+		goto(CommonScript_Backyard_EventScripts_FullParty)
+	}
+    release
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Azumarill {
+    lock
+	faceplayer
+    getpartysize
+	if(var(VAR_RESULT) < 4){
+		msgbox(format("Azumarill is doing his reps for swimming.\pGive him a better workout?"), MSGBOX_YESNO)
+		closemessage
+		if(var(VAR_RESULT) == TRUE){
+			givemon(SPECIES_AZUMARILL, 40, abilityNum=2, gender=MALE, move1=MOVE_PLAY_ROUGH, move2=MOVE_WATERFALL, move3=MOVE_TRAILBLAZE, move4=MOVE_BULLDOZE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_LAKE_AZUMARILL)
+			msgbox("Azumarill joined your party!")
+			closemessage
+		}
+	} else {
+		goto(CommonScript_Backyard_EventScripts_FullParty)
+	}
+    release
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Gardevoir {
+    lock
+	faceplayer
+    getpartysize
+	if(var(VAR_RESULT) < 4){
+		msgbox(format("Gardevoir is watching his friends enjoy themselves in water.\pGive him his own fun?"), MSGBOX_YESNO)
+		closemessage
+		if(var(VAR_RESULT) == TRUE){
+			givemon(SPECIES_GARDEVOIR, 40, abilityNum=1, gender=MALE, move1=MOVE_PSYCHIC, move2=MOVE_DAZZLING_GLEAM, move3=MOVE_CALM_MIND, move4=MOVE_MISTY_TERRAIN, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_LAKE_GARDEVOIR)
+			msgbox("Gardevoir joined your party!")
+			closemessage
+		}
+	} else {
+		goto(CommonScript_Backyard_EventScripts_FullParty)
+	}
+    release
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Uxie {
+    lock
+	msgbox(format("Uxie is looking at the lake peacefully."), MSGBOX_YESNO)
+	closemessage
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Mesprit {
+    lock
+	msgbox(format("Mesprit is looking at the lake happily."), MSGBOX_YESNO)
+	closemessage
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Azelf {
+    lock
+	msgbox(format("Azelf is looking at the lake haughtily."), MSGBOX_YESNO)
+	closemessage
+	end
+}

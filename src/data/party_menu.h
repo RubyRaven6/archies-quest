@@ -29,6 +29,13 @@ static const struct BgTemplate sPartyMenuBgTemplates[] =
     },
 };
 
+enum
+{
+    PARTY_BOX_LEFT_COLUMN,
+    PARTY_BOX_RIGHT_COLUMN,
+    PARTY_BOX_EQUAL_COLUMN //Custom party menu
+};
+
 static const struct PartyMenuBoxInfoRects sPartyBoxInfoRects[] =
 {
     [PARTY_BOX_LEFT_COLUMN] =
@@ -59,6 +66,20 @@ static const struct PartyMenuBoxInfoRects sPartyBoxInfoRects[] =
         },
         77, 4, 64, 16        // Description text
     },
+    [PARTY_BOX_EQUAL_COLUMN] = //Custom party menu
+    {
+        BlitBitmapToPartyWindow_Equal, 
+        {
+            //The below are the x, y, width, and height for each of the following info
+            33,  2, 40, 13, // Nickname
+             3, 25, 32,  8, // Level 85,  1, 32,  8,
+           100,  1,  8,  8, // Gender 79,  1,  8,  8, 
+            48, 25, 24,  8, // HP
+            63, 25, 24,  8, // Max HP
+            48, 18, 56,  3  // HP bar
+        }, 
+        33, 13, 64, 16      // Description text (e.g. NO USE)
+    },//
 };
 
 
@@ -69,12 +90,12 @@ static const u8 sPartyMenuSpriteCoords[PARTY_LAYOUT_COUNT][PARTY_SIZE][4 * 2] =
 {
     [PARTY_LAYOUT_SINGLE] =
     {
-        { 16,  40,  20,  50,  50,  52,  16,  34},
-        {104,  18, 108,  28, 136,  27, 102,  25},
-        {104,  42, 108,  52, 136,  51, 102,  49},
-        {104,  66, 108,  76, 136,  75, 102,  73},
-        {104,  90, 108, 100, 136,  99, 102,  97},
-        {104, 114, 108, 124, 136, 123, 102, 121},
+        { 24,  14,  38,  33, 105,  33,  24,  18},
+        {136,  22, 150,  41, 217,  41, 136,  26},
+        { 24,  54,  38,  73, 105,  73,  24,  58},
+        {136,  62, 150,  81, 217,  81, 136,  66},
+        { 24,  94,  38, 113, 105, 113,  24,  98},
+        {136, 102, 150, 121, 217, 121, 136, 106},
     },
     [PARTY_LAYOUT_DOUBLE] =
     {
@@ -187,6 +208,74 @@ static const struct WindowTemplate sSinglePartyMenuWindowTemplate[] =
     },
     DUMMY_WIN_TEMPLATE
 };
+
+static const struct WindowTemplate sSinglePartyMenuWindowTemplate_Equal[] = //Custom party menu
+{
+    {//Slot 0 left
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 0,
+        .width = 14,
+        .height = 5,
+        .paletteNum = 3,
+        .baseBlock = 0x63,
+    },
+    {//Slot 1 right
+        .bg = 0,
+        .tilemapLeft = 15,
+        .tilemapTop = 1,
+        .width = 14,
+        .height = 5,
+        .paletteNum = 4,
+        .baseBlock = 0xA9,
+    },
+    {//Slot 2 left
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 5,
+        .width = 14,
+        .height = 5,
+        .paletteNum = 5,
+        .baseBlock = 0xEF, //0xDF,
+    },
+    {//Slot 3 right
+        .bg = 0,
+        .tilemapLeft = 15,
+        .tilemapTop = 6,
+        .width = 14,
+        .height = 5,
+        .paletteNum = 6,
+        .baseBlock = 0x135, //0x115,
+    },
+    {//Slot 4 left
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 10,
+        .width = 14,
+        .height = 5,
+        .paletteNum = 7,
+        .baseBlock = 0x17B, //0x14B,
+    },
+    {//Slot 5 right
+        .bg = 0,
+        .tilemapLeft = 15,
+        .tilemapTop = 11,
+        .width = 14,
+        .height = 5,
+        .paletteNum = 8,
+        .baseBlock = 0x1C1, //0x181,
+    },
+    {
+        .bg = 2,
+        .tilemapLeft = 1,
+        .tilemapTop = 15,
+        .width = 28,
+        .height = 4,
+        .paletteNum = 14,
+        .baseBlock = 0x21F, //0x1DF,
+    },
+    DUMMY_WIN_TEMPLATE
+};//
 
 static const struct WindowTemplate sDoublePartyMenuWindowTemplate[] =
 {
@@ -391,7 +480,17 @@ static const struct WindowTemplate sCancelButtonWindowTemplate =
     .width = 6,
     .height = 2,
     .paletteNum = 3,
-    .baseBlock = 0x1C7,
+    .baseBlock = 0x207,
+};
+static const struct WindowTemplate sCancelButtonWindowTemplate_equal =
+{
+    .bg = 0,
+    .tilemapLeft = 24,
+    .tilemapTop = 17,
+    .width = 6,
+    .height = 2,
+    .paletteNum = 3,
+    .baseBlock = 0x207, //0x1C7,  //Custom party menu
 };
 
 static const struct WindowTemplate sMultiCancelButtonWindowTemplate =
@@ -402,7 +501,17 @@ static const struct WindowTemplate sMultiCancelButtonWindowTemplate =
     .width = 6,
     .height = 2,
     .paletteNum = 3,
-    .baseBlock = 0x1C7,
+    .baseBlock = 0x207,
+};
+static const struct WindowTemplate sMultiCancelButtonWindowTemplate_equal =
+{
+    .bg = 0,
+    .tilemapLeft = 24,
+    .tilemapTop = 18,
+    .width = 6,
+    .height = 2,
+    .paletteNum = 3,
+    .baseBlock = 0x207, //0x1C7,  //Custom party menu
 };
 
 static const struct WindowTemplate sConfirmButtonWindowTemplate =
@@ -414,6 +523,16 @@ static const struct WindowTemplate sConfirmButtonWindowTemplate =
     .height = 2,
     .paletteNum = 3,
     .baseBlock = 0x1D3,
+};
+static const struct WindowTemplate sConfirmButtonWindowTemplate_equal =
+{
+    .bg = 0,
+    .tilemapLeft = 24,
+    .tilemapTop = 16,
+    .width = 6,
+    .height = 2,
+    .paletteNum = 3,
+    .baseBlock = 0x213, //0x1D3,  //Custom party menu
 };
 
 static const struct WindowTemplate sDefaultPartyMsgWindowTemplate =
@@ -601,6 +720,31 @@ static const u8 sSlotTilemap_Wide[]      = INCBIN_U8("graphics/party_menu/slot_w
 static const u8 sSlotTilemap_WideNoHP[]  = INCBIN_U8("graphics/party_menu/slot_wide_no_hp.bin");
 static const u8 sSlotTilemap_WideEmpty[] = INCBIN_U8("graphics/party_menu/slot_wide_empty.bin");
 
+
+ //Custom party menu
+static const u8 sEqualMainSlotTileNums[] =      {43, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 45,
+                                                 49, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 50,
+                                                 49, 33, 33, 33, 52, 53, 51, 51, 51, 51, 51, 51, 51, 54,
+                                                 49, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 50,
+                                                 55, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 57};
+
+static const u8 sEqualMainSlotTileNums_Egg[] =  {43, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 45,
+                                                 49, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 50,
+                                                 49, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 50,
+                                                 49, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 33, 50,
+                                                 55, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 57};
+
+static const u8 sEqualEmptySlotTileNums[] = {21, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 23,
+                                             30,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 31,
+                                             30,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 31,
+                                             30,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 31,
+                                             37, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 39};
+
+static const u8 sEmptySlotTileNums[] = {21, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 23,
+                                        30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 31,
+                                        37, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 38, 39};
+
+//
 // Palette offsets
 static const u8 sGenderPalOffsets[] = {11, 12};
 static const u8 sHPBarPalOffsets[] = {9, 10};
@@ -659,7 +803,7 @@ static const u8 *const sActionStringTable[] =
     [PARTY_MSG_ALREADY_HOLDING_ONE]    = gText_AlreadyHoldingOne,
     [PARTY_MSG_WHICH_APPLIANCE]        = gText_WhichAppliance,
     [PARTY_MSG_CHOOSE_SECOND_FUSION]   = gText_NextFusionMon,
-    [PARTY_MSG_NO_POKEMON]             = COMPOUND_STRING("You have no POKéMON."),
+    [PARTY_MSG_NO_POKEMON]             = COMPOUND_STRING("You have no Pokémon."),
     [PARTY_MSG_CHOOSE_MON_FOR_BOX]     = gText_SendWhichMonToPC,
     [PARTY_MSG_MOVE_ITEM_WHERE]        = gText_MoveItemWhere,
 };
@@ -689,7 +833,7 @@ static const u16 sUnusedData[] =
     0x0121, 0x013b, 0x000f, 0x0013, 0x0039, 0x0046, 0x0094, 0x00f9, 0x007f, 0x0123,
 };
 
-static const u8 sText_Trade4[] = _("TRADE");
+static const u8 sText_Trade4[] = _("Trade");
 
 struct
 {
@@ -697,33 +841,34 @@ struct
     TaskFunc func;
 } static const sCursorOptions[MENU_FIELD_MOVES] =
 {
-    [MENU_SUMMARY]         = {COMPOUND_STRING("SUMMARY"),         CursorCb_Summary},
-    [MENU_SWITCH]          = {COMPOUND_STRING("SWITCH"),          CursorCb_Switch},
+    [MENU_SUMMARY]         = {COMPOUND_STRING("Summary"),         CursorCb_Summary},
+    [MENU_STAT_EDIT]       = {COMPOUND_STRING("Retrain"),         CursorCb_StatEdit},
+    [MENU_SWITCH]          = {COMPOUND_STRING("Switch"),          CursorCb_Switch},
     [MENU_CANCEL1]         = {gText_Cancel2,                      CursorCb_Cancel1},
-    [MENU_ITEM]            = {COMPOUND_STRING("ITEM"),            CursorCb_Item},
+    [MENU_ITEM]            = {COMPOUND_STRING("Item"),            CursorCb_Item},
     [MENU_GIVE]            = {gMenuText_Give,                     CursorCb_Give},
-    [MENU_TAKE_ITEM]       = {COMPOUND_STRING("TAKE"),            CursorCb_TakeItem},
-    [MENU_MOVE_ITEM]       = {COMPOUND_STRING("MOVE"),            CursorCb_MoveItem},
-    [MENU_MAIL]            = {COMPOUND_STRING("MAIL"),            CursorCb_Mail},
-    [MENU_TAKE_MAIL]       = {COMPOUND_STRING("TAKE"),            CursorCb_TakeMail},
-    [MENU_READ]            = {COMPOUND_STRING("READ"),            CursorCb_Read},
+    [MENU_TAKE_ITEM]       = {COMPOUND_STRING("Take"),            CursorCb_TakeItem},
+    [MENU_MOVE_ITEM]       = {COMPOUND_STRING("Move"),            CursorCb_MoveItem},
+    [MENU_MAIL]            = {COMPOUND_STRING("Mail"),            CursorCb_Mail},
+    [MENU_TAKE_MAIL]       = {COMPOUND_STRING("Take"),            CursorCb_TakeMail},
+    [MENU_READ]            = {COMPOUND_STRING("Read"),            CursorCb_Read},
     [MENU_CANCEL2]         = {gText_Cancel2,                      CursorCb_Cancel2},
-    [MENU_SHIFT]           = {COMPOUND_STRING("SHIFT"),           CursorCb_SendMon},
-    [MENU_SEND_OUT]        = {COMPOUND_STRING("SEND OUT"),        CursorCb_SendMon},
-    [MENU_ENTER]           = {COMPOUND_STRING("ENTER"),           CursorCb_Enter},
-    [MENU_NO_ENTRY]        = {COMPOUND_STRING("NO ENTRY"),        CursorCb_NoEntry},
-    [MENU_STORE]           = {COMPOUND_STRING("STORE"),           CursorCb_Store},
+    [MENU_SHIFT]           = {COMPOUND_STRING("Shift"),           CursorCb_SendMon},
+    [MENU_SEND_OUT]        = {COMPOUND_STRING("Send Out"),        CursorCb_SendMon},
+    [MENU_ENTER]           = {COMPOUND_STRING("Enter"),           CursorCb_Enter},
+    [MENU_NO_ENTRY]        = {COMPOUND_STRING("No Entry"),        CursorCb_NoEntry},
+    [MENU_STORE]           = {COMPOUND_STRING("Store"),           CursorCb_Store},
     [MENU_REGISTER]        = {gText_Register,                     CursorCb_Register},
     [MENU_TRADE1]          = {sText_Trade4,                       CursorCb_Trade1},
     [MENU_TRADE2]          = {sText_Trade4,                       CursorCb_Trade2},
     [MENU_TOSS]            = {gMenuText_Toss,                     CursorCb_Toss},
-    [MENU_CATALOG_BULB]    = {COMPOUND_STRING("Light bulb"),      CursorCb_CatalogBulb},
-    [MENU_CATALOG_OVEN]    = {COMPOUND_STRING("Microwave oven"),  CursorCb_CatalogOven},
-    [MENU_CATALOG_WASHING] = {COMPOUND_STRING("Washing machine"), CursorCb_CatalogWashing},
+    [MENU_CATALOG_BULB]    = {COMPOUND_STRING("Light Bulb"),      CursorCb_CatalogBulb},
+    [MENU_CATALOG_OVEN]    = {COMPOUND_STRING("Microwave Oven"),  CursorCb_CatalogOven},
+    [MENU_CATALOG_WASHING] = {COMPOUND_STRING("Washing Machine"), CursorCb_CatalogWashing},
     [MENU_CATALOG_FRIDGE]  = {COMPOUND_STRING("Refrigerator"),    CursorCb_CatalogFridge},
-    [MENU_CATALOG_FAN]     = {COMPOUND_STRING("Electric fan"),    CursorCb_CatalogFan},
-    [MENU_CATALOG_MOWER]   = {COMPOUND_STRING("Lawn mower"),      CursorCb_CatalogMower},
-    [MENU_CHANGE_FORM]     = {COMPOUND_STRING("Change form"),     CursorCb_ChangeForm},
+    [MENU_CATALOG_FAN]     = {COMPOUND_STRING("Electric Fan"),    CursorCb_CatalogFan},
+    [MENU_CATALOG_MOWER]   = {COMPOUND_STRING("Lawn Mower"),      CursorCb_CatalogMower},
+    [MENU_CHANGE_FORM]     = {COMPOUND_STRING("Change Form"),     CursorCb_ChangeForm},
     [MENU_CHANGE_ABILITY]  = {COMPOUND_STRING("Change Ability"),  CursorCb_ChangeAbility},
 };
 

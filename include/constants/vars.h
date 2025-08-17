@@ -95,14 +95,14 @@
 #define VAR_POKELOT_RND1                                 0x404B
 #define VAR_POKELOT_RND2                                 0x404C
 #define VAR_POKELOT_PRIZE_PLACE                          0x404D
-#define VAR_UNUSED_0x404E                                0x404E // Unused Var
+#define VAR_ARCHIE_ARRIVES                               0x404E // For starting cutscene Archie
 #define VAR_LOTAD_SIZE_RECORD                            0x404F
 #define VAR_LITTLEROOT_TOWN_STATE                        0x4050
 #define VAR_OLDALE_TOWN_STATE                            0x4051
-#define VAR_DEWFORD_TOWN_STATE                           0x4052 // Unused Var
+#define VAR_DEMON_LORDS_DEFEATED                         0x4052 // Tracks how many demon lords have been defeated
 #define VAR_LAVARIDGE_TOWN_STATE                         0x4053
 #define VAR_CURRENT_SECRET_BASE                          0x4054 // was probably allocated for VAR_FALLARBOR_TOWN_STATE at one point
-#define VAR_VERDANTURF_TOWN_STATE                        0x4055 // Unused Var
+#define VAR_SAPPRILON_PUZZLE_VAL                         0x4055 // Unused Var
 #define VAR_PACIFIDLOG_TOWN_STATE                        0x4056 // Unused Var
 #define VAR_PETALBURG_CITY_STATE                         0x4057
 #define VAR_SLATEPORT_CITY_STATE                         0x4058
@@ -325,15 +325,15 @@
 #define VAR_TEMP_TRANSFERRED_SPECIES  VAR_TEMP_1
 
 #if TESTING
-#define TESTING_VARS_START             0x9000
-#define TESTING_VAR_DIFFICULTY         (TESTING_VARS_START + 0x0)
-#define TESTING_VAR_UNUSED_1           (TESTING_VARS_START + 0x1)
-#define TESTING_VAR_UNUSED_2           (TESTING_VARS_START + 0x2)
-#define TESTING_VAR_UNUSED_3           (TESTING_VARS_START + 0x3)
-#define TESTING_VAR_UNUSED_4           (TESTING_VARS_START + 0x4)
-#define TESTING_VAR_UNUSED_5           (TESTING_VARS_START + 0x5)
-#define TESTING_VAR_UNUSED_6           (TESTING_VARS_START + 0x6)
-#define TESTING_VAR_UNUSED_7           (TESTING_VARS_START + 0x7)
+#define TESTING_VARS_START                  0x9000
+#define TESTING_VAR_DIFFICULTY              (TESTING_VARS_START + 0x0)
+#define TESTING_VAR_STARTING_STATUS         (TESTING_VARS_START + 0x1)
+#define TESTING_VAR_STARTING_STATUS_TIMER   (TESTING_VARS_START + 0x2)
+#define TESTING_VAR_UNUSED_3                (TESTING_VARS_START + 0x3)
+#define TESTING_VAR_UNUSED_4                (TESTING_VARS_START + 0x4)
+#define TESTING_VAR_UNUSED_5                (TESTING_VARS_START + 0x5)
+#define TESTING_VAR_UNUSED_6                (TESTING_VARS_START + 0x6)
+#define TESTING_VAR_UNUSED_7                (TESTING_VARS_START + 0x7)
 #endif // TESTING
 
 #endif // GUARD_CONSTANTS_VARS_H

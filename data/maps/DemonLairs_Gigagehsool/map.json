@@ -3,10 +3,10 @@
   "name": "DemonLairs_Gigagehsool",
   "layout": "LAYOUT_DEMON_LAIRS_GIGAGEHSOOL",
   "music": "MUS_DUMMY",
-  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "region_map_section": "MAPSEC_GIGAGEHSOOL_LAIR",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_NONE",
+  "map_type": "MAP_TYPE_UNDERWATER",
   "allow_cycling": false,
   "allow_escaping": false,
   "allow_running": false,
@@ -14,7 +14,31 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
   "object_events": [],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "x": 9,
+      "y": 18,
+      "elevation": 0,
+      "dest_map": "MAP_DEMON_LAIRS_GIGAGEHSOOL",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 9,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_DEMON_LAIRS_GIGAGEHSOOL_INTERIOR",
+      "dest_warp_id": "0"
+    }
+  ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 9,
+      "y": 7,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DemonLairs_Gigagehsool_EventScript_Door"
+    }
+  ]
 }

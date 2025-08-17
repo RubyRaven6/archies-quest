@@ -287,7 +287,7 @@ static const u8 sRivalAvatarGfxIds[][GENDER_COUNT] =
 
 static const u8 sPlayerAvatarGfxIds[][GENDER_COUNT] =
 {
-    [PLAYER_AVATAR_STATE_NORMAL]     = {OBJ_EVENT_GFX_BRENDAN_NORMAL,     OBJ_EVENT_GFX_MAY_NORMAL},
+    [PLAYER_AVATAR_STATE_NORMAL]     = {OBJ_EVENT_GFX_COOL_ARCHIE,     OBJ_EVENT_GFX_MAY_NORMAL},
     [PLAYER_AVATAR_STATE_MACH_BIKE]  = {OBJ_EVENT_GFX_BRENDAN_MACH_BIKE,  OBJ_EVENT_GFX_MAY_MACH_BIKE},
     [PLAYER_AVATAR_STATE_ACRO_BIKE]  = {OBJ_EVENT_GFX_BRENDAN_ACRO_BIKE,  OBJ_EVENT_GFX_MAY_ACRO_BIKE},
     [PLAYER_AVATAR_STATE_SURFING]    = {OBJ_EVENT_GFX_BRENDAN_SURFING,    OBJ_EVENT_GFX_MAY_SURFING},
@@ -314,7 +314,7 @@ static const u8 sPlayerAvatarGfxToStateFlag[GENDER_COUNT][5][2] =
 {
     [MALE] =
     {
-        {OBJ_EVENT_GFX_BRENDAN_NORMAL,     PLAYER_AVATAR_FLAG_ON_FOOT},
+        {OBJ_EVENT_GFX_COOL_ARCHIE,     PLAYER_AVATAR_FLAG_ON_FOOT},
         {OBJ_EVENT_GFX_BRENDAN_MACH_BIKE,  PLAYER_AVATAR_FLAG_MACH_BIKE},
         {OBJ_EVENT_GFX_BRENDAN_ACRO_BIKE,  PLAYER_AVATAR_FLAG_ACRO_BIKE},
         {OBJ_EVENT_GFX_BRENDAN_SURFING,    PLAYER_AVATAR_FLAG_SURFING},
@@ -382,8 +382,16 @@ void PlayerStep(u8 direction, u16 newKeys, u16 heldKeys)
             DoPlayerAvatarTransition();
             if (TryDoMetatileBehaviorForcedMovement() == 0)
             {
-                MovePlayerAvatarUsingKeypadInput(direction, newKeys, heldKeys);
-                PlayerAllowForcedMovementIfMovingSameDirection();
+                if (GetFollowerNPCData(FNPC_DATA_FORCED_MOVEMENT) != FALSE)
+                {
+                    gPlayerAvatar.preventStep = TRUE;
+                    CreateTask(Task_MoveNPCFollowerAfterForcedMovement, 1);
+                }
+                else
+                {
+                    MovePlayerAvatarUsingKeypadInput(direction, newKeys, heldKeys);
+                    PlayerAllowForcedMovementIfMovingSameDirection();
+                }
             }
         }
     }
@@ -510,7 +518,11 @@ static bool8 DoForcedMovement(u8 direction, void (*moveFunc)(u8))
         else
         {
             if (collision == COLLISION_LEDGE_JUMP)
+            {
+                SetFollowerNPCData(FNPC_DATA_FORCED_MOVEMENT, FALSE);
                 PlayerJumpLedge(direction);
+            }
+
             playerAvatar->flags |= PLAYER_AVATAR_FLAG_FORCED_MOVE;
             playerAvatar->runningState = MOVING;
             return TRUE;
@@ -518,12 +530,11 @@ static bool8 DoForcedMovement(u8 direction, void (*moveFunc)(u8))
     }
     else
     {
+        if (PlayerHasFollowerNPC())
+            SetFollowerNPCData(FNPC_DATA_FORCED_MOVEMENT, TRUE);
+
         playerAvatar->runningState = MOVING;
         moveFunc(direction);
-        if (PlayerHasFollowerNPC()
-         && gObjectEvents[GetFollowerNPCObjectId()].invisible == FALSE
-         && FindTaskIdByFunc(Task_MoveNPCFollowerAfterForcedMovement) == TASK_NONE)
-            CreateTask(Task_MoveNPCFollowerAfterForcedMovement, 3);
         return TRUE;
     }
 }

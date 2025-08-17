@@ -1,0 +1,7 @@
+mapscripts ArchiesHouse_BackyardGarden_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        if(flag(FLAG_TOGGLE_WATER_INTERACT)){
+			clearflag(FLAG_TOGGLE_WATER_INTERACT)
+		}
+    }
+}

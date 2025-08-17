@@ -12,17 +12,28 @@
   ],
   "gMapGroup_ArchiesHouse": [
     "ArchiesHouse_1F",
-    "ArchiesHouse_Backyard"
+    "ArchiesHouse_Backyard",
+    "ArchiesHouse_BackyardLake",
+    "ArchiesHouse_BackyardForest",
+    "ArchiesHouse_BackyardBeach",
+    "ArchiesHouse_BackyardCraggs",
+    "ArchiesHouse_BackyardGarden",
+    "ArchiesHouse_BackyardSea",
+    "ArchiesHouse_BackyardCave"
   ],
   "gMapGroup_HubWorld": [
     "HubWorld_Initial"
   ],
   "gMapGroup_DemonLairs": [
-    "DemonLairs_Vhane",
+    "DemonLairs_Maxie",
     "DemonLairs_Gigagehsool",
     "DemonLairs_Gigagehsool_Interior",
     "DemonLairs_Nessie",
-    "DemonLairs_Nessie_Interior"
+    "DemonLairs_Nessie_Interior",
+    "DemonLairs_Sapprilon",
+    "Demonalirs_Sapprilon_Interior",
+    "DemonLairs_Addisamap",
+    "DemonLairs_Addisamap_Interior"
   ],
   "gMapGroup_VanillaMaps1": [
     "PetalburgCity",

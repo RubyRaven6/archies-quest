@@ -3,41 +3,46 @@ mapscripts DemonLairs_Nessie_MapScripts{
 }
 
 script DemonLairs_Nessie_EventScript_NessiePuzzle{
-    msgbox("It's an impressive painting.\nView it closer?", MSGBOX_YESNO)
-    closemessage
-    if(var(VAR_RESULT) == YES){
-        special(OpenNessiePuzzle)
-    }
-    waitstate
-    if(flag(FLAG_NESSIE_PUZZLE_SOLVED)){
-        lockall
-        msgbox("The wall is collapsing!", MSGBOX_DEFAULT)
-        waitmessage
+    if(!flag(FLAG_NESSIE_PUZZLE_SOLVED)){
+        msgbox("It's an impressive painting.\nView it closer?", MSGBOX_YESNO)
         closemessage
-        setvar(VAR_0x8004, 1)  // vertical pan
-        setvar(VAR_0x8005, 1)  // horizontal pan
-        setvar(VAR_0x8006, 8)  // num shakes
-        setvar(VAR_0x8007, 5)  // shake delay
-        special(ShakeCamera)
+        if(var(VAR_RESULT) == YES){
+            special(OpenNessiePuzzle)
+        }
         waitstate
-        playse(SE_M_ROCK_THROW)
-        setmetatile(2, 0, METATILE_NessereignLairPrimary_ENTRANCE_UPL, TRUE)
-        setmetatile(3, 0, METATILE_NessereignLairPrimary_ENTRANCE_UPM, TRUE)
-        setmetatile(4, 0, METATILE_NessereignLairPrimary_ENTRANCE_UPR, TRUE)
-        setmetatile(2, 1, METATILE_NessereignLairPrimary_ENTRANCE_ML, TRUE)
-        setmetatile(3, 1, METATILE_NessereignLairPrimary_ENTRANCE_MM, TRUE)
-        setmetatile(4, 1, METATILE_NessereignLairPrimary_ENTRANCE_MR, TRUE)
-        setmetatile(2, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNL, TRUE)
-        setmetatile(3, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNM, FALSE)
-        setmetatile(4, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNR, TRUE)
-        special(DrawWholeMapView)
+        if(flag(FLAG_NESSIE_PUZZLE_SOLVED)){
+            lockall
+            msgbox("The wall is collapsing!", MSGBOX_DEFAULT)
+            waitmessage
+            closemessage
+            setvar(VAR_0x8004, 1)  // vertical pan
+            setvar(VAR_0x8005, 1)  // horizontal pan
+            setvar(VAR_0x8006, 8)  // num shakes
+            setvar(VAR_0x8007, 5)  // shake delay
+            special(ShakeCamera)
+            waitstate
+            playse(SE_M_ROCK_THROW)
+            setmetatile(2, 0, METATILE_NessereignLairPrimary_ENTRANCE_UPL, TRUE)
+            setmetatile(3, 0, METATILE_NessereignLairPrimary_ENTRANCE_UPM, TRUE)
+            setmetatile(4, 0, METATILE_NessereignLairPrimary_ENTRANCE_UPR, TRUE)
+            setmetatile(2, 1, METATILE_NessereignLairPrimary_ENTRANCE_ML, TRUE)
+            setmetatile(3, 1, METATILE_NessereignLairPrimary_ENTRANCE_MM, TRUE)
+            setmetatile(4, 1, METATILE_NessereignLairPrimary_ENTRANCE_MR, TRUE)
+            setmetatile(2, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNL, TRUE)
+            setmetatile(3, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNM, FALSE)
+            setmetatile(4, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNR, TRUE)
+            special(DrawWholeMapView)
+            msgbox(format(""))
+        }
+    } else {
+        
     }
     end
 }
 
 script DemonLairs_Nessie_EventScript_Knife {
     if(flag(FLAG_NESSIE_GOT_DAGGER) == FALSE){
-        msgbox("You find a small dagger on the table.\p Take it?", MSGBOX_YESNO)
+        msgbox("You find a small dagger on the table.\pTake it?", MSGBOX_YESNO)
         if(var(VAR_RESULT) == YES){
             setflag(FLAG_NESSIE_GOT_DAGGER)
             setmetatile(3, 7, METATILE_NessereignLairPrimary_TableCorner, TRUE)
@@ -62,7 +67,7 @@ script DemonLairs_Nessie_EventScript_Book {
         }
     }
     else{
-        msgbox("“Sheathing sharpness\nthrough screams.”\pIt's a dizzying tome.\nNo need to see the rest.")
+        msgbox("“Sheathing sheathing sheathing sheathing\nSharpness sharpness sharpness sharpness\lThrough through through through\nScreams screams screams screams”\pIt's a dizzying tome.\nNo need to see the rest.")
         closemessage
     }
     end

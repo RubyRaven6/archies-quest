@@ -843,6 +843,8 @@ bool8 ScrCmd_fadescreenswapbuffers(struct ScriptContext *ctx)
     switch (mode)
     {
     case FADE_FROM_BLACK:
+        SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(0, 0));
+        break;
     case FADE_FROM_WHITE:
         // Restore last weather blend before fading in,
         // since BLDALPHA was modified by fade-out
@@ -1681,6 +1683,13 @@ bool8 ScrCmd_release(struct ScriptContext *ctx)
     ScriptMovement_UnfreezeObjectEvents();
     UnfreezeObjectEvents();
     gMsgBoxIsCancelable = FALSE;
+    return FALSE;
+}
+
+bool8 ScrCmd_setspeaker(struct ScriptContext *ctx)
+{
+    const u8 *name = (const u8 *)ScriptReadWord(ctx);
+    SetSpeakerName(name);
     return FALSE;
 }
 
@@ -2748,7 +2757,7 @@ bool8 ScrCmd_setmetatile(struct ScriptContext *ctx)
     if (!isImpassable)
         MapGridSetMetatileIdAt(x, y, metatileId);
     else
-        MapGridSetMetatileIdAt(x, y, metatileId | MAPGRID_COLLISION_MASK);
+        MapGridSetMetatileIdAt(x, y, metatileId | MAPGRID_IMPASSABLE);
     return FALSE;
 }
 
@@ -3257,6 +3266,41 @@ bool8 ScrCmd_fwdweekday(struct ScriptContext *ctx)
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
 
     FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0);
+    return FALSE;
+}
+
+bool8 ScrCmd_handlesappypuzzle(struct ScriptContext *ctx)
+{
+    u32 output = VarGet(VAR_SAPPRILON_PUZZLE_VAL);
+    u32 choice = ScriptReadWord(ctx);
+     
+    switch(choice){
+        case 1:
+            output *= 10;
+            output += choice;
+            VarSet(VAR_SAPPRILON_PUZZLE_VAL, output);
+            DebugPrintf("Special Var: %u", VarGet(VAR_SAPPRILON_PUZZLE_VAL));
+            break;
+        case 2:
+            output *= 10;
+            output += choice;
+            VarSet(VAR_SAPPRILON_PUZZLE_VAL, output);
+            DebugPrintf("Special Var: %u", VarGet(VAR_SAPPRILON_PUZZLE_VAL));
+            break;
+        case 3:
+            output *= 10;
+            output += choice;
+            VarSet(VAR_SAPPRILON_PUZZLE_VAL, output);
+            DebugPrintf("Special Var: %u", VarGet(VAR_SAPPRILON_PUZZLE_VAL));
+            break;
+        case 4:
+            output *= 10;
+            output += choice;
+            VarSet(VAR_SAPPRILON_PUZZLE_VAL, output);
+            DebugPrintf("Special Var: %u", VarGet(VAR_SAPPRILON_PUZZLE_VAL));
+            break;
+    }
+
     return FALSE;
 }
 

@@ -219,6 +219,17 @@
  *     {
  *         KNOWN_FAILING; // #2596.
  *
+ * KNOWN_CRASHING
+ * Marks a test as crashing due to a bug. If there is an issue number
+ * associated with the bug it should be included in a comment. If the
+ * test passes the developer will be notified to remove KNOWN_CRASHING.
+ * For example:
+ *     TEST("Crashes")
+ *     {
+ *         KNOWN_CRASHING; // #7255
+ *         void (*f)(void) = NULL;
+ *         f(); // Crashes!
+ *
  * PARAMETRIZE
  * Runs a test multiple times. i will be set to which parameter is
  * running, and results will contain an entry for each parameter, e.g.:
@@ -748,7 +759,7 @@ extern struct BattleTestRunnerState *const gBattleTestRunnerState;
 #define APPEND_COMMA_TRUE(a) , a, TRUE
 #define R_APPEND_TRUE(...) __VA_OPT__(FIRST(__VA_ARGS__), TRUE RECURSIVELY(R_FOR_EACH(APPEND_COMMA_TRUE, EXCEPT_1(__VA_ARGS__))))
 
-#define AI_TRAINER_NAME "{PKMN} TRAINER LEAF"
+#define AI_TRAINER_NAME "{PKMN} Trainer Leaf"
 
 /* Test */
 

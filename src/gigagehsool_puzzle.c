@@ -1,0 +1,891 @@
+#include "gba/types.h"
+#include "gba/defines.h"
+#include "global.h"
+#include "main.h"
+#include "bg.h"
+#include "text_window.h"
+#include "window.h"
+#include "constants/characters.h"
+#include "palette.h"
+#include "task.h"
+#include "overworld.h"
+#include "malloc.h"
+#include "gba/macro.h"
+#include "menu_helpers.h"
+#include "menu.h"
+#include "scanline_effect.h"
+#include "sprite.h"
+#include "constants/rgb.h"
+#include "decompress.h"
+#include "constants/songs.h"
+#include "sound.h"
+#include "string_util.h"
+#include "pokemon_icon.h"
+#include "puzzles.h"
+#include "graphics.h"
+#include "data.h"
+#include "pokedex.h"
+#include "gpu_regs.h"
+#include "event_data.h"
+
+//Sprite Callbacks
+static void CursorCallback(struct Sprite *sprite);
+static void NumberCallback(struct Sprite *);
+static u32 CreateNumberSpriteAt(u32 x, u32 y, u32 number, u16 *numberSpriteId);
+static void DestroyNumberSpriteAt(u32 x, u32 y, u16 *numberSpriteId);
+
+struct GigagehsoolPuzzleState
+{
+    MainCallback savedCallback;
+    u8 loadState;
+    u8 tenPearlShell;
+    u8 sevenPearlShell;
+    u8 threePearlShell;
+    u8 cursorX;
+    u8 cursorY;
+    u16 cursorSpriteId;
+    u8 inputMode;
+    u8 selectedShell;
+    u16 tenShellSpriteId;
+    u16 sevenShellSpriteId;
+    u16 threeShellSpriteId;
+};
+
+enum WindowIds
+{
+    WINDOW_INSTRUCTIONS,
+    WINDOW_CONTROLS
+};
+
+enum ShellStates
+{
+    INPUT_SELECT_SHELL,
+    INPUT_TAKE_SHELL_AMOUNT,
+    INPUT_POUR_INTO_SHELL,
+    INPUT_SELECTED_TEN_SHELL,
+    INPUT_SELECTED_FIVE_SHELL,
+    INPUT_SELECTED_THREE_SHELL
+};
+
+enum NumberSprites
+{
+    SPRITE_NUM_ZERO,
+    SPRITE_NUM_ONE,
+    SPRITE_NUM_TWO,
+    SPRITE_NUM_THREE,
+    SPRITE_NUM_FOUR,
+    SPRITE_NUM_FIVE,
+    SPRITE_NUM_SIX,
+    SPRITE_NUM_SEVEN,
+    SPRITE_NUM_TEN,
+};
+
+enum FontColor
+{
+    FONT_WHITE,
+    FONT_RED
+};
+
+static const u8 sGigagehsoolPuzzleWindowFontColors[][3] =
+{
+    [FONT_WHITE]  = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE,      TEXT_COLOR_DARK_GRAY},
+};
+
+
+static EWRAM_DATA struct GigagehsoolPuzzleState *sGigagehsoolPuzzleState = NULL;
+static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
+
+#define TAG_CURSOR          30004
+#define TAG_NUMBERS         30005
+
+#define MAX_TEN_SHELL       10
+#define MAX_FIVE_SHELL      7
+#define MAX_THREE_SHELL     3
+
+static const u16 sCursor_Pal[] = INCBIN_U16("graphics/gigagehsool_puzzle/cursor.gbapal");
+static const u32 sCursor_Gfx[] = INCBIN_U32("graphics/gigagehsool_puzzle/cursor.4bpp.lz");
+
+static const u16 sNumbers_Pal[] = INCBIN_U16("graphics/gigagehsool_puzzle/num_spritesheet.gbapal");
+static const u32 sNumbers_Gfx[] = INCBIN_U32("graphics/gigagehsool_puzzle/num_spritesheet.4bpp.lz");
+
+static const u32 sGigagehsoolPuzzleTiles[] = INCBIN_U32("graphics/gigagehsool_puzzle/puzzle_tiles.4bpp.lz");
+static const u32 sGigagehsoolPuzzleTilemap[] = INCBIN_U32("graphics/gigagehsool_puzzle/puzzle_tiles.bin.lz");
+static const u16 sGigagehsoolPuzzlePalette[] = INCBIN_U16("graphics/gigagehsool_puzzle/puzzle_tiles.gbapal");
+
+static const struct OamData sOamData_Cursor =
+{
+    .size = SPRITE_SIZE(16x32),
+    .shape = SPRITE_SHAPE(16x32),
+    .priority = 0,
+};
+
+static const struct CompressedSpriteSheet sSpriteSheet_Cursor =
+{
+    .data = sCursor_Gfx,
+    .size = 16*32/2,
+    .tag = TAG_CURSOR,
+};
+
+static const struct SpritePalette sSpritePal_Cursor =
+{
+    .data = sCursor_Pal,
+    .tag = TAG_CURSOR
+};
+
+static const struct SpriteTemplate sSpriteTemplate_Cursor =
+{
+    .tileTag = TAG_CURSOR,
+    .paletteTag = TAG_CURSOR,
+    .oam = &sOamData_Cursor,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .callback = CursorCallback
+};
+
+static const struct OamData sOamDataNumbers =
+{
+    .size = SPRITE_SIZE(32x32),
+    .shape = SPRITE_SHAPE(32x32),
+    .priority = 0,
+};
+
+static const struct CompressedSpriteSheet sSpriteSheet_Numbers =
+{
+    .data = sNumbers_Gfx,
+    .size = 32*32*11/2,
+    .tag = TAG_NUMBERS,
+};
+
+static const struct SpritePalette sSpritePal_Numbers =
+{
+    .data = sNumbers_Pal,
+    .tag = TAG_NUMBERS
+};
+
+#define NUMBER_CONSTANT 16
+
+static const union AnimCmd sSpriteAnimNumbers0[] =
+{
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 0, 32),
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 0, 32),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sSpriteAnimNumbers1[] =
+{
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 1, 32),
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 1, 32),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sSpriteAnimNumbers2[] =
+{
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 2, 32),
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 2, 32),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sSpriteAnimNumbers3[] =
+{
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 3, 32),
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 3, 32),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sSpriteAnimNumbers4[] =
+{
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 4, 32),
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 4, 32),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sSpriteAnimNumbers5[] =
+{
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 5, 32),
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 5, 32),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sSpriteAnimNumbers6[] =
+{
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 6, 32),
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 6, 32),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sSpriteAnimNumbers7[] =
+{
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 7, 32),
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 7, 32),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sSpriteAnimNumbers8[] =
+{
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 8, 32),
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 8, 32),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sSpriteAnimNumbers9[] =
+{
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 9, 32),
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 9, 32),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sSpriteAnimNumbers10[] =
+{
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 10, 32),
+    ANIMCMD_FRAME(NUMBER_CONSTANT * 10, 32),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sSpriteAnimTableNumbers[] =
+{
+    sSpriteAnimNumbers0,
+    sSpriteAnimNumbers1,
+    sSpriteAnimNumbers2,
+    sSpriteAnimNumbers3,
+    sSpriteAnimNumbers4,
+    sSpriteAnimNumbers5,
+    sSpriteAnimNumbers6,
+    sSpriteAnimNumbers7,
+    sSpriteAnimNumbers8,
+    sSpriteAnimNumbers9,
+    sSpriteAnimNumbers10,
+};
+
+static const struct SpriteTemplate sSpriteTemplateNumbers =
+{
+    .tileTag = TAG_NUMBERS,
+    .paletteTag = TAG_NUMBERS,
+    .oam = &sOamDataNumbers,
+    .anims = sSpriteAnimTableNumbers,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = NumberCallback
+};
+
+static const struct BgTemplate sGigagehsoolPuzzleBgTemplates[] =
+{
+    {
+        .bg = 0,
+        .charBaseIndex = 0,
+        .mapBaseIndex = 31,
+        .priority = 1
+    },
+    {
+        .bg = 1,
+        .charBaseIndex = 3,
+        .mapBaseIndex = 30,
+        .priority = 2
+    }
+};
+
+static const struct WindowTemplate sGigageshoolPuzzleWindowTemplates[] =
+{
+    [WINDOW_INSTRUCTIONS] =
+    {
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 1,
+        .width = 12,
+        .height = 4,
+        .paletteNum = 15,
+        .baseBlock = 1
+    },
+    [WINDOW_CONTROLS] =
+    {
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 16,
+        .width = 13,
+        .height = 4,
+        .paletteNum = 15,
+        .baseBlock = 49
+    },
+    DUMMY_WIN_TEMPLATE
+};
+
+// Callbacks for the sample UI
+static void GigagehsoolPuzzle_SetupCB(void);
+static void GigagehsoolPuzzle_MainCB(void);
+static void GigagehsoolPuzzle_VBlankCB(void);
+
+// Sample UI tasks
+static void Task_GigagehsoolPuzzleWaitFadeIn(u8 taskId);
+static void Task_GigagehsoolPuzzleMainInput(u8 taskId);
+static void Task_GigagehsoolPuzzleWaitFadeAndBail(u8 taskId);
+static void Task_GigagehsoolPuzzleWaitFadeAndExitGracefully(u8 taskId);
+static void Task_GigagehsoolWaitForPuzzleFade(u8 taskId);
+
+// Sample UI helper functions
+static void GigagehsoolPuzzle_Init(MainCallback callback);
+static void GigagehsoolPuzzle_ResetGpuRegsAndBgs(void);
+static void GigagehsoolPuzzle_InitWindows(void);
+static bool8 GigagehsoolPuzzle_InitBgs(void);
+static void GigagehsoolPuzzle_PrintWindowText(void);
+static void GigagehsoolPuzzle_FadeAndBail(void);
+static bool8 GigagehsoolPuzzle_LoadGraphics(void);
+static void GigagehsoolPuzzle_FreeResources(void);
+
+
+// More stuff
+static u8 CreateCursor(void);
+static void DestroyCursor(void);
+static void GigagehsoolPuzzle_HandleShellContents(void);
+static void GigagehsoolPuzzle_SelectShell(void);
+
+// Declared in sample_ui.h
+void Task_OpenGigagehsoolPuzzle(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+        CleanupOverworldWindowsAndTilemaps();
+        GigagehsoolPuzzle_Init(CB2_ReturnToFieldContinueScript);
+        DestroyTask(taskId);
+    }
+}
+
+static void GigagehsoolPuzzle_Init(MainCallback callback)
+{
+    sGigagehsoolPuzzleState = AllocZeroed(sizeof(struct GigagehsoolPuzzleState));
+    if (sGigagehsoolPuzzleState == NULL)
+    {
+        SetMainCallback2(callback);
+        return;
+    }
+
+    sGigagehsoolPuzzleState->loadState = 0;
+    sGigagehsoolPuzzleState->savedCallback = callback;
+    sGigagehsoolPuzzleState->cursorSpriteId = 0xFF;
+    sGigagehsoolPuzzleState->tenShellSpriteId = 0xFF;
+    sGigagehsoolPuzzleState->sevenShellSpriteId = 0xFF;
+    sGigagehsoolPuzzleState->threeShellSpriteId = 0xFF;
+    sGigagehsoolPuzzleState->tenPearlShell = 10;
+    sGigagehsoolPuzzleState->sevenPearlShell = 0;
+    sGigagehsoolPuzzleState->threePearlShell = 0;
+    sGigagehsoolPuzzleState->inputMode = INPUT_SELECT_SHELL;
+
+    SetMainCallback2(GigagehsoolPuzzle_SetupCB);
+}
+
+// Credit: Jaizu, pret
+static void GigagehsoolPuzzle_ResetGpuRegsAndBgs(void)
+{
+    /*
+     * TODO : these settings are overkill, and seem to be clearing some
+     * important values. I need to come back and investigate this. For now, they
+     * are disabled. Note: by not resetting the various BG and GPU regs, we are
+     * effectively assuming that the user of this UI is entering from the
+     * overworld. If this UI is entered from a different screen, it's possible
+     * some regs won't be set correctly. In that case, you'll need to figure
+     * out which ones you need.
+     */
+    // SetGpuReg(REG_OFFSET_DISPCNT, 0);
+    // SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON);
+    // SetGpuReg(REG_OFFSET_BG3CNT, 0);
+    // SetGpuReg(REG_OFFSET_BG2CNT, 0);
+    // SetGpuReg(REG_OFFSET_BG1CNT, 0);
+    // SetGpuReg(REG_OFFSET_BG0CNT, 0);
+    // ChangeBgX(0, 0, BG_COORD_SET);
+    // ChangeBgY(0, 0, BG_COORD_SET);
+    // ChangeBgX(1, 0, BG_COORD_SET);
+    // ChangeBgY(1, 0, BG_COORD_SET);
+    // ChangeBgX(2, 0, BG_COORD_SET);
+    // ChangeBgY(2, 0, BG_COORD_SET);
+    // ChangeBgX(3, 0, BG_COORD_SET);
+    // ChangeBgY(3, 0, BG_COORD_SET);
+    // SetGpuReg(REG_OFFSET_BLDCNT, 0);
+    // SetGpuReg(REG_OFFSET_BLDY, 0);
+    // SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+    // SetGpuReg(REG_OFFSET_WIN0H, 0);
+    // SetGpuReg(REG_OFFSET_WIN0V, 0);
+    // SetGpuReg(REG_OFFSET_WIN1H, 0);
+    // SetGpuReg(REG_OFFSET_WIN1V, 0);
+    // SetGpuReg(REG_OFFSET_WININ, 0);
+    // SetGpuReg(REG_OFFSET_WINOUT, 0);
+    // CpuFill16(0, (void *)VRAM, VRAM_SIZE);
+    // CpuFill32(0, (void *)OAM, OAM_SIZE);
+}
+
+static void GigagehsoolPuzzle_SetupCB(void)
+{
+    switch (gMain.state)
+    {
+    case 0:
+        GigagehsoolPuzzle_ResetGpuRegsAndBgs();
+        SetVBlankHBlankCallbacksToNull();
+        ClearScheduledBgCopiesToVram();
+        gMain.state++;
+        break;
+    case 1:
+        ScanlineEffect_Stop();
+        FreeAllSpritePalettes();
+        ResetPaletteFade();
+        ResetSpriteData();
+        ResetTasks();
+        gMain.state++;
+        break;
+    case 2:
+        if (GigagehsoolPuzzle_InitBgs())
+        {
+            sGigagehsoolPuzzleState->loadState = 0;
+            gMain.state++;
+        }
+        else
+        {
+            GigagehsoolPuzzle_FadeAndBail();
+            return;
+        }
+        break;
+    case 3:
+        if (GigagehsoolPuzzle_LoadGraphics() == TRUE)
+        {
+            gMain.state++;
+        }
+        break;
+    case 4:
+        LoadCompressedSpriteSheet(&sSpriteSheet_Cursor);
+        LoadSpritePalette(&sSpritePal_Cursor);
+        LoadCompressedSpriteSheet(&sSpriteSheet_Numbers);
+        LoadSpritePalette(&sSpritePal_Numbers);
+        gMain.state++;
+        break;
+    case 5:
+        GigagehsoolPuzzle_InitWindows();
+        CreateCursor();
+        CreateNumberSpriteAt(32, 56, sGigagehsoolPuzzleState->tenPearlShell, &sGigagehsoolPuzzleState->tenShellSpriteId); // Ten Shell
+        CreateNumberSpriteAt(176, 16, sGigagehsoolPuzzleState->sevenPearlShell, &sGigagehsoolPuzzleState->sevenShellSpriteId); // Seven Shell
+        CreateNumberSpriteAt(176, 96, sGigagehsoolPuzzleState->threePearlShell, &sGigagehsoolPuzzleState->threeShellSpriteId); // Three Shell
+        gMain.state++;
+        break;
+    case 6:
+        GigagehsoolPuzzle_PrintWindowText();
+        CreateTask(Task_GigagehsoolPuzzleWaitFadeIn, 0);
+        gMain.state++;
+        break;
+    case 7:
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
+        gMain.state++;
+        break;
+    default:
+        SetVBlankCallback(GigagehsoolPuzzle_VBlankCB);
+        SetMainCallback2(GigagehsoolPuzzle_MainCB);
+        break;
+    }
+}
+
+static void GigagehsoolPuzzle_MainCB(void)
+{
+    RunTasks();
+    AnimateSprites();
+    BuildOamBuffer();
+    DoScheduledBgTilemapCopiesToVram();
+    UpdatePaletteFade();
+}
+
+static void GigagehsoolPuzzle_VBlankCB(void)
+{
+    LoadOam();
+    ProcessSpriteCopyRequests();
+    TransferPlttBuffer();
+}
+
+static void Task_GigagehsoolPuzzleWaitFadeIn(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+        gTasks[taskId].func = Task_GigagehsoolPuzzleMainInput;
+    }
+}
+
+struct SpriteCoordsStruct {
+    u8 x;
+    u8 y;
+};
+
+static void CursorCallback(struct Sprite *sprite)
+{
+    struct SpriteCoordsStruct spriteCoords[3][1] = { //Thanks Jaizu
+        {{88, 64}}, //INPUT_SELECTED_TEN_SHELL
+        {{224, 17}}, //INPUT_SELECTED_FIVE_SHELL
+        {{224, 97}}, //INPUT_SELECTED_THREE_SHELL
+    };
+
+    u32 cursorY = sGigagehsoolPuzzleState->cursorY;
+    u32 cursorX = sGigagehsoolPuzzleState->cursorX;
+    sprite->x   = spriteCoords[cursorY][cursorX].x + 8;
+    sprite->y   = spriteCoords[cursorY][cursorX].y + 15;
+}
+
+static void NumberCallback(struct Sprite *)
+{
+  // nothing in here
+}
+
+static u32 CreateNumberSpriteAt(u32 x, u32 y, u32 number, u16 *numberSpriteId)
+{    
+    if (*numberSpriteId == 0xFF)
+        *numberSpriteId = CreateSprite(&sSpriteTemplateNumbers, x, y, 0);
+
+    gSprites[*numberSpriteId].x = x + 16;
+    gSprites[*numberSpriteId].y = y + 16;
+    StartSpriteAnim(&gSprites[*numberSpriteId], number);
+    return *numberSpriteId;
+}
+
+static void DestroyNumberSpriteAt(u32 x, u32 y, u16 *numberSpriteId)
+{
+    if (*numberSpriteId != 0xFF)
+        DestroySprite(&gSprites[*numberSpriteId]);
+    *numberSpriteId = 0xFF;
+}
+
+static u8 CreateCursor(void)
+{
+    if (sGigagehsoolPuzzleState->cursorSpriteId == 0xFF)
+        sGigagehsoolPuzzleState->cursorSpriteId = CreateSprite(&sSpriteTemplate_Cursor, 0, 0, 0);
+
+    gSprites[sGigagehsoolPuzzleState->cursorSpriteId].invisible = FALSE;
+    StartSpriteAnim(&gSprites[sGigagehsoolPuzzleState->cursorSpriteId], 0);
+    return sGigagehsoolPuzzleState->cursorSpriteId;
+}
+
+static void DestroyCursor(void)
+{
+    if (sGigagehsoolPuzzleState->cursorSpriteId != 0xFF)
+        DestroySprite(&gSprites[sGigagehsoolPuzzleState->cursorSpriteId]);
+    sGigagehsoolPuzzleState->cursorSpriteId = 0xFF;
+}
+
+static void Task_GigagehsoolPuzzleMainInput(u8 taskId)
+{
+    u8 *cursorY = &sGigagehsoolPuzzleState->cursorY;
+    u8 *inputMode = &sGigagehsoolPuzzleState->inputMode;
+
+    if (JOY_NEW(B_BUTTON))
+    {
+        if(*inputMode == INPUT_POUR_INTO_SHELL){
+            *inputMode = INPUT_SELECT_SHELL;
+            PlaySE(SE_PC_OFF);
+        }
+        else
+        {
+            PlaySE(SE_M_DIVE);
+            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+            gTasks[taskId].func = Task_GigagehsoolPuzzleWaitFadeAndExitGracefully;
+        }
+    }
+    if (JOY_NEW(A_BUTTON))
+    {
+        if(*inputMode == INPUT_SELECT_SHELL)
+            GigagehsoolPuzzle_SelectShell();
+        else if(*inputMode == INPUT_POUR_INTO_SHELL)
+            GigagehsoolPuzzle_HandleShellContents();
+        
+        CreateNumberSpriteAt(32, 56, sGigagehsoolPuzzleState->tenPearlShell, &sGigagehsoolPuzzleState->tenShellSpriteId); // Ten Shell
+        CreateNumberSpriteAt(176, 16, sGigagehsoolPuzzleState->sevenPearlShell, &sGigagehsoolPuzzleState->sevenShellSpriteId); // Seven Shell
+        CreateNumberSpriteAt(176, 96, sGigagehsoolPuzzleState->threePearlShell, &sGigagehsoolPuzzleState->threeShellSpriteId); // Three Shell
+
+        if (sGigagehsoolPuzzleState->sevenPearlShell == 5 && sGigagehsoolPuzzleState->tenPearlShell == 5){
+            FlagSet(FLAG_GIGAGEHSOOL_PUZZLE_SOLVED);
+            PlaySE(SE_SELECT);
+            gTasks[taskId].func = Task_GigagehsoolWaitForPuzzleFade;
+        }
+    }
+    if (JOY_NEW(DPAD_RIGHT)){
+        if(*cursorY == 2){
+            sGigagehsoolPuzzleState->cursorY = 0;
+        } 
+        else {
+            sGigagehsoolPuzzleState->cursorY++;
+        } 
+    }
+    if (JOY_NEW(DPAD_LEFT)){
+        if(*cursorY == 0){
+            sGigagehsoolPuzzleState->cursorY = 2;
+        } 
+        else {
+            sGigagehsoolPuzzleState->cursorY--;
+        } 
+    }
+    if(JOY_NEW(SELECT_BUTTON)){
+        u8 *inputMode = &sGigagehsoolPuzzleState->inputMode;
+        u8 *selectedShell = &sGigagehsoolPuzzleState->selectedShell;
+        u8 *tenPearlShell = &sGigagehsoolPuzzleState->tenPearlShell;
+        u8 *sevenPearlShell = &sGigagehsoolPuzzleState->sevenPearlShell;
+        u8 *threePearlShell = &sGigagehsoolPuzzleState->threePearlShell;
+
+        DebugPrintf("*inputMode: %u", *inputMode);
+        DebugPrintf("*selectedShell: %u", *selectedShell);
+        DebugPrintf("*tenPearlShell: %u", *tenPearlShell);
+        DebugPrintf("*sevenPearlShell: %u", *sevenPearlShell);
+        DebugPrintf("*threePearlShell: %u", *threePearlShell);
+    }
+}
+
+static void Task_GigagehsoolWaitForPuzzleFade(u8 taskId)
+{
+    if (gTasks[taskId].data[0] < 120){ // thanks hedara
+        gTasks[taskId].data[0]++;
+    }
+    else {
+        PlaySE(SE_M_ROCK_THROW);
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+        gTasks[taskId].func = Task_GigagehsoolPuzzleWaitFadeAndExitGracefully;
+    }
+}
+
+static void Task_GigagehsoolPuzzleWaitFadeAndBail(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+        SetMainCallback2(sGigagehsoolPuzzleState->savedCallback);
+        GigagehsoolPuzzle_FreeResources();
+        DestroyTask(taskId);
+    }
+}
+
+static void Task_GigagehsoolPuzzleWaitFadeAndExitGracefully(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+        SetMainCallback2(sGigagehsoolPuzzleState->savedCallback);
+        GigagehsoolPuzzle_FreeResources();
+        DestroyTask(taskId);
+    }
+}
+
+#define TILEMAP_BUFFER_SIZE (1024 * 2)
+static bool8 GigagehsoolPuzzle_InitBgs(void)
+{
+    ResetAllBgsCoordinates();
+
+    sBg1TilemapBuffer = AllocZeroed(TILEMAP_BUFFER_SIZE);
+    if (sBg1TilemapBuffer == NULL)
+    {
+        return FALSE;
+    }
+
+    ResetBgsAndClearDma3BusyFlags(0);
+    InitBgsFromTemplates(0, sGigagehsoolPuzzleBgTemplates, NELEMS(sGigagehsoolPuzzleBgTemplates));
+
+    SetBgTilemapBuffer(1, sBg1TilemapBuffer);
+    ScheduleBgCopyTilemapToVram(1);
+
+    ShowBg(0);
+    ShowBg(1);
+
+    return TRUE;
+}
+#undef TILEMAP_BUFFER_SIZE
+
+static void GigagehsoolPuzzle_FadeAndBail(void)
+{
+    BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+    CreateTask(Task_GigagehsoolPuzzleWaitFadeAndBail, 0);
+    SetVBlankCallback(GigagehsoolPuzzle_VBlankCB);
+    SetMainCallback2(GigagehsoolPuzzle_MainCB);
+}
+
+static bool8 GigagehsoolPuzzle_LoadGraphics(void)
+{
+    switch (sGigagehsoolPuzzleState->loadState)
+    {
+    case 0:
+        ResetTempTileDataBuffers();
+        DecompressAndCopyTileDataToVram(1, sGigagehsoolPuzzleTiles, 0, 0, 0);
+        sGigagehsoolPuzzleState->loadState++;
+        break;
+    case 1:
+        if (FreeTempTileDataBuffersIfPossible() != TRUE)
+        {
+            LZDecompressWram(sGigagehsoolPuzzleTilemap, sBg1TilemapBuffer);
+            sGigagehsoolPuzzleState->loadState++;
+        }
+        break;
+    case 2:
+        LoadPalette(sGigagehsoolPuzzlePalette, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
+        LoadPalette(gMessageBox_Pal, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
+        sGigagehsoolPuzzleState->loadState++;
+    default:
+        sGigagehsoolPuzzleState->loadState = 0;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+static void GigagehsoolPuzzle_InitWindows(void)
+{
+    InitWindows(sGigageshoolPuzzleWindowTemplates);
+    DeactivateAllTextPrinters();
+    ScheduleBgCopyTilemapToVram(0);
+    FillWindowPixelBuffer(WINDOW_INSTRUCTIONS, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    PutWindowTilemap(WINDOW_INSTRUCTIONS);
+    CopyWindowToVram(WINDOW_INSTRUCTIONS, 3);
+    FillWindowPixelBuffer(WINDOW_CONTROLS, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    PutWindowTilemap(WINDOW_CONTROLS);
+    CopyWindowToVram(WINDOW_CONTROLS, 3);
+}
+
+static void GigagehsoolPuzzle_PrintWindowText(void)
+{
+    FillWindowPixelBuffer(WINDOW_INSTRUCTIONS, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    FillWindowPixelBuffer(WINDOW_CONTROLS, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+
+    AddTextPrinterParameterized4(WINDOW_INSTRUCTIONS, FONT_NARROW, 0, 3, 0, 0,
+        sGigagehsoolPuzzleWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, COMPOUND_STRING("Divide 10 shells into\ntwo sets of 5."));
+
+    AddTextPrinterParameterized4(WINDOW_CONTROLS, FONT_SMALL_NARROWER, 0, 3, 0, 0,
+        sGigagehsoolPuzzleWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, COMPOUND_STRING("{A_BUTTON} Choose a shell. {B_BUTTON} to exit.\n{A_BUTTON} Choose another to put\npearls in."));
+
+    CopyWindowToVram(WINDOW_INSTRUCTIONS, COPYWIN_GFX);
+    CopyWindowToVram(WINDOW_CONTROLS, COPYWIN_GFX);
+}
+static void GigagehsoolPuzzle_FreeResources(void)
+{
+    DestroyCursor();
+    if (sGigagehsoolPuzzleState != NULL)
+    {
+        Free(sGigagehsoolPuzzleState);
+    }
+    if (sBg1TilemapBuffer != NULL)
+    {
+        Free(sBg1TilemapBuffer);
+    }
+    FreeAllWindowBuffers();
+    ResetSpriteData();
+}
+
+static void GigagehsoolPuzzle_SelectShell(void)
+{
+    u8 *cursorY = &sGigagehsoolPuzzleState->cursorY;
+    u8 *selectedShell = &sGigagehsoolPuzzleState->selectedShell;
+
+    PlaySE(SE_SELECT);
+    sGigagehsoolPuzzleState->inputMode = INPUT_POUR_INTO_SHELL;
+    switch(*cursorY){
+        case 0:
+            *selectedShell = INPUT_SELECTED_TEN_SHELL;
+            break;
+        case 1:
+            *selectedShell = INPUT_SELECTED_FIVE_SHELL;
+            break;
+        case 2:
+            *selectedShell = INPUT_SELECTED_THREE_SHELL;
+            break;
+    }
+}
+
+static void GigagehsoolPuzzle_HandleShellContents(void)
+{  
+    u8 temp = 0;
+    u8 *selectedShell = &sGigagehsoolPuzzleState->selectedShell;
+    u8 *tenShell = &sGigagehsoolPuzzleState->tenPearlShell;
+    u8 *sevenShell = &sGigagehsoolPuzzleState->sevenPearlShell;
+    u8 *threeShell = &sGigagehsoolPuzzleState->threePearlShell;
+    u8 *cursorY = &sGigagehsoolPuzzleState->cursorY;
+    u8 *inputMode = &sGigagehsoolPuzzleState->inputMode;
+
+    PlaySE(SE_SELECT);
+    switch(*selectedShell){
+        case INPUT_SELECTED_TEN_SHELL:
+            if(*cursorY == 1){ //For when Ten Shell to Seven Shell
+                if (*tenShell == 0 || *sevenShell == MAX_FIVE_SHELL){
+                }
+                else if (*tenShell > MAX_FIVE_SHELL && *sevenShell == 0){
+                    *tenShell = *tenShell - MAX_FIVE_SHELL;
+                    *sevenShell = MAX_FIVE_SHELL;
+                }
+                else if (*tenShell > MAX_FIVE_SHELL && *sevenShell > 0){
+                    temp = MAX_FIVE_SHELL - *sevenShell;
+                    *sevenShell += temp;
+                    *tenShell -= temp;
+                }
+                else {
+                    *sevenShell += *tenShell;
+                    *tenShell = 0;
+                }
+                *inputMode = INPUT_SELECT_SHELL;
+            }
+            else if (*cursorY == 2){ //For when Ten Shell to Three Shell
+                if (*tenShell == 0 || *threeShell == MAX_THREE_SHELL){
+                }
+                else if (*tenShell > MAX_THREE_SHELL && *threeShell == 0){
+                    *tenShell = *tenShell - MAX_THREE_SHELL;
+                    *threeShell = MAX_THREE_SHELL;
+                }
+                else if (*tenShell > MAX_THREE_SHELL && *threeShell > 0){
+                    temp = MAX_THREE_SHELL - *threeShell;
+                    *threeShell += temp;
+                    *tenShell -= temp;
+                }
+                else {
+                    *threeShell += *tenShell;
+                    *tenShell = 0;
+                }
+                *inputMode = INPUT_SELECT_SHELL;
+            }
+            else { //For Ten Shell back to Ten
+                *inputMode = INPUT_SELECT_SHELL;
+            }
+            break;
+        case INPUT_SELECTED_FIVE_SHELL:
+            if(*cursorY == 0){ //For when Seven Shell to Ten Shell
+                *tenShell += *sevenShell;
+                *sevenShell = 0;
+                *inputMode = INPUT_SELECT_SHELL;
+            }
+            else if (*cursorY == 2){ //For when Seven Shell to Three Shell
+                if (*sevenShell == 0 || *threeShell == MAX_THREE_SHELL){
+                }
+                else if (*sevenShell > MAX_THREE_SHELL && *threeShell == 0){
+                    *sevenShell = *sevenShell - MAX_THREE_SHELL;
+                    *threeShell = MAX_THREE_SHELL;
+                }
+                else if (*sevenShell > MAX_THREE_SHELL && *threeShell > 0){
+                    temp = MAX_THREE_SHELL - *threeShell;
+                    *threeShell += temp;
+                    *sevenShell -= temp;
+                }
+                else {
+                    *threeShell += *sevenShell;
+                    *sevenShell = 0;
+                }
+                *inputMode = INPUT_SELECT_SHELL;
+            }
+            else { //For Seven Shell back to Seven
+                *inputMode = INPUT_SELECT_SHELL;
+            }
+            break;
+        case INPUT_SELECTED_THREE_SHELL:
+            if(*cursorY == 2){ //For Three Shell back to Three
+                *inputMode = INPUT_SELECT_SHELL;
+            }
+            else if (*cursorY == 1){
+                if (*sevenShell == MAX_FIVE_SHELL){}
+                else //*cursorY == 1
+                {                    
+                    *sevenShell += *threeShell;
+                    *threeShell = 0;
+                }
+                *inputMode = INPUT_SELECT_SHELL;
+            }
+            else 
+            { //For Three Shell to Ten
+                if(*cursorY == 0)
+                {
+                    *tenShell += *threeShell;
+                    *threeShell = 0;
+                }
+                *inputMode = INPUT_SELECT_SHELL;
+            }
+            break;
+    }
+    
+    DestroyNumberSpriteAt(32, 56, &sGigagehsoolPuzzleState->tenShellSpriteId); // Destroys ten shell
+    DestroyNumberSpriteAt(176, 16, &sGigagehsoolPuzzleState->sevenShellSpriteId); // Destroys seven shell
+    DestroyNumberSpriteAt(176, 96, &sGigagehsoolPuzzleState->threeShellSpriteId); // Destroys three shell
+}

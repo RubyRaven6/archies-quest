@@ -499,6 +499,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Npc3Reflection,        OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION},
     {gObjectEventPal_Npc4Reflection,        OBJ_EVENT_PAL_TAG_NPC_4_REFLECTION},
     {gObjectEventPal_Brendan,               OBJ_EVENT_PAL_TAG_BRENDAN},
+    {gObjectEventPal_CoolArchie,            OBJ_EVENT_PAL_TAG_COOL_ARCHIE},
     {gObjectEventPal_BrendanReflection,     OBJ_EVENT_PAL_TAG_BRENDAN_REFLECTION},
     {gObjectEventPal_BridgeReflection,      OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION},
     {gObjectEventPal_PlayerUnderwater,      OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER},
@@ -1481,7 +1482,7 @@ u8 Unref_TryInitLocalObjectEvent(u8 localId)
 
     if (gMapHeader.events != NULL)
     {
-        if (InBattlePyramid())
+        if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
             objectEventCount = GetNumBattlePyramidObjectEvents();
         else if (InTrainerHill())
             objectEventCount = HILL_TRAINERS_PER_FLOOR;
@@ -2335,7 +2336,12 @@ bool32 CheckMsgCondition(const struct MsgCondition *cond, struct Pokemon *mon, u
     switch (cond->type)
     {
     case MSG_COND_SPECIES:
-        return (cond->data.raw == species);
+        multi = cond->data.split.hw;
+        // if byte nonzero, invert; check != species!
+        if (cond->data.split.b)
+            return (cond->data.split.hw != species);
+        else
+            return (cond->data.split.hw == species);
     case MSG_COND_TYPE:
         multi = (SpeciesHasType(species, cond->data.bytes[0]) ||
                  SpeciesHasType(species, cond->data.bytes[1]));
@@ -2719,7 +2725,7 @@ void TrySpawnLightSprites(s16 camX, s16 camY)
     if (gMapHeader.events == NULL)
         return;
 
-    if (InBattlePyramid())
+    if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
         objectCount = GetNumBattlePyramidObjectEvents();
     else if (InTrainerHill())
         objectCount = 2;
@@ -2751,7 +2757,7 @@ void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)
         s16 top = gSaveBlock1Ptr->pos.y;
         s16 bottom = gSaveBlock1Ptr->pos.y + MAP_OFFSET_H + 2;
 
-        if (InBattlePyramid())
+        if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
             objectCount = GetNumBattlePyramidObjectEvents();
         else if (InTrainerHill())
             objectCount = HILL_TRAINERS_PER_FLOOR;
@@ -3366,7 +3372,11 @@ u8 GetObjectEventIdByPosition(u16 x, u16 y, u8 elevation)
 
 static bool8 ObjectEventDoesElevationMatch(struct ObjectEvent *objectEvent, u8 elevation)
 {
-    if (objectEvent->currentElevation != 0 && elevation != 0 && objectEvent->currentElevation != elevation)
+    /* Water OW Interaction c/o Nicolas Aqvae*/
+    if (objectEvent->currentElevation != 0 && elevation != 0 && objectEvent->currentElevation != elevation && FlagGet(FLAG_TOGGLE_WATER_INTERACT) == TRUE)
+        return (objectEvent->currentElevation == 1 && elevation == 3) || (objectEvent->currentElevation == 3 && elevation == 1);   
+    
+    else if (objectEvent->currentElevation != 0 && elevation != 0 && objectEvent->currentElevation != elevation)
         return FALSE;
 
     return TRUE;

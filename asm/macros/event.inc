@@ -1856,6 +1856,12 @@
 	.2byte \item
 	.2byte \quantity
 	.endm
+	
+	@ Sets the text of the name box in the next-shown message box.
+	.macro speakername text:req
+	.byte SCR_OP_SETSPEAKER
+	.4byte \text
+	.endm
 
 	.macro _dynmultichoice left:req, top:req, ignoreBPress:req, maxBeforeScroll:req, shouldSort:req, initialSelected:req, callbacks:req argv:vararg
 	.byte SCR_OP_DYNMULTICHOICE
@@ -1875,6 +1881,7 @@
 	@ Displays a multichoice box from which the user can choose a selection, and blocks script execution until a selection is made.
 	@ Lists of options are provided in argv.
 	@ If ignoreBPress is set to a non-zero value, then the user will not be allowed to back out of the multichoice with the B button.
+	@ Use DYN_MULTICHOICE_CB_NONE if no callbacks are used.
 	.macro dynmultichoice left:req, top:req, ignoreBPress:req, maxBeforeScroll:req, initialSelected:req, callbacks:req argv:vararg
 	_dynmultichoice \left, \top, \ignoreBPress, \maxBeforeScroll, FALSE, \initialSelected, \callbacks, \argv
 	.endm
@@ -2638,4 +2645,9 @@
 	.macro changefollowerbattler battlePartner:req
 	callnative ScriptChangeFollowerNPCBattlePartner
 	.2byte \battlePartner
+	.endm
+
+	.macro sappypuzzle number:req
+	callnative ScrCmd_handlesappypuzzle
+	.4byte \number
 	.endm

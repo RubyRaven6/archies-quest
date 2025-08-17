@@ -1,0 +1,18 @@
+mapscripts ArchiesHouse_BackyardBeach_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        if(flag(FLAG_TOGGLE_WATER_INTERACT)){
+			clearflag(FLAG_TOGGLE_WATER_INTERACT)
+		}
+    }
+}
+
+script ArchiesHouse_BackyardBeach_Boat {
+    msgbox(("It's a boat to your small island. Take it?"), MSGBOX_YESNO)
+    closemessage
+    if(var(VAR_RESULT) == YES){
+        warp(MAP_ARCHIES_HOUSE_BACKYARD_SEA, 7, 4)
+    } else {
+        msgbox(("You decide to sail another day."), MSGBOX_DEFAULT)
+        closemessage
+    }
+}

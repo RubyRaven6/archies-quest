@@ -7,6 +7,7 @@
 #include "battle_tent.h"
 #include "battle_factory.h"
 #include "bg.h"
+#include "bw_summary_screen.h"
 #include "contest.h"
 #include "contest_effect.h"
 #include "data.h"
@@ -2607,12 +2608,13 @@ static void Task_HandleReplaceMoveInput(u8 taskId)
 
 static bool8 CanReplaceMove(void)
 {
-    if (sMonSummaryScreen->firstMoveIndex == MAX_MON_MOVES
-        || sMonSummaryScreen->newMove == MOVE_NONE
-        || IsMoveHM(sMonSummaryScreen->summary.moves[sMonSummaryScreen->firstMoveIndex]) != TRUE)
-        return TRUE;
-    else
-        return FALSE;
+    return TRUE;
+    // if (sMonSummaryScreen->firstMoveIndex == MAX_MON_MOVES
+    //     || sMonSummaryScreen->newMove == MOVE_NONE
+    //     || IsMoveHM(sMonSummaryScreen->summary.moves[sMonSummaryScreen->firstMoveIndex]) != TRUE)
+    //     return TRUE;
+    // else
+    //     return FALSE;
 }
 
 static void ShowCantForgetHMsWindow(u8 taskId)
@@ -2695,7 +2697,10 @@ static void Task_HandleInputCantForgetHMsMoves(u8 taskId)
 
 u8 GetMoveSlotToReplace(void)
 {
-    return sMoveSlotToReplace;
+    if (BW_SUMMARY_SCREEN)
+        return GetMoveSlotToReplace_BW();
+    else
+        return sMoveSlotToReplace;
 }
 
 static void DrawPagination(void) // Updates the pagination dots at the top of the summary screen
@@ -4212,7 +4217,7 @@ static void SetSpriteInvisibility(u8 spriteArrayId, bool8 invisible)
 
 static void HidePageSpecificSprites(void)
 {
-    // Keeps Pok�mon, caught ball and status sprites visible.
+    // Keeps Pokémon, caught ball and status sprites visible.
     u8 i;
 
     for (i = SPRITE_ARR_ID_TYPE; i < ARRAY_COUNT(sMonSummaryScreen->spriteIds); i++)
@@ -4462,7 +4467,7 @@ static void SpriteCB_Pokemon(struct Sprite *sprite)
     {
         sprite->data[1] = IsMonSpriteNotFlipped(sprite->data[0]);
         PlayMonCry();
-        PokemonSummaryDoMonAnimation(sprite, sprite->data[0], summary->isEgg);
+        PokemonSummaryDoMonAnimation(sprite, sprite->data[0], summary->isEgg, FALSE);
     }
 }
 
@@ -4470,7 +4475,10 @@ static void SpriteCB_Pokemon(struct Sprite *sprite)
 // Normally destroys itself but it can be interrupted before the animation starts
 void SummaryScreen_SetAnimDelayTaskId(u8 taskId)
 {
-    sAnimDelayTaskId = taskId;
+    if (BW_SUMMARY_SCREEN)
+        SummaryScreen_SetAnimDelayTaskId_BW(taskId);
+    else
+        sAnimDelayTaskId = taskId;
 }
 
 static void SummaryScreen_DestroyAnimDelayTask(void)
@@ -4689,7 +4697,7 @@ static inline void ShowUtilityPrompt(s16 mode)
     const u8* promptText = NULL;
     const u8* gText_SkillPageIvs = COMPOUND_STRING("IVs");
     const u8* gText_SkillPageEvs = COMPOUND_STRING("EVs");
-    const u8* gText_SkillPageStats = COMPOUND_STRING("STATS");
+    const u8* gText_SkillPageStats = COMPOUND_STRING("Stats");
 
     if (sMonSummaryScreen->currPageIndex == PSS_PAGE_INFO)
     {

@@ -1,0 +1,42 @@
+{
+  "id": "MAP_ARCHIES_HOUSE_BACKYARD_CRAGGS",
+  "name": "ArchiesHouse_BackyardCraggs",
+  "layout": "LAYOUT_ARCHIES_HOUSE_BACKYARD_CRAGGS",
+  "music": "MUS_MT_CHIMNEY",
+  "region_map_section": "MAPSEC_ARCHIE_BACKYARD",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "x": 8,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_ARCHIES_HOUSE_BACKYARD",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 8,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_ARCHIES_HOUSE_BACKYARD",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 16,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_ARCHIES_HOUSE_BACKYARD_CAVE",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

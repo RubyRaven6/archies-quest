@@ -1,0 +1,36 @@
+mapscripts ArchiesHouse_Backyard_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        if(flag(FLAG_TOGGLE_WATER_INTERACT)){
+			clearflag(FLAG_TOGGLE_WATER_INTERACT)
+		}
+    }
+}
+
+// script ArchiesHouse_Backyard_EventScripts_ {
+//     lock
+// 	faceplayer
+//     getpartysize
+// 	if(var(VAR_RESULT) < 4){
+// 		msgbox(format(".\pAsk to join?"), MSGBOX_YESNO)
+// 		closemessage
+// 		if(var(VAR_RESULT) == TRUE){
+// 			givemon(SPECIES_, 40, abilityNum=2, gender=FEMALE, move1=, move2=,move3=,move4=, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+// 			removeobject()
+// 			msgbox(" joined your party!")
+// 			closemessage
+// 		}
+// 	} else {
+// 		goto(CommonScript_Backyard_EventScripts_FullParty)
+// 	}
+// 	end
+// }
+
+// script ArchiesHouse_Backyard_EventScripts_ {
+//     lock
+// 	faceplayer
+//     msgbox(format("."))
+//     closemessage
+//     applymovement(, moves(face_original_direction))
+//     release
+// 	end
+// }
