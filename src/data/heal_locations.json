@@ -131,6 +131,18 @@
       "map": "MAP_BATTLE_FRONTIER_OUTSIDE_EAST",
       "x": 3,
       "y": 52
+    },
+    {
+      "id": "HEAL_LOCATION_DEMON_LAIRS_MAXIE",
+      "map": "MAP_DEMON_LAIRS_MAXIE",
+      "x": 15,
+      "y": 26
+    },
+    {
+      "id": "HEAL_LOCATION_DEMON_LAIRS_NESSIE",
+      "map": "MAP_DEMON_LAIRS_NESSIE",
+      "x": 6,
+      "y": 8
     }
   ]
 }

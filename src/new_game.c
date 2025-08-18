@@ -136,6 +136,12 @@ static void WarpToTruck(void)
     WarpIntoMap();
 }
 
+void WarpToMaxieHideout(void)
+{
+    SetWarpDestination(MAP_GROUP(MAP_DEMON_LAIRS_MAXIE), MAP_NUM(MAP_DEMON_LAIRS_MAXIE), WARP_ID_NONE, 7, 4);
+    WarpIntoMap();
+}
+
 void Sav2_ClearSetDefault(void)
 {
     ClearSav2();
