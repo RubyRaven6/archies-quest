@@ -34,10 +34,16 @@ script DemonLairs_Nessie_EventScript_NessiePuzzle{
             setmetatile(3, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNM, FALSE)
             setmetatile(4, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNR, TRUE)
             special(DrawWholeMapView)
-            msgbox(format(""))
+            msgbox(format("A yawning entrance to an antechamber's opened. Enter?"), MSGBOX_YESNO)
+            waitmessage
+            closemessage
+            if(var(VAR_RESULT) == YES) {warp(MAP_DEMON_LAIRS_NESSIE_INTERIOR, 3, 8)}
         }
     } else {
-        
+        msgbox(format("A yawning entrance to an antechamber's opened. Enter?"), MSGBOX_YESNO)
+        waitmessage
+        closemessage
+        if(var(VAR_RESULT) == YES) {warp(MAP_DEMON_LAIRS_NESSIE_INTERIOR, 3, 8)}
     }
     end
 }

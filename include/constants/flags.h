@@ -87,12 +87,13 @@
 /* Nessie Puzzle Flags */
 #define	FLAG_NESSIE_READ_BOOK	        0x40 // Read the book for the Nessie solution
 #define	FLAG_NESSIE_GOT_DAGGER	        0x41 // Got the dagger for Nessie solution
+/*Talked to demon lords already*/
+#define	FLAG_TALKED_TO_NESSEREIGN       0x42 // 
+#define	FLAG_TALKED_TO_GIGAGEHSOOL      0x43 // Unused Flag
+#define	FLAG_TALKED_TO_SAPPRILON        0x44 // Unused Flag
+#define	FLAG_TALKED_TO_ADDISAMAP        0x45 // Unused Flag
+#define	FLAG_TALKED_TO_MAXIE	        0x46 // Unused Flag
 /**/
-#define	FLAG_UNUSED_0x042	            0x42 // Unused Flag
-#define	FLAG_UNUSED_0x043	            0x43 // Unused Flag
-#define	FLAG_UNUSED_0x044	            0x44 // Unused Flag
-#define	FLAG_UNUSED_0x045	            0x45 // Unused Flag
-#define	FLAG_UNUSED_0x046	            0x46 // Unused Flag
 #define	FLAG_UNUSED_0x047	            0x47 // Unused Flag
 #define	FLAG_UNUSED_0x048	            0x48 // Unused Flag
 #define FLAG_UNUSED_0x049               0x49 // Unused Flag
@@ -100,8 +101,8 @@
 #define FLAG_UNUSED_0x04B               0x4B // Unused Flag
 #define FLAG_UNUSED_0x04C               0x4C // Unused Flag
 #define FLAG_UNUSED_0x04D               0x4D // Unused Flag
-#define FLAG_INSIDE_MAXIE_LAIR          0x4E // Unused Flag
-#define FLAG_TOGGLE_WATER_INTERACT      0x4F // Unused Flag
+#define FLAG_ARCHIE_TUTORIALMODE        0x4E // Tracks when Archie in Hub World; is in tutorial mode when set
+#define FLAG_TOGGLE_WATER_INTERACT      0x4F // When set, allows player to interact with OW Events in water
 
 // Scripts
 #define FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL  0x50

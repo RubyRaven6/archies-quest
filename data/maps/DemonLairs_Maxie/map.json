@@ -2,7 +2,7 @@
   "id": "MAP_DEMON_LAIRS_MAXIE",
   "name": "DemonLairs_Maxie",
   "layout": "LAYOUT_DEMON_LAIRS_VHANE",
-  "music": "MUS_DUMMY",
+  "music": "MUS_WEATHER_GROUDON",
   "region_map_section": "MAPSEC_MAXIE_LAIR",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_NESSIE_PAINTER",
       "graphics_id": "OBJ_EVENT_GFX_GENTLEMAN",
       "x": 7,
       "y": 3,
@@ -24,48 +25,60 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "DemonLairs_EventScript_Nessie",
       "flag": "0"
     }
   ],
   "warp_events": [],
-  "coord_events": [
+  "coord_events": [],
+  "bg_events": [
     {
-      "type": "trigger",
-      "x": 7,
-      "y": 4,
+      "type": "sign",
+      "x": 5,
+      "y": 1,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "NULL"
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DemonLairs_Nessie_Interior_EventScript_InvertedMelon"
     },
     {
-      "type": "trigger",
-      "x": 8,
-      "y": 4,
+      "type": "sign",
+      "x": 4,
+      "y": 1,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "NULL"
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DemonLairs_Nessie_Interior_EventScript_RedSea"
     },
     {
-      "type": "trigger",
-      "x": 6,
-      "y": 3,
+      "type": "sign",
+      "x": 1,
+      "y": 1,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "NULL"
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DemonLairs_Nessie_Interior_EventScript_FamiliarPainting"
     },
     {
-      "type": "trigger",
-      "x": 6,
-      "y": 2,
+      "type": "sign",
+      "x": 3,
+      "y": 1,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "NULL"
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DemonLairs_Nessie_Interior_EventScript_RedSea"
+    },
+    {
+      "type": "sign",
+      "x": 2,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DemonLairs_Nessie_Interior_EventScript_RedSea"
+    },
+    {
+      "type": "sign",
+      "x": 0,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "DemonLairs_Nessie_Interior_EventScript_FamiliarPainting"
     }
-  ],
-  "bg_events": []
+  ]
 }

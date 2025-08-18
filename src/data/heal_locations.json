@@ -143,6 +143,24 @@
       "map": "MAP_DEMON_LAIRS_NESSIE",
       "x": 6,
       "y": 8
+    },
+    {
+      "id": "HEAL_LOCATION_DEMON_LAIRS_ADDISAMAP",
+      "map": "MAP_DEMON_LAIRS_ADDISAMAP",
+      "x": 12,
+      "y": 28
+    },
+    {
+      "id": "HEAL_LOCATION_DEMON_LAIRS_GIGAGEHSOOL",
+      "map": "MAP_DEMON_LAIRS_GIGAGEHSOOL",
+      "x": 9,
+      "y": 19
+    },
+    {
+      "id": "HEAL_LOCATION_DEMON_LAIRS_SAPPRILON",
+      "map": "MAP_DEMON_LAIRS_SAPPRILON",
+      "x": 6,
+      "y": 12
     }
   ]
 }
