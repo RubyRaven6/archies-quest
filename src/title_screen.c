@@ -620,7 +620,6 @@ void CB2_InitTitleScreen(void)
             LZ77UnCompVram(sTitleScreenMaxieGfx, (void *)(BG_CHAR_ADDR(2)));
             LZ77UnCompVram(sTitleScreenMaxieTilemap, (void *)(BG_SCREEN_ADDR(26)));
         } else {
-            DebugPrintf("Raqyuaza If Statement");
             LZ77UnCompVram(sTitleScreenRayquazaGfx, (void *)(BG_CHAR_ADDR(2)));
             LZ77UnCompVram(sTitleScreenRayquazaTilemap, (void *)(BG_SCREEN_ADDR(26)));
         }
