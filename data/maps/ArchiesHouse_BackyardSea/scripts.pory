@@ -25,7 +25,7 @@ script ArchiesHouse_Backyard_EventScripts_Milotic {
 		msgbox(format("Milotic is grooming herself in the water's reflection.\pMaximize your joint slay?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
-			givemon(SPECIES_MILOTIC, 40, abilityNum=0, gender=FEMALE, move1=MOVE_ICE_BEAM, move2=MOVE_DISARMING_VOICE, move3=MOVE_ATTRACT, move4=MOVE_LIFE_DEW, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_MILOTIC, 50, abilityNum=0, gender=FEMALE, move1=MOVE_ICE_BEAM, move2=MOVE_DISARMING_VOICE, move3=MOVE_ATTRACT, move4=MOVE_LIFE_DEW, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_SEA_MILOTIC)
 			msgbox("Milotic joined your party!")
 			closemessage
@@ -44,7 +44,7 @@ script ArchiesHouse_Backyard_EventScripts_Kingdra {
 		msgbox(format("Kingdra seems to be brooding restlessly.\pGive an outlet for his frustrations?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
-			givemon(SPECIES_KINGDRA, 40, abilityNum=1, gender=MALE, move1=MOVE_SNIPE_SHOT, move2=MOVE_DRAGON_PULSE, move3=MOVE_HYPER_BEAM, move4=MOVE_ICE_BEAM, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_KINGDRA, 50, abilityNum=1, gender=MALE, move1=MOVE_SNIPE_SHOT, move2=MOVE_DRAGON_PULSE, move3=MOVE_HYPER_BEAM, move4=MOVE_ICE_BEAM, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_SEA_KINGDRA)
 			msgbox("Kingdra joined your party!")
 			closemessage
@@ -63,7 +63,7 @@ script ArchiesHouse_Backyard_EventScripts_Wailord {
 		msgbox(format("Wailord is singing her higher pitched song as usual.\pHarmonize?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
-			givemon(SPECIES_WAILORD, 40, abilityNum=0, gender=FEMALE, move1=MOVE_DIVE, move2=MOVE_SURF, move3=MOVE_SWALLOW, move4=MOVE_NOBLE_ROAR, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_WAILORD, 50, abilityNum=0, gender=FEMALE, move1=MOVE_DIVE, move2=MOVE_SURF, move3=MOVE_SWALLOW, move4=MOVE_NOBLE_ROAR, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_SEA_WAILORD)
 			msgbox("Wailord joined your party!")
 			closemessage
@@ -82,7 +82,7 @@ script ArchiesHouse_Backyard_EventScripts_Pelipper {
 		msgbox(format("Pelipper is resting from her mail delivery duties for the day.\pGive her a new duty for today?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
-			givemon(SPECIES_PELIPPER, 40, abilityNum=1, gender=FEMALE, move1=MOVE_WATER_PULSE, move2=MOVE_RAIN_DANCE, move3=MOVE_TAILWIND, move4=MOVE_AIR_SLASH, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_PELIPPER, 50, abilityNum=1, gender=FEMALE, move1=MOVE_WATER_PULSE, move2=MOVE_RAIN_DANCE, move3=MOVE_TAILWIND, move4=MOVE_AIR_SLASH, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_SEA_PELIPPER)
 			msgbox("Pelipper joined your party!")
 			closemessage

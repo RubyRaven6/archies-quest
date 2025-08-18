@@ -1,6 +1,6 @@
 mapscripts DemonLairs_Gigagehsool_MapScripts {
-	MAP_SCRIPT_ON_LOAD {
-		if(flag(FLAG_GIGAGEHSOOL_PUZZLE_SOLVED)){setmetatile(9, 8, 0x2c0, FALSE)}
+	MAP_SCRIPT_ON_TRANSITION {
+		setvar(VAR_DEMON_LORD_PROGRESS, 2)
 	}
 }
 

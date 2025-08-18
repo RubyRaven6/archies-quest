@@ -1302,6 +1302,10 @@
     {
       "id": "MAPSEC_SAPPRILON_LAIR",
       "name": "Sapprilon's Lair"
+    },
+    {
+      "id": "MAPSEC_HUB_WORLD",
+      "name": "The Hub"
     }
   ]
 }

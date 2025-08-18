@@ -21,13 +21,6 @@
       "elevation": 0,
       "dest_map": "MAP_DEMON_LAIRS_GIGAGEHSOOL",
       "dest_warp_id": "0"
-    },
-    {
-      "x": 9,
-      "y": 8,
-      "elevation": 0,
-      "dest_map": "MAP_DEMON_LAIRS_GIGAGEHSOOL_INTERIOR",
-      "dest_warp_id": "0"
     }
   ],
   "coord_events": [],

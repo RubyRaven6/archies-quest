@@ -1,4 +1,8 @@
-mapscripts DemonLairs_Sapprilon_MapScripts {}
+mapscripts DemonLairs_Sapprilon_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+		setvar(VAR_DEMON_LORD_PROGRESS, 3)
+	}
+}
 
 script DemonLairs_Sapprilon_EventScript_CompactDisks {
     msgbox("It's a stack of luminescent discs,\n

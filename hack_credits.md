@@ -4,6 +4,7 @@
 **Puzzle UI Graphics**: ruby<br>
 **Demon Lord Sprites**: ryuuji<br>
 **Archie ORAS OW Sprite**: hyo<br>
+**HGSS Ruin Maniac**: Delta231
 
 ## Tilesets
 **Fence in Archie's Backyard**: KyuZee<br>
@@ -146,6 +147,7 @@ Insertable format: Rahtak
 **UI Stat Editor, Party Screen**: [Archie (TeamAquasHideout)](https://github.com/TeamAquasHideout/pokeemerald/tree/sandbox)<br>
 **BW Summary Screen**: [RavePossum](https://github.com/ravepossum/pokeemerald-expansion/tree/bw_summary_screen_expansion)<br>
 **Decapitalized branch**: [ProfHarpe](https://github.com/prof-harpe/pokeemerald-expansion/tree/Decapitalized)
+**Mon Levelling Code**: Hedara
 
 ## Special Thanks
 - James (ruby's bf)

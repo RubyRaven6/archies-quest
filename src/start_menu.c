@@ -1505,3 +1505,14 @@ void Script_ForceSaveGame(struct ScriptContext *ctx)
     gMenuCallback = SaveCallback;
     sSaveDialogCallback = SaveSavingMessageCallback;
 }
+
+void AutoSaveDoSave(void)
+{
+    //u8 saveStatus;
+    SaveMapView();
+    sSavingComplete = FALSE;
+    IncrementGameStat(GAME_STAT_SAVED_GAME);
+    TrySavingData(SAVE_NORMAL);
+    gDifferentSaveFile = FALSE;
+    return;
+}

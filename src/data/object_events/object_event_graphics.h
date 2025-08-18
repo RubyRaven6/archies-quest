@@ -116,6 +116,7 @@ const u32 gObjectEventPic_RunningTriathleteF[] = INCBIN_U32("graphics/object_eve
 const u32 gObjectEventPic_TuberF[] = INCBIN_U32("graphics/object_events/pics/people/tuber_f.4bpp");
 const u32 gObjectEventPic_TuberM[] = INCBIN_U32("graphics/object_events/pics/people/tuber_m.4bpp");
 const u32 gObjectEventPic_Hiker[] = INCBIN_U32("graphics/object_events/pics/people/hiker.4bpp");
+const u32 gObjectEventPic_RuinManiac[] = INCBIN_U32("graphics/object_events/pics/people/ruin_maniac.4bpp");
 const u32 gObjectEventPic_CyclingTriathleteM[] = INCBIN_U32("graphics/object_events/pics/people/cycling_triathlete_m.4bpp");
 const u32 gObjectEventPic_CyclingTriathleteF[] = INCBIN_U32("graphics/object_events/pics/people/cycling_triathlete_f.4bpp");
 const u32 gObjectEventPic_Man4[] = INCBIN_U32("graphics/object_events/pics/people/man_4.4bpp");
@@ -461,3 +462,5 @@ const u16 gObjectEventPal_StrangeBall[] = INCBIN_U16("graphics/object_events/pic
 
 const u32 gFieldEffectObjectPic_CaveDust[] = INCBIN_U32("graphics/field_effects/pics/cave_dust.4bpp");
 const u16 gFieldEffectObjectPalette_CaveDust[] = INCBIN_U16("graphics/field_effects/palettes/cave_dust.gbapal");
+const u32 gFieldEffectObjectPic_Saving[] 	= INCBIN_U32("graphics/field_effects/pics/saving.4bpp");
+const u16 gFieldEffectObjectPaletteSaving[] = INCBIN_U16("graphics/field_effects/palettes/saving.gbapal");
