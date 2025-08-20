@@ -1,4 +1,37 @@
-raw `
-DemonLairs_Gigagehsool_Interior_MapScripts::
-	.byte 0
-`
+mapscripts DemonLairs_Gigagehsool_Interior_MapScripts {
+	
+}
+
+script DemonLairs_EventScript_Gigagehsool {
+    setvar(VAR_DEMON_LORD_PROGRESS, 2)
+    if(!flag(FLAG_TALKED_TO_GIGAGEHSOOL)){
+        setflag(FLAG_TALKED_TO_GIGAGEHSOOL)
+        speakername("Gigagehsool")
+        msgbox(format("Hm. So what I heard was right. Nessereign was defeated."),MSGBOX_DEFAULT)
+        waitmessage
+        closemessage
+        applymovement(LOCALID_PLAYER, moves(walk_in_place_fast_up))
+        speakername("Archie")
+        msgbox(format("That's right, Demon Lord! Your reigns of terror are gonna end by my hand!"), MSGBOX_DEFAULT)
+        waitmessage
+        closemessage
+        applymovement(LOCALID_NESSIE_PAINTER, moves(walk_in_place_fast_down))
+        speakername("Gigagehsool")
+        msgbox(format("Heahahaha! You naive child! Prepare to drown!"), MSGBOX_DEFAULT)
+        waitmessage
+        closemessage
+    } else {
+        speakername("Gigagehsool")
+        msgbox(format("Heh. I can do this for longer than you have years in your life, boy!"), MSGBOX_DEFAULT)
+        waitmessage
+        closemessage
+    }
+    trainerbattle_no_intro(TRAINER_DEMONLORD_GIGAGEHSOOL, format("No! This can't be!"))
+    speakername("Gigagehsool")
+    msgbox("Ack! This can't be!\pAGHHHHHH!")
+    fadescreen(FADE_TO_WHITE)
+    waitmessage
+    closemessage
+    fadescreen(FADE_FROM_WHITE)
+    end
+}

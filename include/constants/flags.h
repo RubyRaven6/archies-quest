@@ -88,11 +88,11 @@
 #define	FLAG_NESSIE_READ_BOOK	        0x40 // Read the book for the Nessie solution
 #define	FLAG_NESSIE_GOT_DAGGER	        0x41 // Got the dagger for Nessie solution
 /*Talked to demon lords already*/
-#define	FLAG_TALKED_TO_NESSEREIGN       0x42 // 
-#define	FLAG_TALKED_TO_GIGAGEHSOOL      0x43 // Unused Flag
-#define	FLAG_TALKED_TO_SAPPRILON        0x44 // Unused Flag
-#define	FLAG_TALKED_TO_ADDISAMAP        0x45 // Unused Flag
-#define	FLAG_TALKED_TO_MAXIE	        0x46 // Unused Flag
+#define	FLAG_TALKED_TO_NESSEREIGN       0x42 // After talking to Nessereign the first time
+#define	FLAG_TALKED_TO_GIGAGEHSOOL      0x43 // After talking to Gigagehsool the first time
+#define	FLAG_TALKED_TO_SAPPRILON        0x44 // After talking to Sapprilon the first time
+#define	FLAG_TALKED_TO_ADDISAMAP        0x45 // After talking to Addisamap the first time
+#define	FLAG_TALKED_TO_MAXIE	        0x46 // After talking to Maxie the first time
 /**/
 #define	FLAG_UNUSED_0x047	            0x47 // Unused Flag
 #define	FLAG_UNUSED_0x048	            0x48 // Unused Flag

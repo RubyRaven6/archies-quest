@@ -1238,4 +1238,4 @@ EventScript_TheVoid_Text_0:
 
 	.include "data/maps/DemonLairs_Sapprilon/scripts.inc"
 
-	.include "data/maps/Demonalirs_Sapprilon_Interior/scripts.inc"
+	.include "data/maps/DemonLairs_Sapprilon_Interior/scripts.inc"

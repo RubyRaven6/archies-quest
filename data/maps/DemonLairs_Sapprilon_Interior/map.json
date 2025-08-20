@@ -1,7 +1,7 @@
 {
-  "id": "MAP_DEMONALIRS_SAPPRILON_INTERIOR",
-  "name": "Demonalirs_Sapprilon_Interior",
-  "layout": "LAYOUT_DEMONALIRS_SAPPRILON_INTERIOR",
+  "id": "MAP_DEMONLAIRS_SAPPRILON_INTERIOR",
+  "name": "DemonLairs_Sapprilon_Interior",
+  "layout": "LAYOUT_DEMONLAIRS_SAPPRILON_INTERIOR",
   "music": "MUS_DUMMY",
   "region_map_section": "MAPSEC_SAPPRILON_LAIR",
   "requires_flash": false,

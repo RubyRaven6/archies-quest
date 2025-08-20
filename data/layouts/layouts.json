@@ -4632,14 +4632,14 @@
       "blockdata_filepath": "data/layouts/DemonLairs_Sapprilon/map.bin"
     },
     {
-      "id": "LAYOUT_DEMONALIRS_SAPPRILON_INTERIOR",
-      "name": "Demonalirs_Sapprilon_Interior_Layout",
+      "id": "LAYOUT_DEMONLAIRS_SAPPRILON_INTERIOR",
+      "name": "DemonLairs_Sapprilon_Interior_Layout",
       "width": 12,
       "height": 10,
       "primary_tileset": "gTileset_SapprilonLairPrimary",
       "secondary_tileset": "gTileset_Petalburg",
-      "border_filepath": "data/layouts/Demonalirs_Sapprilon_Interior/border.bin",
-      "blockdata_filepath": "data/layouts/Demonalirs_Sapprilon_Interior/map.bin"
+      "border_filepath": "data/layouts/DemonLairs_Sapprilon_Interior/border.bin",
+      "blockdata_filepath": "data/layouts/DemonLairs_Sapprilon_Interior/map.bin"
     }
   ]
 }
