@@ -16823,43 +16823,43 @@ Music: Magma
 Double Battle: No
 
 Wobbuffet
-Level: 41
+Level: 50
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DEMONLORD_GIGAGEHSOOL ===
-Name: Nesseriegn
+=== TRAINER_DEMONLORD_GREEHASEET ===
+Name: Greehaseet
 Class: Demon Lord
-Pic: Gentleman
+Pic: Swimmer M
 Gender: Male
 Music: Magma
 Double Battle: No
 
 Wobbuffet
-Level: 41
+Level: 50
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DEMONLORD_SAPPRILON ===
-Name: Nesseriegn
+Name: Sapprilon
 Class: Demon Lord
-Pic: Gentleman
+Pic: Guitarist
 Gender: Male
 Music: Magma
 Double Battle: No
 
 Wobbuffet
-Level: 41
+Level: 50
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DEMONLORD_ADDISAMAP ===
-Name: Nesseriegn
+Name: Addisamap
 Class: Demon Lord
-Pic: Gentleman
+Pic: Ruin Maniac
 Gender: Male
 Music: Magma
 Double Battle: No
 
 Wobbuffet
-Level: 41
+Level: 50
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DEMONLORD_MAXIE ===
@@ -16868,10 +16868,14 @@ Class: Demon Lord
 Pic: Magma Leader Maxie
 Gender: Male
 Music: Magma
-Double Battle: No
+Double Battle: Yes
 
 Wobbuffet
-Level: 41
+Level: 50
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Wobbuffet
+Level: 50
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_EVERETT ===

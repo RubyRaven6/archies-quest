@@ -1,7 +1,10 @@
 mapscripts DemonLairs_Nessie_MapScripts{
-    MAP_SCRIPT_ON_TRANSITION {
-        setvar(VAR_DEMON_LORD_PROGRESS, 1)
-    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_DEMON_LORD_PROGRESS, 0 {
+            autosave
+            setvar(VAR_DEMON_LORD_PROGRESS, 1)
+        }
+    ]
 }
 
 script DemonLairs_Nessie_EventScript_NessiePuzzle{
@@ -34,10 +37,16 @@ script DemonLairs_Nessie_EventScript_NessiePuzzle{
             setmetatile(3, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNM, FALSE)
             setmetatile(4, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNR, TRUE)
             special(DrawWholeMapView)
-            msgbox(format(""))
+            msgbox(format("A yawning entrance to an antechamber's opened. Enter?"), MSGBOX_YESNO)
+            waitmessage
+            closemessage
+            if(var(VAR_RESULT) == YES) {warp(MAP_DEMON_LAIRS_NESSIE_INTERIOR, 3, 8)}
         }
     } else {
-        
+        msgbox(format("A yawning entrance to an antechamber's opened. Enter?"), MSGBOX_YESNO)
+        waitmessage
+        closemessage
+        if(var(VAR_RESULT) == YES) {warp(MAP_DEMON_LAIRS_NESSIE_INTERIOR, 3, 8)}
     }
     end
 }
@@ -46,6 +55,7 @@ script DemonLairs_Nessie_EventScript_Knife {
     if(flag(FLAG_NESSIE_GOT_DAGGER) == FALSE){
         msgbox("You find a small dagger on the table.\pTake it?", MSGBOX_YESNO)
         if(var(VAR_RESULT) == YES){
+            waitmessage
             setflag(FLAG_NESSIE_GOT_DAGGER)
             setmetatile(3, 7, METATILE_NessereignLairPrimary_TableCorner, TRUE)
             special(DrawWholeMapView)
@@ -63,13 +73,17 @@ script DemonLairs_Nessie_EventScript_Book {
         msgbox("It is an ancient tome whose pages are\nyellow with age. There are no words, but\lmerely looking makes you feel nauseous.\pContinue?", MSGBOX_YESNO)
         if(var(VAR_RESULT) == YES)
         {
-            msgbox("You thumb through and find gross\nand disgusting images. You strain until\lyou see a phrase.\p“Sheathing sharpness\nthrough screams.”\pIt feels like you learned something\nimportant.")
+            msgbox("You thumb through and find gross\nand disgusting images. You strain until\lyou see a phrase.\p“Sheathing sheathing sheathing sheathing\nsharpness sharpness sharpness sharpness\lthrough through through through through\lscreams screams screams screams screams.”\pIt feels like you learned something\nimportant.")
             setflag(FLAG_NESSIE_READ_BOOK)
+            waitmessage
             closemessage
         }
+        waitmessage
+        closemessage
     }
     else{
-        msgbox("“Sheathing sheathing sheathing sheathing\nSharpness sharpness sharpness sharpness\lThrough through through through\nScreams screams screams screams”\pIt's a dizzying tome.\nNo need to see the rest.")
+        msgbox("“Sheathing sheathing sheathing sheathing\nsharpness sharpness sharpness sharpness\lthrough through through through through\lscreams screams screams screams screams.”\pIt's a dizzying tome.\nNo need to see the rest.")
+        waitmessage
         closemessage
     }
     end
@@ -92,6 +106,8 @@ script DemonLairs_Nessie_EventScript_Chair {
         default:
             msgbox("Thinking about how the table looks\nnormal but the chair doesn't gives you\lan even bigger headache.", MSGBOX_SIGN)
     }
+    waitmessage
+    closemessage
     end
 }
 
@@ -106,6 +122,7 @@ script DemonLairs_Nessie_EventScript_Table {
         default:
             msgbox("You wish you could take the table home,\nbut alas, it'd clash with your decor.", MSGBOX_SIGN)
     }
+    waitmessage
     closemessage
     end
 }
@@ -129,6 +146,7 @@ script DemonLairs_Nessie_EventScript_Rug {
             msgbox("It's not getting any less garish.\nYou should move on.", MSGBOX_SIGN)
             addvar(VAR_TEMP_3, 1)
     }    
+    waitmessage
     closemessage
     end
 }

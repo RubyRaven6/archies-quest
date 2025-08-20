@@ -1210,9 +1210,9 @@ EventScript_TheVoid_Text_0:
 
 	.include "data/maps/HubWorld_Initial/scripts.inc"
 
-	.include "data/maps/DemonLairs_Gigagehsool/scripts.inc"
+	.include "data/maps/DemonLairs_Greehaseet/scripts.inc"
 
-	.include "data/maps/DemonLairs_Gigagehsool_Interior/scripts.inc"
+	.include "data/maps/DemonLairs_Greehaseet_Interior/scripts.inc"
 
 	.include "data/maps/DemonLairs_Nessie/scripts.inc"
 
@@ -1238,4 +1238,4 @@ EventScript_TheVoid_Text_0:
 
 	.include "data/maps/DemonLairs_Sapprilon/scripts.inc"
 
-	.include "data/maps/Demonalirs_Sapprilon_Interior/scripts.inc"
+	.include "data/maps/DemonLairs_Sapprilon_Interior/scripts.inc"

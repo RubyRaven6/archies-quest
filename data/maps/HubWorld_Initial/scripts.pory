@@ -1,17 +1,46 @@
 mapscripts HubWorld_Initial_MapScripts {
-    MAP_SCRIPT_ON_TRANSITION {
+    MAP_SCRIPT_ON_LOAD {
         switch(var(VAR_DEMON_LORD_PROGRESS)){
             case 0:
                 setmaplayoutindex(LAYOUT_HUB_WORLD_INITIAL) // First Time
             case 1:
-                setmaplayoutindex(LAYOUT_HUB_WORLD_NESSIE_DEFEATED) // After Defeating Nessie
+                setmetatile(6, 10, 0x12, TRUE)
+                setmetatile(7, 10, 0x13, TRUE)
             case 2:
-                setmaplayoutindex(LAYOUT_HUB_WORLD_GIGAGEHSOOL_DEFEATED) // After defeating Gigageh
+                setmaplayoutindex(LAYOUT_HUB_WORLD_GREEHASEET_DEFEATED) // After defeating Gigageh
+                setmetatile(6, 10, 0x12, TRUE)
+                setmetatile(7, 10, 0x13, TRUE)
+                setmetatile(6, 7, 0x14, TRUE)
+                setmetatile(7, 7, 0x15, TRUE)
             default:
                 setmaplayoutindex(LAYOUT_HUB_WORLD_SAPPRILON_DEFEATED) // After defeating Sapprilon and Addisamap
+                setmetatile( 6, 10, 0x12, TRUE)
+                setmetatile( 7, 10, 0x13, TRUE)
+                setmetatile( 6,  7, 0x14, TRUE)
+                setmetatile( 7,  7, 0x15, TRUE)
+                setmetatile( 9, 10, 0x16, TRUE)
+                setmetatile(10, 10, 0x17, TRUE)
         }
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_HUB_WORLD_INITIAL_SCENE, 0 {
+            applymovement(LOCALID_HUBWORLD_ARCHIE, moves(walk_in_place_down))
+            applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+            waitmovement(LOCALID_HUBWORLD_ARCHIE)
+            waitmovement(LOCALID_PLAYER)
+            speakername("Old Archie")
+            msgbox(format("This is going to be our base of operations.\p
+                        It's an extra dimensional space away from the influence of the Bai'Narii.\p
+                        I've opened a portal using the a magical anchor object.\p
+                        When you're ready, interact with it and you'll be taken to a Demon Lord's lair.\p
+                        Whenever you defeat one, I can track it, and open a new one for when you come back.\p
+                        Lastly, I've brought a device from the future, containing many items to help make your Pokémon stornger.\p
+                        And if I recall correctly, you also have berries as a farmer, right?\p
+                        That's all for now. If you have any questions, just talk to me again."), MSGBOX_DEFAULT)
+            waitmessage
+            closemessage
+            setvar(VAR_HUB_WORLD_INITIAL_SCENE, 1)
+        }
         VAR_DEMON_LORD_PROGRESS, 4 {
             goto(HubWorld_EventScript_Maxie)
         }
@@ -20,20 +49,130 @@ mapscripts HubWorld_Initial_MapScripts {
 
 script HubWorld_EventScript_Archie {
     speakername("Old Archie")
-    msgbox(format("This is going to be our base of operations.\p
-                It's an extra dimensional space away from the influence of the Bai'Narii.\p
-                I've opened a portal using the a magical anchor object.\p
-                When you're ready, interact with it and you'll be taken to a Demon Lord's lair.\p
-                Whenever you come back, talk to me so I can open a new one.\p
-                Lastly, I've brought a device from the future, containing many items to help make your Pokémon stornger.\p
-                And if I recall correctly, you also have berries as a farmer, right?\p
-                That's all for now. If you have any questions, just talk to me again."))
+    msgbox(format("Hey. Did you need something?"), MSGBOX_DEFAULT)
+    dynmultichoice(0, 0, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE, "Device", "Demon Lords")
+    switch(var(VAR_RESULT)) {
+        case 0:
+            msgbox(format("It's a device from the future called a “PC”.\pNormally, you can do much more things on it, but due to time travel being unstable, it only has the functionality to store items.\pThankfully, though, all the items I brought with me are intact."), MSGBOX_DEFAULT)
+            waitmessage
+            closemessage
+            break
+        case 1:
+            msgbox(format("Ah, you wanted to know about the next Demon Lord?"))
+            waitmessage
+            switch(var(VAR_DEMON_LORD_PROGRESS)){
+                case 0:
+                    msgbox(format("Nessereign. The first and weakest of the Bai'Narii.\p
+                                    Don't let this fool you, though, as he's crafty in his own right.\p
+                                    He's swift and cunning when he battles, but also extremely frail.\p
+                                    He's also a duplicitous lord; as such, his minions are Normal and Dark."))
+                    waitmessage
+                    closemessage
+                case 1:
+                    msgbox(format("Greehaseet. Considered the Bai'Narii's unrelenting chariot.\p
+                                    He possesses great strength, but also great stamina.\p
+                                    His advantage comes from depleting his opponent's strength, and crushing them.\p
+                                    His realm is normally in the waters, though, as such his minions of Ice and Water."))
+                    waitmessage
+                    closemessage
+                case 2:
+                    msgbox(format("Sapprilon. Considered the Bai'Narii's impenetrable wall.\p
+                                    He can create forcefields of noise that can repel attacks without much effort.\p
+                                    Much effort is required to be able to breach his defenses.\p
+                                    He enlists minions that he believes can be utilized best: Steel and Psychic."))
+                    waitmessage
+                    closemessage
+                case 3:
+                    speakername("Old Archie")
+                    msgbox(format("Addisamap. The lieutenant-sergeant of the Bai'Narii.\p
+                                    He's their Ringleader, who keeps them in check for their master."))
+                    waitmessage
+                    closemessage
+                    speakername("Archie")
+                    msgbox(format("Wait, I thought there were only four Bai'Narii?"))
+                    waitmessage
+                    closemessage
+                    speakername("Old Archie")
+                    msgbox(format("No, there's one more behind them all. But let's focus for now.\p
+                                    Addisamap can control life and death in his own terms.\p
+                                    Make sure that you can outdo the healing he can do to himself.\p
+                                    His minions are of Grass and Ground."))
+                    waitmessage
+                    closemessage
+            }
+    }
+    end
+}
+
+script HubWorld_EventScript_NessereignWarp {
+    if(!flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)){
+        msgbox(format("It's a marble pedestal, with no statue on it.\pInteract?"), MSGBOX_YESNO)
+        if(var(VAR_RESULT) == YES) {
+            setrespawn(HEAL_LOCATION_DEMON_LAIRS_NESSIE)
+            warpwhitefade(MAP_DEMON_LAIRS_NESSIE, 6, 8)
+        } else {}
+    } else {
+        msgbox("No need to go back.")
+        waitmessage
+        closemessage
+    }
+    end
+}
+
+script HubWorld_EventScript_GreehaseetWarp {
+    if(!flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)){
+        msgbox(format("It's corroded, porous stone tablet.\pInteract?"), MSGBOX_YESNO)
+        if(var(VAR_RESULT) == YES) {
+            setrespawn(HEAL_LOCATION_DEMON_LAIRS_GREEHASEET)
+            warpwhitefade(MAP_DEMON_LAIRS_GREEHASEET, 9, 19)
+        } else {}
+    } elif(flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)) {
+        msgbox("No need to go back.")
+        waitmessage
+        closemessage
+    } else {
+    }
+    end
+}
+
+script HubWorld_EventScript_SapprilonWarp {
+    if(!flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)){
+        msgbox(format("It's wooden box with a waxen disc on it, spinning under a needle.\pInteract?"), MSGBOX_YESNO)
+        if(var(VAR_RESULT) == YES) {
+            setrespawn(HEAL_LOCATION_DEMON_LAIRS_SAPPRILON)
+            warpwhitefade(MAP_DEMON_LAIRS_SAPPRILON, 6, 12)
+        } else {}
+    } elif(flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)) {
+        msgbox("No need to go back.")
+        waitmessage
+        closemessage
+    } else {
+    }
+    end
+}
+
+script HubWorld_EventScript_Warp {
+    if(!flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_ADDISAMAP) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)){
+        msgbox(format("It's corroded, porous stone tablet.\pInteract?"), MSGBOX_YESNO)
+        if(var(VAR_RESULT) == YES) {
+            setrespawn(HEAL_LOCATION_DEMON_LAIRS_ADDISAMAP)
+            warpwhitefade(MAP_DEMON_LAIRS_ADDISAMAP, 9, 19)
+        } else {}
+    } elif(flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_ADDISAMAP) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)) {
+        msgbox("No need to go back.")
+        waitmessage
+        closemessage
+    } else {
+    }
+    end
 }
 
 script HubWorld_EventScript_Maxie {
+    setrespawn(HEAL_LOCATION_DEMON_LAIRS_MAXIE)
+    setvar(VAR_DEMON_LORD_PROGRESS, 5)
+    autosave
     // Player comes back
     // Screenshake
     // Maxie talks
-    setvar(VAR_DEMON_LORD_PROGRESS, 5)
     callnative(0)
 }

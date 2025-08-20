@@ -1,0 +1,34 @@
+mapscripts DemonLairs_Sapprilon_Interior_MapScripts {}
+
+script DemonLairs_EventScript_Sapprilon {
+    if(!flag(FLAG_TALKED_TO_SAPPRILON)){
+        setflag(FLAG_TALKED_TO_SAPPRILON)
+        speakername("Sapprilon")
+        msgbox(format("I was wondering when you would get here. Frankly I'm surprised you understood enough to get in here."),MSGBOX_DEFAULT)
+        waitmessage
+        closemessage
+        applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+        speakername("Archie")
+        msgbox(format("You've underestimated us for the last time, Demon Lord!"), MSGBOX_DEFAULT)
+        waitmessage
+        closemessage
+        applymovement(LOCALID_SAPPRILON_GUITARIST, moves(walk_in_place_down))
+        speakername("Sapprilon")
+        msgbox(format("You're the only one of us underestimating here, boy. You've gone far enough!"), MSGBOX_DEFAULT)
+        waitmessage
+        closemessage
+    } else {
+        speakername("Sapprilon")
+        msgbox(format("You just don't know when to quit, don't you? Well, you'll learn how soon enough!"), MSGBOX_DEFAULT)
+        waitmessage
+        closemessage
+    }
+    trainerbattle_no_intro(TRAINER_DEMONLORD_SAPPRILON, format("No! This can't be!"))
+    speakername("Sapprilon")
+    msgbox("Grk!\pMy defenses! They've been breached!")
+    fadescreen(FADE_TO_WHITE)
+    waitmessage
+    closemessage
+    fadescreen(FADE_FROM_WHITE)
+    end
+}

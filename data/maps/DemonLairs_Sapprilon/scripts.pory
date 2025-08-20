@@ -1,7 +1,10 @@
 mapscripts DemonLairs_Sapprilon_MapScripts {
-    MAP_SCRIPT_ON_TRANSITION {
-		setvar(VAR_DEMON_LORD_PROGRESS, 3)
-	}
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_DEMON_LORD_PROGRESS, 2 {
+            autosave
+            setvar(VAR_DEMON_LORD_PROGRESS, 3)
+        }
+    ]
 }
 
 script DemonLairs_Sapprilon_EventScript_CompactDisks {
@@ -164,7 +167,7 @@ script DemonLairs_Sapprilon_EventScript_MainComputer {
             call(DemonLairs_Sapprilon_EventScript_Printer)
             break
         case 3:
-            warpwhitefade(MAP_DEMONALIRS_SAPPRILON_INTERIOR, 5, 9)
+            warpwhitefade(MAP_DEMONLAIRS_SAPPRILON_INTERIOR, 5, 9)
     }
 }
 

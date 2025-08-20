@@ -1,7 +1,2 @@
 mapscripts DemonLairs_Maxie_MapScripts {
-    MAP_SCRIPT_ON_TRANSITION {
-        if(!flag(FLAG_INSIDE_MAXIE_LAIR)){
-            setflag(FLAG_INSIDE_MAXIE_LAIR)
-        }
-    }
 }

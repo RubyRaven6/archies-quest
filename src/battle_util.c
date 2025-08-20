@@ -7554,6 +7554,9 @@ u32 GetBattleMoveTarget(u16 move, u8 setTarget)
 
 u8 GetAttackerObedienceForAction()
 {
+    return OBEYS;
+    
+    /*
     s32 rnd;
     s32 calc;
     u8 obedienceLevel = 0;
@@ -7653,6 +7656,7 @@ u8 GetAttackerObedienceForAction()
         else
             return DISOBEYS_LOAFS;
     }
+    */
 }
 
 enum ItemHoldEffect GetBattlerHoldEffect(u32 battler, bool32 checkNegating)
@@ -9493,7 +9497,7 @@ static inline s32 DoFixedDamageMoveCalc(struct DamageCalculationData *damageCalc
         dmg = gBattleMons[damageCalcData->battlerAtk].level;
         break;
     case EFFECT_PSYWAVE:
-        randDamage = B_PSYWAVE_DMG >= GEN_6 ? (Random() % 101) : ((Random() % 11) * 10);
+        randDamage = B_PSYWAVE_DMG >= GEN_5 ? (Random() % 101) : ((Random() % 11) * 10);
         dmg = gBattleMons[damageCalcData->battlerAtk].level * (randDamage + 50) / 100;
         break;
     case EFFECT_FIXED_DAMAGE_ARG:
