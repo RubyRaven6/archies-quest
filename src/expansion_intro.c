@@ -1,5 +1,6 @@
 #include "global.h"
 #include "bg.h"
+#include "event_data.h"
 #include "decompress.h"
 #include "palette.h"
 #include "sound.h"
@@ -407,7 +408,11 @@ static void SpriteCallback_PorygonFlying(struct Sprite* sprite)
             sprite->callback = SpriteCallback_PorygonHit;
             sprite->sTimer = 0;
             PlaySE(SE_M_DOUBLE_SLAP);
-            PlayCryInternal(SPECIES_PORYGON, 0, 120, 10, 0);
+            if (VarGet(VAR_DEMON_LORD_PROGRESS) == 5){
+                PlayCryInternal(SPECIES_PORYGON_Z, 0, 120, 10, 0);
+            } else {
+                PlayCryInternal(SPECIES_PORYGON, 0, 120, 10, 0);
+            }
         }
     }
     sprite->sTimer++;
