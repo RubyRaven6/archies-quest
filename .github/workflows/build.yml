@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - ruby-misc
   pull_request:
 
 jobs:
