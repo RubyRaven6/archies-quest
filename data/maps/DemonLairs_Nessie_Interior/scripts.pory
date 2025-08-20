@@ -2,6 +2,7 @@ mapscripts DemonLairs_Nessie_Interior_MapScripts {
 }
 
 script DemonLairs_EventScript_Nessie {
+    setvar(VAR_DEMON_LORD_PROGRESS, 1)
     if(!flag(FLAG_TALKED_TO_NESSEREIGN)){
         setflag(FLAG_TALKED_TO_NESSEREIGN)
         speakername("Nessereign")
@@ -31,9 +32,12 @@ script DemonLairs_EventScript_Nessie {
         closemessage
     }
     trainerbattle_no_intro(TRAINER_DEMONLORD_NESSEREIGN, format("No! This can't be!"))
-    msgbox("One more thing")
+    speakername("Nessereign")
+    msgbox("Argh!! You'll regret this!!\pNOOOOOOOO!")
+    fadescreen(FADE_TO_WHITE)
     waitmessage
     closemessage
+    fadescreen(FADE_FROM_WHITE)
     end
 }
 

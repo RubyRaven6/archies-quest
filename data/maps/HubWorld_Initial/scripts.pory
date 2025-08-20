@@ -37,7 +37,7 @@ mapscripts HubWorld_Initial_MapScripts {
         }
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
-        FLAG_ARCHIE_TUTORIALMODE, FALSE {
+        VAR_HUB_WORLD_INITIAL_SCENE, 0 {
             applymovement(LOCALID_HUBWORLD_ARCHIE, moves(walk_in_place_fast_down))
             applymovement(LOCALID_PLAYER, moves(walk_in_place_fast_up))
             waitmovement(LOCALID_HUBWORLD_ARCHIE)
@@ -53,7 +53,7 @@ mapscripts HubWorld_Initial_MapScripts {
                         That's all for now. If you have any questions, just talk to me again."), MSGBOX_DEFAULT)
             waitmessage
             closemessage
-            setflag(FLAG_ARCHIE_TUTORIALMODE)
+            setvar(VAR_HUB_WORLD_INITIAL_SCENE, 1)
         }
         VAR_DEMON_LORD_PROGRESS, 4 {
             goto(HubWorld_EventScript_Maxie)
@@ -64,7 +64,7 @@ mapscripts HubWorld_Initial_MapScripts {
 script HubWorld_EventScript_Archie {
     speakername("Old Archie")
     msgbox(format("Hey. Did you need something?"), MSGBOX_DEFAULT)
-    dynmultichoice(0, 0, FALSE, 0, 0, DYN_MULTICHOICE_CB_NONE, "Device", "Demon Lords")
+    dynmultichoice(0, 0, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE, "Device", "Demon Lords")
     switch(var(VAR_RESULT)) {
         case 0:
             msgbox(format("It's a device from the future called a “PC”.\pNormally, you can do much more things on it, but due to time travel being unstable, it only has the functionality to store items.\pThankfully, though, all the items I brought with me are intact."), MSGBOX_DEFAULT)
