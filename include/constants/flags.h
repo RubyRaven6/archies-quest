@@ -100,7 +100,7 @@
 #define FLAG_UNUSED_0x04A               0x4A // Unused Flag
 #define FLAG_UNUSED_0x04B               0x4B // Unused Flag
 #define FLAG_UNUSED_0x04C               0x4C // Unused Flag
-#define FLAG_UNUSED_0x04D               0x4D // Unused Flag
+#define FLAG_FIRST_TIME_AUTOSAVE        0x4D // Unused Flag
 #define FLAG_ARCHIE_TUTORIALMODE        0x4E // Tracks when Archie in Hub World; is in tutorial mode when set
 #define FLAG_TOGGLE_WATER_INTERACT      0x4F // When set, allows player to interact with OW Events in water
 

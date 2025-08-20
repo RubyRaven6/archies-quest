@@ -1,7 +1,10 @@
 mapscripts DemonLairs_Nessie_MapScripts{
-    MAP_SCRIPT_ON_TRANSITION {
-        setvar(VAR_DEMON_LORD_PROGRESS, 1)
-    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_DEMON_LORD_PROGRESS, 0 {
+            autosave
+            setvar(VAR_DEMON_LORD_PROGRESS, 1)
+        }
+    ]
 }
 
 script DemonLairs_Nessie_EventScript_NessiePuzzle{

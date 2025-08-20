@@ -22,20 +22,6 @@ mapscripts HubWorld_Initial_MapScripts {
                 setmetatile(10, 10, 0x17, TRUE)
         }
     }
-    MAP_SCRIPT_ON_TRANSITION {
-        switch(var(VAR_DEMON_LORD_PROGRESS)){
-            case 0:
-                setmaplayoutindex(LAYOUT_HUB_WORLD_INITIAL) // First Time
-            case 1:
-                setmaplayoutindex(LAYOUT_HUB_WORLD_NESSIE_DEFEATED) // After Defeating Nessie
-                setmetatile(6, 10, 0x12, TRUE)
-                setmetatile(6, 10, 0x12, TRUE)
-            case 2:
-                setmaplayoutindex(LAYOUT_HUB_WORLD_GIGAGEHSOOL_DEFEATED) // After defeating Gigageh
-            default:
-                setmaplayoutindex(LAYOUT_HUB_WORLD_SAPPRILON_DEFEATED) // After defeating Sapprilon and Addisamap
-        }
-    }
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_HUB_WORLD_INITIAL_SCENE, 0 {
             applymovement(LOCALID_HUBWORLD_ARCHIE, moves(walk_in_place_fast_down))
@@ -182,9 +168,11 @@ script HubWorld_EventScript_Warp {
 }
 
 script HubWorld_EventScript_Maxie {
+    setrespawn(HEAL_LOCATION_DEMON_LAIRS_MAXIE)
+    setvar(VAR_DEMON_LORD_PROGRESS, 5)
+    autosave
     // Player comes back
     // Screenshake
     // Maxie talks
-    setvar(VAR_DEMON_LORD_PROGRESS, 5)
     callnative(0)
 }

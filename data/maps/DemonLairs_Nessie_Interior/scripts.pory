@@ -2,7 +2,6 @@ mapscripts DemonLairs_Nessie_Interior_MapScripts {
 }
 
 script DemonLairs_EventScript_Nessie {
-    setvar(VAR_DEMON_LORD_PROGRESS, 1)
     if(!flag(FLAG_TALKED_TO_NESSEREIGN)){
         setflag(FLAG_TALKED_TO_NESSEREIGN)
         speakername("Nessereign")

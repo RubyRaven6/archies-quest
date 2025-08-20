@@ -1,7 +1,10 @@
 mapscripts DemonLairs_Sapprilon_MapScripts {
-    MAP_SCRIPT_ON_TRANSITION {
-		setvar(VAR_DEMON_LORD_PROGRESS, 3)
-	}
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_DEMON_LORD_PROGRESS, 2 {
+            autosave
+            setvar(VAR_DEMON_LORD_PROGRESS, 3)
+        }
+    ]
 }
 
 script DemonLairs_Sapprilon_EventScript_CompactDisks {

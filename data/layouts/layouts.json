@@ -4632,7 +4632,7 @@
       "blockdata_filepath": "data/layouts/DemonLairs_Sapprilon/map.bin"
     },
     {
-      "id": "LAYOUT_DEMONLAIRS_SAPPRILON_INTERIOR",
+      "id": "LAYOUT_DEMON_LAIRS_SAPPRILON_INTERIOR",
       "name": "DemonLairs_Sapprilon_Interior_Layout",
       "width": 12,
       "height": 10,
