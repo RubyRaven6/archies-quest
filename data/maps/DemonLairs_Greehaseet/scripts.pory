@@ -1,4 +1,4 @@
-mapscripts DemonLairs_Gigagehsool_MapScripts {
+mapscripts DemonLairs_Greehaseet_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_DEMON_LORD_PROGRESS, 1 {
             autosave
@@ -7,19 +7,19 @@ mapscripts DemonLairs_Gigagehsool_MapScripts {
     ]
 }
 
-script DemonLairs_Gigagehsool_EventScript_Door {
+script DemonLairs_Greehaseet_EventScript_Door {
 	lockall
-	if(!flag(FLAG_GIGAGEHSOOL_PUZZLE_SOLVED) && var(VAR_TEMP_0) == 0){
+	if(!flag(FLAG_GREEHASEET_PUZZLE_SOLVED) && var(VAR_TEMP_0) == 0){
 		setvar(VAR_TEMP_0, 1)
 		msgbox(format("You see a formiddable door before you. It's shut tight, but there's a mechanism written.\p
 						Five for Five! Don't forget!\p
 						There are shells embedded onto the front door bearing pearls inside them.
 						\pAttempt to unlock the door?"),MSGBOX_YESNO)
 		if(var(VAR_RESULT) == YES){
-			call(DemonLairs_Gigagehsool_EventScript_Puzzle)
+			call(DemonLairs_Greehaseet_EventScript_Puzzle)
 		}
-	} elif (!flag(FLAG_GIGAGEHSOOL_PUZZLE_SOLVED)){
-		call(DemonLairs_Gigagehsool_EventScript_Puzzle)
+	} elif (!flag(FLAG_GREEHASEET_PUZZLE_SOLVED)){
+		call(DemonLairs_Greehaseet_EventScript_Puzzle)
 	} else {
 		msgbox("Door's open.")
 		closemessage
@@ -28,16 +28,16 @@ script DemonLairs_Gigagehsool_EventScript_Door {
 	end
 }
 
-script DemonLairs_Gigagehsool_EventScript_Puzzle {
-	special(OpenGigagehsoolPuzzle)
+script DemonLairs_Greehaseet_EventScript_Puzzle {
+	special(OpenGreehaseetPuzzle)
 	waitstate
-	if(flag(FLAG_GIGAGEHSOOL_PUZZLE_SOLVED)){
-		call(DemonLairs_Gigagehsool_EventScript_DoorIsOpen)
+	if(flag(FLAG_GREEHASEET_PUZZLE_SOLVED)){
+		call(DemonLairs_Greehaseet_EventScript_DoorIsOpen)
 	}
 	return
 }
 
-script DemonLairs_Gigagehsool_EventScript_DoorIsOpen {
+script DemonLairs_Greehaseet_EventScript_DoorIsOpen {
 	setvar(VAR_0x8004, 1)  // vertical pan
 	setvar(VAR_0x8005, 1)  // horizontal pan
 	setvar(VAR_0x8006, 8)  // num shakes

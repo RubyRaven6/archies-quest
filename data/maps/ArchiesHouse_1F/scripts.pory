@@ -33,7 +33,7 @@ script ArchiesHouse_EventScript_BeginningCutscene {
     waitmovement(OBJ_EVENT_ID_PLAYER)
     speakername("Archie")
     msgbox("Who are you…?")
-    applymovement(OBJ_FUTUREARCHIE, moves(walk_in_place_fast_right))
+    applymovement(OBJ_FUTUREARCHIE, moves(walk_in_place_right))
     speakername("Old Archie")
     msgbox(format("We don't have time."))
     waitmovement(0)

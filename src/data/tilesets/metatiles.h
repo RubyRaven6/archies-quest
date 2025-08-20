@@ -217,11 +217,11 @@ const u16 gMetatileAttributes_ArchiesHouse[] = INCBIN_U16("data/tilesets/seconda
 const u16 gMetatiles_SpaceMeteor[] = INCBIN_U16("data/tilesets/secondary/space_meteor/metatiles.bin");
 const u16 gMetatileAttributes_SpaceMeteor[] = INCBIN_U16("data/tilesets/secondary/space_meteor/metatile_attributes.bin");
 
-const u16 gMetatiles_GigagehsoolLairPrimary[] = INCBIN_U16("data/tilesets/primary/gigagehsool_lair_primary/metatiles.bin");
-const u16 gMetatileAttributes_GigagehsoolLairPrimary[] = INCBIN_U16("data/tilesets/primary/gigagehsool_lair_primary/metatile_attributes.bin");
+const u16 gMetatiles_GreehaseetLairPrimary[] = INCBIN_U16("data/tilesets/primary/greehaseet_lair_primary/metatiles.bin");
+const u16 gMetatileAttributes_GreehaseetLairPrimary[] = INCBIN_U16("data/tilesets/primary/greehaseet_lair_primary/metatile_attributes.bin");
 
-const u16 gMetatiles_GigagehsoolLairSecondary[] = INCBIN_U16("data/tilesets/secondary/gigagehsool_lair_secondary/metatiles.bin");
-const u16 gMetatileAttributes_GigagehsoolLairSecondary[] = INCBIN_U16("data/tilesets/secondary/gigagehsool_lair_secondary/metatile_attributes.bin");
+const u16 gMetatiles_GreehaseetLairSecondary[] = INCBIN_U16("data/tilesets/secondary/greehaseet_lair_secondary/metatiles.bin");
+const u16 gMetatileAttributes_GreehaseetLairSecondary[] = INCBIN_U16("data/tilesets/secondary/greehaseet_lair_secondary/metatile_attributes.bin");
 
 const u16 gMetatiles_NessereignLairPrimary[] = INCBIN_U16("data/tilesets/primary/nessereign_lair_primary/metatiles.bin");
 const u16 gMetatileAttributes_NessereignLairPrimary[] = INCBIN_U16("data/tilesets/primary/nessereign_lair_primary/metatile_attributes.bin");
@@ -238,8 +238,8 @@ const u16 gMetatileAttributes_HubWorld[] = INCBIN_U16("data/tilesets/primary/hub
 const u16 gMetatiles_AddisamapLairPrimary[] = INCBIN_U16("data/tilesets/primary/addisamap_lair_primary/metatiles.bin");
 const u16 gMetatileAttributes_AddisamapLairPrimary[] = INCBIN_U16("data/tilesets/primary/addisamap_lair_primary/metatile_attributes.bin");
 
-const u16 gMetatiles_GigagehsoolInterior[] = INCBIN_U16("data/tilesets/primary/gigagehsool_interior/metatiles.bin");
-const u16 gMetatileAttributes_GigagehsoolInterior[] = INCBIN_U16("data/tilesets/primary/gigagehsool_interior/metatile_attributes.bin");
+const u16 gMetatiles_GreehaseetInterior[] = INCBIN_U16("data/tilesets/primary/greehaseet_interior/metatiles.bin");
+const u16 gMetatileAttributes_GreehaseetInterior[] = INCBIN_U16("data/tilesets/primary/greehaseet_interior/metatile_attributes.bin");
 
 const u16 gMetatiles_SapprilonLairPrimary[] = INCBIN_U16("data/tilesets/primary/sapprilon_lair_primary/metatiles.bin");
 const u16 gMetatileAttributes_SapprilonLairPrimary[] = INCBIN_U16("data/tilesets/primary/sapprilon_lair_primary/metatile_attributes.bin");

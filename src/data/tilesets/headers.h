@@ -864,25 +864,25 @@ const struct Tileset gTileset_SpaceMeteor =
     .callback = NULL,
 };
 
-const struct Tileset gTileset_GigagehsoolLairPrimary =
+const struct Tileset gTileset_GreehaseetLairPrimary =
 {
     .isCompressed = TRUE,
     .isSecondary = FALSE,
-    .tiles = gTilesetTiles_GigagehsoolLairPrimary,
-    .palettes = gTilesetPalettes_GigagehsoolLairPrimary,
-    .metatiles = gMetatiles_GigagehsoolLairPrimary,
-    .metatileAttributes = gMetatileAttributes_GigagehsoolLairPrimary,
+    .tiles = gTilesetTiles_GreehaseetLairPrimary,
+    .palettes = gTilesetPalettes_GreehaseetLairPrimary,
+    .metatiles = gMetatiles_GreehaseetLairPrimary,
+    .metatileAttributes = gMetatileAttributes_GreehaseetLairPrimary,
     .callback = NULL,
 };
 
-const struct Tileset gTileset_GigagehsoolLairSecondary =
+const struct Tileset gTileset_GreehaseetLairSecondary =
 {
     .isCompressed = TRUE,
     .isSecondary = TRUE,
-    .tiles = gTilesetTiles_GigagehsoolLairSecondary,
-    .palettes = gTilesetPalettes_GigagehsoolLairSecondary,
-    .metatiles = gMetatiles_GigagehsoolLairSecondary,
-    .metatileAttributes = gMetatileAttributes_GigagehsoolLairSecondary,
+    .tiles = gTilesetTiles_GreehaseetLairSecondary,
+    .palettes = gTilesetPalettes_GreehaseetLairSecondary,
+    .metatiles = gMetatiles_GreehaseetLairSecondary,
+    .metatileAttributes = gMetatileAttributes_GreehaseetLairSecondary,
     .callback = NULL,
 };
 
@@ -940,14 +940,14 @@ const struct Tileset gTileset_AddisamapLairPrimary =
     .callback = NULL,
 };
 
-const struct Tileset gTileset_GigagehsoolInterior =
+const struct Tileset gTileset_GreehaseetInterior =
 {
     .isCompressed = TRUE,
     .isSecondary = FALSE,
-    .tiles = gTilesetTiles_GigagehsoolInterior,
-    .palettes = gTilesetPalettes_GigagehsoolInterior,
-    .metatiles = gMetatiles_GigagehsoolInterior,
-    .metatileAttributes = gMetatileAttributes_GigagehsoolInterior,
+    .tiles = gTilesetTiles_GreehaseetInterior,
+    .palettes = gTilesetPalettes_GreehaseetInterior,
+    .metatiles = gMetatiles_GreehaseetInterior,
+    .metatileAttributes = gMetatileAttributes_GreehaseetInterior,
     .callback = NULL,
 };
 

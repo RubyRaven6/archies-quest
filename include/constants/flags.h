@@ -47,7 +47,7 @@
 #define	FLAG_HIDE_ARCHIE	            0x20 // Hides Old Archie at the start of the game
 /* Puzzle Flags */
 #define	FLAG_NESSIE_PUZZLE_SOLVED	    0x21 // For when the painting solution is found
-#define	FLAG_GIGAGEHSOOL_PUZZLE_SOLVED	0x22 // Gigagesh Puzzle Flag
+#define	FLAG_GREEHASEET_PUZZLE_SOLVED	0x22 // Gigagesh Puzzle Flag
 #define	FLAG_SAPPRILON_PUZZLE_SOLVED	0x23 // Sapprilon Puzzle Flag
 /* Forest Mons */
 #define	FLAG_HIDE_SCEPTILE	            0x24 // Hides Sceptile
@@ -89,7 +89,7 @@
 #define	FLAG_NESSIE_GOT_DAGGER	        0x41 // Got the dagger for Nessie solution
 /*Talked to demon lords already*/
 #define	FLAG_TALKED_TO_NESSEREIGN       0x42 // After talking to Nessereign the first time
-#define	FLAG_TALKED_TO_GIGAGEHSOOL      0x43 // After talking to Gigagehsool the first time
+#define	FLAG_TALKED_TO_GREEHASEET      0x43 // After talking to Greehaseet the first time
 #define	FLAG_TALKED_TO_SAPPRILON        0x44 // After talking to Sapprilon the first time
 #define	FLAG_TALKED_TO_ADDISAMAP        0x45 // After talking to Addisamap the first time
 #define	FLAG_TALKED_TO_MAXIE	        0x46 // After talking to Maxie the first time

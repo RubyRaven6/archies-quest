@@ -7,7 +7,7 @@ mapscripts HubWorld_Initial_MapScripts {
                 setmetatile(6, 10, 0x12, TRUE)
                 setmetatile(7, 10, 0x13, TRUE)
             case 2:
-                setmaplayoutindex(LAYOUT_HUB_WORLD_GIGAGEHSOOL_DEFEATED) // After defeating Gigageh
+                setmaplayoutindex(LAYOUT_HUB_WORLD_GREEHASEET_DEFEATED) // After defeating Gigageh
                 setmetatile(6, 10, 0x12, TRUE)
                 setmetatile(7, 10, 0x13, TRUE)
                 setmetatile(6, 7, 0x14, TRUE)
@@ -24,8 +24,8 @@ mapscripts HubWorld_Initial_MapScripts {
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_HUB_WORLD_INITIAL_SCENE, 0 {
-            applymovement(LOCALID_HUBWORLD_ARCHIE, moves(walk_in_place_fast_down))
-            applymovement(LOCALID_PLAYER, moves(walk_in_place_fast_up))
+            applymovement(LOCALID_HUBWORLD_ARCHIE, moves(walk_in_place_down))
+            applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
             waitmovement(LOCALID_HUBWORLD_ARCHIE)
             waitmovement(LOCALID_PLAYER)
             speakername("Old Archie")
@@ -69,7 +69,7 @@ script HubWorld_EventScript_Archie {
                     waitmessage
                     closemessage
                 case 1:
-                    msgbox(format("Gigagehsool. Considered the Bai'Narii's unrelenting chariot.\p
+                    msgbox(format("Greehaseet. Considered the Bai'Narii's unrelenting chariot.\p
                                     He possesses great strength, but also great stamina.\p
                                     His advantage comes from depleting his opponent's strength, and crushing them.\p
                                     His realm is normally in the waters, though, as such his minions of Ice and Water."))
@@ -119,14 +119,14 @@ script HubWorld_EventScript_NessereignWarp {
     end
 }
 
-script HubWorld_EventScript_GigagehsoolWarp {
-    if(!flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GIGAGEHSOOL) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)){
+script HubWorld_EventScript_GreehaseetWarp {
+    if(!flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)){
         msgbox(format("It's corroded, porous stone tablet.\pInteract?"), MSGBOX_YESNO)
         if(var(VAR_RESULT) == YES) {
-            setrespawn(HEAL_LOCATION_DEMON_LAIRS_GIGAGEHSOOL)
-            warpwhitefade(MAP_DEMON_LAIRS_GIGAGEHSOOL, 9, 19)
+            setrespawn(HEAL_LOCATION_DEMON_LAIRS_GREEHASEET)
+            warpwhitefade(MAP_DEMON_LAIRS_GREEHASEET, 9, 19)
         } else {}
-    } elif(flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GIGAGEHSOOL) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)) {
+    } elif(flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)) {
         msgbox("No need to go back.")
         waitmessage
         closemessage
@@ -136,13 +136,13 @@ script HubWorld_EventScript_GigagehsoolWarp {
 }
 
 script HubWorld_EventScript_SapprilonWarp {
-    if(!flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GIGAGEHSOOL) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)){
+    if(!flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)){
         msgbox(format("It's wooden box with a waxen disc on it, spinning under a needle.\pInteract?"), MSGBOX_YESNO)
         if(var(VAR_RESULT) == YES) {
             setrespawn(HEAL_LOCATION_DEMON_LAIRS_SAPPRILON)
             warpwhitefade(MAP_DEMON_LAIRS_SAPPRILON, 6, 12)
         } else {}
-    } elif(flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GIGAGEHSOOL) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)) {
+    } elif(flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)) {
         msgbox("No need to go back.")
         waitmessage
         closemessage
@@ -152,13 +152,13 @@ script HubWorld_EventScript_SapprilonWarp {
 }
 
 script HubWorld_EventScript_Warp {
-    if(!flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_ADDISAMAP) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GIGAGEHSOOL) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)){
+    if(!flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_ADDISAMAP) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)){
         msgbox(format("It's corroded, porous stone tablet.\pInteract?"), MSGBOX_YESNO)
         if(var(VAR_RESULT) == YES) {
             setrespawn(HEAL_LOCATION_DEMON_LAIRS_ADDISAMAP)
             warpwhitefade(MAP_DEMON_LAIRS_ADDISAMAP, 9, 19)
         } else {}
-    } elif(flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_ADDISAMAP) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GIGAGEHSOOL) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)) {
+    } elif(flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_ADDISAMAP) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)) {
         msgbox("No need to go back.")
         waitmessage
         closemessage

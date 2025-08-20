@@ -1,1 +1,44 @@
 mapscripts DemonLairs_Addisamap_Interior_MapScripts {}
+
+script DemonLairs_EventScript_Addisamap {
+    if(!flag(FLAG_TALKED_TO_ADDISAMAP)){
+        setflag(FLAG_TALKED_TO_ADDISAMAP)
+        speakername("Addisamap")
+        msgbox(format("So you're finally here, huh?"),MSGBOX_DEFAULT)
+        waitmessage
+        closemessage
+        applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+        speakername("Archie")
+        msgbox(format("You seem so calm and nonplussed."), MSGBOX_DEFAULT)
+        waitmessage
+        closemessage
+        applymovement(LOCALID_ADDISAMAP_RUIN_MANIAC, moves(walk_in_place_down))
+        speakername("Addisamap")
+        msgbox(format("Of course. I have to be. What reason do I have to be worried?\pYou're ultimately failing this silly quest of yours. Either by my hand, or by our Master's."), MSGBOX_DEFAULT)
+        waitmessage
+        closemessage
+        applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+        speakername("Archie")
+        msgbox(format("Your Master?!"), MSGBOX_DEFAULT)
+        waitmessage
+        closemessage
+        applymovement(LOCALID_ADDISAMAP_RUIN_MANIAC, moves(walk_in_place_down))
+        speakername("Addisamap")
+        msgbox(format("Yes. It's a shame, really. You'll never have the chance to meet him."), MSGBOX_DEFAULT)
+        waitmessage
+        closemessage
+    } else {
+        speakername("Addisamap")
+        msgbox(format("The quester returns. Stubborn as ever. Luckily, he's not the only one who's stubborn."), MSGBOX_DEFAULT)
+        waitmessage
+        closemessage
+    }
+    trainerbattle_no_intro(TRAINER_DEMONLORD_ADDISAMAP, format("…"))
+    speakername("Addisamap")
+    msgbox(format("…\pVery well. It seems my time has come. But yours is fast approaching, boy. Turn back now, unless you wish to die in regret."))
+    fadescreen(FADE_TO_WHITE)
+    waitmessage
+    closemessage
+    fadescreen(FADE_FROM_WHITE)
+    end
+}

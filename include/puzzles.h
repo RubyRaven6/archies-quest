@@ -23,7 +23,7 @@ void Task_OpenSampleUi_BlankTemplate(u8 taskId);
 //For the Nessie Painting
 void Task_OpenNessiePainting(u8 taskId);
 
-//For the Gigagehsool
-void Task_OpenGigagehsoolPuzzle(u8 taskId);
+//For the Greehaseet
+void Task_OpenGreehaseetPuzzle(u8 taskId);
 
 #endif

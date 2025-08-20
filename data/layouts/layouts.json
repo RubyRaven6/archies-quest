@@ -4462,24 +4462,24 @@
       "blockdata_filepath": "data/layouts/HubWorld_Initial/map.bin"
     },
     {
-      "id": "LAYOUT_DEMON_LAIRS_GIGAGEHSOOL",
-      "name": "DemonLairs_Gigagehsool_Layout",
+      "id": "LAYOUT_DEMON_LAIRS_GREEHASEET",
+      "name": "DemonLairs_Greehaseet_Layout",
       "width": 21,
       "height": 29,
-      "primary_tileset": "gTileset_GigagehsoolLairPrimary",
-      "secondary_tileset": "gTileset_GigagehsoolLairSecondary",
-      "border_filepath": "data/layouts/DemonLairs_Gigagehsool/border.bin",
-      "blockdata_filepath": "data/layouts/DemonLairs_Gigagehsool/map.bin"
+      "primary_tileset": "gTileset_GreehaseetLairPrimary",
+      "secondary_tileset": "gTileset_GreehaseetLairSecondary",
+      "border_filepath": "data/layouts/DemonLairs_Greehaseet/border.bin",
+      "blockdata_filepath": "data/layouts/DemonLairs_Greehaseet/map.bin"
     },
     {
-      "id": "LAYOUT_DEMON_LAIRS_GIGAGEHSOOL_INTERIOR",
-      "name": "DemonLairs_Gigagehsool_Interior_Layout",
+      "id": "LAYOUT_DEMON_LAIRS_GREEHASEET_INTERIOR",
+      "name": "DemonLairs_Greehaseet_Interior_Layout",
       "width": 17,
       "height": 17,
-      "primary_tileset": "gTileset_GigagehsoolInterior",
-      "secondary_tileset": "gTileset_GigagehsoolLairSecondary",
-      "border_filepath": "data/layouts/DemonLairs_Gigagehsool_Interior/border.bin",
-      "blockdata_filepath": "data/layouts/DemonLairs_Gigagehsool_Interior/map.bin"
+      "primary_tileset": "gTileset_GreehaseetInterior",
+      "secondary_tileset": "gTileset_GreehaseetLairSecondary",
+      "border_filepath": "data/layouts/DemonLairs_Greehaseet_Interior/border.bin",
+      "blockdata_filepath": "data/layouts/DemonLairs_Greehaseet_Interior/map.bin"
     },
     {
       "id": "LAYOUT_DEMON_LAIRS_NESSIE",
@@ -4592,14 +4592,14 @@
       "blockdata_filepath": "data/layouts/HubWorld_NessieDefeated/map.bin"
     },
     {
-      "id": "LAYOUT_HUB_WORLD_GIGAGEHSOOL_DEFEATED",
-      "name": "HubWorld_GigagehsoolDefeated",
+      "id": "LAYOUT_HUB_WORLD_GREEHASEET_DEFEATED",
+      "name": "HubWorld_GreehaseetDefeated",
       "width": 17,
       "height": 17,
       "primary_tileset": "gTileset_HubWorld",
       "secondary_tileset": "gTileset_Petalburg",
-      "border_filepath": "data/layouts/HubWorld_GigagehsoolDefeated/border.bin",
-      "blockdata_filepath": "data/layouts/HubWorld_GigagehsoolDefeated/map.bin"
+      "border_filepath": "data/layouts/HubWorld_GreehaseetDefeated/border.bin",
+      "blockdata_filepath": "data/layouts/HubWorld_GreehaseetDefeated/map.bin"
     },
     {
       "id": "LAYOUT_HUB_WORLD_SAPPRILON_DEFEATED",

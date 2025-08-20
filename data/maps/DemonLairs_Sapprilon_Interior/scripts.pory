@@ -7,12 +7,12 @@ script DemonLairs_EventScript_Sapprilon {
         msgbox(format("I was wondering when you would get here. Frankly I'm surprised you understood enough to get in here."),MSGBOX_DEFAULT)
         waitmessage
         closemessage
-        applymovement(LOCALID_PLAYER, moves(walk_in_place_fast_up))
+        applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
         speakername("Archie")
         msgbox(format("You've underestimated us for the last time, Demon Lord!"), MSGBOX_DEFAULT)
         waitmessage
         closemessage
-        applymovement(LOCALID_SAPPRILON_GUITARIST, moves(walk_in_place_fast_down))
+        applymovement(LOCALID_SAPPRILON_GUITARIST, moves(walk_in_place_down))
         speakername("Sapprilon")
         msgbox(format("You're the only one of us underestimating here, boy. You've gone far enough!"), MSGBOX_DEFAULT)
         waitmessage

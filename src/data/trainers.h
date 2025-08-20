@@ -42055,14 +42055,14 @@ F_TRAINER_FEMALE |
         },
     },
 #line 16829
-    [DIFFICULTY_NORMAL][TRAINER_DEMONLORD_GIGAGEHSOOL] =
+    [DIFFICULTY_NORMAL][TRAINER_DEMONLORD_GREEHASEET] =
     {
 #line 16830
-        .trainerName = _("Nesseriegn"),
+        .trainerName = _("Greehaseet"),
 #line 16831
         .trainerClass = TRAINER_CLASS_DEMON_LORD,
 #line 16832
-        .trainerPic = TRAINER_PIC_GENTLEMAN,
+        .trainerPic = TRAINER_PIC_SWIMMER_M,
         .encounterMusic_gender =
 #line 16834
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -42088,11 +42088,11 @@ F_TRAINER_FEMALE |
     [DIFFICULTY_NORMAL][TRAINER_DEMONLORD_SAPPRILON] =
     {
 #line 16842
-        .trainerName = _("Nesseriegn"),
+        .trainerName = _("Sapprilon"),
 #line 16843
         .trainerClass = TRAINER_CLASS_DEMON_LORD,
 #line 16844
-        .trainerPic = TRAINER_PIC_GENTLEMAN,
+        .trainerPic = TRAINER_PIC_GUITARIST,
         .encounterMusic_gender =
 #line 16846
             TRAINER_ENCOUNTER_MUSIC_MAGMA,
@@ -42118,11 +42118,11 @@ F_TRAINER_FEMALE |
     [DIFFICULTY_NORMAL][TRAINER_DEMONLORD_ADDISAMAP] =
     {
 #line 16854
-        .trainerName = _("Nesseriegn"),
+        .trainerName = _("Addisamap"),
 #line 16855
         .trainerClass = TRAINER_CLASS_DEMON_LORD,
 #line 16856
-        .trainerPic = TRAINER_PIC_GENTLEMAN,
+        .trainerPic = TRAINER_PIC_RUIN_MANIAC,
         .encounterMusic_gender =
 #line 16858
             TRAINER_ENCOUNTER_MUSIC_MAGMA,

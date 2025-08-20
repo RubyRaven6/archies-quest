@@ -148,11 +148,11 @@
       "id": "HEAL_LOCATION_DEMON_LAIRS_ADDISAMAP",
       "map": "MAP_DEMON_LAIRS_ADDISAMAP",
       "x": 12,
-      "y": 28
+      "y": 31
     },
     {
-      "id": "HEAL_LOCATION_DEMON_LAIRS_GIGAGEHSOOL",
-      "map": "MAP_DEMON_LAIRS_GIGAGEHSOOL",
+      "id": "HEAL_LOCATION_DEMON_LAIRS_GREEHASEET",
+      "map": "MAP_DEMON_LAIRS_GREEHASEET",
       "x": 9,
       "y": 19
     },
