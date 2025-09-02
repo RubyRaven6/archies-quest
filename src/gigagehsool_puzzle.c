@@ -103,13 +103,13 @@ static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
 #define MAX_THREE_SHELL     3
 
 static const u16 sCursor_Pal[] = INCBIN_U16("graphics/greehaseet_puzzle/cursor.gbapal");
-static const u32 sCursor_Gfx[] = INCBIN_U32("graphics/greehaseet_puzzle/cursor.4bpp.lz");
+static const u32 sCursor_Gfx[] = INCBIN_U32("graphics/greehaseet_puzzle/cursor.4bpp.smol");
 
 static const u16 sNumbers_Pal[] = INCBIN_U16("graphics/greehaseet_puzzle/num_spritesheet.gbapal");
-static const u32 sNumbers_Gfx[] = INCBIN_U32("graphics/greehaseet_puzzle/num_spritesheet.4bpp.lz");
+static const u32 sNumbers_Gfx[] = INCBIN_U32("graphics/greehaseet_puzzle/num_spritesheet.4bpp.smol");
 
-static const u32 sGreehaseetPuzzleTiles[] = INCBIN_U32("graphics/greehaseet_puzzle/puzzle_tiles.4bpp.lz");
-static const u32 sGreehaseetPuzzleTilemap[] = INCBIN_U32("graphics/greehaseet_puzzle/puzzle_tiles.bin.lz");
+static const u32 sGreehaseetPuzzleTiles[] = INCBIN_U32("graphics/greehaseet_puzzle/puzzle_tiles.4bpp.smol");
+static const u32 sGreehaseetPuzzleTilemap[] = INCBIN_U32("graphics/greehaseet_puzzle/puzzle_tiles.bin.smolTM");
 static const u16 sGreehaseetPuzzlePalette[] = INCBIN_U16("graphics/greehaseet_puzzle/puzzle_tiles.gbapal");
 
 static const struct OamData sOamData_Cursor =
@@ -702,7 +702,7 @@ static bool8 GreehaseetPuzzle_LoadGraphics(void)
     case 1:
         if (FreeTempTileDataBuffersIfPossible() != TRUE)
         {
-            LZDecompressWram(sGreehaseetPuzzleTilemap, sBg1TilemapBuffer);
+            DecompressDataWithHeaderWram(sGreehaseetPuzzleTilemap, sBg1TilemapBuffer);
             sGreehaseetPuzzleState->loadState++;
         }
         break;

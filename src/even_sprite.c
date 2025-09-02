@@ -60,7 +60,7 @@ u32 Even_CreateSprite(struct Even_CreateSpriteStruct *createStruct)
     if (createStruct->spriteCompressed)
     {
         spriteSrc = Alloc(GetDecompressedDataSize(createStruct->sprite));
-        LZDecompressWram(createStruct->sprite, spriteSrc);
+        DecompressDataWithHeaderWram(createStruct->sprite, spriteSrc);
     }
     else
     {

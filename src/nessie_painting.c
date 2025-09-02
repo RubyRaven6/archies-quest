@@ -56,7 +56,7 @@ static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
 #define TAG_DAGGER 30004
 
 static const u16 sDaggerCursor_Pal[] = INCBIN_U16("graphics/nessie_puzzle/dagger.gbapal");
-static const u32 sDaggerCursor_Gfx[] = INCBIN_U32("graphics/nessie_puzzle/dagger.4bpp.lz");
+static const u32 sDaggerCursor_Gfx[] = INCBIN_U32("graphics/nessie_puzzle/dagger.4bpp.smol");
 
 static const struct OamData sOamData_Dagger =
 {
@@ -139,8 +139,8 @@ static const struct WindowTemplate sNessiePuzzleWindowTemplates[] =
     DUMMY_WIN_TEMPLATE
 };
 
-static const u32 sNessiePaintings[] = INCBIN_U32("graphics/nessie_puzzle/nessie_painting_map.4bpp.lz");
-static const u32 sNessiePaintingMap[] = INCBIN_U32("graphics/nessie_puzzle/nessie_painting_map.bin.lz");
+static const u32 sNessiePaintings[] = INCBIN_U32("graphics/nessie_puzzle/nessie_painting_map.4bpp.smol");
+static const u32 sNessiePaintingMap[] = INCBIN_U32("graphics/nessie_puzzle/nessie_painting_map.bin.smolTM");
 static const u16 sNessiePaintingPalette[] = INCBIN_U16("graphics/nessie_puzzle/nessie_painting.gbapal");
 
 enum FontColor
@@ -477,7 +477,7 @@ static bool8 NessiePuzzle_LoadGraphics(void)
     case 1:
         if (FreeTempTileDataBuffersIfPossible() != TRUE)
         {
-            LZDecompressWram(sNessiePaintingMap, sBg1TilemapBuffer);
+            DecompressDataWithHeaderWram(sNessiePaintingMap, sBg1TilemapBuffer);
             sNessiePuzzleState->loadState++;
         }
         break;

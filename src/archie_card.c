@@ -75,9 +75,9 @@ static const struct WindowTemplate sArchieCardWindowTemplates[] =
     DUMMY_WIN_TEMPLATE
 };
 
-static const u32 sArchieCardTiles[] = INCBIN_U32("graphics/sample_ui/tiles.4bpp.lz");
+static const u32 sArchieCardTiles[] = INCBIN_U32("graphics/sample_ui/tiles.4bpp.smol");
 
-static const u32 sArchieCardTilemap[] = INCBIN_U32("graphics/sample_ui/tilemap.bin.lz");
+static const u32 sArchieCardTilemap[] = INCBIN_U32("graphics/sample_ui/tilemap.bin.smolTM");
 
 static const u16 sArchieCardPalette[] = INCBIN_U16("graphics/sample_ui/00.gbapal");
 
@@ -335,7 +335,7 @@ static bool8 ArchieCard_LoadGraphics(void)
     case 1:
         if (FreeTempTileDataBuffersIfPossible() != TRUE)
         {
-            LZDecompressWram(sArchieCardTilemap, sBg1TilemapBuffer);
+            DecompressDataWithHeaderWram(sArchieCardTilemap, sBg1TilemapBuffer);
             sArchieCardState->loadState++;
         }
         break;

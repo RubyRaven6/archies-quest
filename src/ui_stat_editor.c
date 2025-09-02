@@ -163,8 +163,8 @@ static const struct WindowTemplate sMenuWindowTemplates[] =
     DUMMY_WIN_TEMPLATE
 };
 
-static const u32 sStatEditorBgTiles[] = INCBIN_U32("graphics/ui_menu/stat_editor_ui.4bpp.lz");
-static const u32 sStatEditorBgTilemap[] = INCBIN_U32("graphics/ui_menu/stat_editor_ui.bin.lz");
+static const u32 sStatEditorBgTiles[] = INCBIN_U32("graphics/ui_menu/stat_editor_ui.4bpp.smol");
+static const u32 sStatEditorBgTilemap[] = INCBIN_U32("graphics/ui_menu/stat_editor_ui.bin.smolTM");
 static const u16 sStatEditorBgPalette[] = INCBIN_U16("graphics/ui_menu/stat_editor_ui_pal.gbapal");
 
 enum Colors
@@ -185,7 +185,7 @@ static const u8 sMenuWindowFontColors[][3] =
 #define TAG_SELECTOR 30004
 
 static const u16 sSelector_Pal[] = INCBIN_U16("graphics/ui_menu/selector.gbapal");
-static const u32 sSelector_Gfx[] = INCBIN_U32("graphics/ui_menu/selector.4bpp.lz");
+static const u32 sSelector_Gfx[] = INCBIN_U32("graphics/ui_menu/selector.4bpp.smol");
 static const u8 sA_ButtonGfx[]         = INCBIN_U8("graphics/ui_menu/a_button.4bpp");
 static const u8 sB_ButtonGfx[]         = INCBIN_U8("graphics/ui_menu/b_button.4bpp");
 static const u8 sR_ButtonGfx[]         = INCBIN_U8("graphics/ui_menu/r_button.4bpp");
@@ -449,7 +449,7 @@ static bool8 StatEditor_LoadGraphics(void)
         DebugPrintf("StatEditor_LoadGraphics case 1");
         if (FreeTempTileDataBuffersIfPossible() != TRUE)
         {
-            LZDecompressWram(sStatEditorBgTilemap, sBg1TilemapBuffer);
+            DecompressDataWithHeaderWram(sStatEditorBgTilemap, sBg1TilemapBuffer);
             sStatEditorDataPtr->gfxLoadState++;
         }
         break;

@@ -248,7 +248,7 @@ static const struct WindowTemplate sSampleUiWindowTemplates[] =
     DUMMY_WIN_TEMPLATE
 };
 
-static const u32 sSampleUiTiles[] = INCBIN_U32("graphics/sample_ui/tiles.4bpp.lz");
+static const u32 sSampleUiTiles[] = INCBIN_U32("graphics/sample_ui/tiles.4bpp.smol");
 
 // New graphics for the buttons. Create these from 4bpp indexed PNGs, just like before.
 static const u32 sSampleUiKantoButton[] = INCBIN_U32("graphics/sample_ui/kanto.4bpp");
@@ -258,8 +258,8 @@ static const u32 sSampleUiSinnohButton[] = INCBIN_U32("graphics/sample_ui/sinnoh
 static const u32 sSampleUiUnovaButton[] = INCBIN_U32("graphics/sample_ui/unova.4bpp");
 static const u32 sSampleUiKalosButton[] = INCBIN_U32("graphics/sample_ui/kalos.4bpp");
 
-static const u32 sSampleUiTilemap[] = INCBIN_U32("graphics/sample_ui/tilemap.bin.lz");
-static const u32 sSampleUiPanelTilemap[] = INCBIN_U32("graphics/sample_ui/panel_tilemap.bin.lz");
+static const u32 sSampleUiTilemap[] = INCBIN_U32("graphics/sample_ui/tilemap.bin.smolTM");
+static const u32 sSampleUiPanelTilemap[] = INCBIN_U32("graphics/sample_ui/panel_tilemap.bin.smolTM");
 
 static const u16 sSampleUiPalette[] = INCBIN_U16("graphics/sample_ui/00.gbapal");
 static const u16 sSampleUi_KantoJohtoHoennPalette[] = INCBIN_U16("graphics/sample_ui/kanto_johto_hoenn.gbapal");
@@ -1051,8 +1051,8 @@ static bool8 SampleUi_LoadGraphics(void)
     case 1:
         if (FreeTempTileDataBuffersIfPossible() != TRUE)
         {
-            LZDecompressWram(sSampleUiTilemap, sBg1TilemapBuffer);
-            LZDecompressWram(sSampleUiPanelTilemap, sBg2TilemapBuffer);
+            DecompressDataWithHeaderWram(sSampleUiTilemap, sBg1TilemapBuffer);
+            DecompressDataWithHeaderWram(sSampleUiPanelTilemap, sBg2TilemapBuffer);
             sSampleUiState->loadState++;
         }
         break;
