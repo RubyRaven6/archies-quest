@@ -75,11 +75,11 @@ static const struct WindowTemplate sArchieCardWindowTemplates[] =
     DUMMY_WIN_TEMPLATE
 };
 
-static const u32 sArchieCardTiles[] = INCBIN_U32("graphics/archie_card/tiles.4bpp.lz");
+static const u32 sArchieCardTiles[] = INCBIN_U32("graphics/sample_ui/tiles.4bpp.lz");
 
-static const u32 sArchieCardTilemap[] = INCBIN_U32("graphics/archie_card/tilemap.bin.lz");
+static const u32 sArchieCardTilemap[] = INCBIN_U32("graphics/sample_ui/tilemap.bin.lz");
 
-static const u16 sArchieCardPalette[] = INCBIN_U16("graphics/archie_card/00.gbapal");
+static const u16 sArchieCardPalette[] = INCBIN_U16("graphics/sample_ui/00.gbapal");
 
 enum FontColor
 {
@@ -113,7 +113,7 @@ static void ArchieCard_InitWindows(void);
 static void ArchieCard_PrintUiSampleWindowText(void);
 static void ArchieCard_FreeResources(void);
 
-// Declared in archie_card.h
+// Declared in sample_ui.h
 void Task_OpenArchieCard_BlankTemplate(u8 taskId)
 {
     if (!gPaletteFade.active)
