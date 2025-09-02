@@ -41,9 +41,9 @@
 #include "field_screen_effect.h"
 
 /*
- * 
+ *
  */
- 
+
 //==========DEFINES==========//
 struct StatEditorResources
 {
@@ -113,7 +113,7 @@ static const struct BgTemplate sStatEditorBgTemplates[] =
         .charBaseIndex = 0,
         .mapBaseIndex = 30,
         .priority = 1
-    }, 
+    },
     {
         .bg = 1,    // this bg loads the UI tilemap
         .charBaseIndex = 3,
@@ -128,9 +128,9 @@ static const struct BgTemplate sStatEditorBgTemplates[] =
     }
 };
 
-static const struct WindowTemplate sMenuWindowTemplates[] = 
+static const struct WindowTemplate sMenuWindowTemplates[] =
 {
-    [WINDOW_1] = 
+    [WINDOW_1] =
     {
         .bg = 0,            // which bg to print text on
         .tilemapLeft = 1,   // position from left (per 8 pixels)
@@ -140,7 +140,7 @@ static const struct WindowTemplate sMenuWindowTemplates[] =
         .paletteNum = 15,   // palette index to use for text
         .baseBlock = 1,     // tile start in VRAM
     },
-    [WINDOW_2] = 
+    [WINDOW_2] =
     {
         .bg = 0,            // which bg to print text on
         .tilemapLeft = 10,   // position from left (per 8 pixels)
@@ -150,7 +150,7 @@ static const struct WindowTemplate sMenuWindowTemplates[] =
         .paletteNum = 15,   // palette index to use for text
         .baseBlock = 1 + 70,     // tile start in VRAM
     },
-    [WINDOW_3] = 
+    [WINDOW_3] =
     {
         .bg = 0,            // which bg to print text on
         .tilemapLeft = 1,   // position from left (per 8 pixels)
@@ -174,7 +174,7 @@ enum Colors
     FONT_RED,
     FONT_BLUE,
 };
-static const u8 sMenuWindowFontColors[][3] = 
+static const u8 sMenuWindowFontColors[][3] =
 {
     [FONT_BLACK]  = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_DARK_GRAY,  TEXT_COLOR_LIGHT_GRAY},
     [FONT_WHITE]  = {TEXT_COLOR_TRANSPARENT,  TEXT_COLOR_WHITE,  TEXT_COLOR_DARK_GRAY},
@@ -278,13 +278,13 @@ void StatEditor_Init(MainCallback callback)
         SetMainCallback2(callback);
         return;
     }
-    
+
     // initialize stuff
     sStatEditorDataPtr->gfxLoadState = 0;
     sStatEditorDataPtr->savedCallback = callback;
     sStatEditorDataPtr->selectorSpriteId = 0xFF;
     sStatEditorDataPtr->partyid = gSpecialVar_0x8004;
-    
+
     SetMainCallback2(StatEditor_RunSetup);
 }
 
@@ -422,7 +422,7 @@ static bool8 StatEditor_InitBgs(void)
     sBg1TilemapBuffer = Alloc(0x800);
     if (sBg1TilemapBuffer == NULL)
         return FALSE;
-    
+
     memset(sBg1TilemapBuffer, 0, 0x800);
     ResetBgsAndClearDma3BusyFlags(0);
     InitBgsFromTemplates(0, sStatEditorBgTemplates, NELEMS(sStatEditorBgTemplates));
@@ -471,11 +471,11 @@ static void StatEditor_InitWindows(void)
     InitWindows(sMenuWindowTemplates);
     DeactivateAllTextPrinters();
     ScheduleBgCopyTilemapToVram(0);
-    
+
     FillWindowPixelBuffer(WINDOW_1, 0);
     PutWindowTilemap(WINDOW_1);
     CopyWindowToVram(WINDOW_1, 3);
-    
+
     ScheduleBgCopyTilemapToVram(2);
 }
 
@@ -593,7 +593,7 @@ static const u8 sGenderColors[2][3] =
 static void PrintTitleToWindowMainState()
 {
     FillWindowPixelBuffer(WINDOW_1, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    
+
     //AddTextPrinterParameterized4(WINDOW_1, FONT_NORMAL, 1, 0, 0, 0, sMenuWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, COMPOUND_STRING("Stat Editor"));
 
     BlitBitmapToWindow(WINDOW_1, sR_ButtonGfx, 75, (BUTTON_Y), 24, 8);
@@ -609,7 +609,7 @@ static void PrintTitleToWindowMainState()
 static void PrintTitleToWindowEditState()
 {
     FillWindowPixelBuffer(WINDOW_1, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    
+
     //AddTextPrinterParameterized4(WINDOW_1, FONT_NORMAL, 1, 0, 0, 0, sMenuWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, COMPOUND_STRING("Stat Editor"));
 
     BlitBitmapToWindow(WINDOW_1, sDPad_ButtonGfx, 75, (BUTTON_Y), 24, 8);
@@ -680,7 +680,7 @@ static void PrintMonStats()
     //Prints unallocated EVs
 
     sStatEditorDataPtr->unallocatedEVs = GetEVsForMonLevel(level) - sStatEditorDataPtr->evTotal;
- 
+
     ConvertIntToDecimalStringN(gStringVar2, sStatEditorDataPtr->unallocatedEVs, STR_CONV_MODE_RIGHT_ALIGN, 3);
 
     AddTextPrinterParameterized4(WINDOW_3, FONT_NORMAL, 44, 0, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar2);
@@ -699,7 +699,7 @@ static void PrintMonStats()
     // Print ability / nature / name / level / gender
 
     AddTextPrinterParameterized4(WINDOW_3, FONT_NARROW, 3, 0, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, COMPOUND_STRING("Free EVs"));
-    
+
     StringCopy(gStringVar2, GetSpeciesName(sStatEditorDataPtr->speciesID));
 
     AddTextPrinterParameterized4(WINDOW_3, FONT_NARROW, 4, 16, 0, 0, sMenuWindowFontColors[FONT_WHITE], 0xFF, gStringVar2);
@@ -779,7 +779,7 @@ static const u16 selectedStatToStatEnum[] = {
 };
 
 static void Task_DelayedSpriteLoad(u8 taskId) // wait 4 frames after changing the mon you're editing so there are no palette problems
-{   
+{
     if (gTasks[taskId].data[11] >= 4)
     {
         SampleUi_DrawMonIcon(sStatEditorDataPtr->speciesID);
@@ -853,7 +853,7 @@ static void Task_StatEditorMain(u8 taskId) // input control when first loaded in
         if(sStatEditorDataPtr->selector_x == 0)
             sStatEditorDataPtr->selector_x = 1;
         else
-            sStatEditorDataPtr->selector_x = 0; 
+            sStatEditorDataPtr->selector_x = 0;
     }
     if (JOY_NEW(DPAD_UP))
     {
@@ -908,11 +908,11 @@ static void ChangeAndUpdateStat()
 #define EDIT_INPUT_DECREASE_STATE           2
 #define EDIT_INPUT_MAX_DECREASE_STATE       3
 
-#define STAT_MINIMUM          0  
+#define STAT_MINIMUM          0
 #define IV_MAX_SINGLE_STAT    MAX_PER_STAT_IVS //31
 #define EV_MAX_SINGLE_STAT    MAX_PER_STAT_EVS //63
 #define EV_MAX_TOTAL          MAX_TOTAL_EVS // 128
-                
+
 #define EDITING_EVS     0
 #define EDITING_IVS     1
 
@@ -980,9 +980,9 @@ static void HandleEditingStatInput(u32 input)
     if(CHECK_IF_STAT_CANT_INCREASE)
         StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 2);
     else if(sStatEditorDataPtr->editingStat == STAT_MINIMUM)
-        StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 1); 
+        StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 1);
     else
-        StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 3);       
+        StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 3);
 }
 
 static void Task_MenuEditingStat(u8 taskId) // This function should be refactored to not be a hot mess
@@ -1006,5 +1006,3 @@ static void Task_MenuEditingStat(u8 taskId) // This function should be refactore
         HandleEditingStatInput(EDIT_INPUT_MAX_DECREASE_STATE);
 
 }
-
-

@@ -16821,10 +16821,77 @@ Pic: Gentleman
 Gender: Male
 Music: Magma
 Double Battle: No
+AI: Smart Trainer
+Party Size: 4
+Pool Rules: Basic
 
-Wobbuffet
+Smeargle @ Focus Sash
+Ability: Own Tempo
 Level: 50
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+EVs: 35 Def / 35 Spe
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Tags: Lead
+Jolly Nature
+- Sticky Web
+- Taunt
+- Nuzzle
+- Rapid Spin
+
+Absol @ Life Orb
+Ability: Super Luck
+Level: 50
+EVs: 10 Atk / 60 Spe
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Jolly Nature
+- Knock Off
+- Close Combat
+- Sucker Punch
+- Iron Tail
+
+Grimmsnarl @ Light Clay
+Ability: Prankster
+Level: 50
+EVs: 35 HP / 35 Def
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Impish Nature
+- Reflect
+- Light Screen
+- Play Rough
+- Taunt
+
+Obstagoon @ Flame Orb
+Ability: Guts
+Level: 50
+EVs: 35 Atk / 35 Spe
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Adamant Nature
+- Knock Off
+- Facade
+- Ice Punch
+- Switcheroo
+
+Zoroark @ Heavy-Duty Boots
+Ability: Illusion
+Level: 50
+Tags: Ace
+EVs: 10 Atk / 10 SpA / 40 Spe
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Naive Nature
+- Knock Off
+- U-turn
+- Flamethrower
+- Sludge Bomb
+
+Porygon-Z @ Choice Scarf
+Ability: Adaptability
+Level: 50
+EVs: 5 SpA / 65 Spe
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Timid Nature
+- Tri Attack
+- Shadow Ball
+- Trick
+- Ice Beam
 
 === TRAINER_DEMONLORD_GREEHASEET ===
 Name: Greehaseet
