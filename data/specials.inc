@@ -565,3 +565,4 @@ gSpecials::
 	def_special GetCodeFeedback
 	def_special OpenNessiePuzzle
 	def_special OpenGreehaseetPuzzle
+	def_special MaxieReboot

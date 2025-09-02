@@ -85,13 +85,6 @@ int GameClear(void)
     return 0;
 }
 
-void MaxieReboot(void)
-{
-    HealPlayerParty();
-    SetContinueGameWarpStatus();
-    SetContinueGameWarpToHealLocation(HEAL_LOCATION_DEMON_LAIRS_MAXIE);
-}
-
 bool8 SetCB2WhiteOut(void)
 {
     SetMainCallback2(CB2_WhiteOut);

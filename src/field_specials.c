@@ -39,6 +39,7 @@
 #include "rtc.h"
 #include "script.h"
 #include "script_menu.h"
+#include "script_pokemon_util.h"
 #include "sound.h"
 #include "starter_choose.h"
 #include "string_util.h"
@@ -4374,6 +4375,13 @@ void OpenGreehaseetPuzzle(void)
 {
     FadeScreen(FADE_TO_BLACK, 0);
     CreateTask(Task_OpenGreehaseetPuzzle, 0);
+}
+
+void MaxieReboot(void)
+{
+    HealPlayerParty();
+    SetContinueGameWarpStatus();
+    SetContinueGameWarpToHealLocation(HEAL_LOCATION_DEMON_LAIRS_MAXIE);
 }
 
 void OpenSampleUi(void)

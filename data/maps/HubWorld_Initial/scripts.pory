@@ -4,22 +4,11 @@ mapscripts HubWorld_Initial_MapScripts {
             case 0:
                 setmaplayoutindex(LAYOUT_HUB_WORLD_INITIAL) // First Time
             case 1:
-                setmetatile(6, 10, 0x12, TRUE)
-                setmetatile(7, 10, 0x13, TRUE)
+                setmaplayoutindex(LAYOUT_HUB_WORLD_NESSIE_DEFEATED) // After Defeating Nessereign
             case 2:
-                setmaplayoutindex(LAYOUT_HUB_WORLD_GREEHASEET_DEFEATED) // After defeating Gigageh
-                setmetatile(6, 10, 0x12, TRUE)
-                setmetatile(7, 10, 0x13, TRUE)
-                setmetatile(6, 7, 0x14, TRUE)
-                setmetatile(7, 7, 0x15, TRUE)
+                setmaplayoutindex(LAYOUT_HUB_WORLD_GREEHASEET_DEFEATED) // After defeating Greehaseet
             default:
                 setmaplayoutindex(LAYOUT_HUB_WORLD_SAPPRILON_DEFEATED) // After defeating Sapprilon and Addisamap
-                setmetatile( 6, 10, 0x12, TRUE)
-                setmetatile( 7, 10, 0x13, TRUE)
-                setmetatile( 6,  7, 0x14, TRUE)
-                setmetatile( 7,  7, 0x15, TRUE)
-                setmetatile( 9, 10, 0x16, TRUE)
-                setmetatile(10, 10, 0x17, TRUE)
         }
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
@@ -169,6 +158,7 @@ script HubWorld_EventScript_Warp {
 
 script HubWorld_EventScript_Maxie {
     setrespawn(HEAL_LOCATION_DEMON_LAIRS_MAXIE)
+    special(MaxieReboot)
     setvar(VAR_DEMON_LORD_PROGRESS, 5)
     autosave
     // Player comes back
