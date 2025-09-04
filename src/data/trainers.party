@@ -16829,7 +16829,6 @@ Smeargle @ Focus Sash
 Ability: Own Tempo
 Level: 50
 EVs: 35 Def / 35 Spe
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 Tags: Lead
 Jolly Nature
 - Sticky Web
@@ -16841,7 +16840,6 @@ Absol @ Life Orb
 Ability: Super Luck
 Level: 50
 EVs: 10 Atk / 60 Spe
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 Jolly Nature
 - Knock Off
 - Close Combat
@@ -16852,7 +16850,6 @@ Grimmsnarl @ Light Clay
 Ability: Prankster
 Level: 50
 EVs: 35 HP / 35 Def
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 Impish Nature
 - Reflect
 - Light Screen
@@ -16863,7 +16860,6 @@ Obstagoon @ Flame Orb
 Ability: Guts
 Level: 50
 EVs: 35 Atk / 35 Spe
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 Adamant Nature
 - Knock Off
 - Facade
@@ -16875,7 +16871,6 @@ Ability: Illusion
 Level: 50
 Tags: Ace
 EVs: 10 Atk / 10 SpA / 40 Spe
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 Naive Nature
 - Knock Off
 - U-turn
@@ -16886,7 +16881,6 @@ Porygon-Z @ Choice Scarf
 Ability: Adaptability
 Level: 50
 EVs: 5 SpA / 65 Spe
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 Timid Nature
 - Tri Attack
 - Shadow Ball
@@ -16900,10 +16894,68 @@ Pic: Swimmer M
 Gender: Male
 Music: Magma
 Double Battle: No
+AI: Smart Trainer
+Party Size: 4
+Pool Rules: Basic
 
-Wobbuffet
-Level: 50
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Cloyster @ Rocky Helmet
+Level: 60
+Ability: Overcoat
+EVs: 40 HP / 42 Def / 2 SpA
+Tags: Lead
+Bold Nature
+- Teleport
+- Spikes
+- Surf
+- Rapid Spin
+
+Glastrier @ Leftovers
+Level: 60
+Ability: Chilling Neigh
+EVs: 32 HP / 24 Def / 30 Spe
+Jolly Nature
+Tags: Ace
+- Substitute
+- Swords Dance
+- Icicle Crash
+- High Horsepower
+
+Dracovish @ Choice Scarf
+Level: 60
+Ability: Strong Jaw
+EVs: 42 Atk / 42 Spe
+
+Jolly Nature
+- Fishious Rend
+- Crunch
+- Ice Fang
+- Outrage
+
+Ninetales-Alola @ Icy Rock
+Level: 60
+Ability: Snow Warning
+EVs: 32 SpA / 20 SpD / 32 Spe
+IVs: 0 Atk
+Timid Nature
+- Aurora Veil
+- Freeze-Dry
+- Moonblast
+- Encore
+
+Swampert @ Leftovers
+Level: 60
+Ability: Torrent
+EVs: 42 HP / 6 Atk / 36 SpD
+Careful Nature
+- Earthquake
+- Flip Turn
+- Stealth Rock
+- Roar
+
+Toxapex @ Leftovers
+Level: 60
+EVs: 63 HP / 21 Def
+
 
 === TRAINER_DEMONLORD_SAPPRILON ===
 Name: Sapprilon
