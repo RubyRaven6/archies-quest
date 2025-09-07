@@ -75,9 +75,9 @@ static const struct WindowTemplate sSampleUiWindowTemplates[] =
     DUMMY_WIN_TEMPLATE
 };
 
-static const u32 sSampleUiTiles[] = INCBIN_U32("graphics/sample_ui/tiles.4bpp.lz");
+static const u32 sSampleUiTiles[] = INCBIN_U32("graphics/sample_ui/tiles.4bpp.smol");
 
-static const u32 sSampleUiTilemap[] = INCBIN_U32("graphics/sample_ui/tilemap.bin.lz");
+static const u32 sSampleUiTilemap[] = INCBIN_U32("graphics/sample_ui/tilemap.bin.smolTM");
 
 static const u16 sSampleUiPalette[] = INCBIN_U16("graphics/sample_ui/00.gbapal");
 
@@ -335,7 +335,7 @@ static bool8 SampleUi_LoadGraphics(void)
     case 1:
         if (FreeTempTileDataBuffersIfPossible() != TRUE)
         {
-            LZDecompressWram(sSampleUiTilemap, sBg1TilemapBuffer);
+            DecompressDataWithHeaderWram(sSampleUiTilemap, sBg1TilemapBuffer);
             sSampleUiState->loadState++;
         }
         break;

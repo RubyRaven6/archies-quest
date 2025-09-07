@@ -1639,7 +1639,9 @@
 #define SPECIES_MIMIKYU_TOTEM_BUSTED                    SPECIES_MIMIKYU_BUSTED_TOTEM
 
 #define SPECIES_NESSEREIGN                              1524
-#define SPECIES_ADDISAMAP                           1525
+#define SPECIES_GREEHASEET                              1525
+#define SPECIES_SAPPRILON                               1526
+#define SPECIES_ADDISAMAP                               1527
 
 #define SPECIES_EGG                                     (SPECIES_ADDISAMAP + 1)
 

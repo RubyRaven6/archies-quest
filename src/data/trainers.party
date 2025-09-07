@@ -16821,10 +16821,71 @@ Pic: Gentleman
 Gender: Male
 Music: Magma
 Double Battle: No
+AI: Smart Trainer
+Party Size: 4
+Pool Rules: Basic
 
-Wobbuffet
+Smeargle @ Focus Sash
+Ability: Own Tempo
 Level: 50
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+EVs: 35 Def / 35 Spe
+Tags: Lead
+Jolly Nature
+- Sticky Web
+- Taunt
+- Nuzzle
+- Rapid Spin
+
+Absol @ Life Orb
+Ability: Super Luck
+Level: 50
+EVs: 10 Atk / 60 Spe
+Jolly Nature
+- Knock Off
+- Close Combat
+- Sucker Punch
+- Iron Tail
+
+Grimmsnarl @ Light Clay
+Ability: Prankster
+Level: 50
+EVs: 35 HP / 35 Def
+Impish Nature
+- Reflect
+- Light Screen
+- Play Rough
+- Taunt
+
+Obstagoon @ Flame Orb
+Ability: Guts
+Level: 50
+EVs: 35 Atk / 35 Spe
+Adamant Nature
+- Knock Off
+- Facade
+- Ice Punch
+- Switcheroo
+
+Zoroark @ Heavy-Duty Boots
+Ability: Illusion
+Level: 50
+Tags: Ace
+EVs: 10 Atk / 10 SpA / 40 Spe
+Naive Nature
+- Knock Off
+- U-turn
+- Flamethrower
+- Sludge Bomb
+
+Porygon-Z @ Choice Scarf
+Ability: Adaptability
+Level: 50
+EVs: 5 SpA / 65 Spe
+Timid Nature
+- Tri Attack
+- Shadow Ball
+- Trick
+- Ice Beam
 
 === TRAINER_DEMONLORD_GREEHASEET ===
 Name: Greehaseet
@@ -16833,10 +16894,67 @@ Pic: Swimmer M
 Gender: Male
 Music: Magma
 Double Battle: No
+AI: Smart Trainer
+Party Size: 4
+Pool Rules: Basic
 
-Wobbuffet
-Level: 50
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Cloyster @ Rocky Helmet
+Level: 60
+Ability: Overcoat
+EVs: 40 HP / 42 Def / 2 SpA
+Tags: Lead
+Bold Nature
+- Teleport
+- Spikes
+- Surf
+- Rapid Spin
+
+Glastrier @ Leftovers
+Level: 60
+Ability: Chilling Neigh
+EVs: 32 HP / 24 Def / 30 Spe
+Jolly Nature
+Tags: Ace
+- Substitute
+- Swords Dance
+- Icicle Crash
+- High Horsepower
+
+Dracovish @ Choice Scarf
+Level: 60
+Ability: Strong Jaw
+EVs: 42 Atk / 42 Spe
+Jolly Nature
+- Fishious Rend
+- Crunch
+- Ice Fang
+- Outrage
+
+Ninetales-Alola @ Icy Rock
+Level: 60
+Ability: Snow Warning
+EVs: 32 SpA / 20 SpD / 32 Spe
+IVs: 0 Atk
+Timid Nature
+- Aurora Veil
+- Freeze-Dry
+- Moonblast
+- Encore
+
+Swampert @ Leftovers
+Level: 60
+Ability: Torrent
+EVs: 42 HP / 6 Atk / 36 SpD
+Careful Nature
+- Earthquake
+- Flip Turn
+- Stealth Rock
+- Roar
+
+Toxapex @ Leftovers
+Level: 60
+EVs: 63 HP / 21 Def
+
 
 === TRAINER_DEMONLORD_SAPPRILON ===
 Name: Sapprilon

@@ -1,2 +1,47 @@
 mapscripts DemonLairs_Maxie_MapScripts {
 }
+
+script Demonlairs_Maxie_Trigger1{
+    setvar(VAR_TEMP_1, 0)
+    goto(DemonLairs_Maxie_EventScript_WalkTowards)
+}
+
+script Demonlairs_Maxie_Trigger2{
+    setvar(VAR_TEMP_1, 1)
+    goto(DemonLairs_Maxie_EventScript_WalkTowards)
+}
+
+script Demonlairs_Maxie_Trigger3{
+    setvar(VAR_TEMP_1, 2)
+    goto(DemonLairs_Maxie_EventScript_WalkTowards)
+}
+
+script Demonlairs_Maxie_Trigger4{
+    setvar(VAR_TEMP_1, 3)
+    goto(DemonLairs_Maxie_EventScript_WalkTowards)
+}
+
+script DemonLairs_Maxie_EventScript_WalkTowards{
+    setvar(VAR_TEMP_0, 1)
+    applymovement(LOCALID_PLAYER, moves(walk_up * 4))
+    waitmovement(0)
+    switch(var(VAR_TEMP_1)) {
+        case 0:
+            applymovement(LOCALID_PLAYER, moves(walk_right * 1))
+            waitmovement(0)
+            break
+        case 1:
+            break
+        case 2:
+            applymovement(LOCALID_PLAYER, moves(walk_left * 1))
+            waitmovement(0)
+            break
+        case 3:
+            applymovement(LOCALID_PLAYER, moves(walk_left * 2))
+            waitmovement(0)
+            break
+    }
+    applymovement(LOCALID_PLAYER, moves(walk_up))
+    waitmovement(0)
+    end
+}

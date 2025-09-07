@@ -34,6 +34,7 @@ script DemonLairs_EventScript_Nessie {
     speakername("Nessereign")
     msgbox("Argh!! You'll regret this!!\pNOOOOOOOO!")
     fadescreen(FADE_TO_WHITE)
+    removeobject(LOCALID_NESSIE_PAINTER)
     waitmessage
     closemessage
     fadescreen(FADE_FROM_WHITE)

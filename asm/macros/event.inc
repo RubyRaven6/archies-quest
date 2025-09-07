@@ -1125,12 +1125,13 @@
 	.2byte \move
 	.endm
 
-	@ Checks if at least one Pokemon in the player's party knows the specified move. If so, VAR_RESULT is set to the
+	@ Checks if at least one Pokemon in the player's party knows the specified field move and if the field move is unlocked. If so, VAR_RESULT is set to the
 	@ (zero-indexed) slot number of the first Pokemon that knows the move. If not, VAR_RESULT is set to PARTY_SIZE.
 	@ VAR_0x8004 is also set to this Pokemon's species.
-	.macro checkpartymove move:req
-	.byte SCR_OP_CHECKPARTYMOVE
-	.2byte \move
+	.macro checkfieldmove fieldMove:req, checkUnlocked=FALSE
+	.byte SCR_OP_CHECKFIELDMOVE
+	.byte \fieldMove
+	.byte \checkUnlocked
 	.endm
 
 	@ Converts STR_VAR_1, STR_VAR_2, or STR_VAR_3 to its corresponding index into sScriptStringVars (0, 1, or 2).
@@ -1856,7 +1857,7 @@
 	.2byte \item
 	.2byte \quantity
 	.endm
-	
+
 	@ Sets the text of the name box in the next-shown message box.
 	.macro speakername text:req
 	.byte SCR_OP_SETSPEAKER
@@ -2181,7 +2182,7 @@
 	setvar VAR_0x8000, \evoMethod
 	setvar VAR_0x8001, \canStopEvo
 	setvar VAR_0x8002, \tryMultiple
-	special TrySpecialOverworldEvo
+	special TrySpecialScriptEvolution
 	.endm
 
 	.macro ai_vs_ai_battle trainer1:req, trainer2:req
@@ -2321,7 +2322,7 @@
 	@ ============================ @
 	@ FAKE RTC MACROS
 	@ Will only function if OW_USE_FAKE_RTC is true. If it has any additional requirements, it will be listed accordingly.
-	
+
 	@ When OW_USE_FAKE_RTC is true and OW_FLAG_PAUSE_TIME is assigned, this macro will stop the flow of time.
 	.macro pausefakertc
 	callnative Script_PauseFakeRtc, requests_effects=1
@@ -2345,26 +2346,26 @@
 	.4byte \minutes
 	.endm
 
-	@ When OW_USE_FAKE_RTC is true, adds a specified number of days to the time. 
+	@ When OW_USE_FAKE_RTC is true, adds a specified number of days to the time.
 	.macro adddays days:req
 	callnative ScrCmd_adddays, requests_effects=1
 	.4byte \days
 	.endm
 
-	@ When OW_USE_FAKE_RTC is true, adds a specified number of days, hours, and minutes to the time. 
+	@ When OW_USE_FAKE_RTC is true, adds a specified number of days, hours, and minutes to the time.
 	.macro addhours hours:req
 	callnative ScrCmd_addhours, requests_effects=1
 	.4byte \hours
 	.endm
 
-	@ When OW_USE_FAKE_RTC is true, adds a specified number of days, hours, and minutes to the time. 
+	@ When OW_USE_FAKE_RTC is true, adds a specified number of days, hours, and minutes to the time.
 	.macro addminutes minutes:req
 	callnative ScrCmd_addminutes, requests_effects=1
 	.4byte \minutes
 	.endm
 
-	@ Forwards the time to a specified hour and minute. 
-	@ This causes the time to go to the next day if the time has already been past. 
+	@ Forwards the time to a specified hour and minute.
+	@ This causes the time to go to the next day if the time has already been past.
 	.macro fwdtime hours:req, minutes:req
 	callnative ScrCmd_fwdtime, requests_effects=1
 	.4byte \hours
@@ -2576,7 +2577,7 @@
 
 @ Follower NPCs
 
-	@ Sets an NPC up to follow the player.
+	@ Sets an existing NPC up to follow the player.
 	@ Follower flags are defined in include/constants/follower_npc.h
 	@ If you want to specify a battle partner without specifying a custom script, you can set the script parameter to 0.
 	.macro setfollowernpc localId:req, flags:req, script=0, battlePartner=0
@@ -2601,6 +2602,19 @@
         1:
 	.else
 		.error "setfollowernpc unavailable with FNPC_ENABLE_NPC_FOLLOWERS defined as FALSE"
+	.endif
+	.endm
+
+	@ Creates a new follower NPC with the specified graphics id.
+	.macro createfollowernpc gfx:req, flags:req, script=0, battlePartner=0
+	.if FNPC_ENABLE_NPC_FOLLOWERS
+		callnative ScriptCreateFollowerNPC
+		.2byte \gfx
+		.2byte \flags
+		.4byte \script
+		.2byte \battlePartner
+	.else
+		.error "createfollowernpc unavailable with FNPC_ENABLE_NPC_FOLLOWERS defined as FALSE"
 	.endif
 	.endm
 

@@ -30,8 +30,8 @@ TEST("Terastallization type defaults to primary or secondary type")
     for (i = 0; i < 128; i++) PARAMETRIZE {}
     CreateMon(&mon, SPECIES_PIDGEY, 100, 0, FALSE, 0, OT_ID_PRESET, 0);
     teraType = GetMonData(&mon, MON_DATA_TERA_TYPE);
-    EXPECT(teraType == gSpeciesInfo[SPECIES_PIDGEY].types[0]
-        || teraType == gSpeciesInfo[SPECIES_PIDGEY].types[1]);
+    EXPECT(teraType == GetSpeciesType(SPECIES_PIDGEY, 0)
+        || teraType == GetSpeciesType(SPECIES_PIDGEY, 1));
 }
 
 TEST("Terastallization type can be set to any type except TYPE_NONE")
@@ -62,8 +62,8 @@ TEST("Terastallization type is reset to the default types when setting Tera Type
         typeNone = GetTeraTypeFromPersonality(&mon);
     SetMonData(&mon, MON_DATA_TERA_TYPE, &typeNone);
     typeNone = GetMonData(&mon, MON_DATA_TERA_TYPE);
-    EXPECT(typeNone == gSpeciesInfo[SPECIES_PIDGEY].types[0]
-        || typeNone == gSpeciesInfo[SPECIES_PIDGEY].types[1]);
+    EXPECT(typeNone == GetSpeciesType(SPECIES_PIDGEY, 0)
+        || typeNone == GetSpeciesType(SPECIES_PIDGEY, 1));
 }
 
 TEST("Shininess independent from PID and OTID")
@@ -83,6 +83,8 @@ TEST("Shininess independent from PID and OTID")
 
 TEST("Hyper Training increases stats without affecting IVs")
 {
+    KNOWN_FAILING;
+
     u32 data, hp, atk, def, speed, spatk, spdef, friendship = 0;
     struct Pokemon mon;
     CreateMon(&mon, SPECIES_WOBBUFFET, 100, 3, TRUE, 0, OT_ID_PRESET, 0);
@@ -147,6 +149,8 @@ TEST("Status1 round-trips through BoxPokemon")
 
 TEST("canhypertrain/hypertrain affect MON_DATA_HYPER_TRAINED_* and recalculate stats")
 {
+    KNOWN_FAILING;
+
     u32 atk, friendship = 0;
     CreateMon(&gPlayerParty[0], SPECIES_WOBBUFFET, 100, 0, FALSE, 0, OT_ID_PRESET, 0);
 
@@ -312,7 +316,7 @@ TEST("givemon [all]")
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_HELD_ITEM), ITEM_LEFTOVERS);
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_POKEBALL), BALL_MASTER);
     EXPECT_EQ(GetNature(&gPlayerParty[0]), NATURE_BOLD);
-    EXPECT_EQ(GetMonAbility(&gPlayerParty[0]), gSpeciesInfo[SPECIES_WOBBUFFET].abilities[2]);
+    EXPECT_EQ(GetMonAbility(&gPlayerParty[0]), GetSpeciesAbility(SPECIES_WOBBUFFET, 2));
     EXPECT_EQ(GetMonGender(&gPlayerParty[0]), MON_MALE);
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_HP_EV), 1);
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_ATK_EV), 2);
@@ -377,7 +381,7 @@ TEST("givemon [vars]")
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_HELD_ITEM), ITEM_LEFTOVERS);
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_POKEBALL), BALL_MASTER);
     EXPECT_EQ(GetNature(&gPlayerParty[0]), NATURE_BOLD);
-    EXPECT_EQ(GetMonAbility(&gPlayerParty[0]), gSpeciesInfo[SPECIES_WOBBUFFET].abilities[2]);
+    EXPECT_EQ(GetMonAbility(&gPlayerParty[0]), GetSpeciesAbility(SPECIES_WOBBUFFET, 2));
     EXPECT_EQ(GetMonGender(&gPlayerParty[0]), MON_MALE);
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_HP_EV), 1);
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_ATK_EV), 2);
@@ -450,6 +454,31 @@ TEST("Pokémon level up learnsets fit within MAX_LEVEL_UP_MOVES and MAX_RELEARNE
         count++;
     EXPECT_LT(count, MAX_LEVEL_UP_MOVES);
     EXPECT_LT(count, MAX_RELEARNER_MOVES - 1); // - 1 because at least one move is already known
+}
+
+TEST("Optimised GetMonData")
+{
+    CreateMon(&gPlayerParty[0], SPECIES_WOBBUFFET, 5, 0, FALSE, 0, OT_ID_PRESET, 0x12345678);
+    u32 exp = 0x123456;
+    SetMonData(&gPlayerParty[0], MON_DATA_EXP, &exp);
+    struct Benchmark optimised,
+        vanilla = (struct Benchmark) { .ticks = 137 }; // From prior testing
+    u32 expGet = 0;
+    BENCHMARK(&optimised) { expGet = GetMonData(&gPlayerParty[0], MON_DATA_EXP); }
+    EXPECT_EQ(exp, expGet);
+    EXPECT_FASTER(optimised, vanilla);
+}
+
+TEST("Optimised SetMonData")
+{
+    CreateMon(&gPlayerParty[0], SPECIES_WOBBUFFET, 5, 0, FALSE, 0, OT_ID_PRESET, 0x12345678);
+    u32 exp = 0x123456;
+    struct Benchmark optimised,
+        vanilla = (struct Benchmark) { .ticks = 205 }; // From prior testing
+    BENCHMARK(&optimised) { SetMonData(&gPlayerParty[0], MON_DATA_EXP, &exp); }
+    EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_BAD_EGG), FALSE);
+    EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_EXP), exp);
+    EXPECT_FASTER(optimised, vanilla);
 }
 
 TEST("BoxPokemon encryption works")

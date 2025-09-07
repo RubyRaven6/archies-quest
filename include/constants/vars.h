@@ -107,9 +107,9 @@
                                                                 // 1 = Nessie, 2 = Gigageh, 3 = Sapprilon, 4 = Addisamap
 #define VAR_PETALBURG_CITY_STATE                         0x4057
 #define VAR_SLATEPORT_CITY_STATE                         0x4058
-#define VAR_HUB_WORLD_INITIAL_SCENE                      0x4059 // Unused Var
+#define VAR_HUB_WORLD_INITIAL_SCENE                      0x4059 // Controls initial cutscene with archie
 #define VAR_RUSTBORO_CITY_STATE                          0x405A
-#define VAR_FORTREE_CITY_STATE                           0x405B // Unused Var
+#define VAR_CURRENT_MAP_CONTROL                          0x405B // For SetCurrentMapLayoutToVar
 #define VAR_LILYCOVE_CITY_STATE                          0x405C // Unused Var
 #define VAR_MOSSDEEP_CITY_STATE                          0x405D
 #define VAR_SOOTOPOLIS_CITY_STATE                        0x405E

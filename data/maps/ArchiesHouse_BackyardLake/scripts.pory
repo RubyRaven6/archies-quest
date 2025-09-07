@@ -54,7 +54,7 @@ script ArchiesHouse_Backyard_EventScripts_Azumarill {
 		msgbox(format("Azumarill is doing his reps for swimming.\pGive him a better workout?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
-			givemon(SPECIES_AZUMARILL, 50, abilityNum=2, gender=MALE, move1=MOVE_PLAY_ROUGH, move2=MOVE_WATERFALL, move3=MOVE_TRAILBLAZE, move4=MOVE_BULLDOZE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_AZUMARILL, 50, abilityNum=1, gender=MALE, move1=MOVE_PLAY_ROUGH, move2=MOVE_WATERFALL, move3=MOVE_TRAILBLAZE, move4=MOVE_BULLDOZE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_LAKE_AZUMARILL)
 			msgbox("Azumarill joined your party!")
 			closemessage

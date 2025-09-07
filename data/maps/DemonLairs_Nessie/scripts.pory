@@ -5,6 +5,21 @@ mapscripts DemonLairs_Nessie_MapScripts{
             setvar(VAR_DEMON_LORD_PROGRESS, 1)
         }
     ]
+    MAP_SCRIPT_ON_TRANSITION {
+        if(flag(FLAG_NESSIE_PUZZLE_SOLVED)){
+            setmetatile(2, 0, METATILE_NessereignLairPrimary_ENTRANCE_UPL, TRUE) //opens hole
+            setmetatile(3, 0, METATILE_NessereignLairPrimary_ENTRANCE_UPM, TRUE)
+            setmetatile(4, 0, METATILE_NessereignLairPrimary_ENTRANCE_UPR, TRUE)
+            setmetatile(2, 1, METATILE_NessereignLairPrimary_ENTRANCE_ML, TRUE)
+            setmetatile(3, 1, METATILE_NessereignLairPrimary_ENTRANCE_MM, TRUE)
+            setmetatile(4, 1, METATILE_NessereignLairPrimary_ENTRANCE_MR, TRUE)
+            setmetatile(2, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNL, TRUE)
+            setmetatile(3, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNM, FALSE)
+            setmetatile(4, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNR, TRUE)
+
+            setmetatile(3, 7, METATILE_NessereignLairPrimary_TableCorner, TRUE) // hides knife
+        }
+    }
 }
 
 script DemonLairs_Nessie_EventScript_NessiePuzzle{
@@ -128,7 +143,7 @@ script DemonLairs_Nessie_EventScript_Table {
 }
 
 script DemonLairs_Nessie_EventScript_Rug {
-    
+
     switch(var(VAR_TEMP_3)){
         case 0:
             msgbox("It's a garish rug.", MSGBOX_SIGN)
@@ -145,7 +160,7 @@ script DemonLairs_Nessie_EventScript_Rug {
         default:
             msgbox("It's not getting any less garish.\nYou should move on.", MSGBOX_SIGN)
             addvar(VAR_TEMP_3, 1)
-    }    
+    }
     waitmessage
     closemessage
     end

@@ -432,7 +432,7 @@ static bool8 IntroSequence_LoadGraphics(void)
     case 1:
         if (FreeTempTileDataBuffersIfPossible() != TRUE)
         {
-            LZDecompressWram(sIntroSequenceTilemap, sBg1TilemapBuffer);
+            DecompressDataWithHeaderWram(sIntroSequenceTilemap, sBg1TilemapBuffer);
             sIntroSequence->loadState++;
         }
         break;
