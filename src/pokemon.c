@@ -1697,7 +1697,7 @@ static u16 CalculateBoxMonChecksumReencrypt(struct BoxPokemon *boxMon)
 #define CALC_STAT(base, iv, ev, statIndex, field)               \
 {                                                               \
     u8 baseStat = gSpeciesInfo[species].base;                   \
-    s32 n = (((2 * baseStat + iv / 4) * level) / 100) + (5  + ev); \
+    s32 n = (((2 * baseStat + iv / 4) * level) / 100) + (5 + ev); \
     n = ModifyStatByNature(nature, n, statIndex);               \
     if (B_FRIENDSHIP_BOOST == TRUE)                             \
         n = n + ((n * 10 * friendship) / (MAX_FRIENDSHIP * 100));\

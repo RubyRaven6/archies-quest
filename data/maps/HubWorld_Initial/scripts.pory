@@ -12,6 +12,11 @@ mapscripts HubWorld_Initial_MapScripts {
         }
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_TEMP_0, 0 {
+            autosave
+            callnative(LevelMonsToCap)
+            setvar(VAR_TEMP_0, 1)
+        }
         VAR_HUB_WORLD_INITIAL_SCENE, 0 {
             applymovement(LOCALID_HUBWORLD_ARCHIE, moves(walk_in_place_down))
             applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
@@ -39,7 +44,7 @@ mapscripts HubWorld_Initial_MapScripts {
 script HubWorld_EventScript_Archie {
     speakername("Old Archie")
     msgbox(format("Hey. Did you need something?"), MSGBOX_DEFAULT)
-    dynmultichoice(0, 0, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE, "Device", "Demon Lords")
+    dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Device", "Demon Lords", "Retraining")
     switch(var(VAR_RESULT)) {
         case 0:
             msgbox(format("It's a device from the future called a “PC”.\pNormally, you can do much more things on it, but due to time travel being unstable, it only has the functionality to store items.\pThankfully, though, all the items I brought with me are intact."), MSGBOX_DEFAULT)
@@ -89,6 +94,16 @@ script HubWorld_EventScript_Archie {
                     waitmessage
                     closemessage
             }
+            break
+        case 2:
+            msgbox(format("Hm? You want to know how to retrain your Pokémon? Well, it's quite simple.\p
+                            Each Pokémon has its own well of strength it can draw from.\p
+                            Let's call these “effort values”.\p
+                            As their trainer, it's your responsibility to train them in the ways that they can function best.\p
+                            Each time you defeat a Bai'Narii Lord, they get stronger.\p
+                            As such, you need to check on them and see if they need retraining."),MSGBOX_DEFAULT)
+            waitmessage
+            closemessage
     }
     end
 }
