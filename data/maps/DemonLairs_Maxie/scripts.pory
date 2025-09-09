@@ -22,7 +22,7 @@ script Demonlairs_Maxie_Trigger4{
 }
 
 script DemonLairs_Maxie_EventScript_WalkTowards{
-    //setvar(VAR_TEMP_0, 1)
+    setflag(FLAG_SKIP_MAXIE_CUTSCENE)
     applymovement(LOCALID_PLAYER, moves(walk_up * 4))
     waitmovement(0)
     switch(var(VAR_TEMP_1)) {

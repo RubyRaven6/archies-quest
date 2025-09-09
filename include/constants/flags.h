@@ -98,7 +98,7 @@
 #define	FLAG_HIDE_GREEHASEET            0x48 // Greehaseet OW
 #define FLAG_HIDE_SAPPRILON             0x49 // Sapprilon OW
 #define FLAG_HIDE_ADDISAMAP             0x4A // Addisamap OW
-#define FLAG_UNUSED_0x04B               0x4B // Unused Flag
+#define FLAG_SKIP_MAXIE_CUTSCENE        0x4B // Unused Flag
 #define FLAG_UNUSED_0x04C               0x4C // Unused Flag
 #define FLAG_FIRST_TIME_AUTOSAVE        0x4D // Unused Flag
 #define FLAG_ARCHIE_TUTORIALMODE        0x4E // Tracks when Archie in Hub World; is in tutorial mode when set
