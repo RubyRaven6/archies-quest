@@ -784,7 +784,8 @@ u8 GetTrainerBattleTransition(void)
 
     if (trainerClass == TRAINER_CLASS_TEAM_MAGMA
         || trainerClass == TRAINER_CLASS_MAGMA_LEADER
-        || trainerClass == TRAINER_CLASS_MAGMA_ADMIN)
+        || trainerClass == TRAINER_CLASS_MAGMA_ADMIN
+        || trainerId == TRAINER_DEMONLORD_MAXIE)
         return B_TRANSITION_MAGMA;
 
     if (trainerClass == TRAINER_CLASS_TEAM_AQUA
@@ -1487,12 +1488,12 @@ static const u8 *ReturnEmptyStringIfNull(const u8 *string)
 
 static const u8 *GetIntroSpeechOfApproachingTrainer(void)
 {
-    if (gApproachingTrainerId == 0) 
+    if (gApproachingTrainerId == 0)
     {
         gSpeakerName = GetTrainerNameFromId(TRAINER_BATTLE_PARAM.opponentA);
         return ReturnEmptyStringIfNull(TRAINER_BATTLE_PARAM.introTextA);
     }
-    else 
+    else
     {
         gSpeakerName = GetTrainerNameFromId(TRAINER_BATTLE_PARAM.opponentB);
         return ReturnEmptyStringIfNull(TRAINER_BATTLE_PARAM.introTextB);
