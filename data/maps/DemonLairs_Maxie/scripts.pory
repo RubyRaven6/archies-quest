@@ -130,5 +130,5 @@ script DemonLairs_EventScript_Maxie {
         waitmessage
         closemessage
     }
-    trainerbattle_no_intro(TRAINER_DEMONLORD_MAXIE, "…\NGggh…")
+    trainerbattle_no_intro(TRAINER_DEMONLORD_MAXIE, "…\nGggh…")
 }
