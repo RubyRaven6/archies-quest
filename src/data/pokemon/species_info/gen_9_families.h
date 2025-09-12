@@ -2145,68 +2145,6 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .evolutions = EVOLUTION({EVO_LEVEL, 38, SPECIES_GARGANACL}),
     },
 
-    [SPECIES_GARGANACL] =
-    {
-        .baseHP        = 100,
-        .baseAttack    = 100,
-        .baseDefense   = 130,
-        .baseSpeed     = 35,
-        .baseSpAttack  = 45,
-        .baseSpDefense = 90,
-        .types = MON_TYPES(TYPE_ROCK),
-        .catchRate = 45,
-        .expYield = 250,
-        .evYield_Defense = 3,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL),
-        .abilities = { ABILITY_PURIFYING_SALT, ABILITY_STURDY, ABILITY_CLEAR_BODY },
-        .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("Garganacl"),
-        .cryId = CRY_GARGANACL,
-        .natDexNum = NATIONAL_DEX_GARGANACL,
-        .categoryName = _("Rock Salt"),
-        .height = 23,
-        .weight = 2400,
-        .description = COMPOUND_STRING(
-            "Garganacl will rub its fingertips\n"
-            "together and sprinkle injured\n"
-            "Pokémon with salt. Even severe wounds will\n"
-            "promptly heal afterward."),
-        .pokemonScale = 356,
-        .pokemonOffset = 17,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Garganacl,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 5,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Garganacl,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 14,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_Garganacl,
-        .shinyPalette = gMonShinyPalette_Garganacl,
-        .iconSprite = gMonIcon_Garganacl,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(0, 13, SHADOW_SIZE_L)
-        FOOTPRINT(Garganacl)
-        OVERWORLD(
-            sPicTable_Garganacl,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Garganacl,
-            gShinyOverworldPalette_Garganacl
-        )
-        .levelUpLearnset = sGarganaclLevelUpLearnset,
-        .teachableLearnset = sGarganaclTeachableLearnset,
-    },
 #endif //P_FAMILY_NACLI
 
 #if P_FAMILY_CHARCADET
@@ -3774,68 +3712,6 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .evolutions = EVOLUTION({EVO_LEVEL, 38, SPECIES_TINKATON}),
     },
 
-    [SPECIES_TINKATON] =
-    {
-        .baseHP        = 85,
-        .baseAttack    = 75,
-        .baseDefense   = 77,
-        .baseSpeed     = 94,
-        .baseSpAttack  = 70,
-        .baseSpDefense = 105,
-        .types = MON_TYPES(TYPE_FAIRY, TYPE_STEEL),
-        .catchRate = 45,
-        .expYield = 253,
-        .evYield_SpDefense = 3,
-        .genderRatio = MON_FEMALE,
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FAIRY),
-        .abilities = { ABILITY_MOLD_BREAKER, ABILITY_OWN_TEMPO, ABILITY_PICKPOCKET },
-        .bodyColor = BODY_COLOR_PINK,
-        .speciesName = _("Tinkaton"),
-        .cryId = CRY_TINKATON,
-        .natDexNum = NATIONAL_DEX_TINKATON,
-        .categoryName = _("Hammer"),
-        .height = 7,
-        .weight = 1128,
-        .description = COMPOUND_STRING(
-            "The hammer tops 220 pounds, yet it\n"
-            "gets swung around easily by\n"
-            "Tinkaton as it steals whatever it pleases\n"
-            "and carries its plunder back home."),
-        .pokemonScale = 356,
-        .pokemonOffset = 17,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Tinkaton,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Tinkaton,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 3,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_Tinkaton,
-        .shinyPalette = gMonShinyPalette_Tinkaton,
-        .iconSprite = gMonIcon_Tinkaton,
-        .iconPalIndex = 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_SLOW,
-        SHADOW(-5, 15, SHADOW_SIZE_XL_BATTLE_ONLY)
-        FOOTPRINT(Tinkaton)
-        OVERWORLD(
-            sPicTable_Tinkaton,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following_Asym,
-            gOverworldPalette_Tinkaton,
-            gShinyOverworldPalette_Tinkaton
-        )
-        .levelUpLearnset = sTinkatonLevelUpLearnset,
-        .teachableLearnset = sTinkatonTeachableLearnset,
-    },
 #endif //P_FAMILY_TINKATINK
 
 #if P_FAMILY_WIGLETT

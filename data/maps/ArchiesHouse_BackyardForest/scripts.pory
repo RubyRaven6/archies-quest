@@ -78,7 +78,7 @@ script ArchiesHouse_Backyard_EventScripts_Altaria {
 		msgbox(format("Altaria is rustling through the grass joyously.\pAsk her nicely if she wants to join you?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
-			givemon(SPECIES_ALTARIA, 50, abilityNum=1, gender=FEMALE, move1=MOVE_EARTHQUAKE, move2=MOVE_PLAY_NICE, move3=MOVE_DRILL_PECK, move4=MOVE_DRAGON_CLAW, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_ALTARIA, 50, abilityNum=0, gender=FEMALE, move1=MOVE_EARTHQUAKE, move2=MOVE_PLAY_NICE, move3=MOVE_DRILL_PECK, move4=MOVE_DRAGON_CLAW, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_FOREST_ALTARIA)
 			msgbox("Altaria joined your party!")
 			closemessage
