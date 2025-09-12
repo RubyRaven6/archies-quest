@@ -2,4 +2,13 @@
 ## A demon-slaying fantasy adventure!
 Explore the lands of R'mhakkin as our spunky hero, Archie, who's given a quest from the future to slay the Demon Lords plaguing the lands: the Bai'Narii.
 
+In an ancient year, in the mythical land of R'mhakking. Its denizens were beseiged by evil demonic lords: the Bai'Narii. Under their iron fist, the people of R'mhakking live in fear and despair. The hope of all the peoples rest upon the shoulder of one young man…
+
 [Archie's Quest CREDITS](./hack_credits.md)
+
+## Features
+### A brand new EV system!
+Try a unique spin on the classic effort values system, where instead of defeating Pokémon to gain more, you instead gain them as you level up! You also have the option of freely distributing them as you see fit. For more information, check out [this document.](./docs/ev_system.md)
+
+### No two boss runs are the same!
+Using the Trainer Party Pools made by the Expansion Senate's hedara, the game's bosses feature different team compositions for different people, ensuring that no two saves are the same! Create a dynamic and adaptable team in order to secure your victory!
