@@ -4377,6 +4377,76 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
                                 {EVO_LEVEL, 50, SPECIES_GOODRA, CONDITIONS({IF_WEATHER, WEATHER_FOG})}),
     },
 
+    [SPECIES_GOODRA] =
+    {
+        .baseHP        = 90,
+        .baseAttack    = 100,
+        .baseDefense   = 70,
+        .baseSpeed     = 80,
+        .baseSpAttack  = 110,
+        .baseSpDefense = 150,
+        .types = MON_TYPES(TYPE_DRAGON),
+        .catchRate = 45,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 300 : 270,
+        .evYield_SpDefense = 3,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 40,
+        .friendship = 35,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_DRAGON),
+        .abilities = { ABILITY_SAP_SIPPER, ABILITY_HYDRATION, ABILITY_GOOEY },
+        .bodyColor = BODY_COLOR_PURPLE,
+        .speciesName = _("Goodra"),
+        .cryId = CRY_GOODRA,
+        .natDexNum = NATIONAL_DEX_GOODRA,
+        .categoryName = _("Dragon"),
+        .height = 20,
+        .weight = 1505,
+        .description = COMPOUND_STRING(
+            "It gets picked on because it's meek.\n"
+            "But then, whoever teased it gets to feel\n"
+            "the full force of its horns and a good\n"
+            "swatting from its thick tail."),
+        .pokemonScale = 261,
+        .pokemonOffset = 1,
+        .trainerScale = 334,
+        .trainerOffset = 4,
+        .frontPic = gMonFrontPic_Goodra,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 18),
+            ANIMCMD_FRAME(1, 18),
+            ANIMCMD_FRAME(0, 18),
+            ANIMCMD_FRAME(1, 18),
+            ANIMCMD_FRAME(0, 10),
+        ),
+        .frontAnimId = ANIM_V_SHAKE,
+        .backPic = gMonBackPic_Goodra,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_SHRINK_GROW,
+        .palette = gMonPalette_Goodra,
+        .shinyPalette = gMonShinyPalette_Goodra,
+        .iconSprite = gMonIcon_Goodra,
+        .iconPalIndex = 5,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(-2, 14, SHADOW_SIZE_M)
+        FOOTPRINT(Goodra)
+        OVERWORLD(
+            sPicTable_Goodra,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Goodra,
+            gShinyOverworldPalette_Goodra
+        )
+        .levelUpLearnset = sGoodraLevelUpLearnset,
+        .teachableLearnset = sGoodraTeachableLearnset,
+        .formSpeciesIdTable = sGoodraFormSpeciesIdTable,
+    },
+
 #if P_HISUIAN_FORMS
     [SPECIES_SLIGGOO_HISUI] =
     {
@@ -4445,71 +4515,6 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .evolutions = EVOLUTION({EVO_LEVEL, 50, SPECIES_GOODRA_HISUI, CONDITIONS({IF_WEATHER, WEATHER_RAIN})},
                                 {EVO_LEVEL, 50, SPECIES_GOODRA_HISUI, CONDITIONS({IF_WEATHER, WEATHER_FOG})}),
 
-    },
-
-    [SPECIES_GOODRA_HISUI] =
-    {
-        .baseHP        = 80,
-        .baseAttack    = 100,
-        .baseDefense   = 100,
-        .baseSpeed     = 60,
-        .baseSpAttack  = 110,
-        .baseSpDefense = 150,
-        .types = MON_TYPES(TYPE_DRAGON, TYPE_STEEL),
-        .catchRate = 45,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 300 : 270,
-        .evYield_SpDefense = 3,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 40,
-        .friendship = 35,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_DRAGON),
-        .abilities = { ABILITY_SAP_SIPPER, ABILITY_SHELL_ARMOR, ABILITY_GOOEY },
-        .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("Goodra"),
-        .cryId = CRY_GOODRA,
-        .natDexNum = NATIONAL_DEX_GOODRA,
-        .categoryName = _("Shell Bunker"),
-        .height = 17,
-        .weight = 3341,
-        .description = COMPOUND_STRING(
-            "It loathes solitude and is extremely\n"
-            "clingy--it will fume and run riot if\n"
-            "those dearest to it ever leave its\n"
-            "side."),
-        .pokemonScale = 261,
-        .pokemonOffset = 1,
-        .trainerScale = 334,
-        .trainerOffset = 4,
-        .frontPic = gMonFrontPic_GoodraHisui,
-        .frontPicSize = MON_COORDS_SIZE(56, 64),
-        .frontPicYOffset = 2,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_GoodraHisui,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 0,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_GoodraHisui,
-        .shinyPalette = gMonShinyPalette_GoodraHisui,
-        .iconSprite = gMonIcon_GoodraHisui,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 12, SHADOW_SIZE_M)
-        FOOTPRINT(Goodra)
-        OVERWORLD(
-            sPicTable_GoodraHisui,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_GoodraHisui,
-            gShinyOverworldPalette_GoodraHisui
-        )
-        .isHisuianForm = TRUE,
-        .levelUpLearnset = sGoodraHisuiLevelUpLearnset,
-        .teachableLearnset = sGoodraHisuiTeachableLearnset,
-        .formSpeciesIdTable = sGoodraFormSpeciesIdTable,
     },
 #endif //P_HISUIAN_FORMS
 #endif //P_FAMILY_GOOMY
