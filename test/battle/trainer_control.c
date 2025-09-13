@@ -221,7 +221,7 @@ TEST("Difficulty changes which party if used for NPCs if defined for the difficu
     EXPECT(GetMonData(&testParty[0], MON_DATA_LEVEL) == 50);
     Free(testParty);
 }
-/*
+
 TEST("Trainer Party Pool generates a party from the trainer pool")
 {
     struct Pokemon *testParty = Alloc(6 * sizeof(struct Pokemon));
@@ -250,8 +250,8 @@ TEST("Trainer Party Pool picks according to custom rules")
     DebugPrintf("GetMonData(&testParty[0], MON_DATA_SPECIES): %u", GetMonData(&testParty[0], MON_DATA_SPECIES));
     DebugPrintf("GetMonData(&testParty[1], MON_DATA_SPECIES): %u", GetMonData(&testParty[1], MON_DATA_SPECIES));
     DebugPrintf("GetMonData(&testParty[2], MON_DATA_SPECIES): %u", GetMonData(&testParty[2], MON_DATA_SPECIES));
-    EXPECT(GetMonData(&testParty[0], MON_DATA_SPECIES) == SPECIES_BULBASAUR);              //  Lead + Weather Setter
-    EXPECT(GetMonData(&testParty[1], MON_DATA_SPECIES) == SPECIES_VULPIX);                 //  Lead + Weather Abuser
+    EXPECT(GetMonData(&testParty[0], MON_DATA_SPECIES) == SPECIES_TORKOAL);                //  Lead + Weather Setter
+    EXPECT(GetMonData(&testParty[1], MON_DATA_SPECIES) == SPECIES_BULBASAUR);              //  Lead + Weather Abuser
     EXPECT(GetMonData(&testParty[2], MON_DATA_SPECIES) == SPECIES_EEVEE);                  //  Anything else
     Free(testParty);
 }
@@ -268,7 +268,6 @@ TEST("Trainer Party Pool uses standard party creation if pool is illegal")
 
 TEST("Trainer Party Pool can be pruned before picking")
 {
-
     struct Pokemon *testParty = Alloc(6 * sizeof(struct Pokemon));
     u32 currTrainer = 7;
     CreateNPCTrainerPartyFromTrainer(testParty, &sTestTrainers[GetTrainerDifficultyLevelTest(currTrainer)][currTrainer], TRUE, BATTLE_TYPE_TRAINER);
@@ -286,7 +285,7 @@ TEST("Trainer Party Pool can choose which functions to use for picking mons")
     EXPECT(GetMonData(&testParty[1], MON_DATA_SPECIES) == SPECIES_WOBBUFFET);
     Free(testParty);
 }
-*/
+
 TEST("trainerproc supports both Double Battle: Yes and Battle Type: Doubles")
 {
     u32 currTrainer;

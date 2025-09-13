@@ -14,7 +14,7 @@ script ArchiesHouse_Backyard_EventScripts_Gyarados {
 		msgbox(format("Gyarados is simmering in anger in the lake.\pTell him about something he can divert it to?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
-			givemon(SPECIES_GYARADOS, 50, abilityNum=1, gender=MALE, move1=MOVE_DRAGON_DANCE, move2=MOVE_WATERFALL, move3=MOVE_BOUNCE, move4=MOVE_ICE_FANG, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_GYARADOS, 50, abilityNum=0, gender=MALE, move1=MOVE_DRAGON_DANCE, move2=MOVE_WATERFALL, move3=MOVE_BOUNCE, move4=MOVE_ICE_FANG, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_LAKE_GYARADOS)
 			msgbox("Gyarados your party!")
 			closemessage

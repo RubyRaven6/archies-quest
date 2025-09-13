@@ -22,7 +22,7 @@ script Demonlairs_Maxie_Trigger4{
 }
 
 script DemonLairs_Maxie_EventScript_WalkTowards{
-    setvar(VAR_TEMP_0, 1)
+    setflag(FLAG_SKIP_MAXIE_CUTSCENE)
     applymovement(LOCALID_PLAYER, moves(walk_up * 4))
     waitmovement(0)
     switch(var(VAR_TEMP_1)) {
@@ -43,5 +43,92 @@ script DemonLairs_Maxie_EventScript_WalkTowards{
     }
     applymovement(LOCALID_PLAYER, moves(walk_up))
     waitmovement(0)
-    end
+    goto(DemonLairs_Maxie_EventScript_MaxieCutscene)
+}
+
+script DemonLairs_Maxie_EventScript_MaxieCutscene {
+    speakername("Archie")
+    msgbox("Y-You're…", MSGBOX_DEFAULT)
+    waitmessage
+    closemessage
+    applymovement(LOCALID_DEMONLORD_MAXIE, moves(walk_in_place_slow_down))
+    waitmovement(0)
+    speakername("Maxie")
+    msgbox("You've been a thorn in our side, boy.\n"
+            "As such, my hand is forced.\p"
+            "I didn't believe it, but by sheer luck\n"
+            "you've somehow managed to defeat\l"
+            "the Demon Lords that serve under me.", MSGBOX_DEFAULT)
+    waitmessage
+    closemessage
+    applymovement(LOCALID_DEMONLORD_MAXIE, moves(walk_slow_left))
+    waitmovement(0)
+    speakername("Maxie")
+    msgbox("That being said, you've been so amusing\n"
+            "I had to see it for myself! Seeing you\l"
+            "struggle was delightfully fun.", MSGBOX_DEFAULT)
+    waitmessage
+    closemessage
+    applymovement(LOCALID_DEMONLORD_MAXIE, moves(walk_slow_up, walk_slow_right, face_up))
+    speakername("Maxie")
+    msgbox("It reminded me of days past, when you\n"
+            "pitiful humans first tried your hand at\l"
+            "stopping me with sticks and stones.", MSGBOX_DEFAULT)
+    waitmovement(0)
+    waitmessage
+    closemessage
+    applymovement(LOCALID_DEMONLORD_MAXIE, moves(walk_slow_right, walk_slow_down, face_right))
+    speakername("Maxie")
+    msgbox("Though if I'd known that any leniency\n"
+            "I showed meant you would eventually\l"
+            "rise to challenge me…", MSGBOX_DEFAULT)
+    waitmovement(0)
+    waitmessage
+    closemessage
+    applymovement(LOCALID_DEMONLORD_MAXIE, moves(walk_slow_left, face_down))
+    speakername("Maxie")
+    msgbox("I would have crushed you and this\n"
+            "entire world underfoot!", MSGBOX_DEFAULT)
+    waitmovement(0)
+    waitmessage
+    closemessage
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_fast_up))
+    speakername("Archie")
+    msgbox("You're not going to get away with this,\n"
+            "Demon Lord! I've already taken care of\l"
+            "all your underlings! It's over!", MSGBOX_DEFAULT)
+    waitmovement(0)
+    waitmessage
+    closemessage
+    speakername("Maxie")
+    msgbox("Have you now?", MSGBOX_DEFAULT)
+    waitmessage
+    closemessage
+    fadescreen(FADE_TO_WHITE)
+    // unhide objects in
+    fadescreen(FADE_FROM_WHITE)
+    speakername("Archie")
+    msgbox("What…", MSGBOX_DEFAULT)
+    waitmessage
+    closemessage
+    applymovement(LOCALID_DEMONLORD_MAXIE, moves(walk_in_place_down))
+    speakername("Maxie")
+    msgbox("Did you honestly think you beat the\n"
+            "strongest beings in this world in go?\p"
+            "Your petulant rebellion ends here, boy!", MSGBOX_DEFAULT)
+    waitmovement(0)
+    waitmessage
+    closemessage
+    setflag(FLAG_TALKED_TO_MAXIE)
+    goto(DemonLairs_EventScript_Maxie)
+}
+
+script DemonLairs_EventScript_Maxie {
+    if(flag(FLAG_TALKED_TO_MAXIE)) {
+        msgbox("So, have you come to bargain?\n"
+                "Or have you come to suffer?", MSGBOX_DEFAULT)
+        waitmessage
+        closemessage
+    }
+    trainerbattle_no_intro(TRAINER_DEMONLORD_MAXIE, "…\nGggh…")
 }

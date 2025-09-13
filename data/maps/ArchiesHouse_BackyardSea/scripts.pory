@@ -63,7 +63,7 @@ script ArchiesHouse_Backyard_EventScripts_Wailord {
 		msgbox(format("Wailord is singing her higher pitched song as usual.\pHarmonize?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
-			givemon(SPECIES_WAILORD, 50, abilityNum=0, gender=FEMALE, move1=MOVE_DIVE, move2=MOVE_SURF, move3=MOVE_SWALLOW, move4=MOVE_NOBLE_ROAR, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_WAILORD, 50, abilityNum=0, gender=FEMALE, move1=MOVE_DIVE, move2=MOVE_SURF, move3=MOVE_WATER_SPOUT, move4=MOVE_NOBLE_ROAR, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_SEA_WAILORD)
 			msgbox("Wailord joined your party!")
 			closemessage

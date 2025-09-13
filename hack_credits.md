@@ -2,7 +2,7 @@
 
 ## Graphics
 **Puzzle UI Graphics**: ruby<br>
-**Demon Lord Sprites**: ryuuji<br>
+**Demon Lord Sprites**: Eva (purrfectdoodle)<br>
 **Archie ORAS OW Sprite**: hyo<br>
 **HGSS Ruin Maniac**: Delta231
 
@@ -153,4 +153,4 @@ Insertable format: Rahtak
 - James (ruby's bf)
 - MGriffin for help with UI code
 - SBird for Math of Sapprilon puzzle
-- Pokémon Expansion Senate
+- Pokémon Expansion and its Senate
