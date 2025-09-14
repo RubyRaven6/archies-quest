@@ -177,7 +177,7 @@ script DemonLairs_Sapprilon_EventScript_Puzzle {
     if(var(VAR_RESULT) == TRUE && var(VAR_TEMP_1) == 1 && var(VAR_TEMP_2) == 1 && var(VAR_TEMP_3) == 1 && var(VAR_TEMP_4) == 1){
         msgbox(format("Which disk will you select first?"))
         call(DemonLairs_DiskInsertPuzzle)
-    } elif (var(VAR_RESULT) == NO){  
+    } elif (var(VAR_RESULT) == NO){
     } else {
         msgbox(format("Seems like you can't solve this yet."))
     }
@@ -198,7 +198,7 @@ script DemonLairs_Sapprilon_EventScript_DiskInsert{
         if(var(VAR_TEMP_4) == TRUE){
             dynmultipush("Insert Magenta disk", 1)
         }
-        
+
         dynmultistack(16, 1, FALSE, 3, FALSE, 0, DYN_MULTICHOICE_CB_NONE)
         switch(var(VAR_RESULT)){
             case 0:

@@ -1,5 +1,5 @@
 mapscripts HubWorld_Initial_MapScripts {
-    MAP_SCRIPT_ON_LOAD {
+    MAP_SCRIPT_ON_TRANSITION {
         switch(var(VAR_DEMON_LORD_PROGRESS)){
             case 0:
                 setmaplayoutindex(LAYOUT_HUB_WORLD_INITIAL) // First Time
