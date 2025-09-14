@@ -99,7 +99,7 @@ static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
 #define TAG_NUMBERS         30005
 
 #define MAX_TEN_SHELL       10
-#define MAX_FIVE_SHELL      7
+#define MAX_SEVEN_SHELL      7
 #define MAX_THREE_SHELL     3
 
 static const u16 sCursor_Pal[] = INCBIN_U16("graphics/greehaseet_puzzle/cursor.gbapal");
@@ -526,7 +526,7 @@ static void NumberCallback(struct Sprite *)
 }
 
 static u32 CreateNumberSpriteAt(u32 x, u32 y, u32 number, u16 *numberSpriteId)
-{    
+{
     if (*numberSpriteId == 0xFF)
         *numberSpriteId = CreateSprite(&sSpriteTemplateNumbers, x, y, 0);
 
@@ -584,7 +584,7 @@ static void Task_GreehaseetPuzzleMainInput(u8 taskId)
             GreehaseetPuzzle_SelectShell();
         else if(*inputMode == INPUT_POUR_INTO_SHELL)
             GreehaseetPuzzle_HandleShellContents();
-        
+
         CreateNumberSpriteAt(32, 56, sGreehaseetPuzzleState->tenPearlShell, &sGreehaseetPuzzleState->tenShellSpriteId); // Ten Shell
         CreateNumberSpriteAt(176, 16, sGreehaseetPuzzleState->sevenPearlShell, &sGreehaseetPuzzleState->sevenShellSpriteId); // Seven Shell
         CreateNumberSpriteAt(176, 96, sGreehaseetPuzzleState->threePearlShell, &sGreehaseetPuzzleState->threeShellSpriteId); // Three Shell
@@ -598,18 +598,18 @@ static void Task_GreehaseetPuzzleMainInput(u8 taskId)
     if (JOY_NEW(DPAD_RIGHT)){
         if(*cursorY == 2){
             sGreehaseetPuzzleState->cursorY = 0;
-        } 
+        }
         else {
             sGreehaseetPuzzleState->cursorY++;
-        } 
+        }
     }
     if (JOY_NEW(DPAD_LEFT)){
         if(*cursorY == 0){
             sGreehaseetPuzzleState->cursorY = 2;
-        } 
+        }
         else {
             sGreehaseetPuzzleState->cursorY--;
-        } 
+        }
     }
     if(JOY_NEW(SELECT_BUTTON)){
         u8 *inputMode = &sGreehaseetPuzzleState->inputMode;
@@ -780,7 +780,7 @@ static void GreehaseetPuzzle_SelectShell(void)
 }
 
 static void GreehaseetPuzzle_HandleShellContents(void)
-{  
+{
     u8 temp = 0;
     u8 *selectedShell = &sGreehaseetPuzzleState->selectedShell;
     u8 *tenShell = &sGreehaseetPuzzleState->tenPearlShell;
@@ -793,14 +793,19 @@ static void GreehaseetPuzzle_HandleShellContents(void)
     switch(*selectedShell){
         case INPUT_SELECTED_TEN_SHELL:
             if(*cursorY == 1){ //For when Ten Shell to Seven Shell
-                if (*tenShell == 0 || *sevenShell == MAX_FIVE_SHELL){
+                if (*tenShell == 0 || *sevenShell == MAX_SEVEN_SHELL){
                 }
-                else if (*tenShell > MAX_FIVE_SHELL && *sevenShell == 0){
-                    *tenShell = *tenShell - MAX_FIVE_SHELL;
-                    *sevenShell = MAX_FIVE_SHELL;
+                else if (*tenShell == 6)
+                {
+                    *tenShell = MAX_SEVEN_SHELL - *sevenShell;
+                    *sevenShell = MAX_SEVEN_SHELL;
                 }
-                else if (*tenShell > MAX_FIVE_SHELL && *sevenShell > 0){
-                    temp = MAX_FIVE_SHELL - *sevenShell;
+                else if (*tenShell > MAX_SEVEN_SHELL && *sevenShell == 0){
+                    *tenShell = *tenShell - MAX_SEVEN_SHELL;
+                    *sevenShell = MAX_SEVEN_SHELL;
+                }
+                else if (*tenShell > MAX_SEVEN_SHELL && *sevenShell > 0){
+                    temp = MAX_SEVEN_SHELL - *sevenShell;
                     *sevenShell += temp;
                     *tenShell -= temp;
                 }
@@ -864,16 +869,21 @@ static void GreehaseetPuzzle_HandleShellContents(void)
             if(*cursorY == 2){ //For Three Shell back to Three
                 *inputMode = INPUT_SELECT_SHELL;
             }
-            else if (*cursorY == 1){
-                if (*sevenShell == MAX_FIVE_SHELL){}
-                else //*cursorY == 1
-                {                    
+            else if (*cursorY == 1){//Three Shell to Seven Shell
+                if (*sevenShell == MAX_SEVEN_SHELL){}
+                else if ((*sevenShell + *threeShell) > MAX_SEVEN_SHELL)
+                {
+                    *threeShell = MAX_SEVEN_SHELL - *sevenShell;
+                    *sevenShell = MAX_SEVEN_SHELL;
+                }
+                else
+                {
                     *sevenShell += *threeShell;
                     *threeShell = 0;
                 }
                 *inputMode = INPUT_SELECT_SHELL;
             }
-            else 
+            else
             { //For Three Shell to Ten
                 if(*cursorY == 0)
                 {
@@ -884,7 +894,7 @@ static void GreehaseetPuzzle_HandleShellContents(void)
             }
             break;
     }
-    
+
     DestroyNumberSpriteAt(32, 56, &sGreehaseetPuzzleState->tenShellSpriteId); // Destroys ten shell
     DestroyNumberSpriteAt(176, 16, &sGreehaseetPuzzleState->sevenShellSpriteId); // Destroys seven shell
     DestroyNumberSpriteAt(176, 96, &sGreehaseetPuzzleState->threeShellSpriteId); // Destroys three shell
