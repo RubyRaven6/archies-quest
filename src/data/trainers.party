@@ -16822,10 +16822,68 @@ Gender: Male
 Music: Magma
 Double Battle: No
 AI: Smart Trainer
+Party Size: 4
 
-Wobbuffet
+Krookodile @ Expert Belt
+Ability: Moxie
 Level: 50
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+EVs: 30 HP / 40 Atk
+Adamant Nature
+- Earthquake
+- Crunch
+- Outrage
+- Breaking Swipe
+
+Raticate @ Flame Orb
+Ability: Guts
+Level: 50
+EVs: 63 Spe / 7 Atk
+Jolly Nature
+- Extremespeed
+- Protect
+- Crunch
+- Psychic Fangs
+
+Weavile @ Focus Sash
+Ability: Tough Claws
+Level: 50
+EVs: 50 Spe / 20 Atk
+Adamant Nature
+- Night Slash
+- Ice Punch
+- Brick Break
+- Knock Off
+
+Lopunny @ Choice Scarf
+Ability: Limber
+Level: 50
+EVs: 40 SpA / 30 Spe
+Adamant Nature
+- High Jump Kick
+- Triple Axel
+- U-Turn
+- Drain Punch
+
+Porygon-Z @ Choice Specs
+Ability: Normalize
+Level: 50
+EVs: 63 SpA / 7 Spe
+Modest Nature
+- Tri-Attack
+- Shadow Ball
+- Ice Beam
+- Dark Pulse
+
+Zoroark @ Expert Belt
+Ability: Illusion
+Level: 50
+EVs: 63 SpA / 7 Spe
+Tags: Lead
+Modest Nature
+- U-Turn
+- Foul Play
+- Sludge Bomb
+- Taunt
 
 === TRAINER_DEMONLORD_GREEHASEET ===
 Name: Greehaseet
