@@ -13,7 +13,120 @@
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
+  "object_events": [
+    {
+      "local_id": "LOCALID_BACKYARD_BEACH_SWAMPERT",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SWAMPERT)",
+      "x": 15,
+      "y": 15,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+      "movement_range_x": 1,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Swampert",
+      "flag": "FLAG_HIDE_SWAMPERT"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_BEACH_RAICHU",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(RAICHU_ALOLA)",
+      "x": 19,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+      "movement_range_x": 1,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_AlolanRaichu",
+      "flag": "FLAG_HIDE_RAICHU"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_BEACH_GOODRA",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GOODRA_HISUI)",
+      "x": 10,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+      "movement_range_x": 1,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_HisuianGoodra",
+      "flag": "FLAG_HIDE_SWAMPERT"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_BEACH_CLAWITZER",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLAWITZER)",
+      "x": 16,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+      "movement_range_x": 1,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Clawitzer",
+      "flag": "FLAG_HIDE_SWAMPERT"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_BEACH_VIRIZION",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(VIRIZION)",
+      "x": 4,
+      "y": 18,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Virizion",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_BEACH_COBALION",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(COBALION)",
+      "x": 5,
+      "y": 17,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Cobalion",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_BEACH_TERRAKION",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TERRAKION)",
+      "x": 3,
+      "y": 17,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Terrakion",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_BEACH_KELDEO",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(KELDEO)",
+      "x": 4,
+      "y": 17,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Keldeo",
+      "flag": "0"
+    }
+  ],
   "warp_events": [
     {
       "x": 10,
@@ -34,7 +147,7 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 28,
+      "x": 23,
       "y": 11,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
@@ -42,7 +155,7 @@
     },
     {
       "type": "sign",
-      "x": 27,
+      "x": 21,
       "y": 11,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
@@ -50,43 +163,11 @@
     },
     {
       "type": "sign",
-      "x": 29,
+      "x": 22,
       "y": 11,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "ArchiesHouse_BackyardBeach_Boat"
-    },
-    {
-      "type": "sign",
-      "x": 6,
-      "y": 17,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
-    },
-    {
-      "type": "sign",
-      "x": 6,
-      "y": 18,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
-    },
-    {
-      "type": "sign",
-      "x": 6,
-      "y": 19,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
-    },
-    {
-      "type": "sign",
-      "x": 6,
-      "y": 20,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
     }
   ]
 }

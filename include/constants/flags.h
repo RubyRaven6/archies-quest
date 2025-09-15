@@ -76,9 +76,9 @@
 #define	FLAG_HIDE_TINKATON	            0x37 // Hides Tinkaton
 /* Beach Mons */
 #define	FLAG_HIDE_SWAMPERT	            0x38 // Hides Swampert
-#define	FLAG_HIDE_LINOONE	            0x39 // Hides Linoone
-#define	FLAG_HIDE_HARIYAMA	            0x3A // Hides Hariyama
-#define	FLAG_HIDE_SLOWKING	            0x3B // Hides Slowking
+#define	FLAG_HIDE_RAICHU	            0x39 // Hides Linoone
+#define	FLAG_HIDE_CLAWITZER	            0x3A // Hides Hariyama
+#define	FLAG_HIDE_GOODRA	            0x3B // Hides Slowking
 /* Garden Mons */
 #define	FLAG_HIDE_ANNIHILAPE	        0x3C // Hides Annihilape
 #define	FLAG_HIDE_HERACROSS	            0x3D // Hides Heracross

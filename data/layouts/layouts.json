@@ -4524,7 +4524,7 @@
     {
       "id": "LAYOUT_ARCHIES_HOUSE_BACKYARD_BEACH",
       "name": "ArchiesHouse_BackyardBeach_Layout",
-      "width": 39,
+      "width": 33,
       "height": 27,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Slateport",
