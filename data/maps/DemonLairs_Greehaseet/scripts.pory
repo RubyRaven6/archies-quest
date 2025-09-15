@@ -3,6 +3,7 @@ mapscripts DemonLairs_Greehaseet_MapScripts {
         VAR_DEMON_LORD_PROGRESS, 1 {
             autosave
             setvar(VAR_DEMON_LORD_PROGRESS, 2)
+			setflag(FLAG_SYS_BOSS_IN_PROG)
         }
     ]
 }

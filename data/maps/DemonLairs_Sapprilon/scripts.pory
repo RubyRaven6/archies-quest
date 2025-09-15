@@ -3,6 +3,7 @@ mapscripts DemonLairs_Sapprilon_MapScripts {
         VAR_DEMON_LORD_PROGRESS, 2 {
             autosave
             setvar(VAR_DEMON_LORD_PROGRESS, 3)
+            setflag(FLAG_SYS_BOSS_IN_PROG)
         }
     ]
 }
