@@ -1145,6 +1145,20 @@ EventScript_TheVoid_Text_0:
 	.string "An endless, yawning void stares back at\n"
 	.string "you…$"
 
+Common_EventScript_ReturnToHub::
+	msgbox Common_EventScript_ReturnToHub_Text_0, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq Common_EventScript_ReturnToHub_1
+	return
+
+Common_EventScript_ReturnToHub_1:
+	warpteleport MAP_HUB_WORLD_INITIAL, 8, 8
+	return
+
+
+Common_EventScript_ReturnToHub_Text_0:
+	.string "Return to the hub?$"
+
 	.include "data/scripts/pc_transfer.inc"
 	.include "data/scripts/questionnaire.inc"
 	.include "data/scripts/abnormal_weather.inc"

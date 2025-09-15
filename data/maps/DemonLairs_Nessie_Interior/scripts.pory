@@ -38,6 +38,19 @@ script DemonLairs_EventScript_Nessie {
     waitmessage
     closemessage
     fadescreen(FADE_FROM_WHITE)
+    delay(60)
+    clearflag(FLAG_SYS_BOSS_IN_PROG)
+    playse(SE_PC_ON)
+    applymovement(LOCALID_PLAYER, moves(face_left))
+    setmetatile(4, 5, 0x220, FALSE)
+    special(DrawWholeMapView)
+    waitse
+    speakername("Old Archie")
+    msgbox(format("Hey, kid! I can finally get a handle of where you are; that means you must have beaten Nessereign!\p"
+                    "I've opened up a portal back to the hub whenever you need it."))
+    waitmessage
+    waitmovement(0)
+    closemessage
     end
 }
 

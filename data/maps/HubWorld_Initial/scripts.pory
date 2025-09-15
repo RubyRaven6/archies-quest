@@ -43,7 +43,7 @@ mapscripts HubWorld_Initial_MapScripts {
 
 script HubWorld_EventScript_Archie {
     speakername("Old Archie")
-    msgbox(format("Hey. Did you need something?"), MSGBOX_DEFAULT)
+    msgbox(format("Hey. Did you need something, kid?"), MSGBOX_DEFAULT)
     dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Device", "Demon Lords", "Retraining")
     switch(var(VAR_RESULT)) {
         case 0:
@@ -105,6 +105,8 @@ script HubWorld_EventScript_Archie {
             waitmessage
             closemessage
     }
+    waitmessage
+    closemessage
     end
 }
 
