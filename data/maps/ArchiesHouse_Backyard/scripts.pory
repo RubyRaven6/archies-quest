@@ -15,6 +15,13 @@ mapscripts ArchiesHouse_Backyard_MapScripts {
     ]
 }
 
+script ArchiesHouse_EventScript_SignDirections {
+    msgbox("{LEFT_ARROW} FOREST             / LAKE AND GARDEN {UP_ARROW}\n"
+            "{DOWN_ARROW} BEACH AND SEA / CRAG AND CAVE {RIGHT_ARROW}",MSGBOX_SIGN)
+    waitmessage
+    closemessage
+}
+
 // script ArchiesHouse_Backyard_EventScripts_ {
 //     lock
 // 	faceplayer
