@@ -34,7 +34,10 @@ script ArchiesHouse_EventScript_SignDirections {
 // 			removeobject()
 // 			msgbox(" joined your party!")
 // 			closemessage
-// 		}
+// 		} else {
+        //     applymovement(, moves(face_original_direction))
+        //     waitmovement(0)
+        // }
 // 	} else {
 // 		goto(CommonScript_Backyard_EventScripts_FullParty)
 // 	}

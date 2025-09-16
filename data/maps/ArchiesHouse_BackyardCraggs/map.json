@@ -59,7 +59,7 @@
     {
       "local_id": "LOCALID_BACKYARD_CRAG_SNORLAX",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(SNORLAX)",
-      "x": 19,
+      "x": 18,
       "y": 22,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",

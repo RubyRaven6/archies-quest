@@ -29,6 +29,9 @@ script ArchiesHouse_Backyard_EventScripts_Swampert {
 			removeobject(LOCALID_BACKYARD_BEACH_SWAMPERT)
 			msgbox("Swampert joined your party!")
 			closemessage
+		} else {
+			applymovement(LOCALID_BACKYARD_BEACH_SWAMPERT, moves(face_original_direction))
+			waitmovement(0)
 		}
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
@@ -48,6 +51,9 @@ script ArchiesHouse_Backyard_EventScripts_AlolanRaichu {
 			removeobject(LOCALID_BACKYARD_BEACH_RAICHU)
 			msgbox("Raichu joined your party!")
 			closemessage
+		} else {
+			applymovement(LOCALID_BACKYARD_BEACH_RAICHU, moves(face_original_direction))
+			waitmovement(0)
 		}
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
@@ -67,6 +73,9 @@ script ArchiesHouse_Backyard_EventScripts_Clawitzer {
 			removeobject(LOCALID_BACKYARD_BEACH_CLAWITZER)
 			msgbox("Clawitzer joined your party!")
 			closemessage
+		} else {
+			applymovement(LOCALID_BACKYARD_BEACH_CLAWITZER, moves(face_original_direction))
+			waitmovement(0)
 		}
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
@@ -86,6 +95,9 @@ script ArchiesHouse_Backyard_EventScripts_HisuianGoodra {
 			removeobject(LOCALID_BACKYARD_BEACH_GOODRA)
 			msgbox("Goodra joined your party!")
 			closemessage
+		} else {
+			applymovement(LOCALID_BACKYARD_BEACH_GOODRA, moves(face_original_direction))
+			waitmovement(0)
 		}
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)

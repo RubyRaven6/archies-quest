@@ -14,6 +14,9 @@ script ArchiesHouse_Backyard_EventScripts_Lucario {
 			removeobject(LOCALID_BACKYARD_CRAG_LUCARIO)
 			msgbox("Lucario joined your party!")
 			closemessage
+		} else {
+			applymovement(LOCALID_BACKYARD_CRAG_LUCARIO, moves(face_original_direction))
+			waitmovement(0)
 		}
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
@@ -33,6 +36,9 @@ script ArchiesHouse_Backyard_EventScripts_Blaziken {
 			removeobject(LOCALID_BACKYARD_CRAG_BLAZIKEN)
 			msgbox("Blaziken joined your party!")
 			closemessage
+		} else {
+			applymovement(LOCALID_BACKYARD_CRAG_BLAZIKEN, moves(face_original_direction))
+			waitmovement(0)
 		}
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
@@ -52,6 +58,9 @@ script ArchiesHouse_Backyard_EventScripts_Tinkaton {
 			removeobject(LOCALID_BACKYARD_CRAG_TINKATON)
 			msgbox("Tinkaton joined your party!")
 			closemessage
+		} else {
+			applymovement(LOCALID_BACKYARD_CRAG_TINKATON, moves(face_original_direction))
+			waitmovement(0)
 		}
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
@@ -71,6 +80,9 @@ script ArchiesHouse_Backyard_EventScripts_Snorlax {
 			removeobject(LOCALID_BACKYARD_CRAG_SNORLAX)
 			msgbox("Snorlax joined your party!")
 			closemessage
+		} else {
+			applymovement(LOCALID_BACKYARD_CRAG_SNORLAX, moves(face_original_direction))
+			waitmovement(0)
 		}
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)

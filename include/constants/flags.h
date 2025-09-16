@@ -76,14 +76,14 @@
 #define	FLAG_HIDE_TINKATON	            0x37 // Hides Tinkaton
 /* Beach Mons */
 #define	FLAG_HIDE_SWAMPERT	            0x38 // Hides Swampert
-#define	FLAG_HIDE_RAICHU	            0x39 // Hides Linoone
-#define	FLAG_HIDE_CLAWITZER	            0x3A // Hides Hariyama
-#define	FLAG_HIDE_GOODRA	            0x3B // Hides Slowking
+#define	FLAG_HIDE_RAICHU	            0x39 // Hides Raichu
+#define	FLAG_HIDE_CLAWITZER	            0x3A // Hides Clawitzer
+#define	FLAG_HIDE_GOODRA	            0x3B // Hides Goodra
 /* Garden Mons */
 #define	FLAG_HIDE_ANNIHILAPE	        0x3C // Hides Annihilape
-#define	FLAG_HIDE_HERACROSS	            0x3D // Hides Heracross
+#define	FLAG_HIDE_HELIOLISK	            0x3D // Hides Heliolisk
 #define	FLAG_HIDE_RIBOMBEE	            0x3E // Hides Ribombee
-#define	FLAG_HIDE_POLTCHAGEIST	        0x3F // Hides Vileplume
+#define	FLAG_HIDE_VILEPLUME 	        0x3F // Hides Vileplume
 /* Nessie Puzzle Flags */
 #define	FLAG_NESSIE_READ_BOOK	        0x40 // Read the book for the Nessie solution
 #define	FLAG_NESSIE_GOT_DAGGER	        0x41 // Got the dagger for Nessie solution
