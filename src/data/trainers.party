@@ -17031,6 +17031,7 @@ Adamant Nature
 - Body Press
 - Rest
 - Sleep Talk
+
 === TRAINER_DEMONLORD_ADDISAMAP ===
 Name: Addisamap
 Class: Demon Lord
@@ -17040,71 +17041,71 @@ Music: Magma
 Double Battle: No
 Mugshot: Green
 
-Cresselia @ Leftovers
-Ability: Slow Start
-Level: 80
-EVs: 63 HP / 36 SpD
-Tags: Weather Setter
-Bold Nature
-- Trick Room
-- Psyshock
-- Hidden Power Fighting
-- Thunder Wave
-
-Klefki @ Light Clay
-Ability: Prankster
-Level: 80
-EVs: 49 Def / 49 SpD
-Tags: Weather Setter
-Gentle Nature
-- Thunder Wave
-- Light Screen
-- Reflect
-- Dazzling Gleam
-
-Slowbro @ Leftovers
-Ability: Unaware
-Level: 80
-EVs: 63 HP / 36 SpA
-Tags: Weather Abuser
-Modest Nature
-- Slack Off
-- Surf
-- Protect
-- Psychic
-
-Bronzong @ Light Clay
+Sinistcha @ Terrain Extender
 Ability: Heatproof
 Level: 80
-EVs: 49 Def / 49 SpD
+EVs: 54 HP / 54 SpA
 Tags: Weather Setter
-Sassy Nature
-- Body Press
-- Light Screen
-- Reflect
+Modest Nature
+- Stun Spore
+- Giga Drain
+- Grassy Terrain
+- Shadow Ball
+
+Torterra @ Leftovers
+Ability: Shell Armor
+Level: 80
+EVs: 45 HP / 45 Atk / 18 Def
+Tags: Weather Setter
+Adamant Nature
+- Sunny Day
+- Wood Hammer
+- Earthquake
 - Iron Defense
 
-Beheeyem @ Twisted Spoon
-Ability: Psychic Surge
+Meganium @ Leftovers
+Ability: Flower Veil
 Level: 80
-EVs: 63 SpA / 36 Spe
+EVs: 63 HP / 45 SpA
+Tags:
+Modest Nature
+- Aromatherapy
+- Safeguard
+- Giga Drain
+- Light Screen
+
+Venusaur @ Leftovers
+Ability: Chlorophyll
+Level: 80
+EVs: 45 HP / 64 SpA
 Tags: Weather Abuser
 Modest Nature
-- Expanding Force
-- Dark Pulse
-- Shadow Ball
-- Power Gem
+- Synthesis
+- Solar Beam
+- Sludge Bomb
+- Hidden Power Ground
 
-Aggron @ Aggronite
-Ability: Sturdy
+Clodsire @ Leftovers
+Ability: Poison Point
 Level: 80
-EVs: 63 HP / 36 Def
+EVs: 54 HP / 54 Def
+Tags:
+Bold Nature
+- Slack Off
+- Sludge Wave
+- Toxic Spikes
+- Amnesia
+
+Palossand @ Leftovers
+Ability: Sand Spit
+Level: 80
+EVs: 63 HP / 45 SpA
 Tags: Ace
-Adamant Nature
-- Iron Defense
-- Body Press
-- Rest
-- Sleep Talk
+Modest Nature
+- Shore Up
+- Shadow Ball
+- Scorching Sands
+- Giga Drain
 
 === TRAINER_DEMONLORD_MAXIE ===
 Name: Maxie
