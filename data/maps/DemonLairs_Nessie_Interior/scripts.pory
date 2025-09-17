@@ -10,16 +10,19 @@ script DemonLairs_EventScript_Nessie {
         closemessage
         faceplayer
         applymovement(LOCALID_NESSIE_PAINTER, moves(emote_double_exclamation_mark))
+        waitmovement(0)
         speakername("Nessereign")
         msgbox(format("A-An intruder?! No… it can't be…"), MSGBOX_DEFAULT)
         waitmessage
         closemessage
         applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+        waitmovement(0)
         speakername("Archie")
         msgbox(format("You tyrants are about to meet your end, Nessereign!"), MSGBOX_DEFAULT)
         waitmessage
         closemessage
         applymovement(LOCALID_NESSIE_PAINTER, moves(walk_in_place_down))
+        waitmovement(0)
         speakername("Nessereign")
         msgbox(format("If you think I'll let you get away, you have another thing coming!"), MSGBOX_DEFAULT)
         waitmessage
