@@ -30,7 +30,7 @@
 
 //Sprite Callbacks
 static void CursorCallback(struct Sprite *sprite);
-static void NumberCallback(struct Sprite *);
+static void NumberCallback(struct Sprite *sprite);
 static u32 CreateNumberSpriteAt(u32 x, u32 y, u32 number, u16 *numberSpriteId);
 static void DestroyNumberSpriteAt(u32 x, u32 y, u16 *numberSpriteId);
 
@@ -520,7 +520,7 @@ static void CursorCallback(struct Sprite *sprite)
     sprite->y   = spriteCoords[cursorY][cursorX].y + 15;
 }
 
-static void NumberCallback(struct Sprite *)
+static void NumberCallback(struct Sprite *sprite)
 {
   // nothing in here
 }

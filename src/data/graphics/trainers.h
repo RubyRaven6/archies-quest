@@ -1,6 +1,25 @@
 #include "constants/trainers.h"
 #include "data.h"
 
+
+// Custom
+
+const u32 gTrainerFrontPic_Nessereign[] = INCBIN_U32("graphics/trainers/front_pics/demons/nessereign.4bpp.smol");
+const u16 gTrainerPalette_Nessereign[] = INCBIN_U16("graphics/trainers/front_pics/demons/nessereign.gbapal");
+
+const u32 gTrainerFrontPic_Addisamap[] = INCBIN_U32("graphics/trainers/front_pics/demons/addisamap.4bpp.smol");
+const u16 gTrainerPalette_Addisamap[] = INCBIN_U16("graphics/trainers/front_pics/demons/addisamap.gbapal");
+
+// TODO
+const u32 gTrainerFrontPic_Sapprilon[] = INCBIN_U32("graphics/trainers/front_pics/demons/nessereign.4bpp.smol");
+const u16 gTrainerPalette_Sapprilon[] = INCBIN_U16("graphics/trainers/front_pics/demons/nessereign.gbapal");
+
+// TODO
+const u32 gTrainerFrontPic_Greehaseet[] = INCBIN_U32("graphics/trainers/front_pics/demons/nessereign.4bpp.smol");
+const u16 gTrainerPalette_Greehaseet[] = INCBIN_U16("graphics/trainers/front_pics/demons/nessereign.gbapal");
+
+// End custom
+
 const u32 gTrainerFrontPic_Hiker[] = INCBIN_U32("graphics/trainers/front_pics/hiker.4bpp.smol");
 const u16 gTrainerPalette_Hiker[] = INCBIN_U16("graphics/trainers/front_pics/hiker.gbapal");
 
@@ -311,6 +330,12 @@ const u16 gTrainerBackPicPalette_Leaf[] = INCBIN_U16("graphics/trainers/back_pic
 
 const struct TrainerSprite gTrainerSprites[] =
 {
+    // Custom
+    TRAINER_SPRITE(TRAINER_PIC_NESSEREIGN, gTrainerFrontPic_Nessereign, gTrainerPalette_Nessereign),
+    TRAINER_SPRITE(TRAINER_PIC_ADDISAMAP, gTrainerFrontPic_Addisamap, gTrainerPalette_Addisamap),
+    TRAINER_SPRITE(TRAINER_PIC_SAPPRILON, gTrainerFrontPic_Sapprilon, gTrainerPalette_Sapprilon),
+    TRAINER_SPRITE(TRAINER_PIC_GREEHASEET, gTrainerFrontPic_Greehaseet, gTrainerPalette_Greehaseet),
+    // End custom
     TRAINER_SPRITE(TRAINER_PIC_HIKER, gTrainerFrontPic_Hiker, gTrainerPalette_Hiker),
     TRAINER_SPRITE(TRAINER_PIC_AQUA_GRUNT_M, gTrainerFrontPic_Archie, gTrainerPalette_Archie),
     TRAINER_SPRITE(TRAINER_PIC_POKEMON_BREEDER_F, gTrainerFrontPic_PokemonBreederF, gTrainerPalette_PokemonBreederF),

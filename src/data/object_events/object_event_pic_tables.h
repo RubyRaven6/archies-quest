@@ -1,5 +1,5 @@
 static const struct SpriteFrameImage sPicTable_CoolArchieNormal[] = {
-    overworld_ascending_frames(gObjectEventPic_CoolArchieNormalRunning, 2, 4),
+    overworld_ascending_frames(gObjectEventPic_CoolArchieNormalRunning, 4, 4),
 };
 
 static const struct SpriteFrameImage sPicTable_BrendanNormal[] = {
@@ -929,11 +929,43 @@ static const struct SpriteFrameImage sPicTable_MayDecorating[] = {
 };
 
 static const struct SpriteFrameImage sPicTable_Archie[] = {
-    overworld_ascending_frames(gObjectEventPic_Archie, 2, 4),
+    overworld_ascending_frames(gObjectEventPic_Archie, 4, 4),
 };
 
 static const struct SpriteFrameImage sPicTable_Maxie[] = {
-    overworld_ascending_frames(gObjectEventPic_Maxie, 2, 4),
+    overworld_ascending_frames(gObjectEventPic_Maxie, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_NessereignHuman[] = {
+    overworld_ascending_frames(gObjectEventPic_NessereignHuman, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_NessereignDemon[] = {
+    overworld_ascending_frames(gObjectEventPic_NessereignDemon, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_AddisamapHuman[] = {
+    overworld_ascending_frames(gObjectEventPic_AddisamapHuman, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_AddisamapDemon[] = {
+    overworld_ascending_frames(gObjectEventPic_AddisamapDemon, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_GreehaseetHuman[] = {
+    overworld_ascending_frames(gObjectEventPic_GreehaseetHuman, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_GreehaseetDemon[] = {
+    overworld_ascending_frames(gObjectEventPic_GreehaseetDemon, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_SapprilonHuman[] = {
+    overworld_ascending_frames(gObjectEventPic_SapprilonHuman, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_SapprilonDemon[] = {
+    overworld_ascending_frames(gObjectEventPic_SapprilonDemon, 4, 4),
 };
 
 static const struct SpriteFrameImage sPicTable_KyogreFront[] = {
