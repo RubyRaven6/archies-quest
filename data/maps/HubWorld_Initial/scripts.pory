@@ -56,30 +56,30 @@ script HubWorld_EventScript_Archie {
             waitmessage
             switch(var(VAR_DEMON_LORD_PROGRESS)){
                 case 0:
-                    msgbox(format("Nessereign. The first and weakest of the Bai'Narii.\p
-                                    Don't let this fool you, though, as he's crafty in his own right.\p
-                                    He's swift and cunning when he battles, but also extremely frail.\p
-                                    He's also a duplicitous lord; as such, his minions are Normal and Dark."))
+                    msgbox(format("Nessereign. The first and weakest of the Bai'Narii.\p"
+                                    "Don't let this fool you, though, as she's crafty in her own right.\p"
+                                    "She's swift and cunning when she battles, but also extremely frail.\p"
+                                    "She's also a duplicitous lord; as such, her minions are Normal and Dark."))
                     waitmessage
                     closemessage
                 case 1:
-                    msgbox(format("Greehaseet. Considered the Bai'Narii's unrelenting chariot.\p
-                                    He possesses great strength, but also great stamina.\p
-                                    His advantage comes from depleting his opponent's strength, and crushing them.\p
-                                    His realm is normally in the waters, though, as such his minions of Ice and Water."))
+                    msgbox(format("Greehaseet. Considered the Bai'Narii's unrelenting chariot.\p"
+                                    "He possesses great strength, but also great stamina.\p"
+                                    "His advantage comes from depleting his opponent's strength, and crushing them.\p"
+                                    "His realm is normally in the waters, though, as such his minions of Ice and Water."))
                     waitmessage
                     closemessage
                 case 2:
-                    msgbox(format("Sapprilon. Considered the Bai'Narii's impenetrable wall.\p
-                                    He can create forcefields of noise that can repel attacks without much effort.\p
-                                    Much effort is required to be able to breach his defenses.\p
-                                    He enlists minions that he believes can be utilized best: Steel and Psychic."))
+                    msgbox(format("Sapprilon. Considered the Bai'Narii's impenetrable wall.\p"
+                                    "He can create forcefields of noise that can repel attacks without much effort.\p"
+                                    "Much effort is required to be able to breach his defenses.\p"
+                                    "He enlists minions that he believes can be utilized best: Steel and Psychic."))
                     waitmessage
                     closemessage
                 case 3:
                     speakername("Old Archie")
-                    msgbox(format("Addisamap. The lieutenant-sergeant of the Bai'Narii.\p
-                                    He's their Ringleader, who keeps them in check for their master."))
+                    msgbox(format("Addisamap. The lieutenant-sergeant of the Bai'Narii.\p"
+                                    "She's their Ringleader, who keeps them in check for their master."))
                     waitmessage
                     closemessage
                     speakername("Archie")
@@ -87,10 +87,10 @@ script HubWorld_EventScript_Archie {
                     waitmessage
                     closemessage
                     speakername("Old Archie")
-                    msgbox(format("No, there's one more behind them all. But let's focus for now.\p
-                                    Addisamap can control life and death in his own terms.\p
-                                    Make sure that you can outdo the healing he can do to himself.\p
-                                    His minions are of Grass and Ground."))
+                    msgbox(format("No, there's one more behind them all. But let's focus for now.\p"
+                                    "Addisamap can control life and death in her own terms.\p"
+                                    "Make sure that you can outdo the healing she can do to herself.\p"
+                                    "Her minions are of Grass and Ground."))
                     waitmessage
                     closemessage
             }
