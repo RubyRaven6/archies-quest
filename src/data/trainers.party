@@ -16835,14 +16835,14 @@ Adamant Nature
 - Outrage
 - Breaking Swipe
 
-Raticate @ Flame Orb
-Ability: Guts
+Zangoose @ Toxic Orb
+Ability: Toxic Boost
 Level: 50
-EVs: 63 Spe / 7 Atk
+EVs: 63 Atk / 7 Spe
 Jolly Nature
 - Extremespeed
 - Protect
-- Crunch
+- Swords Dance
 - Psychic Fangs
 
 Weavile @ Focus Sash
@@ -16896,9 +16896,66 @@ Double Battle: No
 AI: Smart Trainer
 Mugshot: Blue
 
-Wobbuffet
-Level: 50
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Toxapex @ Leftovers
+Ability: Corrosion
+Level: 60
+EVs: 63 HP / 21 Def
+Tags: Lead
+Bold Nature
+- Baneful Bunker
+- Sludge Bomb
+- Surf
+- Toxic
+
+Walrein @ ITEM_NEVER_MELT_ICE
+Ability: Thick Fat
+Level: 60
+EVs: 42 Atk / 42 SpA
+Lonely Nature
+- Surf
+- Ice Beam
+- Psychic Fangs
+- Bulldoze
+
+Quagsire @ Leftovers
+Ability: Unaware
+Level: 60
+EVs: 63 HP / 21 Atk
+Lonely Nature
+- Earthquake
+- Slack Off
+- Aqua Tail
+- Protect
+
+Jellicent @ Ability Shield
+Ability: Fluffy
+Level: 60
+EVs: 42 HP / 42 SpD
+Relaxed Nature
+- Stockpile
+- Swallow
+- Surf
+- Ice Beam
+
+Dracovish @ Choice Band
+Ability: Strong Jaw
+Level: 60
+EVs: 63 Atk / 21 HP
+Adamant Nature
+- Fishious Rend
+- Brutal Swing
+- Rock Tomb
+- Bulldoze
+
+Arctovish @ Choice Band
+Ability: Water Absorb
+Level: 60
+EVs: 63 Atk / 21 HP
+Adamant Nature
+- Fishious Rend
+- Brutal Swing
+- Rock Tomb
+- Bulldoze
 
 === TRAINER_DEMONLORD_SAPPRILON ===
 Name: Sapprilon
@@ -16909,10 +16966,71 @@ Music: Magma
 Double Battle: No
 Mugshot: Pink
 
-Wobbuffet
-Level: 50
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Cresselia @ Leftovers
+Ability: Slow Start
+Level: 70
+EVs: 63 HP / 36 SpD
+Tags: Weather Setter
+Bold Nature
+- Trick Room
+- Psyshock
+- Hidden Power Fighting
+- Thunder Wave
 
+Klefki @ Light Clay
+Ability: Prankster
+Level: 70
+EVs: 49 Def / 49 SpD
+Tags: Weather Setter
+Gentle Nature
+- Thunder Wave
+- Light Screen
+- Reflect
+- Dazzling Gleam
+
+Slowbro @ Leftovers
+Ability: Unaware
+Level: 70
+EVs: 63 HP / 36 SpA
+Tags: Weather Abuser
+Modest Nature
+- Slack Off
+- Surf
+- Protect
+- Psychic
+
+Bronzong @ Light Clay
+Ability: Heatproof
+Level: 70
+EVs: 49 Def / 49 SpD
+Tags: Weather Setter
+Sassy Nature
+- Body Press
+- Light Screen
+- Reflect
+- Iron Defense
+
+Beheeyem @ Twisted Spoon
+Ability: Psychic Surge
+Level: 70
+EVs: 63 SpA / 36 Spe
+Tags: Weather Abuser
+Modest Nature
+- Expanding Force
+- Dark Pulse
+- Shadow Ball
+- Power Gem
+
+Aggron @ Aggronite
+Ability: Sturdy
+Level: 70
+EVs: 63 HP / 36 Def
+Tags: Ace
+Adamant Nature
+- Iron Defense
+- Body Press
+- Rest
+- Sleep Talk
 === TRAINER_DEMONLORD_ADDISAMAP ===
 Name: Addisamap
 Class: Demon Lord
@@ -16922,9 +17040,71 @@ Music: Magma
 Double Battle: No
 Mugshot: Green
 
-Wobbuffet
-Level: 50
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Cresselia @ Leftovers
+Ability: Slow Start
+Level: 80
+EVs: 63 HP / 36 SpD
+Tags: Weather Setter
+Bold Nature
+- Trick Room
+- Psyshock
+- Hidden Power Fighting
+- Thunder Wave
+
+Klefki @ Light Clay
+Ability: Prankster
+Level: 80
+EVs: 49 Def / 49 SpD
+Tags: Weather Setter
+Gentle Nature
+- Thunder Wave
+- Light Screen
+- Reflect
+- Dazzling Gleam
+
+Slowbro @ Leftovers
+Ability: Unaware
+Level: 80
+EVs: 63 HP / 36 SpA
+Tags: Weather Abuser
+Modest Nature
+- Slack Off
+- Surf
+- Protect
+- Psychic
+
+Bronzong @ Light Clay
+Ability: Heatproof
+Level: 80
+EVs: 49 Def / 49 SpD
+Tags: Weather Setter
+Sassy Nature
+- Body Press
+- Light Screen
+- Reflect
+- Iron Defense
+
+Beheeyem @ Twisted Spoon
+Ability: Psychic Surge
+Level: 80
+EVs: 63 SpA / 36 Spe
+Tags: Weather Abuser
+Modest Nature
+- Expanding Force
+- Dark Pulse
+- Shadow Ball
+- Power Gem
+
+Aggron @ Aggronite
+Ability: Sturdy
+Level: 80
+EVs: 63 HP / 36 Def
+Tags: Ace
+Adamant Nature
+- Iron Defense
+- Body Press
+- Rest
+- Sleep Talk
 
 === TRAINER_DEMONLORD_MAXIE ===
 Name: Maxie
