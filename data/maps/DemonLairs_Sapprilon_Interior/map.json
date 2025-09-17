@@ -16,7 +16,7 @@
   "object_events": [
     {
       "local_id": "LOCALID_SAPPRILON_GUITARIST",
-      "graphics_id": "OBJ_EVENT_GFX_GREEHASEET_HUMAN",
+      "graphics_id": "OBJ_EVENT_GFX_SAPPRILON_HUMAN",
       "x": 6,
       "y": 4,
       "elevation": 3,
