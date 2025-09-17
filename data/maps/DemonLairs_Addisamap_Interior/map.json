@@ -16,7 +16,7 @@
   "object_events": [
     {
       "local_id": "LOCALID_ADDISAMAP_RUIN_MANIAC",
-      "graphics_id": "OBJ_EVENT_GFX_RUIN_MANIAC",
+      "graphics_id": "OBJ_EVENT_GFX_GREEHASEET_HUMAN",
       "x": 12,
       "y": 8,
       "elevation": 3,

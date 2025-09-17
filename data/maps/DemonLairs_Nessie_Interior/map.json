@@ -16,7 +16,7 @@
   "object_events": [
     {
       "local_id": "LOCALID_NESSIE_PAINTER",
-      "graphics_id": "OBJ_EVENT_GFX_GENTLEMAN",
+      "graphics_id": "OBJ_EVENT_GFX_NESSEREIGN_HUMAN",
       "x": 7,
       "y": 3,
       "elevation": 0,
