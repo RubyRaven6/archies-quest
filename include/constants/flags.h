@@ -66,7 +66,7 @@
 #define	FLAG_HIDE_WAILORD	            0x2F // Hides Wailord
 /* Cave Mons */
 #define	FLAG_HIDE_GALVANTULA	        0x30 // Hides Galvantula
-#define	FLAG_HIDE_SALAMANCE	            0x31 // Hides Salamence
+#define	FLAG_HIDE_SALAMENCE	            0x31 // Hides Salamence
 #define	FLAG_HIDE_EXCADRILL	            0x32 // Hides Excadrill
 #define	FLAG_HIDE_GARGANACL	            0x33 // Hides Garganacl
 /* Crags Mons */
