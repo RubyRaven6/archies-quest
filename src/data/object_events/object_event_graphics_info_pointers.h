@@ -196,6 +196,14 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanDeco
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayDecorating;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Archie;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Maxie;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_NessereignHuman;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_NessereignDemon;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AddisamapHuman;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AddisamapDemon;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GreehaseetHuman;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GreehaseetDemon;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SapprilonHuman;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SapprilonDemon;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KyogreFront;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GroudonFront;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Fossil;
@@ -252,6 +260,14 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvi
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan2;
 
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
+    [OBJ_EVENT_GFX_NESSEREIGN_HUMAN] =         &gObjectEventGraphicsInfo_NessereignHuman,
+    [OBJ_EVENT_GFX_ADDISAMAP_HUMAN] =          &gObjectEventGraphicsInfo_AddisamapHuman,
+    [OBJ_EVENT_GFX_SAPPRILON_HUMAN] =          &gObjectEventGraphicsInfo_SapprilonHuman,
+    [OBJ_EVENT_GFX_GREEHASEET_HUMAN] =         &gObjectEventGraphicsInfo_GreehaseetHuman,
+    [OBJ_EVENT_GFX_NESSEREIGN_DEMON] =         &gObjectEventGraphicsInfo_NessereignDemon,
+    [OBJ_EVENT_GFX_ADDISAMAP_DEMON] =          &gObjectEventGraphicsInfo_AddisamapDemon,
+    [OBJ_EVENT_GFX_SAPPRILON_DEMON] =          &gObjectEventGraphicsInfo_SapprilonDemon,
+    [OBJ_EVENT_GFX_GREEHASEET_DEMON] =         &gObjectEventGraphicsInfo_GreehaseetDemon,
     [OBJ_EVENT_GFX_COOL_ARCHIE] =              &gObjectEventGraphicsInfo_CoolArchieNormal,
     [OBJ_EVENT_GFX_BRENDAN_NORMAL] =           &gObjectEventGraphicsInfo_BrendanNormal,
     [OBJ_EVENT_GFX_BRENDAN_MACH_BIKE] =        &gObjectEventGraphicsInfo_BrendanMachBike,

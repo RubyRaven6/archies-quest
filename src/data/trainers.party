@@ -16815,9 +16815,9 @@ Level: 41
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DEMONLORD_NESSEREIGN ===
-Name: Nesseriegn
+Name: Nessereign
 Class: Demon Lord
-Pic: Gentleman
+Pic: Nessereign
 Gender: Male
 Music: Magma
 Double Battle: No
@@ -16889,7 +16889,7 @@ Modest Nature
 === TRAINER_DEMONLORD_GREEHASEET ===
 Name: Greehaseet
 Class: Demon Lord
-Pic: Swimmer M
+Pic: Greehaseet
 Gender: Male
 Music: Magma
 Double Battle: No
@@ -16903,7 +16903,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 === TRAINER_DEMONLORD_SAPPRILON ===
 Name: Sapprilon
 Class: Demon Lord
-Pic: Guitarist
+Pic: Sapprilon
 Gender: Male
 Music: Magma
 Double Battle: No
@@ -16916,7 +16916,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 === TRAINER_DEMONLORD_ADDISAMAP ===
 Name: Addisamap
 Class: Demon Lord
-Pic: Ruin Maniac
+Pic: Addisamap
 Gender: Male
 Music: Magma
 Double Battle: No
@@ -16927,7 +16927,7 @@ Level: 50
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DEMONLORD_MAXIE ===
-Name: Nesseriegn
+Name: Maxie
 Class: Demon Lord
 Pic: Magma Leader Maxie
 Gender: Male
