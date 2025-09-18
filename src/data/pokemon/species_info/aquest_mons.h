@@ -2131,7 +2131,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .shinyPalette = gMonShinyPalette_CircledQuestionMark,
         .iconSprite = gMonIcon_QuestionMark,
         .iconPalIndex = 0,
-        .enemyMonElevation = 11,
+        .enemyMonElevation = 6,
         FOOTPRINT(QuestionMark)
         SHADOW(0, 20, SHADOW_SIZE_XL_BATTLE_ONLY)
         // OVERWORLD(
@@ -2240,7 +2240,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .pokemonOffset = 0,
         .trainerScale = 256,
         .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Nessereign,
+        .frontPic = gMonFrontPic_Sapprilon,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
         .frontPicYOffset = 0,
         .frontAnimFrames = sAnims_SingleFramePlaceHolder,
@@ -2249,13 +2249,13 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .backPicSize = MON_COORDS_SIZE(64, 64),
         .backPicYOffset = 7,
         .backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_Nessereign,
+        .palette = gMonPalette_Sapprilon,
         .shinyPalette = gMonShinyPalette_CircledQuestionMark,
         .iconSprite = gMonIcon_QuestionMark,
         .iconPalIndex = 0,
-        .enemyMonElevation = 11,
+        .enemyMonElevation = 0,
         FOOTPRINT(QuestionMark)
-        SHADOW(0, 20, SHADOW_SIZE_XL_BATTLE_ONLY)
+        SHADOW(0, 7, SHADOW_SIZE_XL_BATTLE_ONLY)
         // OVERWORLD(
         //     sPicTable_Pecharunt,
         //     SIZE_32x32,

@@ -15,6 +15,7 @@ mapscripts HubWorld_Initial_MapScripts {
         VAR_TEMP_0, 0 {
             autosave
             callnative(LevelMonsToCap)
+            special(HealPlayerParty)
             setvar(VAR_TEMP_0, 1)
         }
         VAR_HUB_WORLD_INITIAL_SCENE, 0 {
