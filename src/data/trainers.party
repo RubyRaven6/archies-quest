@@ -17115,13 +17115,42 @@ Gender: Male
 Music: Magma
 Double Battle: Yes
 
-Wobbuffet
-Level: 50
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Nessereign @ Ability Shield
+Ability: Protean
+EVs: 63 Atk / 63 Spe / 2 HP
+Hasty Nature
+- Parting Shot
+- Hyper Drill
+- Sketch
+- Kowtow Cleave
 
-Wobbuffet
-Level: 50
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sapprilon @ Light Clay
+Ability: Psychic Surge
+EVs: 63 Def / 63 SpD / 2 HP
+IVs: 0 Atk
+Bold Nature
+- Light Screen
+- Reflect
+- Perish Song
+- Expanding Force
+
+Greehaseet @ Leftovers
+Ability: Water Bubble
+EVs: 63 Atk / 63 HP / 2 SpA
+Adamant Nature
+- Aqua Tail
+- MOVE_AVALANCHE
+- MOVE_AQUA_RING
+- Stomping Tantrum
+
+Addisamap @ Grassy Seed
+Ability: Grassy Surge
+EVs: 63 HP / 63 SpD / 2 Def
+Bold Nature
+- Ingrain
+- Sand Tomb
+- Synthesis
+- Giga Drain
 
 === TRAINER_EVERETT ===
 Name: Everett
