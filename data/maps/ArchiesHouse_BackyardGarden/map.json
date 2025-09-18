@@ -13,7 +13,64 @@
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
+  "object_events": [
+    {
+      "local_id": "LOCALID_BACKYARD_GARDEN_RIBOMBEE",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(RIBOMBEE)",
+      "x": 13,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_RIGHT_AND_LEFT",
+      "movement_range_x": 2,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Ribombee",
+      "flag": "FLAG_HIDE_RIBOMBEE"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_GARDEN_ANNIHILAPE",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ANNIHILAPE)",
+      "x": 19,
+      "y": 17,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Annihilape",
+      "flag": "FLAG_HIDE_ANNIHILAPE"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_GARDEN_VILEPLUME",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(VILEPLUME)",
+      "x": 20,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Vileplume",
+      "flag": "FLAG_HIDE_VILEPLUME"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_GARDEN_HELIOLISK",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HELIOLISK)",
+      "x": 11,
+      "y": 17,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Heliolisk",
+      "flag": "FLAG_HIDE_HELIOLISK"
+    }
+  ],
   "warp_events": [
     {
       "x": 8,

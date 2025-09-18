@@ -16822,10 +16822,69 @@ Gender: Male
 Music: Magma
 Double Battle: No
 AI: Smart Trainer
+Party Size: 4
+Mugshot: Purple
 
-Wobbuffet
+Krookodile @ Expert Belt
+Ability: Moxie
 Level: 50
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+EVs: 30 HP / 40 Atk
+Adamant Nature
+- Earthquake
+- Crunch
+- Outrage
+- Breaking Swipe
+
+Zangoose @ Toxic Orb
+Ability: Toxic Boost
+Level: 50
+EVs: 63 Atk / 7 Spe
+Jolly Nature
+- Extremespeed
+- Protect
+- Swords Dance
+- Psychic Fangs
+
+Weavile @ Focus Sash
+Ability: Tough Claws
+Level: 50
+EVs: 50 Spe / 20 Atk
+Adamant Nature
+- Night Slash
+- Ice Punch
+- Brick Break
+- Knock Off
+
+Lopunny @ Choice Scarf
+Ability: Limber
+Level: 50
+EVs: 40 SpA / 30 Spe
+Adamant Nature
+- High Jump Kick
+- Triple Axel
+- U-Turn
+- Drain Punch
+
+Porygon-Z @ Choice Specs
+Ability: Normalize
+Level: 50
+EVs: 63 SpA / 7 Spe
+Modest Nature
+- Tri-Attack
+- Shadow Ball
+- Ice Beam
+- Dark Pulse
+
+Zoroark @ Expert Belt
+Ability: Illusion
+Level: 50
+EVs: 63 SpA / 7 Spe
+Tags: Lead
+Modest Nature
+- U-Turn
+- Foul Play
+- Sludge Bomb
+- Taunt
 
 === TRAINER_DEMONLORD_GREEHASEET ===
 Name: Greehaseet
@@ -16835,10 +16894,68 @@ Gender: Male
 Music: Magma
 Double Battle: No
 AI: Smart Trainer
+Mugshot: Blue
 
-Wobbuffet
-Level: 50
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Toxapex @ Leftovers
+Ability: Corrosion
+Level: 60
+EVs: 63 HP / 21 Def
+Tags: Lead
+Bold Nature
+- Baneful Bunker
+- Sludge Bomb
+- Surf
+- Toxic
+
+Walrein @ ITEM_NEVER_MELT_ICE
+Ability: Thick Fat
+Level: 60
+EVs: 42 Atk / 42 SpA
+Lonely Nature
+- Surf
+- Ice Beam
+- Psychic Fangs
+- Bulldoze
+
+Quagsire @ Leftovers
+Ability: Unaware
+Level: 60
+EVs: 63 HP / 21 Atk
+Lonely Nature
+- Earthquake
+- Slack Off
+- Aqua Tail
+- Protect
+
+Jellicent @ Ability Shield
+Ability: Fluffy
+Level: 60
+EVs: 42 HP / 42 SpD
+Relaxed Nature
+- Stockpile
+- Swallow
+- Surf
+- Ice Beam
+
+Dracovish @ Choice Band
+Ability: Strong Jaw
+Level: 60
+EVs: 63 Atk / 21 HP
+Adamant Nature
+- Fishious Rend
+- Brutal Swing
+- Rock Tomb
+- Bulldoze
+
+Arctovish @ Choice Band
+Ability: Water Absorb
+Level: 60
+EVs: 63 Atk / 21 HP
+Adamant Nature
+- Fishious Rend
+- Brutal Swing
+- Rock Tomb
+- Bulldoze
 
 === TRAINER_DEMONLORD_SAPPRILON ===
 Name: Sapprilon
@@ -16847,10 +16964,73 @@ Pic: Sapprilon
 Gender: Male
 Music: Magma
 Double Battle: No
+Mugshot: Pink
 
-Wobbuffet
-Level: 50
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Cresselia @ Leftovers
+Ability: Slow Start
+Level: 70
+EVs: 63 HP / 36 SpD
+Tags: Weather Setter
+Bold Nature
+- Trick Room
+- Psyshock
+- Hidden Power
+- Thunder Wave
+
+Klefki @ Light Clay
+Ability: Prankster
+Level: 70
+EVs: 49 Def / 49 SpD
+Tags: Weather Setter
+Gentle Nature
+- Thunder Wave
+- Light Screen
+- Reflect
+- Dazzling Gleam
+
+Slowbro @ Leftovers
+Ability: Unaware
+Level: 70
+EVs: 63 HP / 36 SpA
+Tags: Weather Abuser
+Modest Nature
+- Slack Off
+- Surf
+- Protect
+- Psychic
+
+Bronzong @ Light Clay
+Ability: Heatproof
+Level: 70
+EVs: 49 Def / 49 SpD
+Tags: Weather Setter
+Sassy Nature
+- Body Press
+- Light Screen
+- Reflect
+- Iron Defense
+
+Beheeyem @ Twisted Spoon
+Ability: Psychic Surge
+Level: 70
+EVs: 63 SpA / 36 Spe
+Tags: Weather Abuser
+Modest Nature
+- Expanding Force
+- Dark Pulse
+- Shadow Ball
+- Power Gem
+
+Aggron @ Aggronite
+Ability: Sturdy
+Level: 70
+EVs: 63 HP / 36 Def
+Tags: Ace
+Adamant Nature
+- Iron Defense
+- Body Press
+- Rest
+- Sleep Talk
 
 === TRAINER_DEMONLORD_ADDISAMAP ===
 Name: Addisamap
@@ -16859,10 +17039,71 @@ Pic: Addisamap
 Gender: Male
 Music: Magma
 Double Battle: No
+Mugshot: Green
 
-Wobbuffet
-Level: 50
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sinistcha @ Terrain Extender
+Ability: Heatproof
+Level: 80
+EVs: 54 HP / 54 SpA
+Tags: Weather Setter
+Modest Nature
+- Stun Spore
+- Giga Drain
+- Grassy Terrain
+- Shadow Ball
+
+Torterra @ Leftovers
+Ability: Shell Armor
+Level: 80
+EVs: 45 HP / 45 Atk / 18 Def
+Tags: Weather Setter
+Adamant Nature
+- Sunny Day
+- Wood Hammer
+- Earthquake
+- Iron Defense
+
+Meganium @ Leftovers
+Ability: Flower Veil
+Level: 80
+EVs: 63 HP / 45 SpA
+Modest Nature
+- Aromatherapy
+- Safeguard
+- Giga Drain
+- Light Screen
+
+Venusaur @ Leftovers
+Ability: Chlorophyll
+Level: 80
+EVs: 45 HP / 64 SpA
+Tags: Weather Abuser
+Modest Nature
+- Synthesis
+- Solar Beam
+- Sludge Bomb
+- Hidden Power
+
+Clodsire @ Leftovers
+Ability: Poison Point
+Level: 80
+EVs: 54 HP / 54 Def
+Bold Nature
+- Slack Off
+- Sludge Wave
+- Toxic Spikes
+- Amnesia
+
+Palossand @ Leftovers
+Ability: Sand Spit
+Level: 80
+EVs: 63 HP / 45 SpA
+Tags: Ace
+Modest Nature
+- Shore Up
+- Shadow Ball
+- Scorching Sands
+- Giga Drain
 
 === TRAINER_DEMONLORD_MAXIE ===
 Name: Maxie

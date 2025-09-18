@@ -10,16 +10,19 @@ script DemonLairs_EventScript_Nessie {
         closemessage
         faceplayer
         applymovement(LOCALID_NESSIE_PAINTER, moves(emote_double_exclamation_mark))
+        waitmovement(0)
         speakername("Nessereign")
         msgbox(format("A-An intruder?! No… it can't be…"), MSGBOX_DEFAULT)
         waitmessage
         closemessage
         applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+        waitmovement(0)
         speakername("Archie")
         msgbox(format("You tyrants are about to meet your end, Nessereign!"), MSGBOX_DEFAULT)
         waitmessage
         closemessage
         applymovement(LOCALID_NESSIE_PAINTER, moves(walk_in_place_down))
+        waitmovement(0)
         speakername("Nessereign")
         msgbox(format("If you think I'll let you get away, you have another thing coming!"), MSGBOX_DEFAULT)
         waitmessage
@@ -38,6 +41,19 @@ script DemonLairs_EventScript_Nessie {
     waitmessage
     closemessage
     fadescreen(FADE_FROM_WHITE)
+    delay(60)
+    clearflag(FLAG_SYS_BOSS_IN_PROG)
+    playse(SE_PC_ON)
+    applymovement(LOCALID_PLAYER, moves(face_left))
+    setmetatile(4, 5, 0x220, FALSE)
+    special(DrawWholeMapView)
+    waitse
+    speakername("Old Archie")
+    msgbox(format("Hey, kid! I can finally get a handle of where you are; that means you must have beaten Nessereign!\p"
+                    "I've opened up a portal back to the hub whenever you need it."))
+    waitmessage
+    waitmovement(0)
+    closemessage
     end
 }
 

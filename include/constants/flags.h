@@ -66,7 +66,7 @@
 #define	FLAG_HIDE_WAILORD	            0x2F // Hides Wailord
 /* Cave Mons */
 #define	FLAG_HIDE_GALVANTULA	        0x30 // Hides Galvantula
-#define	FLAG_HIDE_SALAMANCE	            0x31 // Hides Salamence
+#define	FLAG_HIDE_SALAMENCE	            0x31 // Hides Salamence
 #define	FLAG_HIDE_EXCADRILL	            0x32 // Hides Excadrill
 #define	FLAG_HIDE_GARGANACL	            0x33 // Hides Garganacl
 /* Crags Mons */
@@ -76,14 +76,14 @@
 #define	FLAG_HIDE_TINKATON	            0x37 // Hides Tinkaton
 /* Beach Mons */
 #define	FLAG_HIDE_SWAMPERT	            0x38 // Hides Swampert
-#define	FLAG_HIDE_LINOONE	            0x39 // Hides Linoone
-#define	FLAG_HIDE_HARIYAMA	            0x3A // Hides Hariyama
-#define	FLAG_HIDE_SLOWKING	            0x3B // Hides Slowking
+#define	FLAG_HIDE_RAICHU	            0x39 // Hides Raichu
+#define	FLAG_HIDE_CLAWITZER	            0x3A // Hides Clawitzer
+#define	FLAG_HIDE_GOODRA	            0x3B // Hides Goodra
 /* Garden Mons */
 #define	FLAG_HIDE_ANNIHILAPE	        0x3C // Hides Annihilape
-#define	FLAG_HIDE_HERACROSS	            0x3D // Hides Heracross
+#define	FLAG_HIDE_HELIOLISK	            0x3D // Hides Heliolisk
 #define	FLAG_HIDE_RIBOMBEE	            0x3E // Hides Ribombee
-#define	FLAG_HIDE_POLTCHAGEIST	        0x3F // Hides Vileplume
+#define	FLAG_HIDE_VILEPLUME 	        0x3F // Hides Vileplume
 /* Nessie Puzzle Flags */
 #define	FLAG_NESSIE_READ_BOOK	        0x40 // Read the book for the Nessie solution
 #define	FLAG_NESSIE_GOT_DAGGER	        0x41 // Got the dagger for Nessie solution
@@ -1362,7 +1362,7 @@
 #define FLAG_SYS_POKEMON_GET                         (SYSTEM_FLAGS + 0x0) // FLAG_0x860
 #define FLAG_SYS_POKEDEX_GET                         (SYSTEM_FLAGS + 0x1)
 #define FLAG_SYS_POKENAV_GET                         (SYSTEM_FLAGS + 0x2)
-#define FLAG_UNUSED_0x863                            (SYSTEM_FLAGS + 0x3) // Unused Flag
+#define FLAG_SYS_BOSS_IN_PROG                        (SYSTEM_FLAGS + 0x3) // Unused Flag
 #define FLAG_SYS_GAME_CLEAR                          (SYSTEM_FLAGS + 0x4)
 #define FLAG_SYS_CHAT_USED                           (SYSTEM_FLAGS + 0x5)
 #define FLAG_UNLOCKED_TRENDY_SAYINGS                 (SYSTEM_FLAGS + 0x6)

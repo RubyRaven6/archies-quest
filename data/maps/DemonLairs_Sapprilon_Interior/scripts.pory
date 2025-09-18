@@ -30,5 +30,11 @@ script DemonLairs_EventScript_Sapprilon {
     waitmessage
     closemessage
     fadescreen(FADE_FROM_WHITE)
+    clearflag(FLAG_SYS_BOSS_IN_PROG)
+    playse(SE_PC_ON)
+    applymovement(LOCALID_PLAYER, moves(face_down))
+    setmetatile(5, 7, 0x01F, FALSE)
+    special(DrawWholeMapView)
+    waitse
     end
 }

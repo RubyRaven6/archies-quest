@@ -1,3 +1,107 @@
 mapscripts ArchiesHouse_BackyardCraggs_MapScripts {
-    
+
+}
+
+script ArchiesHouse_Backyard_EventScripts_Lucario {
+    lock
+
+    getpartysize
+	if(var(VAR_RESULT) < 4){
+		msgbox(format("He's just standing there, aura farming.\pShow him more aura?"), MSGBOX_YESNO)
+		closemessage
+		if(var(VAR_RESULT) == TRUE){
+			givemon(SPECIES_LUCARIO, 40, abilityNum=2, gender=MALE, move1=MOVE_AURA_SPHERE, move2=MOVE_FEINT, move3=MOVE_METAL_CLAW, move4=MOVE_VACUUM_WAVE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_CRAG_LUCARIO)
+			msgbox("Lucario joined your party!")
+			closemessage
+		} else {
+			applymovement(LOCALID_BACKYARD_CRAG_LUCARIO, moves(face_original_direction))
+			waitmovement(0)
+		}
+	} else {
+		goto(CommonScript_Backyard_EventScripts_FullParty)
+	}
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Blaziken {
+    lock
+	faceplayer
+    getpartysize
+	if(var(VAR_RESULT) < 4){
+		msgbox(format("Blaziken is trying to beat his personal best.\pGive him an even loftier goal?"), MSGBOX_YESNO)
+		closemessage
+		if(var(VAR_RESULT) == TRUE){
+			givemon(SPECIES_BLAZIKEN, 40, abilityNum=2, gender=MALE, move1=MOVE_FIRE_PUNCH, move2=MOVE_HIGH_JUMP_KICK, move3=MOVE_THUNDER_PUNCH, move4=MOVE_DETECT, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_CRAG_BLAZIKEN)
+			msgbox("Blaziken joined your party!")
+			closemessage
+		} else {
+			applymovement(LOCALID_BACKYARD_CRAG_BLAZIKEN, moves(face_original_direction))
+			waitmovement(0)
+		}
+	} else {
+		goto(CommonScript_Backyard_EventScripts_FullParty)
+	}
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Tinkaton {
+    lock
+	faceplayer
+    getpartysize
+	if(var(VAR_RESULT) < 4){
+		msgbox(format("Tinkaton seems to be practicing her aims with stone.\pHave her shoot for the sky?"), MSGBOX_YESNO)
+		closemessage
+		if(var(VAR_RESULT) == TRUE){
+			givemon(SPECIES_TINKATON, 40, abilityNum=2, gender=FEMALE, move1=MOVE_SMACK_DOWN, move2=MOVE_GIGATON_HAMMER, move3=MOVE_PLAY_ROUGH, move4=MOVE_FAKE_OUT, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_CRAG_TINKATON)
+			msgbox("Tinkaton joined your party!")
+			closemessage
+		} else {
+			applymovement(LOCALID_BACKYARD_CRAG_TINKATON, moves(face_original_direction))
+			waitmovement(0)
+		}
+	} else {
+		goto(CommonScript_Backyard_EventScripts_FullParty)
+	}
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Snorlax {
+    lock
+	faceplayer
+    getpartysize
+	if(var(VAR_RESULT) < 4){
+		msgbox(format("Snorlax is enjoying his relaxing time in the hot spring.\pDisturb his peace?"), MSGBOX_YESNO)
+		closemessage
+		if(var(VAR_RESULT) == TRUE){
+			givemon(SPECIES_SNORLAX, 40, abilityNum=2, gender=MALE, move1=MOVE_MEGA_PUNCH, move2=MOVE_REST, move3=MOVE_SLEEP_TALK, move4=MOVE_BODY_SLAM, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_CRAG_SNORLAX)
+			msgbox("Snorlax joined your party!")
+			closemessage
+		} else {
+			applymovement(LOCALID_BACKYARD_CRAG_SNORLAX, moves(face_original_direction))
+			waitmovement(0)
+		}
+	} else {
+		goto(CommonScript_Backyard_EventScripts_FullParty)
+	}
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Groudon {
+    lock
+    msgbox(format("Groudon's in a pushing contest. Best not disturb him."))
+    closemessage
+    release
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Heatran {
+    lock
+    msgbox(format("Heatran's in a pushing contest.\pIt's losing."))
+    closemessage
+    release
+	end
 }

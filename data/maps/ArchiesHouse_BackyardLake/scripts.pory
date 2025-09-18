@@ -38,6 +38,9 @@ script ArchiesHouse_Backyard_EventScripts_Ludicolo {
 			removeobject(LOCALID_BACKYARD_LAKE_LUDICOLO)
 			msgbox("Ludicolo joined your party!")
 			closemessage
+		} else {
+			applymovement(LOCALID_BACKYARD_LAKE_LUDICOLO, moves(face_original_direction))
+			waitmovement(0)
 		}
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
@@ -58,6 +61,9 @@ script ArchiesHouse_Backyard_EventScripts_Azumarill {
 			removeobject(LOCALID_BACKYARD_LAKE_AZUMARILL)
 			msgbox("Azumarill joined your party!")
 			closemessage
+		} else {
+			applymovement(LOCALID_BACKYARD_LAKE_AZUMARILL, moves(face_original_direction))
+			waitmovement(0)
 		}
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
@@ -78,6 +84,9 @@ script ArchiesHouse_Backyard_EventScripts_Gardevoir {
 			removeobject(LOCALID_BACKYARD_LAKE_GARDEVOIR)
 			msgbox("Gardevoir joined your party!")
 			closemessage
+		} else {
+			applymovement(LOCALID_BACKYARD_LAKE_GARDEVOIR, moves(face_original_direction))
+			waitmovement(0)
 		}
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)

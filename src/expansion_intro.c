@@ -408,7 +408,7 @@ static void SpriteCallback_PorygonFlying(struct Sprite* sprite)
             sprite->callback = SpriteCallback_PorygonHit;
             sprite->sTimer = 0;
             PlaySE(SE_M_DOUBLE_SLAP);
-            if (VarGet(VAR_DEMON_LORD_PROGRESS) == 5){
+            if (VarGet(VAR_DEMON_LORD_PROGRESS) == 4){
                 PlayCryInternal(SPECIES_PORYGON_Z, 0, 120, 10, 0);
             } else {
                 PlayCryInternal(SPECIES_PORYGON, 0, 120, 10, 0);

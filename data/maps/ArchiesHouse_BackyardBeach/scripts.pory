@@ -16,3 +16,135 @@ script ArchiesHouse_BackyardBeach_Boat {
         closemessage
     }
 }
+
+script ArchiesHouse_Backyard_EventScripts_Swampert {
+    lock
+	faceplayer
+    getpartysize
+	if(var(VAR_RESULT) < 4){
+		msgbox(format("Swampert is building a sandcastle.\pGive her a bigger project?"), MSGBOX_YESNO)
+		closemessage
+		if(var(VAR_RESULT) == TRUE){
+			givemon(SPECIES_SWAMPERT, 40, abilityNum=2, gender=FEMALE, move1=MOVE_MUDDY_WATER, move2=MOVE_MUD_SHOT, move3=MOVE_HAMMER_ARM, move4=MOVE_REST, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_BEACH_SWAMPERT)
+			msgbox("Swampert joined your party!")
+			closemessage
+		} else {
+			applymovement(LOCALID_BACKYARD_BEACH_SWAMPERT, moves(face_original_direction))
+			waitmovement(0)
+		}
+	} else {
+		goto(CommonScript_Backyard_EventScripts_FullParty)
+	}
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_AlolanRaichu {
+    lock
+	faceplayer
+    getpartysize
+	if(var(VAR_RESULT) < 4){
+		msgbox(format("Raichu is practicing its gnarly rip on his sick board.\pShow him total posers to wipe out?"), MSGBOX_YESNO)
+		closemessage
+		if(var(VAR_RESULT) == TRUE){
+			givemon(SPECIES_RAICHU_ALOLA, 40, abilityNum=2, gender=MALE, move1=MOVE_SURF, move2=MOVE_ELECTRO_BALL, move3=MOVE_NASTY_PLOT, move4=MOVE_AGILITY, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_BEACH_RAICHU)
+			msgbox("Raichu joined your party!")
+			closemessage
+		} else {
+			applymovement(LOCALID_BACKYARD_BEACH_RAICHU, moves(face_original_direction))
+			waitmovement(0)
+		}
+	} else {
+		goto(CommonScript_Backyard_EventScripts_FullParty)
+	}
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Clawitzer {
+    lock
+	faceplayer
+    getpartysize
+	if(var(VAR_RESULT) < 4){
+		msgbox(format("Clawitzer is staring at the distance.\pGive her a target?"), MSGBOX_YESNO)
+		closemessage
+		if(var(VAR_RESULT) == TRUE){
+			givemon(SPECIES_CLAWITZER, 40, abilityNum=2, gender=FEMALE, move1=MOVE_AURA_SPHERE, move2=MOVE_DRAGON_PULSE, move3=MOVE_HEAL_PULSE, move4=MOVE_MUD_SHOT, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_BEACH_CLAWITZER)
+			msgbox("Clawitzer joined your party!")
+			closemessage
+		} else {
+			applymovement(LOCALID_BACKYARD_BEACH_CLAWITZER, moves(face_original_direction))
+			waitmovement(0)
+		}
+	} else {
+		goto(CommonScript_Backyard_EventScripts_FullParty)
+	}
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_HisuianGoodra {
+    lock
+	faceplayer
+    getpartysize
+	if(var(VAR_RESULT) < 4){
+		msgbox(format("Goodra has been going to the shore for the past two weeks now.\pAsk her to follow you instead?"), MSGBOX_YESNO)
+		closemessage
+		if(var(VAR_RESULT) == TRUE){
+			givemon(SPECIES_GOODRA_HISUI, 40, abilityNum=2, gender=FEMALE, move1=MOVE_TEARFUL_LOOK, move2=MOVE_DRAGON_BREATH, move3=MOVE_IRON_HEAD, move4=MOVE_CURSE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_BEACH_GOODRA)
+			msgbox("Goodra joined your party!")
+			closemessage
+		} else {
+			applymovement(LOCALID_BACKYARD_BEACH_GOODRA, moves(face_original_direction))
+			waitmovement(0)
+		}
+	} else {
+		goto(CommonScript_Backyard_EventScripts_FullParty)
+	}
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Keldeo {
+    lock
+	faceplayer
+    msgbox(format("Keldeo is currently being trained."))
+    closemessage
+    applymovement(LOCALID_BACKYARD_BEACH_KELDEO, moves(face_original_direction))
+    waitmovement(0)
+    release
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Virizion {
+    lock
+	faceplayer
+    msgbox(format("Virizion is busy giving Keldeo pointers."))
+    closemessage
+    applymovement(LOCALID_BACKYARD_BEACH_VIRIZION, moves(face_original_direction))
+    waitmovement(0)
+    release
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Cobalion {
+    lock
+	faceplayer
+    msgbox(format("Cobalion is currently ensuring Keldeo's training is enough."))
+    closemessage
+    applymovement(LOCALID_BACKYARD_BEACH_COBALION, moves(face_original_direction))
+    waitmovement(0)
+    release
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Terrakion {
+    lock
+	faceplayer
+    msgbox(format("Terrakion seems to be hyping Keldeo up."))
+    closemessage
+    applymovement(LOCALID_BACKYARD_BEACH_TERRAKION, moves(face_original_direction))
+    waitmovement(0)
+    release
+	end
+}

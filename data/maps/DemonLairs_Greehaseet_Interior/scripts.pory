@@ -1,5 +1,5 @@
 mapscripts DemonLairs_Greehaseet_Interior_MapScripts {
-	
+
 }
 
 script DemonLairs_EventScript_Greehaseet {
@@ -33,5 +33,12 @@ script DemonLairs_EventScript_Greehaseet {
     waitmessage
     closemessage
     fadescreen(FADE_FROM_WHITE)
+    delay(60)
+    clearflag(FLAG_SYS_BOSS_IN_PROG)
+    playse(SE_PC_ON)
+    applymovement(LOCALID_PLAYER, moves(face_down))
+    setmetatile(8, 10, 0x014, FALSE)
+    special(DrawWholeMapView)
+    waitse
     end
 }

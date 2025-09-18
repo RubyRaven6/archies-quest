@@ -6,7 +6,7 @@
   "region_map_section": "MAPSEC_ADDISAMAP_LAIR",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_NONE",
+  "map_type": "MAP_TYPE_ROUTE",
   "allow_cycling": false,
   "allow_escaping": false,
   "allow_running": false,
@@ -30,6 +30,16 @@
     }
   ],
   "warp_events": [],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 13,
+      "elevation": 0,
+      "var": "FLAG_SYS_BOSS_IN_PROG",
+      "var_value": "0",
+      "script": "Common_EventScript_ReturnToHub"
+    }
+  ],
   "bg_events": []
 }
