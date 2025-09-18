@@ -16971,10 +16971,11 @@ Ability: Slow Start
 Level: 70
 EVs: 63 HP / 36 SpD
 Tags: Weather Setter
+IVs: 30 HP / 0 Atk / 30 Def / 30 SpA / 30 SpD / 0 Spe
 Bold Nature
 - Trick Room
 - Psyshock
-- Hidden Power
+- Hidden Power Fighting
 - Thunder Wave
 
 Klefki @ Light Clay
@@ -17079,10 +17080,11 @@ Level: 80
 EVs: 45 HP / 64 SpA
 Tags: Weather Abuser
 Modest Nature
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 31 Spe
 - Synthesis
 - Solar Beam
 - Sludge Bomb
-- Hidden Power
+- Hidden Power Ground
 
 Clodsire @ Leftovers
 Ability: Poison Point
