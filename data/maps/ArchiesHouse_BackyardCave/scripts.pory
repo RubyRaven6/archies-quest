@@ -15,12 +15,13 @@ script ArchiesHouse_Backyard_EventScripts_Excadrill {
 			msgbox("Excadrill joined your party!")
 			closemessage
 		} else {
-            applymovement(LOCALID_BACKYARD_CAVE_GARGANACL, moves(face_original_direction))
+            applymovement(LOCALID_BACKYARD_CAVE_EXCADRILL, moves(face_original_direction))
             waitmovement(0)
         }
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }
 
@@ -37,12 +38,13 @@ script ArchiesHouse_Backyard_EventScripts_Galvantula {
 			msgbox(" joined your party!")
 			closemessage
 		} else {
-            applymovement(LOCALID_BACKYARD_CAVE_GARGANACL, moves(face_original_direction))
+            applymovement(LOCALID_BACKYARD_CAVE_GALVANTULA, moves(face_original_direction))
             waitmovement(0)
         }
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }
 
@@ -56,7 +58,7 @@ script ArchiesHouse_Backyard_EventScripts_Garganacl {
 		if(var(VAR_RESULT) == TRUE){
 			givemon(SPECIES_GARGANACL, 50, abilityNum=2, gender=FEMALE, move1=MOVE_HAMMER_ARM, move2=MOVE_SALT_CURE, move3=MOVE_STEALTH_ROCK, move4=MOVE_ROCK_SLIDE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_CAVE_GARGANACL)
-			msgbox(" joined your party!")
+			msgbox("Garganacl joined your party!")
 			closemessage
 		} else {
             applymovement(LOCALID_BACKYARD_CAVE_GARGANACL, moves(face_original_direction))
@@ -65,23 +67,24 @@ script ArchiesHouse_Backyard_EventScripts_Garganacl {
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }
 
-script ArchiesHouse_Backyard_EventScripts_Salamence {
+script ArchiesHouse_Backyard_EventScripts_Torkoal {
     lock
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Salamence seems to be ansty, looking at you excitedly.\pMake a bad decision?"), MSGBOX_YESNO)
+		msgbox(format("Torkoal is wandering around, standing on business.\pInvite her to stand even higher?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
-			givemon(SPECIES_SALAMENCE, 50, abilityNum=2, gender=MALE, move1=MOVE_DRAGON_CLAW, move2=MOVE_DUAL_WINGBEAT, move3=MOVE_IRON_TAIL, move4=MOVE_SWAGGER, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
-			removeobject(LOCALID_BACKYARD_CAVE_SALAMENCE)
-			msgbox(" joined your party!")
+			givemon(SPECIES_TORKOAL, 50, abilityNum=2, gender=FEMALE, move1=MOVE_SOLAR_BEAM, move2=MOVE_HEAT_WAVE, move3=MOVE_CURSE, move4=MOVE_PROTECT, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_CAVE_TORKOAL)
+			msgbox("Torkoal joined your party!")
 			closemessage
 		} else {
-            applymovement(LOCALID_BACKYARD_CAVE_GARGANACL, moves(face_original_direction))
+            applymovement(LOCALID_BACKYARD_CAVE_TORKOAL, moves(face_original_direction))
             waitmovement(0)
         }
 	} else {

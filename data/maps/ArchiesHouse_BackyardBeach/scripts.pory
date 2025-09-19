@@ -36,6 +36,7 @@ script ArchiesHouse_Backyard_EventScripts_Swampert {
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }
 
@@ -58,28 +59,30 @@ script ArchiesHouse_Backyard_EventScripts_AlolanRaichu {
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }
 
-script ArchiesHouse_Backyard_EventScripts_Clawitzer {
+script ArchiesHouse_Backyard_EventScripts_Salazzle {
     lock
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Clawitzer is staring at the distance.\pGive her a target?"), MSGBOX_YESNO)
+		msgbox(format("Salazzle is pleasantly warming herself in the sun.\pAnnoy her?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
-			givemon(SPECIES_CLAWITZER, 50, abilityNum=2, gender=FEMALE, move1=MOVE_AURA_SPHERE, move2=MOVE_DRAGON_PULSE, move3=MOVE_HEAL_PULSE, move4=MOVE_MUD_SHOT, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
-			removeobject(LOCALID_BACKYARD_BEACH_CLAWITZER)
-			msgbox("Clawitzer joined your party!")
+			givemon(SPECIES_SALAZZLE, 50, abilityNum=2, gender=FEMALE, move1=MOVE_INCINERATE, move2=MOVE_VENOSHOCK, move3=MOVE_TOXIC, move4=MOVE_DRAGON_DANCE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_BEACH_SALAZZLE)
+			msgbox("Salazzle joined your party!")
 			closemessage
 		} else {
-			applymovement(LOCALID_BACKYARD_BEACH_CLAWITZER, moves(face_original_direction))
+			applymovement(LOCALID_BACKYARD_BEACH_SALAZZLE, moves(face_original_direction))
 			waitmovement(0)
 		}
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }
 
@@ -102,6 +105,7 @@ script ArchiesHouse_Backyard_EventScripts_HisuianGoodra {
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }
 

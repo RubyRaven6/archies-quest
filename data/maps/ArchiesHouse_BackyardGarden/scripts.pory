@@ -25,6 +25,7 @@ script ArchiesHouse_Backyard_EventScripts_Ribombee {
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }
 
@@ -47,6 +48,7 @@ script ArchiesHouse_Backyard_EventScripts_Vileplume {
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }
 
@@ -69,6 +71,7 @@ script ArchiesHouse_Backyard_EventScripts_Annihilape {
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }
 
@@ -91,5 +94,6 @@ script ArchiesHouse_Backyard_EventScripts_Heliolisk {
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }

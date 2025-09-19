@@ -6077,6 +6077,74 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_WAILORD}),
     },
 
+    [SPECIES_WAILORD] =
+    {
+        .baseHP        = 170,
+        .baseAttack    = 90,
+        .baseDefense   = 45,
+        .baseSpeed     = 60,
+        .baseSpAttack  = 90,
+        .baseSpDefense = 45,
+        .types = MON_TYPES(TYPE_WATER),
+        .catchRate = 60,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 175 : 206,
+        .evYield_HP = 2,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 40,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_FLUCTUATING,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD, EGG_GROUP_WATER_2),
+        .abilities = { ABILITY_FLUFFY, ABILITY_OBLIVIOUS, ABILITY_PRESSURE },
+        .bodyColor = BODY_COLOR_BLUE,
+        .speciesName = _("Wailord"),
+        .cryId = CRY_WAILORD,
+        .natDexNum = NATIONAL_DEX_WAILORD,
+        .categoryName = _("Float Whale"),
+        .height = 145,
+        .weight = 3980,
+        .description = COMPOUND_STRING(
+            "It breathes through nostrils that it\n"
+            "raises above the sea. By inhaling to its\n"
+            "maximum capacity, a Wailord can dive close\n"
+            "to 10,000 feet beneath the waves."),
+        .pokemonScale = 256,
+        .pokemonOffset = 0,
+        .trainerScale = 1352,
+        .trainerOffset = 18,
+        .frontPic = gMonFrontPic_Wailord,
+        .frontPicSize = MON_COORDS_SIZE(64, 56),
+        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 4,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 26),
+            ANIMCMD_FRAME(1, 48),
+            ANIMCMD_FRAME(0, 33),
+        ),
+        .frontAnimId = ANIM_V_SLIDE_WOBBLE,
+        .frontAnimDelay = 10,
+        .backPic = gMonBackPic_Wailord,
+        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 24) : MON_COORDS_SIZE(64, 40),
+        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 22 : 14,
+        .backAnimId = BACK_ANIM_SHAKE_GLOW_BLUE,
+        .palette = gMonPalette_Wailord,
+        .shinyPalette = gMonShinyPalette_Wailord,
+        .iconSprite = gMonIcon_Wailord,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(1, 7, SHADOW_SIZE_XL_BATTLE_ONLY)
+        FOOTPRINT(Wailord)
+        OVERWORLD(
+            sPicTable_Wailord,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            sAnimTable_Following,
+            gOverworldPalette_Wailord,
+            gShinyOverworldPalette_Wailord
+        )
+        .levelUpLearnset = sWailordLevelUpLearnset,
+        .teachableLearnset = sWailordTeachableLearnset,
+    },
+
 #endif //P_FAMILY_WAILMER
 
 #if P_FAMILY_NUMEL
@@ -6332,80 +6400,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
 #endif //P_FAMILY_NUMEL
 
 #if P_FAMILY_TORKOAL
-    [SPECIES_TORKOAL] =
-    {
-        .baseHP        = 70,
-        .baseAttack    = 85,
-        .baseDefense   = 140,
-        .baseSpeed     = 20,
-        .baseSpAttack  = 85,
-        .baseSpDefense = 70,
-        .types = MON_TYPES(TYPE_FIRE),
-        .catchRate = 90,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 165 : 161,
-        .evYield_Defense = 2,
-        .itemRare = ITEM_CHARCOAL,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-    #if P_UPDATED_ABILITIES >= GEN_7
-        .abilities = { ABILITY_WHITE_SMOKE, ABILITY_DROUGHT, ABILITY_SHELL_ARMOR },
-    #else
-        .abilities = { ABILITY_WHITE_SMOKE, ABILITY_NONE, ABILITY_SHELL_ARMOR },
-    #endif
-        .bodyColor = BODY_COLOR_BROWN,
-        .speciesName = _("Torkoal"),
-        .cryId = CRY_TORKOAL,
-        .natDexNum = NATIONAL_DEX_TORKOAL,
-        .categoryName = _("Coal"),
-        .height = 5,
-        .weight = 804,
-        .description = COMPOUND_STRING(
-            "It battles using energy it gets from\n"
-            "burning coal. When loosing smoke from its\n"
-            "nostrils, it lets off a sound that is\n"
-            "similar to a locomotive's horn."),
-        .pokemonScale = 390,
-        .pokemonOffset = 9,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Torkoal,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 2 : 3,
-        .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 15),
-            ANIMCMD_FRAME(0, 15),
-        ),
-        .frontAnimId = ANIM_V_STRETCH,
-        .backPic = gMonBackPic_Torkoal,
-        .backPicSize = MON_COORDS_SIZE(64, 48),
-        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 10 : 8,
-        .backAnimId = BACK_ANIM_SHAKE_GLOW_RED,
-        .palette = gMonPalette_Torkoal,
-        .shinyPalette = gMonShinyPalette_Torkoal,
-        .iconSprite = gMonIcon_Torkoal,
-        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 1 : 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_SLOW,
-        SHADOW(2, 7, SHADOW_SIZE_L)
-        FOOTPRINT(Torkoal)
-        OVERWORLD(
-            sPicTable_Torkoal,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Torkoal,
-            gShinyOverworldPalette_Torkoal
-        )
-        .levelUpLearnset = sTorkoalLevelUpLearnset,
-        .teachableLearnset = sTorkoalTeachableLearnset,
-        .eggMoveLearnset = sTorkoalEggMoveLearnset,
-    },
+
 #endif //P_FAMILY_TORKOAL
 
 #if P_FAMILY_SPOINK

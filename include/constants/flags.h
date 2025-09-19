@@ -61,23 +61,23 @@
 #define	FLAG_HIDE_GARDEVOIR	            0x2B // Hide Gardevoir
 /* Sea Mons */
 #define	FLAG_HIDE_MILOTIC	            0x2C // Hides Milotic
-#define	FLAG_HIDE_KINGDRA	            0x2D // Hide Kingdra
+#define	FLAG_HIDE_DHELMISE              0x2D // Hide Dhelmise
 #define	FLAG_HIDE_PELIPPER	            0x2E // Hides Walrein
-#define	FLAG_HIDE_WAILORD	            0x2F // Hides Wailord
+#define	FLAG_HIDE_CERULEDGE	            0x2F // Hides Ceruledge
 /* Cave Mons */
 #define	FLAG_HIDE_GALVANTULA	        0x30 // Hides Galvantula
-#define	FLAG_HIDE_SALAMENCE	            0x31 // Hides Salamence
+#define	FLAG_HIDE_TORKOAL	            0x31 // Hides Salamence
 #define	FLAG_HIDE_EXCADRILL	            0x32 // Hides Excadrill
 #define	FLAG_HIDE_GARGANACL	            0x33 // Hides Garganacl
 /* Crags Mons */
 #define	FLAG_HIDE_BLAZIKEN	            0x34 // Hides Blaziken
 #define	FLAG_HIDE_LUCARIO	            0x35 // Hides Lucario
-#define	FLAG_HIDE_SNORLAX	            0x36 // Hides Snorlax
+#define	FLAG_HIDE_SALAMENCE	            0x36 // Hides Salamence
 #define	FLAG_HIDE_TINKATON	            0x37 // Hides Tinkaton
 /* Beach Mons */
 #define	FLAG_HIDE_SWAMPERT	            0x38 // Hides Swampert
 #define	FLAG_HIDE_RAICHU	            0x39 // Hides Raichu
-#define	FLAG_HIDE_CLAWITZER	            0x3A // Hides Clawitzer
+#define	FLAG_HIDE_SALAZZLE	            0x3A // Hides Salazzle
 #define	FLAG_HIDE_GOODRA	            0x3B // Hides Goodra
 /* Garden Mons */
 #define	FLAG_HIDE_ANNIHILAPE	        0x3C // Hides Annihilape

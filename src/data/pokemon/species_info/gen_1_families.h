@@ -14856,6 +14856,88 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     #endif
     },
 
+    [SPECIES_KINGDRA] =
+    {
+        .baseHP        = 75,
+        .baseAttack    = 95,
+        .baseDefense   = 95,
+        .baseSpeed     = 85,
+        .baseSpAttack  = 95,
+        .baseSpDefense = 95,
+        .types = MON_TYPES(TYPE_WATER, TYPE_DRAGON),
+        .catchRate = 45,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 270,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 243,
+    #else
+        .expYield = 207,
+    #endif
+        .evYield_Attack = 1,
+        .evYield_SpAttack = 1,
+        .evYield_SpDefense = 1,
+        .itemRare = ITEM_DRAGON_SCALE,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_DRAGON),
+    #if P_UPDATED_ABILITIES >= GEN_4
+        .abilities = { ABILITY_SWIFT_SWIM, ABILITY_SNIPER, ABILITY_DAMP },
+    #else
+        .abilities = { ABILITY_SWIFT_SWIM, ABILITY_NONE, ABILITY_DAMP },
+    #endif
+        .bodyColor = BODY_COLOR_BLUE,
+        .speciesName = _("Kingdra"),
+        .cryId = CRY_KINGDRA,
+        .natDexNum = NATIONAL_DEX_KINGDRA,
+        .categoryName = _("Dragon"),
+        .height = 18,
+        .weight = 1520,
+        .description = COMPOUND_STRING(
+            "It sleeps quietly, deep on the seafloor.\n"
+            "When it comes up to the surface, it\n"
+            "creates a huge whirlpool that can swallow\n"
+            "even ships."),
+        .pokemonScale = 256,
+        .pokemonOffset = 0,
+        .trainerScale = 287,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_Kingdra,
+        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 64) : MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 4 : 1,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 11),
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 20),
+            ANIMCMD_FRAME(0, 10),
+        ),
+        .frontAnimId = ANIM_CIRCLE_INTO_BG,
+        .backPic = gMonBackPic_Kingdra,
+        .backPicSize = MON_COORDS_SIZE(64, 56),
+        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 6 : 7,
+        .backAnimId = BACK_ANIM_SHAKE_GLOW_BLUE,
+        .palette = gMonPalette_Kingdra,
+        .shinyPalette = gMonShinyPalette_Kingdra,
+        .iconSprite = gMonIcon_Kingdra,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(3, 12, SHADOW_SIZE_M)
+        FOOTPRINT(Kingdra)
+        OVERWORLD(
+            sPicTable_Kingdra,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SPOT,
+            sAnimTable_Following,
+            gOverworldPalette_Kingdra,
+            gShinyOverworldPalette_Kingdra
+        )
+        .levelUpLearnset = sKingdraLevelUpLearnset,
+        .teachableLearnset = sKingdraTeachableLearnset,
+    },
+
 #if P_GEN_2_CROSS_EVOS
 #endif //P_GEN_2_CROSS_EVOS
 #endif //P_FAMILY_HORSEA
@@ -18728,6 +18810,78 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_SNORLAX, CONDITIONS({IF_MIN_FRIENDSHIP, FRIENDSHIP_EVO_THRESHOLD})}),
     },
 #endif //P_GEN_4_CROSS_EVOS
+
+[SPECIES_SNORLAX] =
+    {
+        .baseHP        = 160,
+        .baseAttack    = 110,
+        .baseDefense   = 65,
+        .baseSpeed     = 30,
+        .baseSpAttack  = 65,
+        .baseSpDefense = P_UPDATED_STATS >= GEN_2 ? 110 : 65,
+        .types = MON_TYPES(TYPE_NORMAL),
+        .catchRate = 25,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 189 : 154,
+        .evYield_HP = 2,
+        .itemCommon = ITEM_LEFTOVERS,
+        .itemRare = ITEM_LEFTOVERS,
+        .genderRatio = PERCENT_FEMALE(12.5),
+        .eggCycles = 40,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER),
+        .abilities = { ABILITY_IMMUNITY, ABILITY_THICK_FAT, ABILITY_GLUTTONY },
+        .bodyColor = BODY_COLOR_BLACK,
+        .speciesName = _("Snorlax"),
+        .cryId = CRY_SNORLAX,
+        .natDexNum = NATIONAL_DEX_SNORLAX,
+        .categoryName = _("Sleeping"),
+        .height = 21,
+        .weight = 4600,
+        .description = COMPOUND_STRING(
+            "Snorlax's typical day consists of nothing\n"
+            "more than eating and sleeping. It is such\n"
+            "a docile Pokémon that there are children\n"
+            "who use its big belly as a place to play."),
+        .pokemonScale = 256,
+        .pokemonOffset = 4,
+        .trainerScale = 423,
+        .trainerOffset = 11,
+        .frontPic = gMonFrontPic_Snorlax,
+        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 5 : 1,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 50),
+            ANIMCMD_FRAME(1, 50),
+            ANIMCMD_FRAME(0, 10),
+        ),
+        .frontAnimId = P_GBA_STYLE_SPECIES_GFX ? ANIM_SWING_CONCAVE : ANIM_V_STRETCH,
+        .backPic = gMonBackPic_Snorlax,
+        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 48) : MON_COORDS_SIZE(64, 40),
+        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 11 : 13,
+        .backAnimId = BACK_ANIM_DIP_RIGHT_SIDE,
+        .palette = gMonPalette_Snorlax,
+        .shinyPalette = gMonShinyPalette_Snorlax,
+        .iconSprite = gMonIcon_Snorlax,
+        .iconPalIndex = P_GBA_STYLE_SPECIES_ICONS ? 1 : 3,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(0, 9, SHADOW_SIZE_XL_BATTLE_ONLY)
+        FOOTPRINT(Snorlax)
+        OVERWORLD(
+            sPicTable_Snorlax,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Snorlax,
+            gShinyOverworldPalette_Snorlax
+        )
+        .levelUpLearnset = sSnorlaxLevelUpLearnset,
+        .teachableLearnset = sSnorlaxTeachableLearnset,
+        .eggMoveLearnset = sSnorlaxEggMoveLearnset,
+        .formSpeciesIdTable = sSnorlaxFormSpeciesIdTable,
+        .formChangeTable = sSnorlaxFormChangeTable,
+    },
 
 #if P_GIGANTAMAX_FORMS
     [SPECIES_SNORLAX_GMAX] =

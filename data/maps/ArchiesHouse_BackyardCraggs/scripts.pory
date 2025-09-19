@@ -21,6 +21,7 @@ script ArchiesHouse_Backyard_EventScripts_Lucario {
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }
 
@@ -43,6 +44,7 @@ script ArchiesHouse_Backyard_EventScripts_Blaziken {
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }
 
@@ -65,28 +67,30 @@ script ArchiesHouse_Backyard_EventScripts_Tinkaton {
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }
 
-script ArchiesHouse_Backyard_EventScripts_Snorlax {
+script ArchiesHouse_Backyard_EventScripts_Salamence {
     lock
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Snorlax is enjoying his relaxing time in the hot spring.\pDisturb his peace?"), MSGBOX_YESNO)
+		msgbox(format("Salamence seems to be ansty, looking at you excitedly.\pMake a bad decision?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
-			givemon(SPECIES_SNORLAX, 50, abilityNum=2, gender=MALE, move1=MOVE_MEGA_PUNCH, move2=MOVE_REST, move3=MOVE_SLEEP_TALK, move4=MOVE_BODY_SLAM, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
-			removeobject(LOCALID_BACKYARD_CRAG_SNORLAX)
-			msgbox("Snorlax joined your party!")
+			givemon(SPECIES_SALAMENCE, 50, abilityNum=2, gender=MALE, move1=MOVE_DRAGON_CLAW, move2=MOVE_DUAL_WINGBEAT, move3=MOVE_IRON_TAIL, move4=MOVE_SWAGGER, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_CAVE_SALAMENCE)
+			msgbox(" joined your party!")
 			closemessage
 		} else {
-			applymovement(LOCALID_BACKYARD_CRAG_SNORLAX, moves(face_original_direction))
-			waitmovement(0)
-		}
+            applymovement(LOCALID_BACKYARD_CAVE_GARGANACL, moves(face_original_direction))
+            waitmovement(0)
+        }
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }
 
@@ -101,6 +105,14 @@ script ArchiesHouse_Backyard_EventScripts_Groudon {
 script ArchiesHouse_Backyard_EventScripts_Heatran {
     lock
     msgbox(format("Heatran's in a pushing contest.\pIt's losing."))
+    closemessage
+    release
+	end
+}
+
+script ArchiesHouse_Backyard_EventScripts_Volcanion {
+    lock
+    msgbox(format("Volcanion is enjoying the hot spring."))
     closemessage
     release
 	end

@@ -21,7 +21,7 @@
       "y": 2,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 1,
+      "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
@@ -31,11 +31,11 @@
     {
       "local_id": "LOCALID_BACKYARD_CAVE_EXCADRILL",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(EXCADRILL)",
-      "x": 6,
-      "y": 4,
+      "x": 3,
+      "y": 6,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 1,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
@@ -48,7 +48,7 @@
       "x": 15,
       "y": 8,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -57,22 +57,8 @@
       "flag": "FLAG_HIDE_GALVANTULA"
     },
     {
-      "local_id": "LOCALID_BACKYARD_CAVE_SALAMENCE",
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SALAMENCE)",
-      "x": 11,
-      "y": 6,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 1,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "ArchiesHouse_Backyard_EventScripts_Salamence",
-      "flag": "FLAG_HIDE_SALAMENCE"
-    },
-    {
       "local_id": "LOCALID_BACKYARD_CAVE_DIANCIE",
-      "graphics_id": "OBJ_EVENT_GFX_BRENDAN_NORMAL",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DIANCIE)",
       "x": 1,
       "y": 5,
       "elevation": 0,
@@ -83,6 +69,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ArchiesHouse_Backyard_EventScripts_Diancie",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_CAVE_TORKOAL",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TORKOAL)",
+      "x": 11,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Torkoal",
+      "flag": "FLAG_HIDE_TORKOAL"
     }
   ],
   "warp_events": [

@@ -2277,68 +2277,6 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .teachableLearnset = sArmarougeTeachableLearnset,
     },
 
-    [SPECIES_CERULEDGE] =
-    {
-        .baseHP        = 75,
-        .baseAttack    = 125,
-        .baseDefense   = 80,
-        .baseSpeed     = 85,
-        .baseSpAttack  = 60,
-        .baseSpDefense = 100,
-        .types = MON_TYPES(TYPE_FIRE, TYPE_GHOST),
-        .catchRate = 25,
-        .expYield = 263,
-        .evYield_Attack = 2,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 35,
-        .friendship = 20,
-        .growthRate = GROWTH_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_HUMAN_LIKE),
-        .abilities = { ABILITY_FLASH_FIRE, ABILITY_NONE, ABILITY_WEAK_ARMOR },
-        .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("Ceruledge"),
-        .cryId = CRY_CERULEDGE,
-        .natDexNum = NATIONAL_DEX_CERULEDGE,
-        .categoryName = _("Fire Blades"),
-        .height = 16,
-        .weight = 620,
-        .description = COMPOUND_STRING(
-            "The fiery blades on its arms burn\n"
-            "fiercely with the lingering\n"
-            "resentment of a sword wielder who fell\n"
-            "before accomplishing their goal."),
-        .pokemonScale = 356,
-        .pokemonOffset = 17,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Ceruledge,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Ceruledge,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 3,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_Ceruledge,
-        .shinyPalette = gMonShinyPalette_Ceruledge,
-        .iconSprite = gMonIcon_Ceruledge,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(9, 14, SHADOW_SIZE_L)
-        FOOTPRINT(Ceruledge)
-        OVERWORLD(
-            sPicTable_Ceruledge,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Ceruledge,
-            gShinyOverworldPalette_Ceruledge
-        )
-        .levelUpLearnset = sCeruledgeLevelUpLearnset,
-        .teachableLearnset = sCeruledgeTeachableLearnset,
-    },
 #endif //P_FAMILY_CHARCADET
 
 #if P_FAMILY_TADBULB
