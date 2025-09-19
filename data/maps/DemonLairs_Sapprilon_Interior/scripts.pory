@@ -18,6 +18,7 @@ script DemonLairs_EventScript_Sapprilon {
         waitmessage
         closemessage
     } else {
+        faceplayer
         speakername("Sapprilon")
         msgbox(format("You just don't know when to quit, don't you? Well, you'll learn how soon enough!"), MSGBOX_DEFAULT)
         waitmessage

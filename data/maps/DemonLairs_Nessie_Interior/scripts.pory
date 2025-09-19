@@ -28,6 +28,7 @@ script DemonLairs_EventScript_Nessie {
         waitmessage
         closemessage
     } else {
+        faceplayer
         speakername("Nessereign")
         msgbox(format("You just don't know when to quit, huh? Luckily neither do I!"), MSGBOX_DEFAULT)
         waitmessage

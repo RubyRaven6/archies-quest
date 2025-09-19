@@ -2,18 +2,15 @@
 
 ## Graphics
 **Puzzle UI Graphics**: ruby<br>
-**Demon Lord Sprites**: Eva (purrfectdoodle)<br>
-**Archie ORAS OW Sprite**: hyo<br>
+**Demon Lord, Archie Sprites**: Eva (purrfectdoodle)<br>
 **HGSS Ruin Maniac**: Delta231
 
 ## Tilesets
 **Fence in Archie's Backyard**: KyuZee<br>
 
-**Legend of Zelda House Secondary**
-Buildings: Hek-el-grande
-
-Assembler : Yumekua
-
+**Legend of Zelda House Secondary**<br>
+Buildings: Hek-el-grande<br>
+Assembler: Yumekua<br>
 Main Creators:
 - Ekat99
 - Heartlessdragoon
@@ -146,8 +143,11 @@ Insertable format: Rahtak
 ## Feature Branches and Code
 **UI Stat Editor, Party Screen**: [Archie (TeamAquasHideout)](https://github.com/TeamAquasHideout/pokeemerald/tree/sandbox)<br>
 **BW Summary Screen**: [RavePossum](https://github.com/ravepossum/pokeemerald-expansion/tree/bw_summary_screen_expansion)<br>
-**Decapitalized branch**: [ProfHarpe](https://github.com/prof-harpe/pokeemerald-expansion/tree/Decapitalized)
-**Mon Levelling Code**: Hedara
+**Decapitalized branch**: [ProfHarpe](https://github.com/prof-harpe/pokeemerald-expansion/tree/Decapitalized)<br>
+**Mon Levelling Code**: [Hedara](https://github.com/hedara90)
+
+## Battle and Balance
+**Slow Start Cresselia, Sand Spit Palossand, Corrosion Toxapex, and Merciless Salazzle**: [x_bell](https://youtu.be/CCu-Q-5mxec?si=ij8UNkm-pHCtMSvX)
 
 ## Special Thanks
 - James (ruby's bf)

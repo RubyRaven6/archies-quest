@@ -16855,25 +16855,25 @@ Adamant Nature
 - Brick Break
 - Knock Off
 
-Lopunny @ Choice Scarf
-Ability: Limber
-Level: 50
-EVs: 40 SpA / 30 Spe
-Adamant Nature
-- High Jump Kick
-- Triple Axel
-- U-Turn
-- Drain Punch
-
 Porygon-Z @ Choice Specs
 Ability: Normalize
 Level: 50
 EVs: 63 SpA / 7 Spe
-Modest Nature
+Adamant Nature
 - Tri-Attack
 - Shadow Ball
 - Ice Beam
 - Dark Pulse
+
+Grafaiai @ Ability Shield
+Ability: Prankster
+Level: 50
+EVs: 63 Spe / 7 HP
+Modest Nature
+- Toxic
+- Flatter
+- U-Turn
+- Encore
 
 Zoroark @ Expert Belt
 Ability: Illusion
@@ -16917,15 +16917,15 @@ Lonely Nature
 - Psychic Fangs
 - Bulldoze
 
-Quagsire @ Leftovers
-Ability: Unaware
+Huntail @ Leftovers
+Ability: Water Veil
 Level: 60
 EVs: 63 HP / 21 Atk
-Lonely Nature
-- Earthquake
-- Slack Off
+Adamant Nature
+- Ice Fang
+- Aqua Ring
 - Aqua Tail
-- Protect
+- Coil
 
 Jellicent @ Ability Shield
 Ability: Fluffy
@@ -16989,16 +16989,16 @@ Gentle Nature
 - Reflect
 - Dazzling Gleam
 
-Slowbro @ Leftovers
-Ability: Unaware
+Scream Tail @ Fairy Gem
+Ability: Pixilate
 Level: 70
 EVs: 63 HP / 36 SpA
 Tags: Weather Abuser
 Modest Nature
-- Slack Off
-- Surf
+- Hyper Voice
+- Noble Roar
+- Calm Mind
 - Protect
-- Psychic
 
 Bronzong @ Light Clay
 Ability: Heatproof

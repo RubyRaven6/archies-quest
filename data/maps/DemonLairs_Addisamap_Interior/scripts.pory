@@ -28,6 +28,7 @@ script DemonLairs_EventScript_Addisamap {
         waitmessage
         closemessage
     } else {
+        faceplayer
         speakername("Addisamap")
         msgbox(format("The quester returns. Stubborn as ever. Luckily, he's not the only one who's stubborn."), MSGBOX_DEFAULT)
         waitmessage
