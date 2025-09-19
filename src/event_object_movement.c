@@ -3382,8 +3382,8 @@ static bool8 ObjectEventDoesElevationMatch(struct ObjectEvent *objectEvent, u8 e
 {
     /* Water OW Interaction c/o Nicolas Aqvae*/
     if (objectEvent->currentElevation != 0 && elevation != 0 && objectEvent->currentElevation != elevation && FlagGet(FLAG_TOGGLE_WATER_INTERACT) == TRUE)
-        return (objectEvent->currentElevation == 1 && elevation == 3) || (objectEvent->currentElevation == 3 && elevation == 1);   
-    
+        return (objectEvent->currentElevation == 1 && elevation == 3) || (objectEvent->currentElevation == 3 && elevation == 1);
+
     else if (objectEvent->currentElevation != 0 && elevation != 0 && objectEvent->currentElevation != elevation)
         return FALSE;
 
