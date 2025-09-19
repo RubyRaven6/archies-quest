@@ -3226,67 +3226,6 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
                                 {EVO_NONE, 0, SPECIES_SALAZZLE_TOTEM}),
     },
 
-    [SPECIES_SALAZZLE] =
-    {
-        .baseHP        = 68,
-        .baseAttack    = 64,
-        .baseDefense   = 60,
-        .baseSpeed     = 117,
-        .baseSpAttack  = 111,
-        .baseSpDefense = 60,
-        .types = MON_TYPES(TYPE_POISON, TYPE_FIRE),
-        .catchRate = 45,
-        .expYield = 168,
-        .evYield_Speed = 2,
-        .itemRare = ITEM_SMOKE_BALL,
-        .genderRatio = MON_FEMALE,
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_DRAGON),
-        .abilities = { ABILITY_CORROSION, ABILITY_NONE, ABILITY_OBLIVIOUS },
-        .bodyColor = BODY_COLOR_BLACK,
-        .speciesName = _("Salazzle"),
-        .cryId = CRY_SALAZZLE,
-        .natDexNum = NATIONAL_DEX_SALAZZLE,
-        .categoryName = _("Toxic Lizard"),
-        .height = 12,
-        .weight = 222,
-        .description = gSalazzlePokedexText,
-        .pokemonScale = 282,
-        .pokemonOffset = 4,
-        .trainerScale = 256,
-        .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Salazzle,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 1,
-        .frontAnimFrames = sAnims_Salazzle,
-        .frontAnimId = ANIM_GROW_VIBRATE,
-        .backPic = gMonBackPic_Salazzle,
-        .backPicSize = MON_COORDS_SIZE(48, 64),
-        .backPicYOffset = 3,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_Salazzle,
-        .shinyPalette = gMonShinyPalette_Salazzle,
-        .iconSprite = gMonIcon_Salazzle,
-        .iconPalIndex = 0,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-4, 9, SHADOW_SIZE_XL_BATTLE_ONLY)
-        FOOTPRINT(Salazzle)
-        OVERWORLD(
-            sPicTable_Salazzle,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Salazzle,
-            gShinyOverworldPalette_Salazzle
-        )
-        .levelUpLearnset = sSalazzleLevelUpLearnset,
-        .teachableLearnset = sSalazzleTeachableLearnset,
-        .formSpeciesIdTable = sSalanditFormSpeciesIdTable,
-    },
-
     [SPECIES_SALAZZLE_TOTEM] =
     {
         .baseHP        = 68,
@@ -5145,70 +5084,6 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
 #endif //P_FAMILY_DRAMPA
 
 #if P_FAMILY_DHELMISE
-    [SPECIES_DHELMISE] =
-    {
-        .baseHP        = 70,
-        .baseAttack    = 131,
-        .baseDefense   = 100,
-        .baseSpeed     = 40,
-        .baseSpAttack  = 86,
-        .baseSpDefense = 90,
-        .types = MON_TYPES(TYPE_GHOST, TYPE_GRASS),
-        .catchRate = 25,
-        .expYield = 181,
-        .evYield_Attack = 2,
-        .genderRatio = MON_GENDERLESS,
-        .eggCycles = 25,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL),
-        .abilities = { ABILITY_STEELWORKER, ABILITY_NONE, ABILITY_NONE },
-        .bodyColor = BODY_COLOR_GREEN,
-        .noFlip = TRUE,
-        .speciesName = _("Dhelmise"),
-        .cryId = CRY_DHELMISE,
-        .natDexNum = NATIONAL_DEX_DHELMISE,
-        .categoryName = _("Sea Creeper"),
-        .height = 39,
-        .weight = 2100,
-        .description = COMPOUND_STRING(
-            "The soul of seaweed adrift in the waves\n"
-            "became reborn as this Pokémon.\n"
-            "It maintains itself with new infusions of\n"
-            "seabed detritus and seaweed."),
-        .pokemonScale = 256,
-        .pokemonOffset = 0,
-        .trainerScale = 510,
-        .trainerOffset = 11,
-        .frontPic = gMonFrontPic_Dhelmise,
-        .frontPicSize = MON_COORDS_SIZE(48, 64),
-        .frontPicYOffset = 1,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        .frontAnimId = ANIM_SWING_CONVEX,
-        .enemyMonElevation = 2,
-        .backPic = gMonBackPic_Dhelmise,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 3,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_Dhelmise,
-        .shinyPalette = gMonShinyPalette_Dhelmise,
-        .iconSprite = gMonIcon_Dhelmise,
-        .iconPalIndex = 1,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(-1, 12, SHADOW_SIZE_M)
-        FOOTPRINT(Dhelmise)
-        OVERWORLD(
-            sPicTable_Dhelmise,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Dhelmise,
-            gShinyOverworldPalette_Dhelmise
-        )
-        .levelUpLearnset = sDhelmiseLevelUpLearnset,
-        .teachableLearnset = sDhelmiseTeachableLearnset,
-    },
 #endif //P_FAMILY_DHELMISE
 
 #if P_FAMILY_JANGMO_O

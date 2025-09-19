@@ -20,7 +20,7 @@
       "x": 3,
       "y": 14,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -29,32 +29,32 @@
       "flag": "0"
     },
     {
-      "local_id": "LOCALID_BACKYARD_SEA_KINGDRA",
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(KINGDRA)",
-      "x": 22,
-      "y": 12,
+      "local_id": "LOCALID_BACKYARD_SEA_DHELMISE",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DHELMISE)",
+      "x": 18,
+      "y": 4,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
       "movement_range_x": 2,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "ArchiesHouse_Backyard_EventScripts_Kingdra",
-      "flag": "FLAG_HIDE_KINGDRA"
+      "script": "ArchiesHouse_Backyard_EventScripts_Dhelmise",
+      "flag": "FLAG_HIDE_DHELMISE"
     },
     {
-      "local_id": "LOCALID_BACKYARD_SEA_WAILORD",
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(WAILORD)",
-      "x": 12,
-      "y": 15,
+      "local_id": "LOCALID_BACKYARD_SEA_CERULEDGE",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CERULEDGE)",
+      "x": 9,
+      "y": 13,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
       "movement_range_x": 2,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "ArchiesHouse_Backyard_EventScripts_Wailord",
-      "flag": "FLAG_HIDE_WAILORD"
+      "script": "ArchiesHouse_Backyard_EventScripts_Ceruledge",
+      "flag": "FLAG_HIDE_CERULEDGE"
     },
     {
       "local_id": "LOCALID_BACKYARD_SEA_PELIPPER",
@@ -71,26 +71,12 @@
       "flag": "FLAG_HIDE_PELIPPER"
     },
     {
-      "local_id": "LOCALID_BACKYARD_SEA_MILOTIC",
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MILOTIC)",
-      "x": 22,
-      "y": 26,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
-      "movement_range_x": 2,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "ArchiesHouse_Backyard_EventScripts_Milotic",
-      "flag": "FLAG_HIDE_MILOTIC"
-    },
-    {
       "local_id": "LOCALID_BACKYARD_SEA_LATIOS",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(LATIOS)",
       "x": 28,
       "y": 3,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -111,6 +97,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ArchiesHouse_Backyard_EventScripts_Latias",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_SEA_MILOTIC",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MILOTIC)",
+      "x": 22,
+      "y": 26,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+      "movement_range_x": 2,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Milotic",
+      "flag": "FLAG_HIDE_MILOTIC"
     }
   ],
   "warp_events": [],

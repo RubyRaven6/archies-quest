@@ -22,7 +22,10 @@ script DemonLairs_Greehaseet_EventScript_Door {
 	} elif (!flag(FLAG_GREEHASEET_PUZZLE_SOLVED)){
 		call(DemonLairs_Greehaseet_EventScript_Puzzle)
 	} else {
-		msgbox("Door's open.")
+		msgbox("Door's open.\nEnter?", MSGBOX_YESNO)
+		if(var(VAR_RESULT) == YES) {
+			warp(MAP_DEMON_LAIRS_GREEHASEET_INTERIOR, 8, 16)
+		}
 		closemessage
 	}
 	releaseall

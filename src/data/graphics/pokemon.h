@@ -26735,6 +26735,12 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
     const u32 gMonFrontPic_Nessereign[] = INCBIN_U32("graphics/pokemon/nessereign/front.4bpp.smol");
     const u16 gMonPalette_Nessereign[] = INCBIN_U16("graphics/pokemon/nessereign/normal.gbapal");
 
+    const u32 gMonFrontPic_Greehaseet[] = INCBIN_U32("graphics/pokemon/nessereign/front.4bpp.smol");
+    const u16 gMonPalette_Greehaseet[] = INCBIN_U16("graphics/pokemon/nessereign/normal.gbapal");
+
+    const u32 gMonFrontPic_Sapprilon[] = INCBIN_U32("graphics/pokemon/sapprilon/front.4bpp.smol");
+    const u16 gMonPalette_Sapprilon[] = INCBIN_U16("graphics/pokemon/sapprilon/normal.gbapal");
+
     const u32 gMonFrontPic_Addisamap[] = INCBIN_U32("graphics/pokemon/addivhan_samap/front.4bpp.smol");
     const u16 gMonPalette_Addisamap[] = INCBIN_U16("graphics/pokemon/addivhan_samap/normal.gbapal");
 

@@ -14,7 +14,7 @@ script ArchiesHouse_Backyard_EventScripts_Ribombee {
 		msgbox(format("Ribombee is diligently pollinating the small crops.\pGive her new orders?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
-			givemon(SPECIES_RIBOMBEE, 40, abilityNum=2, gender=FEMALE, move1=MOVE_POLLEN_PUFF, move2=MOVE_DAZZLING_GLEAM, move3=MOVE_STUN_SPORE, move4=MOVE_PROTECT, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_RIBOMBEE, 50, abilityNum=2, gender=FEMALE, move1=MOVE_POLLEN_PUFF, move2=MOVE_DAZZLING_GLEAM, move3=MOVE_STUN_SPORE, move4=MOVE_PROTECT, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_GARDEN_RIBOMBEE)
 			msgbox("Ribombee joined your party!")
 			closemessage
@@ -25,6 +25,7 @@ script ArchiesHouse_Backyard_EventScripts_Ribombee {
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }
 
@@ -36,7 +37,7 @@ script ArchiesHouse_Backyard_EventScripts_Vileplume {
 		msgbox(format("Vileplume is stopping to smell the flowers.\pShow him how he can protect them?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
-			givemon(SPECIES_VILEPLUME, 40, abilityNum=2, gender=MALE, move1=MOVE_GIGA_DRAIN, move2=MOVE_LEECH_SEED, move3=MOVE_SLUDGE_BOMB, move4=MOVE_MOONLIGHT, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_VILEPLUME, 50, abilityNum=2, gender=MALE, move1=MOVE_GIGA_DRAIN, move2=MOVE_LEECH_SEED, move3=MOVE_SLUDGE_BOMB, move4=MOVE_MOONLIGHT, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_GARDEN_VILEPLUME)
 			msgbox("Vileplume joined your party!")
 			closemessage
@@ -47,6 +48,7 @@ script ArchiesHouse_Backyard_EventScripts_Vileplume {
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }
 
@@ -58,7 +60,7 @@ script ArchiesHouse_Backyard_EventScripts_Annihilape {
 		msgbox(format("Annihilape is trying her best to calm herself down.\pSupport womens wrongs and have her crash out?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
-			givemon(SPECIES_ANNIHILAPE, 40, abilityNum=2, gender=FEMALE, move1=MOVE_RAGE_FIST, move2=MOVE_SHADOW_PUNCH, move3=MOVE_STOMPING_TANTRUM, move4=MOVE_SWAGGER, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_ANNIHILAPE, 50, abilityNum=2, gender=FEMALE, move1=MOVE_RAGE_FIST, move2=MOVE_SHADOW_PUNCH, move3=MOVE_STOMPING_TANTRUM, move4=MOVE_SWAGGER, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_GARDEN_ANNIHILAPE)
 			msgbox("Annihilape joined your party!")
 			closemessage
@@ -69,6 +71,7 @@ script ArchiesHouse_Backyard_EventScripts_Annihilape {
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }
 
@@ -80,7 +83,7 @@ script ArchiesHouse_Backyard_EventScripts_Heliolisk {
 		msgbox(format("Heliolisk is basking in the sun, taking in energy.\pShow him where to blast it?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
-			givemon(SPECIES_HELIOLISK, 40, abilityNum=2, gender=MALE, move1=MOVE_EERIE_IMPULSE, move2=MOVE_THUNDER, move3=MOVE_THUNDER_WAVE, move4=MOVE_AGILITY, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_HELIOLISK, 50, abilityNum=2, gender=MALE, move1=MOVE_EERIE_IMPULSE, move2=MOVE_THUNDER, move3=MOVE_THUNDER_WAVE, move4=MOVE_AGILITY, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_GARDEN_HELIOLISK)
 			msgbox("Heliolisk joined your party!")
 			closemessage
@@ -91,5 +94,6 @@ script ArchiesHouse_Backyard_EventScripts_Heliolisk {
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }

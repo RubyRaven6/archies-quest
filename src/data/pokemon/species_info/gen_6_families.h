@@ -3656,6 +3656,80 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .evolutions = EVOLUTION({EVO_LEVEL, 37, SPECIES_CLAWITZER}),
     },
 
+    [SPECIES_CLAWITZER] =
+    {
+        .baseHP        = 71,
+        .baseAttack    = 73,
+        .baseDefense   = 88,
+        .baseSpeed     = 59,
+        .baseSpAttack  = 120,
+        .baseSpDefense = 89,
+        .types = MON_TYPES(TYPE_WATER),
+        .catchRate = 55,
+        .expYield = 100,
+        .evYield_SpAttack = 2,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 15,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_WATER_3),
+        .abilities = { ABILITY_MEGA_LAUNCHER, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_BLUE,
+        .noFlip = TRUE,
+        .speciesName = _("Clawitzer"),
+        .cryId = CRY_CLAWITZER,
+        .natDexNum = NATIONAL_DEX_CLAWITZER,
+        .categoryName = _("Howitzer"),
+        .height = 13,
+        .weight = 353,
+        .description = COMPOUND_STRING(
+            "By expelling water from the nozzle in the\n"
+            "back of its enormous claw, it can move\n"
+            "at a speed of 60 knots. They launch\n"
+            "cannonballs made of water."),
+        .pokemonScale = 272,
+        .pokemonOffset = 3,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_Clawitzer,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 10,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 6),
+            ANIMCMD_FRAME(0, 6),
+            ANIMCMD_FRAME(1, 6),
+            ANIMCMD_FRAME(0, 6),
+            ANIMCMD_FRAME(1, 6),
+            ANIMCMD_FRAME(0, 6),
+            ANIMCMD_FRAME(1, 6),
+            ANIMCMD_FRAME(0, 6),
+        ),
+        .frontAnimId = ANIM_CIRCLE_C_CLOCKWISE_SLOW,
+        .backPic = gMonBackPic_Clawitzer,
+        .backPicSize = MON_COORDS_SIZE(64, 48),
+        .backPicYOffset = 11,
+        .backAnimId = BACK_ANIM_V_SHAKE,
+        .palette = gMonPalette_Clawitzer,
+        .shinyPalette = gMonShinyPalette_Clawitzer,
+        .iconSprite = gMonIcon_Clawitzer,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(6, 1, SHADOW_SIZE_L)
+        FOOTPRINT(Clawitzer)
+        OVERWORLD(
+            sPicTable_Clawitzer,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Clawitzer,
+            gShinyOverworldPalette_Clawitzer
+        )
+        .levelUpLearnset = sClawitzerLevelUpLearnset,
+        .teachableLearnset = sClawitzerTeachableLearnset,
+    },
+
+
 #endif //P_FAMILY_CLAUNCHER
 
 #if P_FAMILY_HELIOPTILE

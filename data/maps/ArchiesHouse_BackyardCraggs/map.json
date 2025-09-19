@@ -57,9 +57,9 @@
       "flag": "FLAG_HIDE_TINKATON"
     },
     {
-      "local_id": "LOCALID_BACKYARD_CRAG_SNORLAX",
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SNORLAX)",
-      "x": 18,
+      "local_id": "LOCALID_BACKYARD_CRAG_VOLCANION",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(VOLCANION)",
+      "x": 19,
       "y": 22,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -67,8 +67,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "ArchiesHouse_Backyard_EventScripts_Snorlax",
-      "flag": "FLAG_HIDE_SNORLAX"
+      "script": "ArchiesHouse_Backyard_EventScripts_Volcanion",
+      "flag": "0"
     },
     {
       "local_id": "LOCALID_BACKYARD_CRAG_GROUDON",
@@ -97,6 +97,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ArchiesHouse_Backyard_EventScripts_Heatran",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_BACKYARD_CAVE_SALAMENCE",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SALAMENCE)",
+      "x": 11,
+      "y": 21,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ArchiesHouse_Backyard_EventScripts_Salamence",
+      "flag": "FLAG_HIDE_SALAMENCE"
     }
   ],
   "warp_events": [
@@ -116,7 +130,7 @@
     },
     {
       "x": 16,
-      "y": 1,
+      "y": 2,
       "elevation": 0,
       "dest_map": "MAP_ARCHIES_HOUSE_BACKYARD_CAVE",
       "dest_warp_id": "0"

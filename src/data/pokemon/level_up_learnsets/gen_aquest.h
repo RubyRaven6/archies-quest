@@ -17226,7 +17226,9 @@ static const struct LevelUpMove sSalanditLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sSalazzleLevelUpLearnset[] = {
+    LEVEL_UP_MOVE( 0, MOVE_DRAGON_DANCE),
     LEVEL_UP_MOVE( 0, MOVE_FIRE_LASH),
+    LEVEL_UP_MOVE( 1, MOVE_TOXIC),
     LEVEL_UP_MOVE( 1, MOVE_ENDEAVOR),
     LEVEL_UP_MOVE( 1, MOVE_KNOCK_OFF),
     LEVEL_UP_MOVE( 1, MOVE_TORMENT),
@@ -17678,6 +17680,8 @@ static const struct LevelUpMove sDrampaLevelUpLearnset[] = {
 
 #if P_FAMILY_DHELMISE
 static const struct LevelUpMove sDhelmiseLevelUpLearnset[] = {
+    LEVEL_UP_MOVE( 0, MOVE_POLTERGEIST),
+    LEVEL_UP_MOVE( 0, MOVE_WOOD_HAMMER),
     LEVEL_UP_MOVE( 1, MOVE_ABSORB),
     LEVEL_UP_MOVE( 1, MOVE_RAPID_SPIN),
     LEVEL_UP_MOVE( 4, MOVE_ASTONISH),

@@ -10,7 +10,7 @@ script ArchiesHouse_BackyardSea_Boat {
     msgbox(("It's a boat to back home. Take it?"), MSGBOX_YESNO)
     closemessage
     if(var(VAR_RESULT) == YES){
-        warp(MAP_ARCHIES_HOUSE_BACKYARD_BEACH, 28, 10)
+        warp(MAP_ARCHIES_HOUSE_BACKYARD_BEACH, 22, 10)
     } else {
         msgbox(("You decide to stay for a while longer."), MSGBOX_DEFAULT)
         closemessage
@@ -36,50 +36,53 @@ script ArchiesHouse_Backyard_EventScripts_Milotic {
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }
 
-script ArchiesHouse_Backyard_EventScripts_Kingdra {
+script ArchiesHouse_Backyard_EventScripts_Dhelmise {
     lock
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Kingdra seems to be brooding restlessly.\pGive an outlet for his frustrations?"), MSGBOX_YESNO)
+		msgbox(format("Dhelmise is unsure how it got here, but is happy regardless.\pTake her someplace else?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
-			givemon(SPECIES_KINGDRA, 50, abilityNum=1, gender=MALE, move1=MOVE_SNIPE_SHOT, move2=MOVE_DRAGON_PULSE, move3=MOVE_HYPER_BEAM, move4=MOVE_ICE_BEAM, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
-			removeobject(LOCALID_BACKYARD_SEA_KINGDRA)
-			msgbox("Kingdra joined your party!")
+			givemon(SPECIES_DHELMISE, 50, abilityNum=0, move1=MOVE_HEAVY_SLAM, move2=MOVE_WOOD_HAMMER, move3=MOVE_GROWTH, move4=MOVE_POLTERGEIST, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_SEA_DHELMISE)
+			msgbox("Dhelmise joined your party!")
 			closemessage
 		} else {
-			applymovement(LOCALID_BACKYARD_SEA_KINGDRA, moves(face_original_direction))
+			applymovement(LOCALID_BACKYARD_SEA_DHELMISE, moves(face_original_direction))
 			waitmovement(0)
 		}
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }
 
-script ArchiesHouse_Backyard_EventScripts_Wailord {
+script ArchiesHouse_Backyard_EventScripts_Ceruledge {
     lock
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Wailord is singing her higher pitched song as usual.\pHarmonize?"), MSGBOX_YESNO)
+		msgbox(format("Ceruledge is sharpening her blades as she takes in the scenery.\pGive her something to test the edge on?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
-			givemon(SPECIES_WAILORD, 50, abilityNum=0, gender=FEMALE, move1=MOVE_DIVE, move2=MOVE_SURF, move3=MOVE_WATER_SPOUT, move4=MOVE_NOBLE_ROAR, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
-			removeobject(LOCALID_BACKYARD_SEA_WAILORD)
-			msgbox("Wailord joined your party!")
+			givemon(SPECIES_CERULEDGE, 50, abilityNum=2, gender=FEMALE, move1=MOVE_BITTER_BLADE, move2=MOVE_SHADOW_SNEAK, move3=MOVE_SOLAR_BLADE, move4=MOVE_SWORDS_DANCE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			removeobject(LOCALID_BACKYARD_SEA_CERULEDGE)
+			msgbox("Ceruledge joined your party!")
 			closemessage
 		} else {
-			applymovement(LOCALID_BACKYARD_SEA_WAILORD, moves(face_original_direction))
+			applymovement(LOCALID_BACKYARD_SEA_CERULEDGE, moves(face_original_direction))
 			waitmovement(0)
 		}
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }
 
@@ -102,6 +105,7 @@ script ArchiesHouse_Backyard_EventScripts_Pelipper {
 	} else {
 		goto(CommonScript_Backyard_EventScripts_FullParty)
 	}
+	release
 	end
 }
 
