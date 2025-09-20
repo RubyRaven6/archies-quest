@@ -2,6 +2,18 @@ static const struct SpriteFrameImage sPicTable_CoolArchieNormal[] = {
     overworld_ascending_frames(gObjectEventPic_CoolArchieNormalRunning, 4, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_CoolArchieUnderwater[] = {
+    overworld_frame(gObjectEventPic_CoolArchieUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_CoolArchieUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_CoolArchieUnderwater, 4, 4, 2),
+    overworld_frame(gObjectEventPic_CoolArchieUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_CoolArchieUnderwater, 4, 4, 0),
+    overworld_frame(gObjectEventPic_CoolArchieUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_CoolArchieUnderwater, 4, 4, 1),
+    overworld_frame(gObjectEventPic_CoolArchieUnderwater, 4, 4, 2),
+    overworld_frame(gObjectEventPic_CoolArchieUnderwater, 4, 4, 2),
+};
+
 static const struct SpriteFrameImage sPicTable_BrendanNormal[] = {
     overworld_ascending_frames(gObjectEventPic_BrendanNormalRunning, 2, 4),
 };
