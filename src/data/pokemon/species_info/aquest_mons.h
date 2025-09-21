@@ -2071,7 +2071,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
         .abilities = { ABILITY_PROTEAN, ABILITY_SPEED_BOOST, ABILITY_NONE },
-        .bodyColor = BODY_COLOR_BLACK,
+        .bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Nessereign"),
         .cryId = CRY_NONE,
         .natDexNum = NATIONAL_DEX_NONE,
@@ -2091,7 +2091,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .frontPicSize = MON_COORDS_SIZE(64, 64),
         .frontPicYOffset = 0,
         .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        .frontAnimId = ANIM_CIRCULAR_VIBRATE,
         .backPic = gMonBackPic_CircledQuestionMark,
         .backPicSize = MON_COORDS_SIZE(64, 64),
         .backPicYOffset = 7,
@@ -2100,17 +2100,19 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .shinyPalette = gMonShinyPalette_CircledQuestionMark,
         .iconSprite = gMonIcon_QuestionMark,
         .iconPalIndex = 0,
-        .enemyMonElevation = 6,
+        .enemyMonElevation = 8,
         FOOTPRINT(QuestionMark)
-        SHADOW(0, 20, SHADOW_SIZE_XL_BATTLE_ONLY)
-        // OVERWORLD(
-        //     sPicTable_Pecharunt,
-        //     SIZE_32x32,
-        //     SHADOW_SIZE_M,
-        //     sAnimTable_Following,
-        //     gOverworldPalette_Pecharunt,
-        //     gShinyOverworldPalette_Pecharunt
-        // )
+        SHADOW(0, 20, SHADOW_SIZE_S)
+        OVERWORLD(
+            sPicTable_Nessereign,
+            SIZE_32x32,
+            SHADOW_SIZE_S,
+            TRACKS_SLITHER,
+            sAnimTable_Following,
+            gMonPalette_Nessereign,
+            gMonPalette_Nessereign,
+
+        )
         .levelUpLearnset = sNoneLevelUpLearnset,
     },
 
@@ -2152,7 +2154,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .frontPicSize = MON_COORDS_SIZE(64, 64),
         .frontPicYOffset = 0,
         .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        .frontAnimId = ANIM_GROW_IN_STAGES,
         .backPic = gMonBackPic_CircledQuestionMark,
         .backPicSize = MON_COORDS_SIZE(64, 64),
         .backPicYOffset = 7,
@@ -2161,17 +2163,19 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .shinyPalette = gMonShinyPalette_CircledQuestionMark,
         .iconSprite = gMonIcon_QuestionMark,
         .iconPalIndex = 0,
-        .enemyMonElevation = 11,
+        .enemyMonElevation = 6,
         FOOTPRINT(QuestionMark)
-        SHADOW(0, 20, SHADOW_SIZE_XL_BATTLE_ONLY)
-        // OVERWORLD(
-        //     sPicTable_Pecharunt,
-        //     SIZE_32x32,
-        //     SHADOW_SIZE_M,
-        //     sAnimTable_Following,
-        //     gOverworldPalette_Pecharunt,
-        //     gShinyOverworldPalette_Pecharunt
-        // )
+        SHADOW(0, 20, SHADOW_SIZE_M)
+        OVERWORLD(
+            sPicTable_Greehaseet,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            sAnimTable_Following,
+            gMonPalette_Greehaseet,
+            gMonPalette_Greehaseet,
+
+        )
         .levelUpLearnset = sNoneLevelUpLearnset,
     },
 
@@ -2213,7 +2217,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .frontPicSize = MON_COORDS_SIZE(64, 64),
         .frontPicYOffset = 0,
         .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        .frontAnimId = ANIM_H_STRETCH,
         .backPic = gMonBackPic_CircledQuestionMark,
         .backPicSize = MON_COORDS_SIZE(64, 64),
         .backPicYOffset = 7,
@@ -2222,17 +2226,19 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .shinyPalette = gMonShinyPalette_CircledQuestionMark,
         .iconSprite = gMonIcon_QuestionMark,
         .iconPalIndex = 0,
-        .enemyMonElevation = 0,
+        .enemyMonElevation = 4,
         FOOTPRINT(QuestionMark)
-        SHADOW(0, 7, SHADOW_SIZE_XL_BATTLE_ONLY)
-        // OVERWORLD(
-        //     sPicTable_Pecharunt,
-        //     SIZE_32x32,
-        //     SHADOW_SIZE_M,
-        //     sAnimTable_Following,
-        //     gOverworldPalette_Pecharunt,
-        //     gShinyOverworldPalette_Pecharunt
-        // )
+        SHADOW(0, 13, SHADOW_SIZE_L)
+        OVERWORLD(
+            sPicTable_Sapprilon,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gMonPalette_Sapprilon,
+            gMonPalette_Sapprilon,
+
+        )
         .levelUpLearnset = sNoneLevelUpLearnset,
     },
 
@@ -2272,9 +2278,9 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Addisamap,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
+        .frontPicYOffset = 5,
         .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        .frontAnimId = ANIM_V_SHAKE,
         .backPic = gMonBackPic_CircledQuestionMark,
         .backPicSize = MON_COORDS_SIZE(64, 64),
         .backPicYOffset = 2,
@@ -2285,7 +2291,17 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .iconPalIndex = 0,
         .enemyMonElevation = 0,
         FOOTPRINT(QuestionMark)
-        SHADOW(1, 7, SHADOW_SIZE_XL_BATTLE_ONLY)
+        SHADOW(1, 8, SHADOW_SIZE_L)
+        OVERWORLD(
+            sPicTable_Addisamap,
+            SIZE_32x32,
+            SHADOW_SIZE_L,
+            TRACKS_SLITHER,
+            sAnimTable_Following,
+            gMonPalette_Addisamap,
+            gMonPalette_Addisamap,
+
+        )
         .levelUpLearnset = sNoneLevelUpLearnset,
     },
 #ifdef __INTELLISENSE__

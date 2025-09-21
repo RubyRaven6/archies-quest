@@ -1,4 +1,5 @@
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CoolArchieNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CoolArchieUnderwater;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanNormal;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanMachBike;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanSurfing;
@@ -197,13 +198,9 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayDecorati
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Archie;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Maxie;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_NessereignHuman;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_NessereignDemon;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AddisamapHuman;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AddisamapDemon;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GreehaseetHuman;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GreehaseetDemon;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SapprilonHuman;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SapprilonDemon;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KyogreFront;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GroudonFront;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Fossil;
@@ -264,10 +261,6 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_ADDISAMAP_HUMAN] =          &gObjectEventGraphicsInfo_AddisamapHuman,
     [OBJ_EVENT_GFX_SAPPRILON_HUMAN] =          &gObjectEventGraphicsInfo_SapprilonHuman,
     [OBJ_EVENT_GFX_GREEHASEET_HUMAN] =         &gObjectEventGraphicsInfo_GreehaseetHuman,
-    [OBJ_EVENT_GFX_NESSEREIGN_DEMON] =         &gObjectEventGraphicsInfo_NessereignDemon,
-    [OBJ_EVENT_GFX_ADDISAMAP_DEMON] =          &gObjectEventGraphicsInfo_AddisamapDemon,
-    [OBJ_EVENT_GFX_SAPPRILON_DEMON] =          &gObjectEventGraphicsInfo_SapprilonDemon,
-    [OBJ_EVENT_GFX_GREEHASEET_DEMON] =         &gObjectEventGraphicsInfo_GreehaseetDemon,
     [OBJ_EVENT_GFX_COOL_ARCHIE] =              &gObjectEventGraphicsInfo_CoolArchieNormal,
     [OBJ_EVENT_GFX_BRENDAN_NORMAL] =           &gObjectEventGraphicsInfo_BrendanNormal,
     [OBJ_EVENT_GFX_BRENDAN_MACH_BIKE] =        &gObjectEventGraphicsInfo_BrendanMachBike,
@@ -382,6 +375,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_RIVAL_MAY_FIELD_MOVE] =     &gObjectEventGraphicsInfo_RivalMayFieldMove,
     [OBJ_EVENT_GFX_CAMERAMAN] =                &gObjectEventGraphicsInfo_Cameraman,
     [OBJ_EVENT_GFX_BRENDAN_UNDERWATER] =       &gObjectEventGraphicsInfo_BrendanUnderwater,
+    [OBJ_EVENT_GFX_COOL_ARCHIE_UNDERWATER] =   &gObjectEventGraphicsInfo_CoolArchieUnderwater,
     [OBJ_EVENT_GFX_MAY_UNDERWATER] =           &gObjectEventGraphicsInfo_MayUnderwater,
     [OBJ_EVENT_GFX_MOVING_BOX] =               &gObjectEventGraphicsInfo_MovingBox,
     [OBJ_EVENT_GFX_CABLE_CAR] =                &gObjectEventGraphicsInfo_CableCar,
