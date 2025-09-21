@@ -57,7 +57,7 @@ script ArchiesHouse_Backyard_EventScripts_Annihilape {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Annihilape is trying her best to calm herself down.\pSupport womens wrongs and have her crash out?"), MSGBOX_YESNO)
+		msgbox(format("Annihilape is trying her best to calm herself down.\pSupport women's wrongs and have her crash out?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
 			givemon(SPECIES_ANNIHILAPE, 50, abilityNum=2, gender=FEMALE, move1=MOVE_RAGE_FIST, move2=MOVE_SHADOW_PUNCH, move3=MOVE_STOMPING_TANTRUM, move4=MOVE_SWAGGER, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)

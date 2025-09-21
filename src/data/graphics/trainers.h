@@ -13,9 +13,8 @@ const u16 gTrainerPalette_Addisamap[] = INCBIN_U16("graphics/trainers/front_pics
 const u32 gTrainerFrontPic_Sapprilon[] = INCBIN_U32("graphics/trainers/front_pics/demons/sapprilon.4bpp.smol");
 const u16 gTrainerPalette_Sapprilon[] = INCBIN_U16("graphics/trainers/front_pics/demons/sapprilon.gbapal");
 
-// TODO
-const u32 gTrainerFrontPic_Greehaseet[] = INCBIN_U32("graphics/trainers/front_pics/demons/nessereign.4bpp.smol");
-const u16 gTrainerPalette_Greehaseet[] = INCBIN_U16("graphics/trainers/front_pics/demons/nessereign.gbapal");
+const u32 gTrainerFrontPic_Greehaseet[] = INCBIN_U32("graphics/trainers/front_pics/demons/greehaseet.4bpp.smol");
+const u16 gTrainerPalette_Greehaseet[] = INCBIN_U16("graphics/trainers/front_pics/demons/greehaseet.gbapal");
 
 // End custom
 

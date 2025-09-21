@@ -55,11 +55,35 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 15,
+      "x": 14,
       "y": 6,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "ArchiesHouse_EventScript_SignDirections"
+      "script": "ArchiesHouse_EventScript_SignLake"
+    },
+    {
+      "type": "sign",
+      "x": 18,
+      "y": 13,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "ArchiesHouse_EventScript_SignBeach"
+    },
+    {
+      "type": "sign",
+      "x": 20,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "ArchiesHouse_EventScript_SignCrag"
+    },
+    {
+      "type": "sign",
+      "x": 8,
+      "y": 8,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "ArchiesHouse_EventScript_SignForest"
     }
   ]
 }

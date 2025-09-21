@@ -18,19 +18,21 @@ script DemonLairs_Sapprilon_EventScript_CompactDisks {
 
 script DemonLairs_Sapprilon_EventScript_Monster {
     if(var(VAR_TEMP_0) == 0) {
-            msgbox("There's a metallic cylinder on this table.\n
-                        On the front, you see a large\l
-                        MONSTER on the front.\p
-                        Examine it closer?", MSGBOX_YESNO)
+            msgbox(format(
+                "It's a metallic cylinder.\nThere's a large “MONSTER” written on it.\p"
+                "Examine the metallic cylinder?"
+            ), MSGBOX_YESNO)
         waitmessage
         closemessage
         if(var(VAR_RESULT) == YES){
-            msgbox("You pick up the cylinder, and feel a\n
-                            liquid inside. In your infinite curiosity\l
-                            you try and take a sip.", MSGBOX_DEFAULT)
+            msgbox(format(
+                "You pick up the cylinder and hear the sloshing of liquid inside.\p"
+                "In your infinite curiosity, you take a sip."
+            ))
             waitmessage
+
             speakername("Archie")
-            msgbox("Ugh! This liquid is awful! It must be monster blood to taste so badly.")
+            msgbox("Ugh! This is awful! Must be monster blood to taste so badly.")
             waitmessage
             closemessage
             setvar(VAR_TEMP_0, 1)
@@ -40,16 +42,16 @@ script DemonLairs_Sapprilon_EventScript_Monster {
             closemessage
         }
     } else {
-        msgbox("There's a metallic cylinder on this table.\n
-                On the front, you see a large\l
-                MONSTER on the front.", MSGBOX_DEFAULT)
+        msgbox(format(
+            "It's a metallic cylinder.\nThere's a large “MONSTER” written on it."
+        ))
         waitmessage
         closemessage
     }
 }
 
 script DemonLairs_Sapprilon_EventScript_RegularComputer {
-    msgbox(format("It's a machine you don't understand. It has an illustration of a skimpily dressed woman on it."), MSGBOX_SIGN)
+    msgbox(format("It's a machine you don't understand. It has an illustration of a skimpily-dressed woman on it."), MSGBOX_SIGN)
     waitmessage
     closemessage
 }
@@ -57,7 +59,8 @@ script DemonLairs_Sapprilon_EventScript_RegularComputer {
 script DemonLairs_Sapprilon_EventScript_Bookshelf1 {
     checkitem(ITEM_ACRO_BIKE, 1)
     if(var(VAR_RESULT) == 0){
-        msgbox(format("It's a bookshelf wrought from metal. There seems to be a sleeve of waxen paper sticking out.\pTake it?"), MSGBOX_YESNO)
+        msgbox(format("It's a bookshelf wrought from metal.\nA waxen paper slip is sticking out.\pTake it?"), MSGBOX_YESNO)
+        closemessage
         waitmessage
         if(var(VAR_RESULT) == YES){
             additem(ITEM_ACRO_BIKE, 1)
@@ -78,7 +81,8 @@ script DemonLairs_Sapprilon_EventScript_Bookshelf1 {
 script DemonLairs_Sapprilon_EventScript_Bookshelf2 {
     checkitem(ITEM_MACH_BIKE, 1)
     if(var(VAR_RESULT) == 0){
-        msgbox(format("It's a bookshelf wrought from metal. There seems to be a sleeve of waxen paper sticking out.\pTake it?"), MSGBOX_YESNO)
+        msgbox(format("It's a bookshelf wrought from metal.\nA waxen paper slip is sticking out.\pTake it?"), MSGBOX_YESNO)
+        closemessage
         waitmessage
         if(var(VAR_RESULT) == YES){
             additem(ITEM_MACH_BIKE, 1)
@@ -99,7 +103,8 @@ script DemonLairs_Sapprilon_EventScript_Bookshelf2 {
 script DemonLairs_Sapprilon_EventScript_Bookshelf3 {
     checkitem(ITEM_SS_TICKET, 1)
     if(var(VAR_RESULT) == 0){
-        msgbox(format("It's a bookshelf wrought from metal. There seems to be a sleeve of waxen paper sticking out.\pTake it?"), MSGBOX_YESNO)
+        msgbox(format("It's a bookshelf wrought from metal.\nA waxen paper slip is sticking out.\pTake it?"), MSGBOX_YESNO)
+        closemessage
         waitmessage
         if(var(VAR_RESULT) == YES){
             additem(ITEM_SS_TICKET, 1)
@@ -120,7 +125,8 @@ script DemonLairs_Sapprilon_EventScript_Bookshelf3 {
 script DemonLairs_Sapprilon_EventScript_Bookshelf4 {
     checkitem(ITEM_EON_TICKET, 1)
     if(var(VAR_RESULT) == 0){
-        msgbox(format("It's a bookshelf wrought from metal. There seems to be a sleeve of waxen paper sticking out.\pTake it?"), MSGBOX_YESNO)
+        msgbox(format("It's a bookshelf wrought from metal.\nA waxen paper slip is sticking out.\pTake it?"), MSGBOX_YESNO)
+        closemessage
         waitmessage
         if(var(VAR_RESULT) == YES){
             additem(ITEM_EON_TICKET, 1)
@@ -139,7 +145,9 @@ script DemonLairs_Sapprilon_EventScript_Bookshelf4 {
 }
 
 script DemonLairs_Sapprilon_EventScript_MainComputer {
-    msgbox(format("It's a strange contraption of glass and metal. Seems like you can select some options on it."), MSGBOX_DEFAULT)
+    msgbox(format(
+        "An odd contraption of glass and metal. Looks like you can select some options."
+    ))
     waitmessage
     closemessage
     dynmultipush("MIDI", 0)
@@ -159,7 +167,7 @@ script DemonLairs_Sapprilon_EventScript_MainComputer {
         case 1:
             if(!flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){call(DemonLairs_Sapprilon_EventScript_DiskInsert)}
             else {
-                msgbox("The disks are stuck in the machine.")
+                msgbox("The disks are stuck in the machine!")
                 waitmessage
                 closemessage
             }
@@ -174,13 +182,16 @@ script DemonLairs_Sapprilon_EventScript_MainComputer {
 
 script DemonLairs_Sapprilon_EventScript_Puzzle {
     call(DemonLairs_ItemChecker)
-    msgbox("Use the program?",MSGBOX_YESNO)
+    msgbox("Launch the program?", MSGBOX_YESNO)
+    closemessage
     if(var(VAR_RESULT) == TRUE && var(VAR_TEMP_1) == 1 && var(VAR_TEMP_2) == 1 && var(VAR_TEMP_3) == 1 && var(VAR_TEMP_4) == 1){
         msgbox(format("Which disk will you select first?"))
         call(DemonLairs_DiskInsertPuzzle)
     } elif (var(VAR_RESULT) == NO){
+
     } else {
-        msgbox(format("Seems like you can't solve this yet."))
+        msgbox(format("Looks like you can't solve this yet."))
+        closemessage
     }
 }
 
@@ -220,15 +231,18 @@ script DemonLairs_Sapprilon_EventScript_DiskInsert{
                 break
         }
     } else {
-        msgbox(format("It seems like you have to insert something for this option to work."), MSGBOX_SIGN)
+        msgbox(format("Looks like you have to insert something for this option to work."), MSGBOX_SIGN)
         waitmessage
         closemessage
     }
 }
 
 script DemonLairs_Sapprilon_EventScript_Printer {
-    msgbox("You select the option that's labelled\n“PRINTER.” After a while, a message\lappears on the glowing screen.\p
-            PRINTER CANNOT COMPLETE OPERATION.\nPLEASE REFILL CMYK CARTRIDGES.", MSGBOX_DEFAULT)
+    msgbox(format(
+        "You select the option that's labelled\n“PRINTER.”\p"
+        "…{PAUSE 16} …{PAUSE 16} …{PAUSE 16} …\p"
+        "“PRINTER CANNOT COMPLETE OPERATION\nPLEASE REFILL CMYK CARTRIDGES”"
+    ))
     waitmessage
     closemessage
 }
@@ -256,7 +270,7 @@ script(local) DemonLairs_DiskInsertPuzzle {
             if(var(VAR_TEMP_1) == 1){
                 sappypuzzle(1)
                 removeitem(ITEM_ACRO_BIKE, 1)
-                msgbox("Inserted Black disk")
+                msgbox("Inserted Black disk.")
                 waitmessage
                 closemessage
                 if(var(VAR_TEMP_2) == 1 || var(VAR_TEMP_3) == 1 || var(VAR_TEMP_4) == 1){
@@ -276,7 +290,7 @@ script(local) DemonLairs_DiskInsertPuzzle {
             if(var(VAR_TEMP_2) == 1){
                 sappypuzzle(2)
                 removeitem(ITEM_MACH_BIKE, 1)
-                msgbox("Inserted Yellow disk")
+                msgbox("Inserted Yellow disk.")
                 waitmessage
                 closemessage
                 if(var(VAR_TEMP_2) == 1 || var(VAR_TEMP_3) == 1 || var(VAR_TEMP_4) == 1){
@@ -296,7 +310,7 @@ script(local) DemonLairs_DiskInsertPuzzle {
             if(var(VAR_TEMP_3) == 1){
                 sappypuzzle(3)
                 removeitem(ITEM_SS_TICKET, 1)
-                msgbox("Inserted Cyan disk")
+                msgbox("Inserted Cyan disk.")
                 waitmessage
                 closemessage
                 if(var(VAR_TEMP_1) == 1 || var(VAR_TEMP_2) == 1 || var(VAR_TEMP_4) == 1){
@@ -316,7 +330,7 @@ script(local) DemonLairs_DiskInsertPuzzle {
             if(var(VAR_TEMP_4) == 1){
                 sappypuzzle(4)
                 removeitem(ITEM_EON_TICKET, 1)
-                msgbox("Inserted Magneta disk")
+                msgbox("Inserted Magneta disk.")
                 waitmessage
                 closemessage
                 if(var(VAR_TEMP_1) == 1 || var(VAR_TEMP_2) == 1 || var(VAR_TEMP_3) == 1){
@@ -354,7 +368,7 @@ script(local) WinCondition {
         closemessage
     } else {
         setvar(VAR_SAPPRILON_PUZZLE_VAL, 0)
-        msgbox("Hmm… that wasn't right")
+        msgbox("Hmm… that wasn't right.")
         waitmessage
         closemessage
     }

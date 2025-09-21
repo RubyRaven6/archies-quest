@@ -595,6 +595,16 @@ static void Task_GreehaseetPuzzleMainInput(u8 taskId)
             gTasks[taskId].func = Task_GreehaseetWaitForPuzzleFade;
         }
     }
+    if (JOY_NEW(DPAD_DOWN)){
+        if (*cursorY == 1) {
+            sGreehaseetPuzzleState->cursorY++;
+        }
+    }
+    if (JOY_NEW(DPAD_UP)){
+        if (*cursorY == 2) {
+            sGreehaseetPuzzleState->cursorY--;
+        }
+    }
     if (JOY_NEW(DPAD_RIGHT)){
         if(*cursorY == 2){
             sGreehaseetPuzzleState->cursorY = 0;
@@ -736,10 +746,10 @@ static void GreehaseetPuzzle_PrintWindowText(void)
     FillWindowPixelBuffer(WINDOW_CONTROLS, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
     AddTextPrinterParameterized4(WINDOW_INSTRUCTIONS, FONT_NARROW, 0, 3, 0, 0,
-        sGreehaseetPuzzleWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, COMPOUND_STRING("Divide 10 shells into\ntwo sets of 5."));
+        sGreehaseetPuzzleWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, COMPOUND_STRING("Divide 10 pearls into\ntwo sets of 5."));
 
     AddTextPrinterParameterized4(WINDOW_CONTROLS, FONT_SMALL_NARROWER, 0, 3, 0, 0,
-        sGreehaseetPuzzleWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, COMPOUND_STRING("{A_BUTTON} Choose a shell. {B_BUTTON} to exit.\n{A_BUTTON} Choose another to put\npearls in."));
+        sGreehaseetPuzzleWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, COMPOUND_STRING("{A_BUTTON} Choose a shell. {B_BUTTON} Exit.\n{A_BUTTON} Choose shell to put\npearls in."));
 
     CopyWindowToVram(WINDOW_INSTRUCTIONS, COPYWIN_GFX);
     CopyWindowToVram(WINDOW_CONTROLS, COPYWIN_GFX);

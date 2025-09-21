@@ -36,13 +36,13 @@ script DemonLairs_Nessie_EventScript_NessiePuzzle{
             msgbox("The wall is collapsing!", MSGBOX_DEFAULT)
             waitmessage
             closemessage
+            playse(SE_M_ROCK_THROW)
             setvar(VAR_0x8004, 1)  // vertical pan
-            setvar(VAR_0x8005, 1)  // horizontal pan
+            setvar(VAR_0x8005, 0)  // horizontal pan
             setvar(VAR_0x8006, 8)  // num shakes
-            setvar(VAR_0x8007, 5)  // shake delay
+            setvar(VAR_0x8007, 3)  // shake delay
             special(ShakeCamera)
             waitstate
-            playse(SE_M_ROCK_THROW)
             setmetatile(2, 0, METATILE_NessereignLairPrimary_ENTRANCE_UPL, TRUE)
             setmetatile(3, 0, METATILE_NessereignLairPrimary_ENTRANCE_UPM, TRUE)
             setmetatile(4, 0, METATILE_NessereignLairPrimary_ENTRANCE_UPR, TRUE)
@@ -53,13 +53,13 @@ script DemonLairs_Nessie_EventScript_NessiePuzzle{
             setmetatile(3, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNM, FALSE)
             setmetatile(4, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNR, TRUE)
             special(DrawWholeMapView)
-            msgbox(format("A yawning entrance to an antechamber's opened. Enter?"), MSGBOX_YESNO)
+            msgbox(format("The yawning entrance to an antechamber has opened.\pEnter?"), MSGBOX_YESNO)
             waitmessage
             closemessage
             if(var(VAR_RESULT) == YES) {warp(MAP_DEMON_LAIRS_NESSIE_INTERIOR, 3, 8)}
         }
     } else {
-        msgbox(format("A yawning entrance to an antechamber's opened. Enter?"), MSGBOX_YESNO)
+        msgbox(format("The yawning entrance to an antechamber has opened.\pEnter?"), MSGBOX_YESNO)
         waitmessage
         closemessage
         if(var(VAR_RESULT) == YES) {warp(MAP_DEMON_LAIRS_NESSIE_INTERIOR, 3, 8)}
@@ -69,7 +69,7 @@ script DemonLairs_Nessie_EventScript_NessiePuzzle{
 
 script DemonLairs_Nessie_EventScript_Knife {
     if(flag(FLAG_NESSIE_GOT_DAGGER) == FALSE){
-        msgbox("You find a small dagger on the table.\pTake it?", MSGBOX_YESNO)
+        msgbox("It's a small dagger.\nTake it?", MSGBOX_YESNO)
         if(var(VAR_RESULT) == YES){
             waitmessage
             setflag(FLAG_NESSIE_GOT_DAGGER)
@@ -86,10 +86,22 @@ script DemonLairs_Nessie_EventScript_Knife {
 script DemonLairs_Nessie_EventScript_Book {
     if(!flag(FLAG_NESSIE_READ_BOOK))
     {
-        msgbox("It is an ancient tome whose pages are\nyellow with age. There are no words, but\lmerely looking makes you feel nauseous.\pContinue?", MSGBOX_YESNO)
+        msgbox(format(
+            "It's an ancient tome with pages yellow with age.\p"
+            "There are no words, but merely looking at it makes you feel nauseous.\p"
+            "Continue?"
+        ), MSGBOX_YESNO)
         if(var(VAR_RESULT) == YES)
         {
-            msgbox("You thumb through and find gross\nand disgusting images. You strain until\lyou see a phrase.\p“Sheathing sheathing sheathing sheathing\nsharpness sharpness sharpness sharpness\lthrough through through through through\lscreams screams screams screams screams.”\pIt feels like you learned something\nimportant.")
+            msgbox(format(
+                "You thumb through and find gross and disgusting images.\p"
+                "You strain until you see a phrase:\p"
+                "“Sheathing sheathing sheathing sheathing sheathing sheathing\p"
+                "Sharpness sharpness sharpness sharpness sharpness sharpness\p"
+                "Through through through through through through through through\p"
+                "Screams screams screams screams screams screams screams screams”\p"
+                "It feels like you learned something important."
+            ))
             setflag(FLAG_NESSIE_READ_BOOK)
             waitmessage
             closemessage
@@ -98,7 +110,13 @@ script DemonLairs_Nessie_EventScript_Book {
         closemessage
     }
     else{
-        msgbox("“Sheathing sheathing sheathing sheathing\nsharpness sharpness sharpness sharpness\lthrough through through through through\lscreams screams screams screams screams.”\pIt's a dizzying tome.\nNo need to see the rest.")
+        msgbox(format(
+            "“Sheathing sheathing sheathing sheathing sheathing sheathing\p"
+            "Sharpness sharpness sharpness sharpness sharpness sharpness\p"
+            "Through through through through through through through through\p"
+            "Screams screams screams screams screams screams screams screams”\p"
+            "It's a dizzying tome.\nNo need to see the rest."
+        ))
         waitmessage
         closemessage
     }
@@ -106,7 +124,7 @@ script DemonLairs_Nessie_EventScript_Book {
 }
 
 script DemonLairs_Nessie_EventScript_Fireplace {
-    msgbox("It's a fireplace.\nThere's ash, but no sign of burning.", MSGBOX_SIGN)
+    msgbox(format("It's a fireplace.\nThere's ash, but no sign of burning."), MSGBOX_SIGN)
     closemessage
     end
 }
