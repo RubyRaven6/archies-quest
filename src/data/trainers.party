@@ -16898,7 +16898,7 @@ Mugshot: Blue
 
 Toxapex @ Leftovers
 Ability: Corrosion
-Level: 6
+Level: 60
 EVs: 63 HP / 21 Def
 Tags: Lead
 Bold Nature
@@ -16906,6 +16906,56 @@ Bold Nature
 - Sludge Bomb
 - Surf
 - Toxic
+
+Walrein @ ITEM_NEVER_MELT_ICE
+Ability: Thick Fat
+Level: 60
+EVs: 42 Atk / 42 SpA
+Lonely Nature
+- Surf
+- Ice Beam
+- Psychic Fangs
+- Bulldoze
+
+Quagsire @ Leftovers
+Ability: Unaware
+Level: 60
+EVs: 63 HP / 21 Atk
+Lonely Nature
+- Earthquake
+- Slack Off
+- Aqua Tail
+- Protect
+
+Jellicent @ Ability Shield
+Ability: Fluffy
+Level: 60
+EVs: 42 HP / 42 SpD
+Relaxed Nature
+- Stockpile
+- Swallow
+- Surf
+- Ice Beam
+
+Dracovish @ Choice Band
+Ability: Strong Jaw
+Level: 60
+EVs: 63 Atk / 21 HP
+Adamant Nature
+- Fishious Rend
+- Brutal Swing
+- Rock Tomb
+- Bulldoze
+
+Arctovish @ Choice Band
+Ability: Water Absorb
+Level: 60
+EVs: 63 Atk / 21 HP
+Adamant Nature
+- Fishious Rend
+- Brutal Swing
+- Rock Tomb
+- Bulldoze
 
 === TRAINER_DEMONLORD_SAPPRILON ===
 Name: Sapprilon
