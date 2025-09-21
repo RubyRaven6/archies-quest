@@ -23,11 +23,9 @@ mapscripts DemonLairs_Nessie_Interior_MapScripts {
 }
 
 script DemonLairs_EventScript_Nessie {
+    faceplayer
     if(!flag(FLAG_TALKED_TO_NESSEREIGN)){
         setflag(FLAG_TALKED_TO_NESSEREIGN)
-
-        faceplayer
-
         playse(SE_PIN)
         applymovement(VAR_LAST_TALKED, moves(emote_upset))
         speakername("Nessereign")
@@ -75,7 +73,7 @@ script DemonLairs_EventScript_Nessie {
         applymovement(LOCALID_NESSIE_PAINTER, moves(emote_happy))
         speakername("Nessereign")
         msgbox(format(
-            "You just don't.{PAUSE 8} Know.{PAUSE 8} WHEN to quit, huh?"
+            "You just don't.{PAUSE 8} Know.{PAUSE 8} WHEN to quit, huh?\p"
             "My sweet, sweet friend…\nYou're in luck! Neither do I!"
         ))
         waitmessage
