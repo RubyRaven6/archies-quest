@@ -93,15 +93,15 @@ script DemonLairs_Nessie_EventScript_Book {
         ), MSGBOX_YESNO)
         if(var(VAR_RESULT) == YES)
         {
-            msgbox(format(
-                "You thumb through and find gross and disgusting images.\p"
+            msgbox(
+                "You thumb through and find gross\nand disgusting images.\p"
                 "You strain until you see a phrase:\p"
-                "“Sheathing sheathing sheathing sheathing sheathing sheathing\p"
-                "Sharpness sharpness sharpness sharpness sharpness sharpness\p"
-                "Through through through through through through through through\p"
-                "Screams screams screams screams screams screams screams screams”\p"
-                "It feels like you learned something important."
-            ))
+                "“Sheathing sheathing sheathing sheathing\nsheathing sheathing sheathing sheathing\p"
+                "Sharpness sharpness sharpness sharpness\nsharpness sharpness sharpness sharpness\p"
+                "Through through through through through\nthrough through through through through\p"
+                "Screams screams screams screams screams\nscreams screams screams screams”\p"
+                "It feels like you learned something\nimportant."
+            )
             setflag(FLAG_NESSIE_READ_BOOK)
             waitmessage
             closemessage
@@ -110,13 +110,13 @@ script DemonLairs_Nessie_EventScript_Book {
         closemessage
     }
     else{
-        msgbox(format(
-            "“Sheathing sheathing sheathing sheathing sheathing sheathing\p"
-            "Sharpness sharpness sharpness sharpness sharpness sharpness\p"
-            "Through through through through through through through through\p"
-            "Screams screams screams screams screams screams screams screams”\p"
+        msgbox(
+            "“Sheathing sheathing sheathing sheathing\nsheathing sheathing sheathing sheathing\p"
+            "Sharpness sharpness sharpness sharpness\nsharpness sharpness sharpness sharpness\p"
+            "Through through through through through\nthrough through through through through\p"
+            "Screams screams screams screams screams\nscreams screams screams screams”\p"
             "It's a dizzying tome.\nNo need to see the rest."
-        ))
+        )
         waitmessage
         closemessage
     }
