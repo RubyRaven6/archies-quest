@@ -12,10 +12,6 @@ const u32 gObjectEventPic_NessereignHuman[] = INCBIN_U32("graphics/object_events
 const u32 gObjectEventPic_AddisamapHuman[] = INCBIN_U32("graphics/object_events/pics/people/demons/addisamap-human.4bpp");
 const u32 gObjectEventPic_GreehaseetHuman[] = INCBIN_U32("graphics/object_events/pics/people/demons/greehaseet-human.4bpp");
 const u32 gObjectEventPic_SapprilonHuman[] = INCBIN_U32("graphics/object_events/pics/people/demons/sapprilon-human.4bpp");
-const u32 gObjectEventPic_NessereignDemon[] = INCBIN_U32("graphics/object_events/pics/people/demons/nessereign-demon.4bpp");
-const u32 gObjectEventPic_AddisamapDemon[] = INCBIN_U32("graphics/object_events/pics/people/demons/addisamap-demon.4bpp");
-const u32 gObjectEventPic_GreehaseetDemon[] = INCBIN_U32("graphics/object_events/pics/people/demons/greehaseet-demon.4bpp");
-const u32 gObjectEventPic_SapprilonDemon[] = INCBIN_U32("graphics/object_events/pics/people/demons/sapprilon-demon.4bpp");
 
 const u16 gObjectEventPal_Nessereign[] = INCBIN_U16("graphics/object_events/pics/people/demons/nessereign-human.gbapal");
 const u16 gObjectEventPal_Addisamap[] = INCBIN_U16("graphics/object_events/pics/people/demons/addisamap-human.gbapal");

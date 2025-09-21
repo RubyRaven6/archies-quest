@@ -952,32 +952,16 @@ static const struct SpriteFrameImage sPicTable_NessereignHuman[] = {
     overworld_ascending_frames(gObjectEventPic_NessereignHuman, 4, 4),
 };
 
-static const struct SpriteFrameImage sPicTable_NessereignDemon[] = {
-    overworld_ascending_frames(gObjectEventPic_NessereignDemon, 4, 4),
-};
-
 static const struct SpriteFrameImage sPicTable_AddisamapHuman[] = {
     overworld_ascending_frames(gObjectEventPic_AddisamapHuman, 4, 4),
-};
-
-static const struct SpriteFrameImage sPicTable_AddisamapDemon[] = {
-    overworld_ascending_frames(gObjectEventPic_AddisamapDemon, 4, 4),
 };
 
 static const struct SpriteFrameImage sPicTable_GreehaseetHuman[] = {
     overworld_ascending_frames(gObjectEventPic_GreehaseetHuman, 4, 4),
 };
 
-static const struct SpriteFrameImage sPicTable_GreehaseetDemon[] = {
-    overworld_ascending_frames(gObjectEventPic_GreehaseetDemon, 4, 4),
-};
-
 static const struct SpriteFrameImage sPicTable_SapprilonHuman[] = {
     overworld_ascending_frames(gObjectEventPic_SapprilonHuman, 4, 4),
-};
-
-static const struct SpriteFrameImage sPicTable_SapprilonDemon[] = {
-    overworld_ascending_frames(gObjectEventPic_SapprilonDemon, 4, 4),
 };
 
 static const struct SpriteFrameImage sPicTable_KyogreFront[] = {
