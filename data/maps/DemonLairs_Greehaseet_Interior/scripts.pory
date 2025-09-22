@@ -30,6 +30,8 @@ script DemonLairs_EventScript_Greehaseet {
 
     trainerbattle_no_intro(TRAINER_DEMONLORD_GREEHASEET, format("No! I crashed out of my own waves?!"))
 
+    playbgm(MUS_RAYQUAZA_APPEARS, TRUE)
+
     speakername("Greehaseet")
     msgbox(format("This c-cannot be… I've reigned upon these depths since the very beginning of time…"))
     
@@ -48,7 +50,11 @@ script DemonLairs_EventScript_Greehaseet {
     ))
     closemessage
 
+    applymovement(LOCALID_GREEHASEET_SWIMMER, moves(shake_horizontal))
+    playbgm(MUS_DUMMY, TRUE)
     playmoncry(SPECIES_TYPE_NULL, CRY_MODE_WEAK)
+    waitmovement(LOCALID_GREEHASEET_SWIMMER)
+
 	setvar(VAR_0x8004, 0)  // vertical pan
 	setvar(VAR_0x8005, 1)  // horizontal pan
 	setvar(VAR_0x8006, 8)  // num shakes

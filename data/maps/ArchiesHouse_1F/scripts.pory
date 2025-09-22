@@ -18,7 +18,7 @@ script ArchiesHouse_EventScript_BeginningCutscene {
 
     speakername("Archie")
     msgbox(format(
-        "Despite the Bainarii's iron grasp on the world, it sure is nice to have such a peaceful life…\p"
+        "Despite the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}'s iron grasp on the world, this life is so peaceful…\p"
         "I sure hope nothing comes in to ruin my day right about now!"
     ))
     closemessage

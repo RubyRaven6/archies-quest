@@ -1228,8 +1228,8 @@ void Overworld_PlaySpecialMapMusic(void)
     {
         if (gSaveBlock1Ptr->savedMusic)
             music = gSaveBlock1Ptr->savedMusic;
-        else if (GetCurrentMapType() == MAP_TYPE_UNDERWATER)
-            music = MUS_UNDERWATER;
+        /* else if (GetCurrentMapType() == MAP_TYPE_UNDERWATER)
+            music = MUS_UNDERWATER; */
         else if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING))
             music = MUS_SURF;
     }

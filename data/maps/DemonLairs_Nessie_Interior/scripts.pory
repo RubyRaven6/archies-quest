@@ -23,6 +23,7 @@ mapscripts DemonLairs_Nessie_Interior_MapScripts {
 }
 
 script DemonLairs_EventScript_Nessie {
+    lock
     faceplayer
     if(!flag(FLAG_TALKED_TO_NESSEREIGN)){
         setflag(FLAG_TALKED_TO_NESSEREIGN)
@@ -31,7 +32,7 @@ script DemonLairs_EventScript_Nessie {
         speakername("Nessereign")
         msgbox(format(
             "What in the nine hells is that RACKET?! Can't you see I'm WORKING here?\p"
-            "Right when that SPLITTING HEADACHE was gone…"
+            "Right when that SPLITTING HEADACHE was starting to wane…"
         ))
         closemessage
 
@@ -42,7 +43,7 @@ script DemonLairs_EventScript_Nessie {
         speakername("Nessereign")
         msgbox(format(
             "Weeeell, who might this pretty young thing be?\p"
-            "I'm {COLOR RED}Nessereign{COLOR DARK_GRAY}.\nBut YOU, you can call me {COLOR RED}Nessie{COLOR DARK_GRAY}!"
+            "I'm {COLOR RED}Nessereign{COLOR DARK_GRAY}.\nBut YOU, you can call me {COLOR RED}Nessie{COLOR DARK_GRAY}!\p"
             "Are you lost?\nYou delicious,{PAUSE 8} GODFORSAKEN{PAUSE 8} INTRUDER?"
         ))
         closemessage
@@ -58,11 +59,15 @@ script DemonLairs_EventScript_Nessie {
         closemessage
 
         playse(SE_PIN)
-        applymovement(LOCALID_NESSIE_PAINTER, moves(emote_happy))
+        applymovement(LOCALID_NESSIE_PAINTER, moves(emote_happy, shake_vertical))
         speakername("Nessereign")
         msgbox(format(
-            "Ha ha ha ha ha…\p"
-            "HA HA HA HA HA\nHA HA HA HA HA\p"
+            "Ha ha ha ha ha…"
+        ))
+        waitmovement(LOCALID_NESSIE_PAINTER)
+        applymovement(LOCALID_NESSIE_PAINTER, moves(shake_vertical * 2))
+        msgbox(format(
+            "HA HA HA HA HA\nHA HA HA HA HA!!\p"
             "You made me laugh so hard the headaches have come!{PAUSE 8} Right!{PAUSE 8} BACK!\p"
             "If you think I'll let you get away, you have another thing coming!\p"
             "Surprise, surprise…{PAUSE 16} IT'S DEATH!"
@@ -83,6 +88,7 @@ script DemonLairs_EventScript_Nessie {
 
     trainerbattle_no_intro(TRAINER_DEMONLORD_NESSEREIGN, format("No! This can't be!\nAugh… My head…"))
 
+    playbgm(MUS_RAYQUAZA_APPEARS, TRUE)
     playse(SE_PIN)
     applymovement(LOCALID_NESSIE_PAINTER, moves(emote_sad))
     speakername("Nessereign")
@@ -114,11 +120,15 @@ script DemonLairs_EventScript_Nessie {
     msgbox(format(
         "The… The headaches…\n"
         "The h-headaches…{PAUSE 8} are so painful…\p"
-        "Huuuuh… {FONT_NARROW}H-Help{FONT_NORMAL}…"
+        "Huuuuh…{PAUSE 24} {FONT_SMALL}H-Help{FONT_NORMAL}…{PAUSE 16}"
     ))
     closemessage
 
+    applymovement(LOCALID_NESSIE_PAINTER, moves(shake_horizontal))
+    playbgm(MUS_DUMMY, TRUE)
     playmoncry(SPECIES_AURORUS, CRY_MODE_WEAK)
+    waitmovement(LOCALID_NESSIE_PAINTER)
+
 	setvar(VAR_0x8004, 0)  // vertical pan
 	setvar(VAR_0x8005, 1)  // horizontal pan
 	setvar(VAR_0x8006, 8)  // num shakes
@@ -155,8 +165,12 @@ script DemonLairs_EventScript_Nessie {
         "You can take the portal I opened back to the hub.\p"
         "Archie, over and out."
     ))
-
     closemessage
+
+    playse(SE_POKENAV_HANG_UP)
+    waitse
+
+    release
 }
 
 script DemonLairs_Nessie_Interior_EventScript_InvertedMelon {
