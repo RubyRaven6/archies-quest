@@ -6,7 +6,7 @@ script ArchiesHouse_Backyard_EventScripts_Sceptile {
     faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Sceptile is relaxing under the shade.\pAsk him to join?"), MSGBOX_YESNO)
+		msgbox(format("Sceptile is relaxing under the shade.\pMake him step into the light?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
 			givemon(SPECIES_SCEPTILE, 50, abilityNum=1, gender=MALE, move1=MOVE_GRASSY_GLIDE,move2=MOVE_NIGHT_SLASH,move3=MOVE_LEAF_BLADE,move4=MOVE_SHED_TAIL, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)

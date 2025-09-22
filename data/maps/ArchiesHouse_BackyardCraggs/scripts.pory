@@ -7,7 +7,7 @@ script ArchiesHouse_Backyard_EventScripts_Lucario {
 
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("He's just standing there, aura farming.\pShow him more aura?"), MSGBOX_YESNO)
+		msgbox(format("Lucario is just standing there, aura farming.\pShow him more aura?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
 			givemon(SPECIES_LUCARIO, 50, abilityNum=2, gender=MALE, move1=MOVE_AURA_SPHERE, move2=MOVE_FEINT, move3=MOVE_METAL_CLAW, move4=MOVE_VACUUM_WAVE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
@@ -76,12 +76,12 @@ script ArchiesHouse_Backyard_EventScripts_Salamence {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Salamence seems to be ansty, looking at you excitedly.\pMake a bad decision?"), MSGBOX_YESNO)
+		msgbox(format("Salamence seems to be antsy, looking at you excitedly.\pMake a bad decision together?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
 			givemon(SPECIES_SALAMENCE, 50, abilityNum=2, gender=MALE, move1=MOVE_DRAGON_CLAW, move2=MOVE_DUAL_WINGBEAT, move3=MOVE_IRON_TAIL, move4=MOVE_SWAGGER, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_CAVE_SALAMENCE)
-			msgbox(" joined your party!")
+			msgbox("Salamence joined your party!")
 			closemessage
 		} else {
             applymovement(LOCALID_BACKYARD_CAVE_GARGANACL, moves(face_original_direction))

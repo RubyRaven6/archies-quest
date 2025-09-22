@@ -2,7 +2,7 @@
   "id": "MAP_DEMON_LAIRS_NESSIE",
   "name": "DemonLairs_Nessie",
   "layout": "LAYOUT_DEMON_LAIRS_NESSIE",
-  "music": "MUS_DUMMY",
+  "music": "MUS_B_PIKE",
   "region_map_section": "MAPSEC_NESSIE_LAIR",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

@@ -1114,7 +1114,7 @@ CommonScript_Backyard_EventScripts_FullParty::
 
 
 CommonScript_Backyard_EventScripts_FullParty_Movement_0:
-	emote_x
+	emote_angry
 	step_end
 
 CommonScript_Backyard_EventScripts_FullParty_Text_0:

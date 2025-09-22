@@ -12,17 +12,22 @@ script DemonLairs_Greehaseet_EventScript_Door {
 	lockall
 	if(!flag(FLAG_GREEHASEET_PUZZLE_SOLVED) && var(VAR_TEMP_0) == 0){
 		setvar(VAR_TEMP_0, 1)
-		msgbox(format("You see a formiddable door before you. It's shut tight, but there's a mechanism written.\p
-						Five for Five! Don't forget!\p
-						There are shells embedded onto the front door bearing pearls inside them.
-						\pAttempt to unlock the door?"),MSGBOX_YESNO)
+		msgbox(format(
+			"A formidable door, shut tight.\nWords are inscribed on its surface.\p"
+			"“Five for Five! Don't forget!”\p"
+			"Three shells are embedded onto the door, brimming with pearls.\p"
+			"Attempt to unlock the door?"
+			), MSGBOX_YESNO)
+			closemessage
 		if(var(VAR_RESULT) == YES){
 			call(DemonLairs_Greehaseet_EventScript_Puzzle)
 		}
 	} elif (!flag(FLAG_GREEHASEET_PUZZLE_SOLVED)){
 		call(DemonLairs_Greehaseet_EventScript_Puzzle)
 	} else {
-		msgbox("Door's open.\nEnter?", MSGBOX_YESNO)
+		msgbox("The door is open!\nEnter?", MSGBOX_YESNO)
+		closemessage
+
 		if(var(VAR_RESULT) == YES) {
 			warp(MAP_DEMON_LAIRS_GREEHASEET_INTERIOR, 8, 16)
 		}
@@ -42,13 +47,13 @@ script DemonLairs_Greehaseet_EventScript_Puzzle {
 }
 
 script DemonLairs_Greehaseet_EventScript_DoorIsOpen {
+	playse(SE_M_ROCK_THROW)
 	setvar(VAR_0x8004, 1)  // vertical pan
-	setvar(VAR_0x8005, 1)  // horizontal pan
+	setvar(VAR_0x8005, 0)  // horizontal pan
 	setvar(VAR_0x8006, 8)  // num shakes
-	setvar(VAR_0x8007, 5)  // shake delay
+	setvar(VAR_0x8007, 3)  // shake delay
 	special(ShakeCamera)
 	waitstate
-	playse(SE_M_ROCK_THROW)
 	setmetatile(9, 8, 0x2c0, FALSE)
 	return
 }

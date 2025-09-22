@@ -12,37 +12,132 @@ mapscripts ArchiesHouse_1F_MapScripts {
 }
 
 script ArchiesHouse_EventScript_BeginningCutscene {
+	playse(SE_PIN)
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_music, delay_16 * 6))
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+
     speakername("Archie")
-    msgbox(format("…\p Sure is nice to have such a peaceful life…\pI sure hope nothing comes in to ruin it."))
+    msgbox(format(
+        "Despite the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}'s iron grasp on the world, this life is so peaceful…\p"
+        "I sure hope nothing comes in to ruin my day right about now!"
+    ))
     closemessage
+
     delay(60)
+
     playbgm(MUS_DUMMY, FALSE)
+
+    // First shake
     playse(SE_M_THUNDERBOLT2)
+
+	setvar(VAR_0x8004, 0)  // vertical pan
+	setvar(VAR_0x8005, 1)  // horizontal pan
+	setvar(VAR_0x8006, 5) // num shakes
+	setvar(VAR_0x8007, 3)  // shake delay
+	special(ShakeCamera)
+    waitstate
+
+	playse(SE_PIN)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark))
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(delay_16 * 3, face_up, delay_16 * 2, face_right, delay_16 * 2, face_down, delay_16 * 2))
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+
+    speakername("Archie")
+    msgbox(format("… …What was that?"))
+    closemessage
+
+    delay(60)
+
+    // Second shake
+    playse(SE_THUNDERSTORM_STOP)
+
+    setvar(VAR_0x8004, 0)  // vertical pan
+	setvar(VAR_0x8005, 3)  // horizontal pan
+	setvar(VAR_0x8006, 10) // num shakes
+	setvar(VAR_0x8007, 3)  // shake delay
+	special(ShakeCamera)
+
+    delay(16)
+	playse(SE_PIN)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark, delay_16))
+
     fadescreen(FADE_TO_WHITE)
+
     waitse
+    playse(SE_LAVARIDGE_FALL_WARP)
+    waitse
+
     fadescreen(FADE_FROM_WHITE)
+
     clearflag(FLAG_HIDE_ARCHIE)
     addobject(OBJ_FUTUREARCHIE)
+
     playbgm(MUS_WEATHER_GROUDON, FALSE)
-    speakername("Archie")
-    msgbox("What the?!")
-    closemessage
-    applymovement(OBJ_FUTUREARCHIE, moves(walk_up * 4, walk_right * 3))
+
+    delay(60)
+
     applymovement(OBJ_EVENT_ID_PLAYER, moves(face_left))
-    waitmovement(OBJ_FUTUREARCHIE)
     waitmovement(OBJ_EVENT_ID_PLAYER)
+
     speakername("Archie")
-    msgbox("Who are you…?")
-    applymovement(OBJ_FUTUREARCHIE, moves(walk_in_place_right))
-    speakername("Old Archie")
-    msgbox(format("We don't have time."))
-    waitmovement(0)
-    msgbox(format("I'm you from a different future. One where you're free from the Bai'Narii, and I've come here to help you."))
-    speakername("Archie")
-    msgbox(format("Defeat the Bai'Narii? But… how?"))
-    speakername("Old Archie")
-    msgbox(format("You have to trust me. But you can't go alone. I know you have your friends outside, so go get whoever you want, and come back to me."))
+    msgbox("What the-")
     closemessage
+
+    applymovement(OBJ_FUTUREARCHIE, moves(walk_up, walk_right * 2))
+    waitmovement(OBJ_FUTUREARCHIE)
+
+    playse(SE_LEDGE)
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(jump_in_place_left, emote_upset))
+    speakername("Archie")
+    msgbox("The hell are you?!")
+
+    applymovement(OBJ_FUTUREARCHIE, moves(walk_in_place_fast_right))
+    speakername("Old Archie")
+    msgbox(format(
+        "No time for lengthy explanations.\n{FONT_SMALL}Wow, I really used to dress like this?{FONT_NORMAL}\l"
+        "Ahem…\p"
+        "I'm you from a different future, one where you're free from the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}, and I've come here to help you.\lWell, to help me, that is."
+    ))
+
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
+    speakername("Archie")
+    msgbox(format("Defeating the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}?\nBut… how?"))
+    closemessage
+
+    applymovement(OBJ_FUTUREARCHIE, moves(walk_in_place_fast_right))
+    speakername("Old Archie")
+    msgbox(format(
+        "You have to trust me. You won't stand a chance on your own, though."
+    ))
+    closemessage
+
+    applymovement(OBJ_FUTUREARCHIE, moves(walk_in_place_fast_up))
+    speakername("Old Archie")
+    msgbox(format(
+        "I know you have your friends outside.\nGo get whoever you want, and come back!"
+    ))
+    closemessage
+
+    applymovement(OBJ_FUTUREARCHIE, moves(face_right))
+
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
+    speakername("Archie")
+    msgbox(format("Do I, like, get a say in any of this, at all?"))
+    closemessage
+
+    applymovement(OBJ_FUTUREARCHIE, moves(walk_in_place_fast_up))
+    speakername("Old Archie")
+    msgbox(format(
+        "…No."
+    ))
+    closemessage
+
+    playse(SE_PIN)
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_sweat, delay_16 * 6))
+    waitmovement(0)
+
     setvar(VAR_ARCHIE_ARRIVES, 1)
     end
 }
@@ -53,25 +148,48 @@ script ArchiesHouse_EventScript_Archie {
     getpartysize
     copyvar(VAR_TEMP_0, VAR_RESULT)
     speakername("Old Archie")
-    msgbox(format("So, are you ready to go face the Demon Lords?"), MSGBOX_YESNO)
+    msgbox(format("Ready to face the Demon Lords, kid…\nI mean uh, me?"), MSGBOX_YESNO)
     waitmessage
     if(var(VAR_RESULT) == YES){
         if(var(VAR_TEMP_0) > 0)
         {
-            msgbox(format("Well, follow me then! I'll use this device to transport us…"))
-            waitmessage
+            msgbox(format("Follow me!\nI'll transport us with this device…"))
             closemessage
+
+            
+            playse(SE_SWITCH)
+            waitse
+            delay(48)
+            playse(SE_LAVARIDGE_FALL_WARP)
+
             warpwhitefade(MAP_HUB_WORLD_INITIAL, 8, 4)
         } else {
-            msgbox(format("Don't lie to me with that stupid grin! You have no Pokémon to battle them with!"),MSGBOX_DEFAULT)
+            msgbox(format("Wipe that grin off your face! How you gonna fight them with no Pokémon, huh?"),MSGBOX_DEFAULT)
             closemessage
         }
     }
     elif(var(VAR_RESULT) == NO) {
-        msgbox(format("Hurry up, then! The fate of the world is waiting!"), MSGBOX_DEFAULT)
+        msgbox(format("Sure, take your time! Not like the fate of the world is waiting, or anything!"), MSGBOX_DEFAULT)
         closemessage
     }
     applymovement(0, moves(face_original_direction))
     waitmovement(0)
     end
+}
+
+script ArchiesHouse_1F_Trigger_TryToLeave {
+    lockall
+
+    playse(SE_LEDGE)
+    applymovement(OBJ_FUTUREARCHIE, moves(jump_in_place_down))
+    waitmovement(0)
+
+    speakername("Old Archie")
+    msgbox(format("Where d'you think you're going, kid?!"))
+    closemessage
+
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up))
+    waitmovement(0)
+
+    releaseall
 }

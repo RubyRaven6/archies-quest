@@ -163,6 +163,16 @@ u8 MovementAction_SetVisible_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_EmoteExclamationMark_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_EmoteQuestionMark_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_EmoteHeart_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_EmoteMusic_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_EmoteSad_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_EmoteUpset_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_EmoteAngry_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_EmotePensive_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_EmotePoisoned_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_EmoteHappy_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_EmoteCrying_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_EmoteSweat_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_EmoteSleep_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_RevealTrainer_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_RevealTrainer_Step1(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_RockSmashBreak_Step0(struct ObjectEvent *, struct Sprite *);
@@ -287,13 +297,17 @@ u8 MovementAction_SurfStillLeft_Step0(struct ObjectEvent *objectEvent, struct Sp
 u8 MovementAction_SurfStillLeft_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite);
 u8 MovementAction_SurfStillRight_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
 u8 MovementAction_SurfStillRight_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite);
-//fast diagonal
+// Fast diagonal
 u8 MovementAction_WalkFastDiagonalUpLeft_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_WalkFastDiagonalUpRight_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_WalkFastDiagonalDownLeft_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_WalkFastDiagonalDownRight_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_WalkFastDiagonal_Step1(struct ObjectEvent *, struct Sprite *);
-
+// Shake
+u8 MovementAction_ShakeHorizontal_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_ShakeHorizontal_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_ShakeVertical_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_ShakeVertical_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite);
 
 u8 (*const gMovementActionFuncs_FaceDown[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_FaceUp[])(struct ObjectEvent *, struct Sprite *);
@@ -386,6 +400,16 @@ u8 (*const gMovementActionFuncs_SetVisible[])(struct ObjectEvent *, struct Sprit
 u8 (*const gMovementActionFuncs_EmoteExclamationMark[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_EmoteQuestionMark[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_EmoteHeart[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_EmoteMusic[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_EmoteSad[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_EmoteUpset[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_EmoteAngry[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_EmotePensive[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_EmotePoisoned[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_EmoteHappy[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_EmoteCrying[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_EmoteSweat[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_EmoteSleep[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_RevealTrainer[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_RockSmashBreak[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_CutTree[])(struct ObjectEvent *, struct Sprite *);
@@ -469,12 +493,14 @@ u8 (*const gMovementActionFuncs_SurfStillDown[])(struct ObjectEvent *, struct Sp
 u8 (*const gMovementActionFuncs_SurfStillUp[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_SurfStillLeft[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_SurfStillRight[])(struct ObjectEvent *, struct Sprite *);
-//fast diagonal
+// Fast diagonal
 u8 (*const gMovementActionFuncs_WalkFastDiagonalUpLeft[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_WalkFastDiagonalUpRight[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_WalkFastDiagonalDownLeft[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_WalkFastDiagonalDownRight[])(struct ObjectEvent *, struct Sprite *);
-
+// Shake
+u8 (*const gMovementActionFuncs_ShakeHorizontal[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_ShakeVertical[])(struct ObjectEvent *, struct Sprite *);
 
 u8 (*const *const gMovementActionFuncs[])(struct ObjectEvent *, struct Sprite *) = {
     [MOVEMENT_ACTION_FACE_DOWN] = gMovementActionFuncs_FaceDown,
@@ -566,6 +592,16 @@ u8 (*const *const gMovementActionFuncs[])(struct ObjectEvent *, struct Sprite *)
     [MOVEMENT_ACTION_EMOTE_EXCLAMATION_MARK] = gMovementActionFuncs_EmoteExclamationMark,
     [MOVEMENT_ACTION_EMOTE_QUESTION_MARK] = gMovementActionFuncs_EmoteQuestionMark,
     [MOVEMENT_ACTION_EMOTE_HEART] = gMovementActionFuncs_EmoteHeart,
+    [MOVEMENT_ACTION_EMOTE_MUSIC] = gMovementActionFuncs_EmoteMusic,
+    [MOVEMENT_ACTION_EMOTE_SAD] = gMovementActionFuncs_EmoteSad,
+    [MOVEMENT_ACTION_EMOTE_UPSET] = gMovementActionFuncs_EmoteUpset,
+    [MOVEMENT_ACTION_EMOTE_ANGRY] = gMovementActionFuncs_EmoteAngry,
+    [MOVEMENT_ACTION_EMOTE_PENSIVE] = gMovementActionFuncs_EmotePensive,
+    [MOVEMENT_ACTION_EMOTE_POISONED] = gMovementActionFuncs_EmotePoisoned,
+    [MOVEMENT_ACTION_EMOTE_HAPPY] = gMovementActionFuncs_EmoteHappy,
+    [MOVEMENT_ACTION_EMOTE_CRYING] = gMovementActionFuncs_EmoteCrying,
+    [MOVEMENT_ACTION_EMOTE_SWEAT] = gMovementActionFuncs_EmoteSweat,
+    [MOVEMENT_ACTION_EMOTE_SLEEP] = gMovementActionFuncs_EmoteSleep,
     [MOVEMENT_ACTION_REVEAL_TRAINER] = gMovementActionFuncs_RevealTrainer,
     [MOVEMENT_ACTION_ROCK_SMASH_BREAK] = gMovementActionFuncs_RockSmashBreak,
     [MOVEMENT_ACTION_CUT_TREE] = gMovementActionFuncs_CutTree,
@@ -656,7 +692,9 @@ u8 (*const *const gMovementActionFuncs[])(struct ObjectEvent *, struct Sprite *)
     [MOVEMENT_ACTION_WALK_FAST_DIAGONAL_UP_RIGHT] = gMovementActionFuncs_WalkFastDiagonalUpRight,
     [MOVEMENT_ACTION_WALK_FAST_DIAGONAL_DOWN_LEFT] = gMovementActionFuncs_WalkFastDiagonalDownLeft,
     [MOVEMENT_ACTION_WALK_FAST_DIAGONAL_DOWN_RIGHT] = gMovementActionFuncs_WalkFastDiagonalDownRight,
-
+    // Shake
+    [MOVEMENT_ACTION_SHAKE_HORIZONTAL] = gMovementActionFuncs_ShakeHorizontal,
+    [MOVEMENT_ACTION_SHAKE_VERTICAL] = gMovementActionFuncs_ShakeVertical,
 };
 
 u8 (*const gMovementActionFuncs_FaceDown[])(struct ObjectEvent *, struct Sprite *) = {
@@ -1254,6 +1292,56 @@ u8 (*const gMovementActionFuncs_EmoteHeart[])(struct ObjectEvent *, struct Sprit
     MovementAction_Finish,
 };
 
+u8 (*const gMovementActionFuncs_EmoteMusic[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_EmoteMusic_Step0,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_EmoteSad[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_EmoteSad_Step0,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_EmoteUpset[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_EmoteUpset_Step0,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_EmoteAngry[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_EmoteAngry_Step0,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_EmotePensive[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_EmotePensive_Step0,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_EmotePoisoned[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_EmotePoisoned_Step0,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_EmoteHappy[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_EmoteHappy_Step0,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_EmoteCrying[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_EmoteCrying_Step0,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_EmoteSweat[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_EmoteSweat_Step0,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_EmoteSleep[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_EmoteSleep_Step0,
+    MovementAction_Finish,
+};
+
 u8 (*const gMovementActionFuncs_RevealTrainer[])(struct ObjectEvent *, struct Sprite *) = {
     MovementAction_RevealTrainer_Step0,
     MovementAction_RevealTrainer_Step1,
@@ -1694,7 +1782,7 @@ u8 (*const gMovementActionFuncs_SurfStillRight[])(struct ObjectEvent *, struct S
     MovementAction_SurfStillRight_Step1,
     MovementAction_PauseSpriteAnim,
 };
-// fast diagonal
+// Fast diagonal
 u8 (*const gMovementActionFuncs_WalkFastDiagonalUpLeft[])(struct ObjectEvent *, struct Sprite *) = {
     MovementAction_WalkFastDiagonalUpLeft_Step0,
     MovementAction_WalkFastDiagonal_Step1,
@@ -1719,3 +1807,15 @@ u8 (*const gMovementActionFuncs_WalkFastDiagonalDownRight[])(struct ObjectEvent 
     MovementAction_PauseSpriteAnim,
 };
 
+// Shake
+u8 (*const gMovementActionFuncs_ShakeHorizontal[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_ShakeHorizontal_Step0,
+    MovementAction_ShakeHorizontal_Step1,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_ShakeVertical[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_ShakeVertical_Step0,
+    MovementAction_ShakeVertical_Step1,
+    MovementAction_Finish,
+};
