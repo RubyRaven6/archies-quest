@@ -64,9 +64,9 @@ mapscripts HubWorld_Initial_MapScripts {
 script HubWorld_EventScript_Archie {
     speakername("Old Archie")
     msgbox(format("Need something, kid?"), MSGBOX_DEFAULT)
-    dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Storage device?", "Demon Lords?", "Retraining")
+    dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Demon Lords?", "Storage device?", "Retraining?")
     switch(var(VAR_RESULT)) {
-        case 0:
+        case 1:
             msgbox(format(
                 "It's a “PC”. It comes from the future.\p"
                 "Back home we use it for a lot of cool stuff, but this one only stores items.\p"
@@ -75,7 +75,7 @@ script HubWorld_EventScript_Archie {
             waitmessage
             closemessage
             break
-        case 1:
+        case 0:
             msgbox(format("Ah, you wanted to know about the next Demon Lord?"))
             waitmessage
             switch(var(VAR_DEMON_LORD_PROGRESS)){
