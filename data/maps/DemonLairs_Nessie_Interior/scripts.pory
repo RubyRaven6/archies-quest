@@ -2,7 +2,6 @@ mapscripts DemonLairs_Nessie_Interior_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_FIRST_TIME_ENTERING_NESSIE, 0 {
             lockall
-            autosave
             setvar(VAR_FIRST_TIME_ENTERING_NESSIE, 1)
             delay(24)
             playse(SE_CONTEST_CONDITION_LOSE)
@@ -93,7 +92,7 @@ script DemonLairs_EventScript_Nessie {
     applymovement(LOCALID_NESSIE_PAINTER, moves(emote_sad))
     speakername("Nessereign")
     msgbox(format(
-        "Impossible…{PAUSE 16} You HEATHEN…{PAUSE 16}\nThis simply CAN-{PAUSE 8}NOT-{PAUSE 8}BE…"        
+        "Impossible…{PAUSE 16} You HEATHEN…{PAUSE 16}\nThis simply CAN-{PAUSE 8}NOT-{PAUSE 8}BE…"
     ))
 
     playse(SE_M_THUNDERBOLT2)
@@ -102,7 +101,7 @@ script DemonLairs_EventScript_Nessie {
 	setvar(VAR_0x8006, 5)  // num shakes
 	setvar(VAR_0x8007, 3)  // shake delay
 	special(ShakeCamera)
-    
+
     speakername("Nessereign")
     msgbox(format(
         "I was standing here, painting before you were even BORN!\p"

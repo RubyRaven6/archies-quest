@@ -6,7 +6,7 @@ mapscripts DemonLairs_Nessie_MapScripts{
             setflag(FLAG_SYS_BOSS_IN_PROG)
         }
     ]
-    MAP_SCRIPT_ON_TRANSITION {
+    MAP_SCRIPT_ON_LOAD {
         if(flag(FLAG_NESSIE_PUZZLE_SOLVED)){
             setmetatile(2, 0, METATILE_NessereignLairPrimary_ENTRANCE_UPL, TRUE) //opens hole
             setmetatile(3, 0, METATILE_NessereignLairPrimary_ENTRANCE_UPM, TRUE)
@@ -15,7 +15,7 @@ mapscripts DemonLairs_Nessie_MapScripts{
             setmetatile(3, 1, METATILE_NessereignLairPrimary_ENTRANCE_MM, TRUE)
             setmetatile(4, 1, METATILE_NessereignLairPrimary_ENTRANCE_MR, TRUE)
             setmetatile(2, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNL, TRUE)
-            setmetatile(3, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNM, FALSE)
+            setmetatile(3, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNM, TRUE)
             setmetatile(4, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNR, TRUE)
 
             setmetatile(3, 7, METATILE_NessereignLairPrimary_TableCorner, TRUE) // hides knife
@@ -96,10 +96,8 @@ script DemonLairs_Nessie_EventScript_Book {
             msgbox(
                 "You thumb through and find gross\nand disgusting images.\p"
                 "You strain until you see a phrase:\p"
-                "“Sheathing sheathing sheathing sheathing\nsheathing sheathing sheathing sheathing\p"
-                "Sharpness sharpness sharpness sharpness\nsharpness sharpness sharpness sharpness\p"
-                "Through through through through through\nthrough through through through through\p"
-                "Screams screams screams screams screams\nscreams screams screams screams”\p"
+                "“Sheathing sheathing sheathing sheathing\nsharpness sharpness sharpness sharpness\l"
+                "through through through through through\lscreams screams screams screams screams\p"
                 "It feels like you learned something\nimportant."
             )
             setflag(FLAG_NESSIE_READ_BOOK)
