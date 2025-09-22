@@ -42,6 +42,7 @@ script DemonLairs_EventScript_Nessie {
         speakername("Nessereign")
         msgbox(format(
             "Weeeell, who might this pretty young thing be?\p"
+            "I'm {COLOR RED}Nessereign{COLOR DARK_GRAY}.\nBut YOU, you can call me {COLOR RED}Nessie{COLOR DARK_GRAY}!"
             "Are you lost?\nYou delicious,{PAUSE 8} GODFORSAKEN{PAUSE 8} INTRUDER?"
         ))
         closemessage
@@ -61,7 +62,7 @@ script DemonLairs_EventScript_Nessie {
         speakername("Nessereign")
         msgbox(format(
             "Ha ha ha ha ha…\p"
-            "HA HA HA HA HA!!\p"
+            "HA HA HA HA HA\nHA HA HA HA HA\p"
             "You made me laugh so hard the headaches have come!{PAUSE 8} Right!{PAUSE 8} BACK!\p"
             "If you think I'll let you get away, you have another thing coming!\p"
             "Surprise, surprise…{PAUSE 16} IT'S DEATH!"
@@ -86,7 +87,7 @@ script DemonLairs_EventScript_Nessie {
     applymovement(LOCALID_NESSIE_PAINTER, moves(emote_sad))
     speakername("Nessereign")
     msgbox(format(
-        "Impossible…{PAUSE 8} You HEATHEN…\nThis simply CAN-{PAUSE 8}NOT-{PAUSE 8}BE…"        
+        "Impossible…{PAUSE 16} You HEATHEN…{PAUSE 16}\nThis simply CAN-{PAUSE 8}NOT-{PAUSE 8}BE…"        
     ))
 
     playse(SE_M_THUNDERBOLT2)
@@ -99,7 +100,7 @@ script DemonLairs_EventScript_Nessie {
     speakername("Nessereign")
     msgbox(format(
         "I was standing here, painting before you were even BORN!\p"
-        "I have painted EVERYTHING your eyes will ever SEE!"
+        "I have painted{PAUSE 8} EVERYTHING your eyes will ever SEE!"
     ))
 
     playse(SE_M_THUNDERBOLT2)
