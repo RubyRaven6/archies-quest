@@ -37,7 +37,8 @@ mapscripts HubWorld_Initial_MapScripts {
                 "It's a pocket dimension shrouded from the influence of the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}.\p"
                 "I opened a portal using the magical anchor object behind you.\p"
                 "When you're ready, touch it and you'll be taken to a Demon Lord's lair.\p"
-                "Whenever you defeat one, I can track it, and open a new one for when you come back."
+                "I'll be able to open a new portal back here once you defeat a Demon Lord.\p"
+                "Until then, you're on your own.\nThe only way out is through!"
             ))
             applymovement(LOCALID_HUBWORLD_ARCHIE, moves(walk_in_place_fast_right))
             applymovement(OBJ_EVENT_ID_PLAYER, moves(delay_16 * 2, face_right))
