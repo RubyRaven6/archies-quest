@@ -274,6 +274,8 @@
 #define MOVEMENT_ACTION_EMOTE_CRYING                    0xB9
 #define MOVEMENT_ACTION_EMOTE_SWEAT                     0xBA
 #define MOVEMENT_ACTION_EMOTE_SLEEP                     0xBB
+#define MOVEMENT_ACTION_SHAKE_HORIZONTAL                0xBC
+#define MOVEMENT_ACTION_SHAKE_VERTICAL                  0xBD
 
 #define MOVEMENT_ACTION_STEP_END 0xFE
 #define MOVEMENT_ACTION_NONE     0xFF
