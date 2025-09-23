@@ -1272,6 +1272,20 @@ bool8 ScrCmd_fadeinbgm(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_fadeinnewbgm(struct ScriptContext *ctx)
+{
+    u32 songId = ScriptReadHalfword(ctx);
+    u8 speed = ScriptReadByte(ctx);
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE | SCREFF_HARDWARE);
+
+    if (speed != 0)
+        FadeInNewBGM(songId, 4 * speed);
+    else
+    FadeInNewBGM(songId, 4);
+    return FALSE;
+}
+
 struct ObjectEvent *ScriptHideFollower(void)
 {
     struct ObjectEvent *obj = GetFollowerObject();

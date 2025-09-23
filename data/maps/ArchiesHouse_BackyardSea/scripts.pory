@@ -48,7 +48,7 @@ script ArchiesHouse_Backyard_EventScripts_Dhelmise {
 		msgbox(format("Dhelmise is unsure how it got here, but is happy regardless.\pTake her someplace else?"), MSGBOX_YESNO)
 		closemessage
 		if(var(VAR_RESULT) == TRUE){
-			givemon(SPECIES_DHELMISE, 50, abilityNum=0, move1=MOVE_HEAVY_SLAM, move2=MOVE_WOOD_HAMMER, move3=MOVE_GROWTH, move4=MOVE_POLTERGEIST, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_DHELMISE, 50, abilityNum=0, gender=FEMALE, move1=MOVE_HEAVY_SLAM, move2=MOVE_WOOD_HAMMER, move3=MOVE_GROWTH, move4=MOVE_POLTERGEIST, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_SEA_DHELMISE)
 			msgbox("Dhelmise joined your party!")
 			closemessage

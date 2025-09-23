@@ -1,51 +1,128 @@
-mapscripts DemonLairs_Addisamap_Interior_MapScripts {}
+mapscripts DemonLairs_Addisamap_Interior_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        if(!flag(FLAG_ADDISAMAP_PUZZLE_SOLVED)){
+            setflag(FLAG_ADDISAMAP_PUZZLE_SOLVED)
+        }
+    }
+}
 
 script DemonLairs_EventScript_Addisamap {
+    lock
     if(!flag(FLAG_TALKED_TO_ADDISAMAP)){
         setflag(FLAG_TALKED_TO_ADDISAMAP)
+
         speakername("Addisamap")
-        msgbox(format("So you're finally here, huh?"),MSGBOX_DEFAULT)
-        waitmessage
+        msgbox(format(
+            "The troublemaker finally got here, hmm?\l"
+            "Color me impressed."
+        ))
         closemessage
+
+        playse(SE_LEDGE)
+        applymovement(LOCALID_PLAYER, moves(jump_in_place_up))
+        speakername("Archie")
+        msgbox(format("You sound calm, when you should be panicking!"))
+        closemessage
+
+        playse(SE_PIN)
+        applymovement(LOCALID_ADDISAMAP_RUIN_MANIAC, moves(emote_music))
+        speakername("Addisamap")
+        msgbox(format(
+            "What reason do I have to be worried?\p"
+            "I am as ancient as time itself.\nThe ground the young man treads on\lwas crafted by these hands.\p"
+            "Does he think he can defeat the weight of the centuries?\p"
+            "Ho ho ho…\p"
+            "He is ultimately failing this silly quest of his.\NEither by my hand, or by our Master's."
+        ))
+        closemessage
+
         applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
         speakername("Archie")
-        msgbox(format("You seem so calm and nonplussed."), MSGBOX_DEFAULT)
-        waitmessage
+        msgbox(format("Who's this Master of yours?!\nTell me his name!"))
         closemessage
-        applymovement(LOCALID_ADDISAMAP_RUIN_MANIAC, moves(walk_in_place_down))
+
+        applymovement(LOCALID_ADDISAMAP_RUIN_MANIAC, moves(face_up, delay_16, emote_pensive, delay_16 * 3, face_down))
+        waitmovement(LOCALID_ADDISAMAP_RUIN_MANIAC)
+
         speakername("Addisamap")
-        msgbox(format("Of course. I have to be. What reason do I have to be worried?\pYou're ultimately failing this silly quest of yours. Either by my hand, or by our Master's."), MSGBOX_DEFAULT)
-        waitmessage
-        closemessage
-        applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
-        speakername("Archie")
-        msgbox(format("Your Master?!"), MSGBOX_DEFAULT)
-        waitmessage
-        closemessage
-        applymovement(LOCALID_ADDISAMAP_RUIN_MANIAC, moves(walk_in_place_down))
-        speakername("Addisamap")
-        msgbox(format("Yes. It's a shame, really. You'll never have the chance to meet him."), MSGBOX_DEFAULT)
-        waitmessage
+        msgbox(format(
+            "I shan't. The young man doesn't deserve to hear His name.\p"
+            "It's a shame, really…\p"
+            "He will never have the chance to meet Him."
+        ))
         closemessage
     } else {
         faceplayer
         speakername("Addisamap")
-        msgbox(format("The quester returns. Stubborn as ever. Luckily, he's not the only one who's stubborn."), MSGBOX_DEFAULT)
+        msgbox(format(
+            "The quester returns.\nStubborn as ever.\p"
+            "He will soon realize my patience is infinite."
+        ))
         waitmessage
         closemessage
     }
-    trainerbattle_no_intro(TRAINER_DEMONLORD_ADDISAMAP, format("…"))
+
+    trainerbattle_no_intro(TRAINER_DEMONLORD_ADDISAMAP, format("… … … … … …\n… … … … … …"))
+
+    playbgm(MUS_RAYQUAZA_APPEARS, TRUE)
+
+    playse(SE_PIN)
+    applymovement(LOCALID_ADDISAMAP_RUIN_MANIAC, moves(emote_pensive))
     speakername("Addisamap")
-    msgbox(format("…\pVery well. It seems my time has come. But yours is fast approaching, boy. Turn back now, unless you wish to die in regret."))
-    fadescreen(FADE_TO_WHITE)
-    waitmessage
+    msgbox(format(
+        "… … … … … …\n… … … … … …\p"
+        "Very well. It seems my time has come.\nBut the boy's is fast approaching."
+    ))
+
+    playse(SE_M_THUNDERBOLT2)
+	setvar(VAR_0x8004, 0)  // vertical pan
+	setvar(VAR_0x8005, 1)  // horizontal pan
+	setvar(VAR_0x8006, 5)  // num shakes
+	setvar(VAR_0x8007, 3)  // shake delay
+	special(ShakeCamera)
+
+    speakername("Addisamap")
+    msgbox(format(
+        "He should consider turning back now, unless he wishes to die in regret."
+    ))
+
+    playse(SE_M_THUNDERBOLT2)
+	setvar(VAR_0x8004, 0)  // vertical pan
+	setvar(VAR_0x8005, 1)  // horizontal pan
+	setvar(VAR_0x8006, 8)  // num shakes
+	setvar(VAR_0x8007, 3)  // shake delay
+	special(ShakeCamera)
+
+    speakername("Addisamap")
+    msgbox(format(
+        "Now…\nI return to the Earth I made."
+    ))
     closemessage
+
+    applymovement(LOCALID_ADDISAMAP_RUIN_MANIAC, moves(shake_horizontal))
+    playbgm(MUS_DUMMY, TRUE)
+    playmoncry(SPECIES_ADDISAMAP, CRY_MODE_WEAK)
+    waitmovement(LOCALID_ADDISAMAP_RUIN_MANIAC)
+
+    fadescreen(FADE_TO_WHITE)
+
+    removeobject(LOCALID_ADDISAMAP_RUIN_MANIAC)
+
+    delay(60)
+
     fadescreen(FADE_FROM_WHITE)
+
+    delay(60)
+
     clearflag(FLAG_SYS_BOSS_IN_PROG)
+
     playse(SE_PC_ON)
+
     applymovement(LOCALID_PLAYER, moves(face_down))
+
     setmetatile(12, 13, 0x026, FALSE)
     special(DrawWholeMapView)
+
     waitse
-    end
+    release
 }

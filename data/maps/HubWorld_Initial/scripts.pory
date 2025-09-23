@@ -19,22 +19,41 @@ mapscripts HubWorld_Initial_MapScripts {
             setvar(VAR_TEMP_0, 1)
         }
         VAR_HUB_WORLD_INITIAL_SCENE, 0 {
-            applymovement(LOCALID_HUBWORLD_ARCHIE, moves(walk_in_place_down))
-            applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+            applymovement(LOCALID_HUBWORLD_ARCHIE, moves(walk_in_place_fast_down))
+            applymovement(LOCALID_PLAYER, moves(walk_in_place_fast_up))
             waitmovement(LOCALID_HUBWORLD_ARCHIE)
             waitmovement(LOCALID_PLAYER)
+
+            special(SpawnCameraObject)
+
             speakername("Old Archie")
-            msgbox(format("This is going to be our base of operations.\p
-                        It's an extra dimensional space away from the influence of the Bai'Narii.\p
-                        I've opened a portal using the a magical anchor object.\p
-                        When you're ready, interact with it and you'll be taken to a Demon Lord's lair.\p
-                        Whenever you defeat one, I can track it, and open a new one for when you come back.\p
-                        Lastly, I've brought a device from the future, containing many items to help make your Pokémon stornger.\p
-                        And if I recall correctly, you also have berries as a farmer, right?\p
-                        That's all for now. If you have any questions, just talk to me again."), MSGBOX_DEFAULT)
-            waitmessage
+            msgbox(format(
+                "This is going to be our base of operations."
+            ))
+
+            applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 4, delay_16 * 3, walk_up * 4))
+
+            msgbox(format(
+                "It's a pocket dimension shrouded from the influence of the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}.\p"
+                "I opened a portal using the magical anchor object behind you.\p"
+                "When you're ready, touch it and you'll be taken to a Demon Lord's lair.\p"
+                "I'll be able to open a new portal back here once you defeat a Demon Lord.\p"
+                "Until then, you're on your own.\nThe only way out is through!"
+            ))
+            applymovement(LOCALID_HUBWORLD_ARCHIE, moves(walk_in_place_fast_right))
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(delay_16 * 2, face_right))
+            msgbox(format(
+                "By the by, I stored some useful items in that futuristic device in the corner."
+            ))
+            applymovement(LOCALID_HUBWORLD_ARCHIE, moves(walk_in_place_fast_down))
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(delay_16 * 2, face_up))
+            msgbox(format(
+                "Well then, break a leg! I'll just be waiting here, doing nothing, I mean, surveiling the area."
+            ))
             closemessage
+
             setvar(VAR_HUB_WORLD_INITIAL_SCENE, 1)
+            special(RemoveCameraObject)
         }
         VAR_DEMON_LORD_PROGRESS, 4 {
             goto(HubWorld_EventScript_Maxie)
@@ -44,65 +63,81 @@ mapscripts HubWorld_Initial_MapScripts {
 
 script HubWorld_EventScript_Archie {
     speakername("Old Archie")
-    msgbox(format("Hey. Did you need something, kid?"), MSGBOX_DEFAULT)
-    dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Device", "Demon Lords", "Retraining")
+    msgbox(format("Need something, kid?"), MSGBOX_DEFAULT)
+    dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Demon Lords?", "Storage device?", "Retraining?")
     switch(var(VAR_RESULT)) {
-        case 0:
-            msgbox(format("It's a device from the future called a “PC”.\pNormally, you can do much more things on it, but due to time travel being unstable, it only has the functionality to store items.\pThankfully, though, all the items I brought with me are intact."), MSGBOX_DEFAULT)
+        case 1:
+            msgbox(format(
+                "It's a “PC”. It comes from the future.\p"
+                "Back home we use it for a lot of cool stuff, but this one only stores items.\p"
+                "Thankfully, all the items I brought with me are intact!"
+            ))
             waitmessage
             closemessage
             break
-        case 1:
+        case 0:
             msgbox(format("Ah, you wanted to know about the next Demon Lord?"))
             waitmessage
             switch(var(VAR_DEMON_LORD_PROGRESS)){
                 case 0:
-                    msgbox(format("Nessereign. The first and weakest of the Bai'Narii.\p"
-                                    "Don't let this fool you, though, as she's crafty in her own right.\p"
-                                    "She's swift and cunning when she battles, but also extremely frail.\p"
-                                    "She's also a duplicitous lord; as such, her minions are Normal and Dark."))
+                    msgbox(format(
+                        "{COLOR RED}Nessereign{COLOR DARK_GRAY}.\nThe first and weakest of the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}.\p"
+                        "But don't let this fool you! She's crafty, and most importantly, crazy.\p"
+                        "She's swift and cunning when she battles, but also extremely frail.\p"
+                        "Nessereign is duplicitous in nature; as such, her minions are Normal and Dark."
+                    ))
                     waitmessage
                     closemessage
                 case 1:
-                    msgbox(format("Greehaseet. Considered the Bai'Narii's unrelenting chariot.\p"
-                                    "He possesses great strength, but also great stamina.\p"
-                                    "His advantage comes from depleting his opponent's strength, and crushing them.\p"
-                                    "His realm is normally in the waters, though, as such his minions of Ice and Water."))
+                    msgbox(format(
+                        "{COLOR RED}Greehaseet{COLOR DARK_GRAY}.\nThe {COLOR RED}Bai'Narii{COLOR DARK_GRAY}'s unrelenting chariot.\p"
+                        "Despite his looks, he possesses great strength, but also great stamina\p"
+                        "He depletes his opponent's strength, then crushes them!\p"
+                        "He rules the depths with his minions of Ice and Water."
+                    ))
                     waitmessage
                     closemessage
                 case 2:
-                    msgbox(format("Sapprilon. Considered the Bai'Narii's impenetrable wall.\p"
-                                    "He can create forcefields of noise that can repel attacks without much effort.\p"
-                                    "Much effort is required to be able to breach his defenses.\p"
-                                    "He enlists minions that he believes can be utilized best: Steel and Psychic."))
+                    msgbox(format(
+                        "{COLOR RED}Sapprilon{COLOR DARK_GRAY}.\nThe {COLOR RED}Bai'Narii{COLOR DARK_GRAY}'s screaming wall.\p"
+                        "He creates forcefields of noise that can repel attacks without much effort.\p"
+                        "You'll have to sweat a little to breach his defenses.\p"
+                        "He enlists minions he believes can be utilized best: Steel and Psychic."
+                    ))
                     waitmessage
                     closemessage
                 case 3:
                     speakername("Old Archie")
-                    msgbox(format("Addisamap. The lieutenant-sergeant of the Bai'Narii.\p"
-                                    "She's their Ringleader, who keeps them in check for their master."))
+                    msgbox(format(
+                        "{COLOR RED}Addisamap{COLOR DARK_GRAY}.\nThe wise brain of the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}.\p"
+                        "She watches over them and keeps them in check for their master."
+                    ))
                     waitmessage
                     closemessage
                     speakername("Archie")
-                    msgbox(format("Wait, I thought there were only four Bai'Narii?"))
+                    msgbox(format("Wait, aren't there only four {COLOR RED}Bai'Narii{COLOR DARK_GRAY}?"))
                     waitmessage
                     closemessage
                     speakername("Old Archie")
-                    msgbox(format("No, there's one more behind them all. But let's focus for now.\p"
-                                    "Addisamap can control life and death in her own terms.\p"
-                                    "Make sure that you can outdo the healing she can do to herself.\p"
-                                    "Her minions are of Grass and Ground."))
+                    msgbox(format(
+                        "No, there's one more, behind them all.\nBut first things first!\p"
+                        "The shrewd {COLOR RED}Addisamap{COLOR DARK_GRAY} controls life and death in her own terms.\p"
+                        "Make sure that you can outdo the healing she can do to herself.\p"
+                        "Her minions are of Grass and Ground."
+                    ))
                     waitmessage
                     closemessage
             }
             break
         case 2:
-            msgbox(format("Hm? You want to know how to retrain your Pokémon? Well, it's quite simple.\p
-                            Each Pokémon has its own well of strength it can draw from.\p
-                            Let's call these “effort values”.\p
-                            As their trainer, it's your responsibility to train them in the ways that they can function best.\p
-                            Each time you defeat a Bai'Narii Lord, they get stronger.\p
-                            As such, you need to check on them and see if they need retraining."),MSGBOX_DEFAULT)
+            msgbox(format(
+                "Hm? You want to retrain your Pokémon? Well, it's quite simple.\p"
+                "Each Pokémon has its own well of strength it can draw from.\l"
+                "Let's call these “effort values”.\p"
+                "As their trainer, your responsibility is to train them in the best possible way.\p"
+                "Each time you defeat a {COLOR RED}{COLOR RED}Bai'Narii{COLOR DARK_GRAY}{COLOR DARK_GRAY} Lord, your team gets stronger.\p"
+                "So you should check on them often and see if they need retraining."
+            ))
             waitmessage
             closemessage
     }
@@ -113,9 +148,11 @@ script HubWorld_EventScript_Archie {
 
 script HubWorld_EventScript_NessereignWarp {
     if(!flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)){
-        msgbox(format("It's a marble pedestal, with no statue on it.\pInteract?"), MSGBOX_YESNO)
+        msgbox(format("It's a marble pedestal.\nIt's missing a statue.\pTouch it?"), MSGBOX_YESNO)
+        closemessage
         if(var(VAR_RESULT) == YES) {
             setrespawn(HEAL_LOCATION_DEMON_LAIRS_NESSIE)
+            playse(SE_LAVARIDGE_FALL_WARP)
             warpwhitefade(MAP_DEMON_LAIRS_NESSIE, 6, 8)
         } else {}
     } else {
@@ -128,9 +165,11 @@ script HubWorld_EventScript_NessereignWarp {
 
 script HubWorld_EventScript_GreehaseetWarp {
     if(!flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)){
-        msgbox(format("It's corroded, porous stone tablet.\pInteract?"), MSGBOX_YESNO)
+        msgbox(format("It's a corroded, porous stone tablet.\pTouch it?"), MSGBOX_YESNO)
+        closemessage
         if(var(VAR_RESULT) == YES) {
             setrespawn(HEAL_LOCATION_DEMON_LAIRS_GREEHASEET)
+            playse(SE_LAVARIDGE_FALL_WARP)
             warpwhitefade(MAP_DEMON_LAIRS_GREEHASEET, 9, 19)
         } else {}
     } elif(flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)) {
@@ -144,9 +183,11 @@ script HubWorld_EventScript_GreehaseetWarp {
 
 script HubWorld_EventScript_SapprilonWarp {
     if(!flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)){
-        msgbox(format("It's wooden box with a waxen disc on it, spinning under a needle.\pInteract?"), MSGBOX_YESNO)
+        msgbox(format("It's a wooden box with a waxen disc on it, spinning under a needle.\pTouch it?"), MSGBOX_YESNO)
+        closemessage
         if(var(VAR_RESULT) == YES) {
             setrespawn(HEAL_LOCATION_DEMON_LAIRS_SAPPRILON)
+            playse(SE_LAVARIDGE_FALL_WARP)
             warpwhitefade(MAP_DEMON_LAIRS_SAPPRILON, 6, 12)
         } else {}
     } elif(flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)) {
@@ -158,12 +199,14 @@ script HubWorld_EventScript_SapprilonWarp {
     end
 }
 
-script HubWorld_EventScript_Warp {
+script HubWorld_EventScript_AddisamapWarp {
     if(!flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_ADDISAMAP) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)){
-        msgbox(format("It's corroded, porous stone tablet.\pInteract?"), MSGBOX_YESNO)
+        msgbox(format("It's an enormous globe: a diorama of R'mhakking.\pTouch it?"), MSGBOX_YESNO)
+        closemessage
         if(var(VAR_RESULT) == YES) {
             setrespawn(HEAL_LOCATION_DEMON_LAIRS_ADDISAMAP)
-            warpwhitefade(MAP_DEMON_LAIRS_ADDISAMAP, 9, 19)
+            playse(SE_LAVARIDGE_FALL_WARP)
+            warpwhitefade(MAP_DEMON_LAIRS_ADDISAMAP, 12, 31)
         } else {}
     } elif(flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_ADDISAMAP) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)) {
         msgbox("No need to go back.")

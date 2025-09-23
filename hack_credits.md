@@ -144,10 +144,12 @@ Insertable format: Rahtak
 **UI Stat Editor, Party Screen**: [Archie (TeamAquasHideout)](https://github.com/TeamAquasHideout/pokeemerald/tree/sandbox)<br>
 **BW Summary Screen**: [RavePossum](https://github.com/ravepossum/pokeemerald-expansion/tree/bw_summary_screen_expansion)<br>
 **Decapitalized branch**: [ProfHarpe](https://github.com/prof-harpe/pokeemerald-expansion/tree/Decapitalized)<br>
+**Shake Movement Action**: [Jamie Foster](https://github.com/FosterProgramming/pokeemerald-expansion/tree/movement_action_shake)
 **Mon Levelling Code**: [Hedara](https://github.com/hedara90)
 
 ## Battle and Balance
 **Slow Start Cresselia, Sand Spit Palossand, Corrosion Toxapex, and Merciless Salazzle**: [x_bell](https://youtu.be/CCu-Q-5mxec?si=ij8UNkm-pHCtMSvX)
+
 
 ## Special Thanks
 - James (ruby's bf)

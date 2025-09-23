@@ -2,14 +2,14 @@
   "id": "MAP_DEMON_LAIRS_ADDISAMAP_INTERIOR",
   "name": "DemonLairs_Addisamap_Interior",
   "layout": "LAYOUT_DEMON_LAIRS_ADDISAMAP_INTERIOR",
-  "music": "MUS_DUMMY",
+  "music": "MUS_B_PALACE",
   "region_map_section": "MAPSEC_ADDISAMAP_LAIR",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_ROUTE",
+  "map_type": "MAP_TYPE_INDOOR",
   "allow_cycling": false,
   "allow_escaping": false,
-  "allow_running": false,
+  "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
@@ -26,7 +26,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "DemonLairs_EventScript_Addisamap",
-      "flag": "0"
+      "flag": "FLAG_HIDE_ADDISAMAP"
     }
   ],
   "warp_events": [],

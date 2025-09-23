@@ -106,7 +106,6 @@ static void PlayerAvatarTransition_Normal(struct ObjectEvent *);
 static void PlayerAvatarTransition_MachBike(struct ObjectEvent *);
 static void PlayerAvatarTransition_AcroBike(struct ObjectEvent *);
 static void PlayerAvatarTransition_Surfing(struct ObjectEvent *);
-static void PlayerAvatarTransition_Underwater(struct ObjectEvent *);
 static void PlayerAvatarTransition_ReturnToField(struct ObjectEvent *);
 
 static bool8 PlayerAnimIsMultiFrameStationary(void);
@@ -1107,7 +1106,7 @@ static void PlayerAvatarTransition_Surfing(struct ObjectEvent *objEvent)
     SetSurfBlob_BobState(spriteId, BOB_PLAYER_AND_MON);
 }
 
-static void PlayerAvatarTransition_Underwater(struct ObjectEvent *objEvent)
+void PlayerAvatarTransition_Underwater(struct ObjectEvent *objEvent)
 {
     ObjectEventSetGraphicsId(objEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_UNDERWATER));
     ObjectEventTurn(objEvent, objEvent->movementDirection);

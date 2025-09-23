@@ -2,14 +2,14 @@
   "id": "MAP_DEMON_LAIRS_ADDISAMAP",
   "name": "DemonLairs_Addisamap",
   "layout": "LAYOUT_DEMON_LAIRS_ADDISAMAP",
-  "music": "MUS_DUMMY",
+  "music": "MUS_B_PALACE",
   "region_map_section": "MAPSEC_ADDISAMAP_LAIR",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
   "allow_cycling": false,
   "allow_escaping": false,
-  "allow_running": false,
+  "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
@@ -19,11 +19,21 @@
       "x": 12,
       "y": 7,
       "elevation": 0,
-      "dest_map": "MAP_DEMON_LAIRS_ADDISAMAP",
+      "dest_map": "MAP_DEMON_LAIRS_ADDISAMAP_INTERIOR",
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 25,
+      "elevation": 0,
+      "var": "FLAG_ADDISAMAP_PUZZLE_SOLVED",
+      "var_value": "1",
+      "script": "NULL"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",
@@ -31,7 +41,7 @@
       "y": 26,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "DemonLairs_Addisamap_EventScript_Sign"
     }
   ]
 }

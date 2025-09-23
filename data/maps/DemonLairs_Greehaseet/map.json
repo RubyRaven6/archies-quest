@@ -2,7 +2,7 @@
   "id": "MAP_DEMON_LAIRS_GREEHASEET",
   "name": "DemonLairs_Greehaseet",
   "layout": "LAYOUT_DEMON_LAIRS_GREEHASEET",
-  "music": "MUS_DUMMY",
+  "music": "MUS_ABANDONED_SHIP",
   "region_map_section": "MAPSEC_GREEHASEET_LAIR",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

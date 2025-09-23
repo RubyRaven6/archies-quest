@@ -1114,7 +1114,7 @@ CommonScript_Backyard_EventScripts_FullParty::
 
 
 CommonScript_Backyard_EventScripts_FullParty_Movement_0:
-	emote_x
+	emote_angry
 	step_end
 
 CommonScript_Backyard_EventScripts_FullParty_Text_0:
@@ -1146,9 +1146,12 @@ EventScript_TheVoid_Text_0:
 	.string "you…$"
 
 Common_EventScript_ReturnToHub::
+	lock
 	msgbox Common_EventScript_ReturnToHub_Text_0, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_eq Common_EventScript_ReturnToHub_1
+	closemessage
+	release
 	return
 
 Common_EventScript_ReturnToHub_1:

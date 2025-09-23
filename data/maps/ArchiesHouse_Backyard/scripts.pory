@@ -6,8 +6,11 @@ mapscripts ArchiesHouse_Backyard_MapScripts {
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_ARCHIE_ARRIVES, 1 {
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 3, walk_right * 2, face_up))
+            waitmovement(OBJ_EVENT_ID_PLAYER)
+
             speakername("Archie")
-            msgbox(format("I better hurry… and only bring who I can.\pFour should be enough, I think."))
+            msgbox(format("I better hurry… and pick the best.\nFour should be enough, I think."))
             waitmessage
             closemessage
             setvar(VAR_ARCHIE_ARRIVES, 2)
@@ -15,11 +18,20 @@ mapscripts ArchiesHouse_Backyard_MapScripts {
     ]
 }
 
-script ArchiesHouse_EventScript_SignDirections {
-    msgbox("{LEFT_ARROW} FOREST             / LAKE AND GARDEN {UP_ARROW}\n"
-            "{DOWN_ARROW} BEACH AND SEA / CRAG AND CAVE {RIGHT_ARROW}",MSGBOX_SIGN)
-    waitmessage
-    closemessage
+script ArchiesHouse_EventScript_SignForest {
+    msgbox("{LEFT_ARROW} My delicious orchard\n{FONT_SMALL}No fruit theft allowed!{FONT_NORMAL}", MSGBOX_SIGN)
+}
+
+script ArchiesHouse_EventScript_SignBeach {
+    msgbox("{DOWN_ARROW} My dope beach\n{FONT_SMALL}Expand the sea!!{FONT_NORMAL}", MSGBOX_SIGN)
+}
+
+script ArchiesHouse_EventScript_SignLake {
+    msgbox("{UP_ARROW} Lake and gardens\n{FONT_SMALL}Can't beat the sea but hey, water's water.{FONT_NORMAL}", MSGBOX_SIGN)
+}
+
+script ArchiesHouse_EventScript_SignCrag {
+    msgbox("{RIGHT_ARROW} Crag and cave\n{FONT_SMALL}Too hot for my comfort.{FONT_NORMAL}", MSGBOX_SIGN)
 }
 
 // script ArchiesHouse_Backyard_EventScripts_ {

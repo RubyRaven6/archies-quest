@@ -46,9 +46,10 @@
 
 #define	FLAG_HIDE_ARCHIE	            0x20 // Hides Old Archie at the start of the game
 /* Puzzle Flags */
-#define	FLAG_NESSIE_PUZZLE_SOLVED	    0x21 // For when the painting solution is found
+#define	FLAG_NESSIE_PUZZLE_SOLVED	    0x21 // Nessie Puzzle Flag
 #define	FLAG_GREEHASEET_PUZZLE_SOLVED	0x22 // Gigagesh Puzzle Flag
 #define	FLAG_SAPPRILON_PUZZLE_SOLVED	0x23 // Sapprilon Puzzle Flag
+#define FLAG_ADDISAMAP_PUZZLE_SOLVED    0x4C // Addisamap Puzzle Flag
 /* Forest Mons */
 #define	FLAG_HIDE_SCEPTILE	            0x24 // Hides Sceptile
 #define	FLAG_HIDE_BRELOOM	            0x25 // Hide Breloom
@@ -99,7 +100,6 @@
 #define FLAG_HIDE_SAPPRILON             0x49 // Sapprilon OW
 #define FLAG_HIDE_ADDISAMAP             0x4A // Addisamap OW
 #define FLAG_SKIP_MAXIE_CUTSCENE        0x4B // Unused Flag
-#define FLAG_UNUSED_0x04C               0x4C // Unused Flag
 #define FLAG_FIRST_TIME_AUTOSAVE        0x4D // Unused Flag
 #define FLAG_ARCHIE_TUTORIALMODE        0x4E // Tracks when Archie in Hub World; is in tutorial mode when set
 #define FLAG_TOGGLE_WATER_INTERACT      0x4F // When set, allows player to interact with OW Events in water

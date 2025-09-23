@@ -1228,8 +1228,8 @@ void Overworld_PlaySpecialMapMusic(void)
     {
         if (gSaveBlock1Ptr->savedMusic)
             music = gSaveBlock1Ptr->savedMusic;
-        else if (GetCurrentMapType() == MAP_TYPE_UNDERWATER)
-            music = MUS_UNDERWATER;
+        /* else if (GetCurrentMapType() == MAP_TYPE_UNDERWATER)
+            music = MUS_UNDERWATER; */
         else if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING))
             music = MUS_SURF;
     }
@@ -1518,6 +1518,11 @@ bool32 IsOverworldLinkActive(void)
 
 static void DoCB1_Overworld(u16 newKeys, u16 heldKeys)
 {
+    if ((!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER)) && gMapHeader.mapType == MAP_TYPE_UNDERWATER)
+    {
+        PlayerAvatarTransition_Underwater(&gObjectEvents[gPlayerAvatar.objectEventId]);
+
+    }
     struct FieldInput inputStruct;
 
     UpdatePlayerAvatarTransitionState();

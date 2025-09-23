@@ -2,7 +2,7 @@
   "id": "MAP_DEMON_LAIRS_SAPPRILON",
   "name": "DemonLairs_Sapprilon",
   "layout": "LAYOUT_DEMON_LAIRS_SAPPRILON",
-  "music": "MUS_DUMMY",
+  "music": "MUS_B_FACTORY",
   "region_map_section": "MAPSEC_SAPPRILON_LAIR",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
