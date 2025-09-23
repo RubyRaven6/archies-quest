@@ -220,24 +220,28 @@ script DemonLairs_Sapprilon_EventScript_DiskInsert{
             dynmultipush("Insert Magenta disk", 1)
         }
 
-        dynmultistack(16, 1, FALSE, 3, FALSE, 0, DYN_MULTICHOICE_CB_NONE)
+        dynmultistack(16, 0, FALSE, 4, FALSE, 4, DYN_MULTICHOICE_CB_NONE)
         switch(var(VAR_RESULT)){
             case 0:
-                playse(MUS_SAPPRILON1)
-                waitse
-                break
+                fadeoutbgm(0)
+                playbgm(MUS_SAPPRILON1, FALSE)
+                fadeoutbgm(0)
+                fadedefaultbgm
             case 1:
-                playse(MUS_SAPPRILON2)
-                waitse
-                break
+                fadeoutbgm(0)
+                playbgm(MUS_SAPPRILON2, FALSE)
+                fadeoutbgm(0)
+                fadedefaultbgm
             case 2:
-                playse(MUS_SAPPRILON3)
-                waitse
-                break
+                fadeoutbgm(0)
+                playbgm(MUS_SAPPRILON3, FALSE)
+                fadeoutbgm(0)
+                fadedefaultbgm
             case 3:
-                playse(MUS_SAPPRILON4)
-                waitse
-                break
+                fadeoutbgm(0)
+                playbgm(MUS_SAPPRILON4, FALSE)
+                fadeoutbgm(0)
+                fadedefaultbgm
         }
     } else {
         msgbox(format("Looks like you have to insert something for this option to work."), MSGBOX_SIGN)
@@ -271,7 +275,7 @@ script(local) DemonLairs_ItemChecker {
 
 script(local) DemonLairs_DiskInsertPuzzle {
     call(DemonLairs_ItemChecker)
-    dynmultichoice(16, 1, FALSE, 4, 0, DYN_MULTICHOICE_CB_NONE, "Insert Black disk", "Insert Yellow disk", "Insert Cyan disk", "Insert Magenta disk")
+    dynmultichoice(16, 0, FALSE, 4, 0, DYN_MULTICHOICE_CB_NONE, "Insert Black disk", "Insert Yellow disk", "Insert Cyan disk", "Insert Magenta disk")
     if(var(VAR_TEMP_1) == 1 || var(VAR_TEMP_2) == 1 || var(VAR_TEMP_3) == 1 || var(VAR_TEMP_4) == 1)
     {
         switch(var(VAR_RESULT)){
@@ -381,7 +385,7 @@ script(local) WinCondition {
             "…{PAUSE 16}…{PAUSE 16}…{PAUSE 16}…"
         ))
         closemessage
-        
+
         playse(SE_SUCCESS)
         waitse
 
@@ -391,6 +395,10 @@ script(local) WinCondition {
             "Hmm…\p"
             "Did something happen?"
         ))
+
+        fadeoutbgm(0)
+        playbgm(MUS_ROUTE101, FALSE)
+
         closemessage
     } else {
         setvar(VAR_SAPPRILON_PUZZLE_VAL, 0)

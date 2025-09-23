@@ -2,6 +2,8 @@ mapscripts DemonLairs_Nessie_Interior_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_TEMP_0, 0 {
             lockall
+            autosave
+            setvar(VAR_FIRST_TIME_ENTERING_NESSIE, 1)
             delay(24)
             playse(SE_CONTEST_CONDITION_LOSE)
             waitse
@@ -45,7 +47,7 @@ script DemonLairs_EventScript_Nessie {
         msgbox(format(
             "Weeeell, who's this pretty young thing?\p"
             "I'm {COLOR RED}Nessereign{COLOR DARK_GRAY}.\nBut YOU, you can call me {COLOR RED}Nessie{COLOR DARK_GRAY}!\p"
-            "Are you lost?\nYou delicious,{PAUSE 8} GODFORSAKEN{PAUSE 8} INTRUDER?"
+            "Are you lost?\nYou delicious,{PAUSE 16} GODFORSAKEN{PAUSE 16} INTRUDER?"
         ))
         closemessage
 

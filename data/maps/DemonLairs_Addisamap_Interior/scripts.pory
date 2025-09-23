@@ -4,6 +4,11 @@ mapscripts DemonLairs_Addisamap_Interior_MapScripts {
             call(DemonLairs_EventScript_Addisamap)
         }
     ]
+    MAP_SCRIPT_ON_TRANSITION {
+        if(!flag(FLAG_ADDISAMAP_PUZZLE_SOLVED)){
+            setflag(FLAG_ADDISAMAP_PUZZLE_SOLVED)
+        }
+    }
 }
 
 script DemonLairs_EventScript_Addisamap {
