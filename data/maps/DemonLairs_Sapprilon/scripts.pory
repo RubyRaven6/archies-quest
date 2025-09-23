@@ -9,7 +9,7 @@ mapscripts DemonLairs_Sapprilon_MapScripts {
 }
 
 script DemonLairs_Sapprilon_EventScript_CompactDisks {
-    msgbox("It's a stack of luminescent discs encased in a clear illustrated case.", MSGBOX_SIGN)
+    msgbox(format("It's a stack of luminescent discs encased in a clear illustrated case."), MSGBOX_SIGN)
     waitmessage
     closemessage
 }
