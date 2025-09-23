@@ -51,6 +51,7 @@ bool8 IsPlayerSurfingNorth(void);
 void SetPlayerAvatarWatering(u8 direction);
 u8 GetPlayerAvatarFlags(void);
 void UpdatePlayerAvatarTransitionState(void);
+void PlayerAvatarTransition_Underwater(struct ObjectEvent *objEvent);
 u16 GetFRLGAvatarGraphicsIdByGender(u8 gender);
 u16 GetRSAvatarGraphicsIdByGender(u8 gender);
 void PlayerWheelieInPlace(u8 direction);

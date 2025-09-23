@@ -1518,6 +1518,11 @@ bool32 IsOverworldLinkActive(void)
 
 static void DoCB1_Overworld(u16 newKeys, u16 heldKeys)
 {
+    if ((!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER)) && gMapHeader.mapType == MAP_TYPE_UNDERWATER)
+    {
+        PlayerAvatarTransition_Underwater(&gObjectEvents[gPlayerAvatar.objectEventId]);
+
+    }
     struct FieldInput inputStruct;
 
     UpdatePlayerAvatarTransitionState();
