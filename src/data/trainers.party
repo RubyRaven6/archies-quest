@@ -16964,6 +16964,7 @@ Class: Demon Lord
 Pic: Sapprilon
 Gender: Male
 Music: Magma
+Party Size: 4
 Double Battle: No
 Mugshot: Pink
 
@@ -17042,6 +17043,7 @@ Gender: Male
 Music: Magma
 Double Battle: No
 Mugshot: Green
+Party Size: 4
 
 Sinistcha @ Terrain Extender
 Ability: Heatproof
