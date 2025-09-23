@@ -610,13 +610,13 @@ void CB2_InitTitleScreen(void)
         // bg2
         DecompressDataWithHeaderVram(gTitleScreenPokemonLogoGfx, (void *)(BG_CHAR_ADDR(0)));
         DecompressDataWithHeaderVram(gTitleScreenPokemonLogoTilemap, (void *)(BG_SCREEN_ADDR(9)));
-        if (VarGet(VAR_DEMON_LORD_PROGRESS) == 4){
+        if (VarGet(VAR_DEMON_LORD_PROGRESS) == 5){
             LoadPalette(gTitleScreenFirePalette, BG_PLTT_ID(0), 15 * PLTT_SIZE_4BPP);
         } else {
             LoadPalette(gTitleScreenBgPalettes, BG_PLTT_ID(0), 15 * PLTT_SIZE_4BPP);
         }
         // bg3
-        if (VarGet(VAR_DEMON_LORD_PROGRESS) == 4){
+        if (VarGet(VAR_DEMON_LORD_PROGRESS) == 5){
             DecompressDataWithHeaderVram(sTitleScreenMaxieGfx, (void *)(BG_CHAR_ADDR(2)));
             DecompressDataWithHeaderVram(sTitleScreenMaxieTilemap, (void *)(BG_SCREEN_ADDR(26)));
         } else {
@@ -631,7 +631,7 @@ void CB2_InitTitleScreen(void)
         ResetSpriteData();
         FreeAllSpritePalettes();
         gReservedSpritePaletteCount = 9;
-        if (VarGet(VAR_DEMON_LORD_PROGRESS) == 4){
+        if (VarGet(VAR_DEMON_LORD_PROGRESS) == 5) {
             LoadCompressedSpriteSheet(&sSpriteSheet_MaxieVersion[0]);
         } else {
             LoadCompressedSpriteSheet(&sSpriteSheet_EmeraldVersion[0]);
@@ -683,7 +683,7 @@ void CB2_InitTitleScreen(void)
                                     | DISPCNT_OBJ_ON
                                     | DISPCNT_WIN0_ON
                                     | DISPCNT_OBJWIN_ON);
-        if(VarGet(VAR_DEMON_LORD_PROGRESS) == 4)
+        if(VarGet(VAR_DEMON_LORD_PROGRESS) == 5)
             m4aSongNumStart(MUS_AQUA_MAGMA_HIDEOUT);
         else
             m4aSongNumStart(MUS_TITLE);

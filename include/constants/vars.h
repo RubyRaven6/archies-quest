@@ -110,7 +110,8 @@
 #define VAR_HUB_WORLD_INITIAL_SCENE                      0x4059 // Controls initial cutscene with archie
 #define VAR_RUSTBORO_CITY_STATE                          0x405A
 #define VAR_CURRENT_MAP_CONTROL                          0x405B // For SetCurrentMapLayoutToVar
-#define VAR_LILYCOVE_CITY_STATE                          0x405C // Unused Var
+// 0 = never entered, 1 = entered
+#define VAR_ENTERED_MAXIES_LAIR                          0x405C
 #define VAR_MOSSDEEP_CITY_STATE                          0x405D
 #define VAR_SOOTOPOLIS_CITY_STATE                        0x405E
 #define VAR_EVER_GRANDE_CITY_STATE                       0x405F // Unused Var

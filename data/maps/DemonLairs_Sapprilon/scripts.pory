@@ -1,5 +1,9 @@
 mapscripts DemonLairs_Sapprilon_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_TEMP_0, 0 {
+            setvar(VAR_TEMP_0, 1)
+            callnative(TrySetSapprilonsLairMusic)
+        }
         VAR_DEMON_LORD_PROGRESS, 2 {
             autosave
             setvar(VAR_DEMON_LORD_PROGRESS, 3)
@@ -59,7 +63,7 @@ script DemonLairs_Sapprilon_EventScript_RegularComputer {
 
 script DemonLairs_Sapprilon_EventScript_Bookshelf1 {
     checkitem(ITEM_ACRO_BIKE, 1)
-    if(var(VAR_RESULT) == 0){
+    if(var(VAR_RESULT) == 0 && !flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){
         msgbox(format("It's a bookshelf wrought from metal.\nA waxen paper slip is sticking out.\pTake it?"), MSGBOX_YESNO)
         closemessage
         waitmessage
@@ -81,7 +85,7 @@ script DemonLairs_Sapprilon_EventScript_Bookshelf1 {
 
 script DemonLairs_Sapprilon_EventScript_Bookshelf2 {
     checkitem(ITEM_MACH_BIKE, 1)
-    if(var(VAR_RESULT) == 0){
+    if(var(VAR_RESULT) == 0 && !flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){
         msgbox(format("It's a bookshelf wrought from metal.\nA waxen paper slip is sticking out.\pTake it?"), MSGBOX_YESNO)
         closemessage
         waitmessage
@@ -103,7 +107,7 @@ script DemonLairs_Sapprilon_EventScript_Bookshelf2 {
 
 script DemonLairs_Sapprilon_EventScript_Bookshelf3 {
     checkitem(ITEM_SS_TICKET, 1)
-    if(var(VAR_RESULT) == 0){
+    if(var(VAR_RESULT) == 0 && !flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){
         msgbox(format("It's a bookshelf wrought from metal.\nA waxen paper slip is sticking out.\pTake it?"), MSGBOX_YESNO)
         closemessage
         waitmessage
@@ -125,7 +129,7 @@ script DemonLairs_Sapprilon_EventScript_Bookshelf3 {
 
 script DemonLairs_Sapprilon_EventScript_Bookshelf4 {
     checkitem(ITEM_EON_TICKET, 1)
-    if(var(VAR_RESULT) == 0){
+    if(var(VAR_RESULT) == 0 && !flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){
         msgbox(format("It's a bookshelf wrought from metal.\nA waxen paper slip is sticking out.\pTake it?"), MSGBOX_YESNO)
         closemessage
         waitmessage
@@ -162,7 +166,7 @@ script DemonLairs_Sapprilon_EventScript_MainComputer {
         case 0:
             if(!flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){call(DemonLairs_Sapprilon_EventScript_Puzzle)}
             else {
-                msgbox("The song is very soothing, but you have to go.")
+                msgbox(format("The song is very soothing, but you have to go."))
                 waitmessage
                 closemessage
             }
@@ -399,7 +403,37 @@ script(local) WinCondition {
         fadeoutbgm(0)
         playbgm(MUS_ROUTE101, FALSE)
 
+        applymovement(OBJ_EVENT_ID_PLAYER, moves(
+            delay_16 * 3,
+            walk_in_place_fast_down,
+            delay_16 * 2,
+            face_right,
+            lock_facing_direction,
+            walk_left,
+            unlock_facing_direction,
+            face_left,
+            lock_facing_direction,
+            walk_right,
+            unlock_facing_direction,
+            face_right,
+            lock_facing_direction,
+            walk_left,
+            unlock_facing_direction,
+            face_left,
+            lock_facing_direction,
+            walk_right,
+            unlock_facing_direction,
+            face_down,
+            delay_16 * 2
+        ))
+        waitmovement(0)
+
+        msgbox(format(
+            "The song is surprisingly catchy."
+        ))
         closemessage
+
+        autosave
     } else {
         setvar(VAR_SAPPRILON_PUZZLE_VAL, 0)
 
@@ -419,4 +453,6 @@ script(local) WinCondition {
         ))
         closemessage
     }
+
+    release
 }

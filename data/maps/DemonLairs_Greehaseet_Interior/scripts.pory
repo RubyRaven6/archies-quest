@@ -21,7 +21,7 @@ script DemonLairs_EventScript_Greehaseet {
         playse(SE_PIN)
         applymovement(LOCALID_PLAYER, moves(emote_angry))
         speakername("Archie")
-        msgbox(format("That's right, Demon Lord! Your reigns of terror are gonna end by my hand!"), MSGBOX_DEFAULT)
+        msgbox(format("That's right, Demon Lord! Your reign of terror is gonna end by my hand!"), MSGBOX_DEFAULT)
         closemessage
 
         speakername("Greehaseet")

@@ -29,7 +29,15 @@
       "flag": "FLAG_HIDE_ADDISAMAP"
     }
   ],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "x": 12,
+      "y": 18,
+      "elevation": 0,
+      "dest_map": "MAP_DEMON_LAIRS_ADDISAMAP",
+      "dest_warp_id": "0"
+    }
+  ],
   "coord_events": [
     {
       "type": "trigger",

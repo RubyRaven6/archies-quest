@@ -9,8 +9,6 @@ mapscripts DemonLairs_Sapprilon_Interior_MapScripts {
 script DemonLairs_EventScript_Sapprilon {
     lockall
 
-    autosave
-
     applymovement(LOCALID_PLAYER, moves(walk_up * 2, walk_right, walk_up))
     waitmovement(LOCALID_PLAYER)
 
@@ -26,10 +24,10 @@ script DemonLairs_EventScript_Sapprilon {
         setflag(FLAG_TALKED_TO_SAPPRILON)
         speakername("Sapprilon")
         msgbox(format(
-            "Aw FINALLY!\nI've been waiting for you for ages!\p"
+            "Aw FINALLY!\nI been waiting for you for ages!\p"
             "When I heard {COLOR RED}Greehaseet{COLOR DARK_GRAY} fell,\nI knew you'd eventually reach me.\p"
             "I'm not gonna lie, Nessie and Gree?\nThey were kinda soft, lowkey.\p"
-            "Me though?{PAUSE 60} I'm just built different!"
+            "Me though?{PAUSE 16} I'm just built different!"
         ))
         closemessage
 
@@ -47,16 +45,12 @@ script DemonLairs_EventScript_Sapprilon {
         waitmovement(LOCALID_SAPPRILON_GUITARIST)
         waitse
         playse(SE_PIN)
-        applymovement(LOCALID_SAPPRILON_GUITARIST, moves(emote_music))
-        waitmovement(LOCALID_SAPPRILON_GUITARIST)
-        waitse
-        playse(SE_PIN)
         applymovement(LOCALID_SAPPRILON_GUITARIST, moves(emote_happy))
         waitse
 
         speakername("Sapprilon")
         msgbox(format(
-            "Underestimatin' YOU?! HA!\p"
+            "Underestimatin' YOU?!\nHA!\p"
             "Son, if anyone's “underestimating”,\nit sure as hell ain't me!\p"
             "Now where were we…\nOh yeah, time to whoop your ass.\p"
             "But first, some jams…"

@@ -3711,3 +3711,19 @@ bool8 ScrFunc_settimeofday(struct ScriptContext *ctx)
     SetTimeOfDay(ScriptReadByte(ctx));
     return FALSE;
 }
+
+// Sets Sapprilon's lair music
+void TrySetSapprilonsLairMusic(void)
+{
+    u32 music;
+    if (FlagGet(FLAG_SAPPRILON_PUZZLE_SOLVED))
+    {
+        music = MUS_ROUTE101;
+    }
+    else
+    {
+        music = MUS_B_FACTORY;
+    }
+    Overworld_SetSavedMusic(music);
+    PlayNewMapMusic(music);
+}

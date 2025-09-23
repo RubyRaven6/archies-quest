@@ -2,7 +2,6 @@ mapscripts DemonLairs_Nessie_Interior_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_TEMP_0, 0 {
             lockall
-            autosave
             setvar(VAR_FIRST_TIME_ENTERING_NESSIE, 1)
             delay(24)
             playse(SE_CONTEST_CONDITION_LOSE)
@@ -31,7 +30,7 @@ script DemonLairs_EventScript_Nessie {
     if(!flag(FLAG_TALKED_TO_NESSEREIGN)){
         setflag(FLAG_TALKED_TO_NESSEREIGN)
         playse(SE_PIN)
-        applymovement(VAR_LAST_TALKED, moves(emote_upset))
+        applymovement(LOCALID_NESSIE_PAINTER, moves(emote_upset))
         speakername("Nessereign")
         msgbox(format(
             "What in the nine hells is that RACKET?! Can't you see I'm WORKING here?\p"
@@ -79,7 +78,7 @@ script DemonLairs_EventScript_Nessie {
         closemessage
     } else {
         playse(SE_PIN)
-        applymovement(LOCALID_NESSIE_PAINTER, moves(emote_happy))
+        applymovement(LOCALID_NESSIE_PAINTER, moves(face_left, emote_happy))
         speakername("Nessereign")
         msgbox(format(
             "You just don't.{PAUSE 8} Know.{PAUSE 8} WHEN to quit, huh?\p"
