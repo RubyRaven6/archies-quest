@@ -50,7 +50,7 @@ script DemonLairs_Nessie_EventScript_NessiePuzzle{
             setmetatile(3, 1, METATILE_NessereignLairPrimary_ENTRANCE_MM, TRUE)
             setmetatile(4, 1, METATILE_NessereignLairPrimary_ENTRANCE_MR, TRUE)
             setmetatile(2, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNL, TRUE)
-            setmetatile(3, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNM, FALSE)
+            setmetatile(3, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNM, TRUE)
             setmetatile(4, 2, METATILE_NessereignLairPrimary_ENTRANCE_DNR, TRUE)
             special(DrawWholeMapView)
             msgbox(format("The yawning entrance to an antechamber has opened.\pEnter?"), MSGBOX_YESNO)

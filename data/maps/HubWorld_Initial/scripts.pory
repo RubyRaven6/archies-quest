@@ -109,8 +109,8 @@ script HubWorld_EventScript_Archie {
                 case 3:
                     speakername("Old Archie")
                     msgbox(format(
-                        "{COLOR RED}Addisamap{COLOR DARK_GRAY}. The lieutenant-sergeant of the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}.\p"
-                        "She's their Ringleader, keeps them in check for their master."
+                        "{COLOR RED}Addisamap{COLOR DARK_GRAY}.\nThe wise brain of the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}.\p"
+                        "She watches over them and keeps them in check for their master."
                     ))
                     waitmessage
                     closemessage
@@ -120,7 +120,7 @@ script HubWorld_EventScript_Archie {
                     closemessage
                     speakername("Old Archie")
                     msgbox(format(
-                        "No, there's one more behind them all.\nBut first things first!\p"
+                        "No, there's one more, behind them all.\nBut first things first!\p"
                         "The shrewd {COLOR RED}Addisamap{COLOR DARK_GRAY} controls life and death in her own terms.\p"
                         "Make sure that you can outdo the healing she can do to herself.\p"
                         "Her minions are of Grass and Ground."

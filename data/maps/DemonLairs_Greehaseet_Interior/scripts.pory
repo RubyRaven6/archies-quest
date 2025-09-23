@@ -52,7 +52,7 @@ script DemonLairs_EventScript_Greehaseet {
 
     applymovement(LOCALID_GREEHASEET_SWIMMER, moves(shake_horizontal))
     playbgm(MUS_DUMMY, TRUE)
-    playmoncry(SPECIES_TYPE_NULL, CRY_MODE_WEAK)
+    playmoncry(SPECIES_GREEHASEET, CRY_MODE_WEAK)
     waitmovement(LOCALID_GREEHASEET_SWIMMER)
 
 	setvar(VAR_0x8004, 0)  // vertical pan

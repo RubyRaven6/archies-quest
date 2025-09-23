@@ -25,7 +25,7 @@ script DemonLairs_EventScript_Sapprilon {
         speakername("Sapprilon")
         msgbox(format(
             "Man, whatsuuuuup?\nI've been waiting for you for ages!\p"
-            "When I heard of {COLOR RED}Nessie{COLOR DARK_GRAY}'s defeat, I knew you'd eventually reach me.\p"
+            "When I heard of {COLOR RED}Greehaseet{COLOR DARK_GRAY}'s defeat,\nI knew you'd eventually reach me.\p"
             "Not gonna lie to ya, my two siblings are lowkey kiiinda weako, LMAO. But me?\lMe, I'm just built different!"
         ))
         closemessage
@@ -57,7 +57,7 @@ script DemonLairs_EventScript_Sapprilon {
         applymovement(LOCALID_SAPPRILON_GUITARIST, moves(walk_up * 2, walk_left, face_up))
         waitmovement(LOCALID_SAPPRILON_GUITARIST)
 
-        playse(SE_CLICK)
+        playse(SE_SWITCH)
         waitse
 
         delay(24)
@@ -148,7 +148,7 @@ script DemonLairs_EventScript_Sapprilon {
 
     applymovement(LOCALID_SAPPRILON_GUITARIST, moves(shake_horizontal))
     playbgm(MUS_DUMMY, TRUE)
-    playmoncry(SPECIES_XERNEAS, CRY_MODE_WEAK)
+    playmoncry(SPECIES_SAPPRILON, CRY_MODE_WEAK)
     waitmovement(LOCALID_SAPPRILON_GUITARIST)
 
 	setvar(VAR_0x8004, 0)  // vertical pan
@@ -159,7 +159,7 @@ script DemonLairs_EventScript_Sapprilon {
 
     fadescreen(FADE_TO_WHITE)
 
-    removeobject(LOCALID_NESSIE_PAINTER)
+    removeobject(LOCALID_SAPPRILON_GUITARIST)
 
     delay(60)
 
@@ -179,6 +179,26 @@ script DemonLairs_EventScript_Sapprilon {
     setvar(VAR_TEMP_0, 1)
     
     releaseall
+}
+
+script DemonLairs_EventScript_SapprilonsPC {
+    lock
+    playse(SE_SWITCH)
+    waitse
+
+    random(4)
+    switch(var(VAR_RESULT)) {
+        case 0:
+            playbgm(MUS_MT_CHIMNEY, FALSE)
+        case 1:
+            playbgm(MUS_AQUA_MAGMA_HIDEOUT, FALSE)
+        case 2:
+            playbgm(MUS_ENCOUNTER_MAGMA, FALSE)
+        case 3:
+            playbgm(MUS_VS_AQUA_MAGMA, FALSE)
+    }
+
+    release
 }
 
 movement SapprilonSpin {

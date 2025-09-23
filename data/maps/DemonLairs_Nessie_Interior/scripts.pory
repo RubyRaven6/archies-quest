@@ -41,14 +41,14 @@ script DemonLairs_EventScript_Nessie {
 
         speakername("Nessereign")
         msgbox(format(
-            "Weeeell, who might this pretty young thing be?\p"
+            "Weeeell, who's this pretty young thing?\p"
             "I'm {COLOR RED}Nessereign{COLOR DARK_GRAY}.\nBut YOU, you can call me {COLOR RED}Nessie{COLOR DARK_GRAY}!\p"
             "Are you lost?\nYou delicious,{PAUSE 8} GODFORSAKEN{PAUSE 8} INTRUDER?"
         ))
         closemessage
 
         playse(SE_LEDGE)
-        applymovement(LOCALID_PLAYER, moves(lock_facing_direction, jump_in_place_down, unlock_facing_direction))
+        applymovement(LOCALID_PLAYER, moves(lock_facing_direction, jump_in_place_down, delay_1, unlock_facing_direction))
         waitmovement(0)
 
         speakername("Archie")
@@ -125,7 +125,7 @@ script DemonLairs_EventScript_Nessie {
 
     applymovement(LOCALID_NESSIE_PAINTER, moves(shake_horizontal))
     playbgm(MUS_DUMMY, TRUE)
-    playmoncry(SPECIES_AURORUS, CRY_MODE_WEAK)
+    playmoncry(SPECIES_NESSEREIGN, CRY_MODE_WEAK)
     waitmovement(LOCALID_NESSIE_PAINTER)
 
 	setvar(VAR_0x8004, 0)  // vertical pan

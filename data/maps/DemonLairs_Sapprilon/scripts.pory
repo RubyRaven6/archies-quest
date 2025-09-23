@@ -9,9 +9,7 @@ mapscripts DemonLairs_Sapprilon_MapScripts {
 }
 
 script DemonLairs_Sapprilon_EventScript_CompactDisks {
-    msgbox("It's a stack of luminescent discs,\n
-            encased in a clear, durable case with\l
-            different illustrations on the front.", MSGBOX_SIGN)
+    msgbox("It's a stack of luminescent discs encased in a clear illustrated case.", MSGBOX_SIGN)
     waitmessage
     closemessage
 }
@@ -31,8 +29,11 @@ script DemonLairs_Sapprilon_EventScript_Monster {
             ))
             waitmessage
 
+            playse(SE_PIN)
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_upset))
+
             speakername("Archie")
-            msgbox("Ugh! This is awful! Must be monster blood to taste so badly.")
+            msgbox(format("Ugh! This is awful! Must be monster blood to taste so badly."))
             waitmessage
             closemessage
             setvar(VAR_TEMP_0, 1)
@@ -145,8 +146,9 @@ script DemonLairs_Sapprilon_EventScript_Bookshelf4 {
 }
 
 script DemonLairs_Sapprilon_EventScript_MainComputer {
+    playse(SE_PC_ON)
     msgbox(format(
-        "An odd contraption of glass and metal. Looks like you can select some options."
+        "An odd contraption of glass and metal.\nStrange words appear!"
     ))
     waitmessage
     closemessage
@@ -154,12 +156,13 @@ script DemonLairs_Sapprilon_EventScript_MainComputer {
     dynmultipush("DISKS", 1)
     dynmultipush("PRINTER", 2)
     if(flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){dynmultipush("TRANSPORT", 3)}
-    dynmultistack(16, 0, FALSE, 3, FALSE, 0, DYN_MULTICHOICE_CB_NONE)
+    dynmultistack(16, 0, FALSE, 10, FALSE, 0, DYN_MULTICHOICE_CB_NONE)
+
     switch(var(VAR_RESULT)){
         case 0:
             if(!flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){call(DemonLairs_Sapprilon_EventScript_Puzzle)}
             else {
-                msgbox("No need to go over this again.")
+                msgbox("The song is very soothing, but you have to go.")
                 waitmessage
                 closemessage
             }
@@ -176,6 +179,10 @@ script DemonLairs_Sapprilon_EventScript_MainComputer {
             call(DemonLairs_Sapprilon_EventScript_Printer)
             break
         case 3:
+            playse(SE_PC_LOGIN)
+            waitse
+            delay(48)
+
             warpwhitefade(MAP_DEMONLAIRS_SAPPRILON_INTERIOR, 5, 9)
     }
 }
@@ -196,6 +203,8 @@ script DemonLairs_Sapprilon_EventScript_Puzzle {
 }
 
 script DemonLairs_Sapprilon_EventScript_DiskInsert{
+    playse(SE_PC_LOGIN)
+
     call(DemonLairs_ItemChecker)
     if(var(VAR_TEMP_1) == 1 || var(VAR_TEMP_2) == 1 || var(VAR_TEMP_3) == 1 ||var(VAR_TEMP_4) == 1 ){
         if(var(VAR_TEMP_1) == TRUE){
@@ -238,9 +247,10 @@ script DemonLairs_Sapprilon_EventScript_DiskInsert{
 }
 
 script DemonLairs_Sapprilon_EventScript_Printer {
+    playse(SE_PC_LOGIN)
+
     msgbox(format(
-        "You select the option that's labelled\n“PRINTER.”\p"
-        "…{PAUSE 16} …{PAUSE 16} …{PAUSE 16} …\p"
+        "…{PAUSE 16}…{PAUSE 16}…{PAUSE 16}…\p"
         "“PRINTER CANNOT COMPLETE OPERATION\nPLEASE REFILL CMYK CARTRIDGES”"
     ))
     waitmessage
@@ -270,6 +280,7 @@ script(local) DemonLairs_DiskInsertPuzzle {
             if(var(VAR_TEMP_1) == 1){
                 sappypuzzle(1)
                 removeitem(ITEM_ACRO_BIKE, 1)
+                playse(SE_SWITCH)
                 msgbox("Inserted Black disk.")
                 waitmessage
                 closemessage
@@ -290,6 +301,7 @@ script(local) DemonLairs_DiskInsertPuzzle {
             if(var(VAR_TEMP_2) == 1){
                 sappypuzzle(2)
                 removeitem(ITEM_MACH_BIKE, 1)
+                playse(SE_SWITCH)
                 msgbox("Inserted Yellow disk.")
                 waitmessage
                 closemessage
@@ -310,6 +322,7 @@ script(local) DemonLairs_DiskInsertPuzzle {
             if(var(VAR_TEMP_3) == 1){
                 sappypuzzle(3)
                 removeitem(ITEM_SS_TICKET, 1)
+                playse(SE_SWITCH)
                 msgbox("Inserted Cyan disk.")
                 waitmessage
                 closemessage
@@ -330,8 +343,8 @@ script(local) DemonLairs_DiskInsertPuzzle {
             if(var(VAR_TEMP_4) == 1){
                 sappypuzzle(4)
                 removeitem(ITEM_EON_TICKET, 1)
-                msgbox("Inserted Magneta disk.")
-                waitmessage
+                playse(SE_SWITCH)
+                msgbox("Inserted Magenta disk.")
                 closemessage
                 if(var(VAR_TEMP_1) == 1 || var(VAR_TEMP_2) == 1 || var(VAR_TEMP_3) == 1){
                     call(DemonLairs_DiskInsertPuzzle)
@@ -363,13 +376,39 @@ script(local) EarlyExit{
 script(local) WinCondition {
     if (var(VAR_SAPPRILON_PUZZLE_VAL) == 3421) {
         setflag(FLAG_SAPPRILON_PUZZLE_SOLVED)
-        msgbox("Congrats ur a great dev ruby")
-        waitmessage
+
+        msgbox(format(
+            "…{PAUSE 16}…{PAUSE 16}…{PAUSE 16}…\p"
+        ))
+        closemessage
+        
+        playse(SE_SUCCESS)
+        waitse
+
+        delay(48)
+
+        msgbox(format(
+            "Hmm…\p"
+            "Did something happen?"
+        ))
         closemessage
     } else {
         setvar(VAR_SAPPRILON_PUZZLE_VAL, 0)
-        msgbox("Hmm… that wasn't right.")
-        waitmessage
+
+        msgbox(format(
+            "…{PAUSE 16}…{PAUSE 16}…{PAUSE 16}…\p"
+        ))
+        closemessage
+
+        playse(SE_FAILURE)
+        waitse
+
+        delay(48)
+
+        msgbox(format(
+            "Hmm…\p"
+            "Nothing happened."
+        ))
         closemessage
     }
 }
