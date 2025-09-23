@@ -1,9 +1,7 @@
 # CREDITS
-
-## Graphics
-**Puzzle UI Graphics**: ruby<br>
-**Demon Lord, Archie Sprites**: Eva (purrfectdoodle)<br>
-**HGSS Ruin Maniac**: Delta231
+## Developers
+### Ruby (@RubyRaven6)
+### Doodle (@purrfectdoodle)
 
 ## Tilesets
 **Fence in Archie's Backyard**: KyuZee<br>
