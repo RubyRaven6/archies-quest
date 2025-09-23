@@ -407,6 +407,13 @@
 	.byte \speed
 	.endm
 
+	@ Fades in a new song.
+	.macro fadeinnewbgm song:req, speed:req
+	.byte SCR_OP_FADEINNEWBGM
+	.2byte \song
+	.byte \speed
+	.endm
+
 	@ Helper macro for warp commands that formats their arguments.
 	@ It allows warp macros to either provide 1. a valid id for which warp location to use,
 	@ or 2. a pair of x/y coordinates to use. Both may be provided but at least one will be

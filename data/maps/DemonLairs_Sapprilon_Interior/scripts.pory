@@ -1,40 +1,223 @@
-mapscripts DemonLairs_Sapprilon_Interior_MapScripts {}
+mapscripts DemonLairs_Sapprilon_Interior_MapScripts {
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_TEMP_0, 0 {
+            call(DemonLairs_EventScript_Sapprilon)
+        }
+    ]
+}
 
 script DemonLairs_EventScript_Sapprilon {
+    lockall
+
+    applymovement(LOCALID_PLAYER, moves(walk_up * 2, walk_right, walk_up))
+    waitmovement(LOCALID_PLAYER)
+
+    playse(SE_PIN)
+    applymovement(LOCALID_SAPPRILON_GUITARIST, moves(emote_exclamation_mark, delay_16 * 6))
+    waitmovement(LOCALID_SAPPRILON_GUITARIST)
+    waitse
+
+    playse(SE_LEDGE)
+    applymovement(LOCALID_SAPPRILON_GUITARIST, moves(jump_in_place_down))
+
     if(!flag(FLAG_TALKED_TO_SAPPRILON)){
         setflag(FLAG_TALKED_TO_SAPPRILON)
         speakername("Sapprilon")
-        msgbox(format("I was wondering when you would get here. Frankly I'm surprised you understood enough to get in here."),MSGBOX_DEFAULT)
-        waitmessage
+        msgbox(format(
+            "Aw FINALLY!\nI been waiting for you for ages!\p"
+            "When I heard {COLOR RED}Greehaseet{COLOR DARK_GRAY} fell,\nI knew you'd eventually reach me.\p"
+            "I'm not gonna lie, Nessie and Gree?\nThey were kinda soft, lowkey.\p"
+            "Me though?{PAUSE 16} I'm just built different!"
+        ))
         closemessage
-        applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+
+        playse(SE_PIN)
+        applymovement(LOCALID_PLAYER, moves(emote_angry, walk_in_place_fast_up))
+
         speakername("Archie")
-        msgbox(format("You've underestimated us for the last time, Demon Lord!"), MSGBOX_DEFAULT)
-        waitmessage
+        msgbox(format("Cut the crap, Demon Lord! You've underestimated us for the last time!"))
         closemessage
-        applymovement(LOCALID_SAPPRILON_GUITARIST, moves(walk_in_place_down))
+
+        applymovement(LOCALID_SAPPRILON_GUITARIST, SapprilonSpin)
+        waitmovement(LOCALID_SAPPRILON_GUITARIST)
+        playse(SE_LEDGE)
+        applymovement(LOCALID_SAPPRILON_GUITARIST, moves(jump_in_place_down))
+        waitmovement(LOCALID_SAPPRILON_GUITARIST)
+        waitse
+        playse(SE_PIN)
+        applymovement(LOCALID_SAPPRILON_GUITARIST, moves(emote_happy))
+        waitse
+
         speakername("Sapprilon")
-        msgbox(format("You're the only one of us underestimating here, boy. You've gone far enough!"), MSGBOX_DEFAULT)
-        waitmessage
+        msgbox(format(
+            "Underestimatin' YOU?!\nHA!\p"
+            "Son, if anyone's “underestimating”,\nit sure as hell ain't me!\p"
+            "Now where were we…\nOh yeah, time to whoop your ass.\p"
+            "But first, some jams…"
+        ))
+        closemessage
+
+        applymovement(LOCALID_SAPPRILON_GUITARIST, moves(walk_up * 2, walk_left, face_up))
+        waitmovement(LOCALID_SAPPRILON_GUITARIST)
+
+        playse(SE_SWITCH)
+        waitse
+
+        delay(24)
+
+        playbgm(MUS_AQUA_MAGMA_HIDEOUT, FALSE)
+
+        delay(48)
+
+        applymovement(LOCALID_SAPPRILON_GUITARIST, moves(
+            walk_in_place_slow_up * 3,
+            lock_facing_direction,
+            walk_slow_right,
+            walk_slow_left,
+            walk_slow_right,
+            walk_slow_left,
+            walk_down,
+            unlock_facing_direction,
+            face_left,
+            lock_facing_direction,
+            walk_right,
+            unlock_facing_direction,
+            face_up,
+            lock_facing_direction,
+            walk_down,
+            unlock_facing_direction,
+            walk_in_place_right,
+            walk_in_place_down,
+            walk_in_place_left,
+            walk_in_place_up,
+            walk_in_place_right,
+            walk_in_place_down
+        ))
+        waitmovement(LOCALID_SAPPRILON_GUITARIST)
+
+        playse(SE_LEDGE)
+        applymovement(LOCALID_SAPPRILON_GUITARIST, moves(jump_in_place_down))
+        waitmovement(LOCALID_SAPPRILON_GUITARIST)
+
+        setobjectmovementtype(LOCALID_SAPPRILON_GUITARIST, MOVEMENT_TYPE_WALK_IN_PLACE_DOWN)
+
+        speakername("Sapprilon")
+        msgbox(format(
+            "Now THAT'S what I'm talkin' about!\NAre you ready to dance, son?\NCuz it's gonna be your last!"
+        ))
         closemessage
     } else {
         speakername("Sapprilon")
-        msgbox(format("You just don't know when to quit, don't you? Well, you'll learn how soon enough!"), MSGBOX_DEFAULT)
-        waitmessage
+        msgbox(format("You wanna dance again, kid?\nLet's move it, yeah? Let's end this!"))
         closemessage
     }
-    trainerbattle_no_intro(TRAINER_DEMONLORD_SAPPRILON, format("No! This can't be!"))
+
+    trainerbattle_no_intro(TRAINER_DEMONLORD_SAPPRILON, format("No!\nYou can't do me dirty like that…"))
+
+    playbgm(MUS_RAYQUAZA_APPEARS, TRUE)
+
     speakername("Sapprilon")
-    msgbox("Grk!\pMy defenses! They've been breached!")
-    fadescreen(FADE_TO_WHITE)
-    waitmessage
+    msgbox(format(
+        "How…\nHow did you…"
+    ))
+
+    playse(SE_M_THUNDERBOLT2)
+	setvar(VAR_0x8004, 0)  // vertical pan
+	setvar(VAR_0x8005, 1)  // horizontal pan
+	setvar(VAR_0x8006, 5)  // num shakes
+	setvar(VAR_0x8007, 3)  // shake delay
+	special(ShakeCamera)
+
+    speakername("Sapprilon")
+    msgbox(format(
+        "It can't end like this!\nHumanity's been hearing my voice\lsince the beginning of time!\p"
+        "And yet… Nobody answered my call…\nI remained invisible to all…"
+    ))
+
+    playse(SE_M_THUNDERBOLT2)
+	setvar(VAR_0x8004, 0)  // vertical pan
+	setvar(VAR_0x8005, 1)  // horizontal pan
+	setvar(VAR_0x8006, 8)  // num shakes
+	setvar(VAR_0x8007, 3)  // shake delay
+	special(ShakeCamera)
+
+    speakername("Sapprilon")
+    msgbox(format(
+        "Hey, no, song's not over, bro!\n"
+        "C-C'mon, let's…{PAUSE 8} Let's keep dancing…\p"
+        "Just…{PAUSE 16} One more song…{PAUSE 8}"
+    ))
     closemessage
+
+    applymovement(LOCALID_SAPPRILON_GUITARIST, moves(shake_horizontal))
+    playbgm(MUS_DUMMY, TRUE)
+    playmoncry(SPECIES_SAPPRILON, CRY_MODE_WEAK)
+    waitmovement(LOCALID_SAPPRILON_GUITARIST)
+
+	setvar(VAR_0x8004, 0)  // vertical pan
+	setvar(VAR_0x8005, 1)  // horizontal pan
+	setvar(VAR_0x8006, 8)  // num shakes
+	setvar(VAR_0x8007, 3)  // shake delay
+	special(ShakeCamera)
+
+    fadescreen(FADE_TO_WHITE)
+
+    removeobject(LOCALID_SAPPRILON_GUITARIST)
+
+    delay(60)
+
     fadescreen(FADE_FROM_WHITE)
+
+    delay(60)
+
     clearflag(FLAG_SYS_BOSS_IN_PROG)
     playse(SE_PC_ON)
     applymovement(LOCALID_PLAYER, moves(face_down))
     setmetatile(5, 7, 0x01F, FALSE)
     special(DrawWholeMapView)
     waitse
-    end
+
+    fadeinnewbgm(MUS_AQUA_MAGMA_HIDEOUT, 4)
+
+    setvar(VAR_TEMP_0, 1)
+
+    releaseall
+}
+
+script DemonLairs_EventScript_SapprilonsPC {
+    lock
+    playse(SE_SWITCH)
+    waitse
+
+    random(4)
+    switch(var(VAR_RESULT)) {
+        case 0:
+            playbgm(MUS_MT_CHIMNEY, FALSE)
+        case 1:
+            playbgm(MUS_AQUA_MAGMA_HIDEOUT, FALSE)
+        case 2:
+            playbgm(MUS_ENCOUNTER_MAGMA, FALSE)
+        case 3:
+            playbgm(MUS_VS_AQUA_MAGMA, FALSE)
+    }
+
+    release
+}
+
+movement SapprilonSpin {
+    face_left
+    delay_4
+    face_up
+    delay_4
+    face_right
+    delay_4
+    face_down
+    delay_4
+    face_left
+    delay_4
+    face_up
+    delay_4
+    face_right
+    delay_4
+    face_down
 }

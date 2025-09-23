@@ -109,8 +109,8 @@ script HubWorld_EventScript_Archie {
                 case 3:
                     speakername("Old Archie")
                     msgbox(format(
-                        "{COLOR RED}Addisamap{COLOR DARK_GRAY}. The lieutenant-sergeant of the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}.\p"
-                        "She's their Ringleader, keeps them in check for their master."
+                        "{COLOR RED}Addisamap{COLOR DARK_GRAY}.\nThe wise brain of the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}.\p"
+                        "She watches over them and keeps them in check for their master."
                     ))
                     waitmessage
                     closemessage
@@ -120,7 +120,7 @@ script HubWorld_EventScript_Archie {
                     closemessage
                     speakername("Old Archie")
                     msgbox(format(
-                        "No, there's one more behind them all.\nBut first things first!\p"
+                        "No, there's one more, behind them all.\nBut first things first!\p"
                         "The shrewd {COLOR RED}Addisamap{COLOR DARK_GRAY} controls life and death in her own terms.\p"
                         "Make sure that you can outdo the healing she can do to herself.\p"
                         "Her minions are of Grass and Ground."
@@ -199,15 +199,15 @@ script HubWorld_EventScript_SapprilonWarp {
     end
 }
 
-script HubWorld_EventScript_Warp {
-    if(!flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_ADDISAMAP) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)){
-        msgbox(format("It's a corroded, porous stone tablet.\pTouch it?"), MSGBOX_YESNO)
+script HubWorld_EventScript_AddisamapWarp {
+    if(var(VAR_DEMON_LORD_PROGRESS) == 3){
+        msgbox(format("It's an enormous globe: a diorama\nof R'mhakking.\pTouch it?"), MSGBOX_YESNO)
         closemessage
         if(var(VAR_RESULT) == YES) {
             setrespawn(HEAL_LOCATION_DEMON_LAIRS_ADDISAMAP)
             playse(SE_LAVARIDGE_FALL_WARP)
-            warpwhitefade(MAP_DEMON_LAIRS_ADDISAMAP, 9, 19)
-        } else {}
+            warpwhitefade(MAP_DEMON_LAIRS_ADDISAMAP, 12, 27)
+        }
     } elif(flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_ADDISAMAP) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)) {
         msgbox("No need to go back.")
         waitmessage
@@ -218,12 +218,37 @@ script HubWorld_EventScript_Warp {
 }
 
 script HubWorld_EventScript_Maxie {
+    lockall
     setrespawn(HEAL_LOCATION_DEMON_LAIRS_MAXIE)
-    special(MaxieReboot)
     setvar(VAR_DEMON_LORD_PROGRESS, 5)
+
+    special(MaxieReboot)
+
     autosave
-    // Player comes back
-    // Screenshake
-    // Maxie talks
+
+    playse(SE_M_THUNDERBOLT2)
+	setvar(VAR_0x8004, 0)  // vertical pan
+	setvar(VAR_0x8005, 1)  // horizontal pan
+	setvar(VAR_0x8006, 5)  // num shakes
+	setvar(VAR_0x8007, 3)  // shake delay
+	special(ShakeCamera)
+    waitstate
+
+    delay(48)
+
+    speakername("Archie")
+    msgbox(format(
+        "…Huh?"
+    ))
+    closemessage
+
+    playse(SE_M_THUNDERBOLT2)
+    setvar(VAR_0x8004, 0)  // vertical pan
+	setvar(VAR_0x8005, 4)  // horizontal pan
+	setvar(VAR_0x8006, 50)  // num shakes
+	setvar(VAR_0x8007, 2)  // shake delay
+	special(ShakeCamera)
+    delay(48)
+
     callnative(0)
 }

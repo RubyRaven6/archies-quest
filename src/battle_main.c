@@ -355,7 +355,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_RIVAL] = { _("{PKMN} Trainer"), 15 },
     [TRAINER_CLASS_BUG_CATCHER] = { _("Bug Catcher"), 4 },
     [TRAINER_CLASS_PKMN_RANGER] = { _("{PKMN} Ranger"), 12 },
-    [TRAINER_CLASS_MAGMA_LEADER] = { _("Magma Leader"), 20, BALL_MASTER },
+    [TRAINER_CLASS_MAGMA_LEADER] = { _("Demon Lord"), 20, BALL_MASTER },
     [TRAINER_CLASS_LASS] = { _("Lass"), 4 },
     [TRAINER_CLASS_YOUNG_COUPLE] = { _("Young Couple"), 8 },
     [TRAINER_CLASS_OLD_COUPLE] = { _("Old Couple"), 10 },
@@ -5425,6 +5425,7 @@ static void HandleEndTurn_BattleWon(void)
         case TRAINER_CLASS_AQUA_LEADER:
         case TRAINER_CLASS_MAGMA_ADMIN:
         case TRAINER_CLASS_MAGMA_LEADER:
+        case TRAINER_CLASS_DEMON_LORD:
             PlayBGM(MUS_VICTORY_AQUA_MAGMA);
             break;
         case TRAINER_CLASS_LEADER:

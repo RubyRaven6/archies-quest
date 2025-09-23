@@ -7,3 +7,14 @@ mapscripts DemonLairs_Addisamap_MapScripts {
         }
     ]
 }
+
+script DemonLairs_Addisamap_EventScript_Sign {
+    lock
+    msgbox(format(
+        "To reach She Who Crafts The Land, he must find his way through her maze.\p"
+        "To make it more fun, She erased the mazes's building blocks.\p"
+        "He who is lost, rather than hugging himself for comfort, may hug his right."
+    ), MSGBOX_SIGN)
+    release
+}
+

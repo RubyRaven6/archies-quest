@@ -1518,6 +1518,11 @@ bool32 IsOverworldLinkActive(void)
 
 static void DoCB1_Overworld(u16 newKeys, u16 heldKeys)
 {
+    if ((!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER)) && gMapHeader.mapType == MAP_TYPE_UNDERWATER)
+    {
+        PlayerAvatarTransition_Underwater(&gObjectEvents[gPlayerAvatar.objectEventId]);
+
+    }
     struct FieldInput inputStruct;
 
     UpdatePlayerAvatarTransitionState();
@@ -3705,4 +3710,20 @@ bool8 ScrFunc_settimeofday(struct ScriptContext *ctx)
 {
     SetTimeOfDay(ScriptReadByte(ctx));
     return FALSE;
+}
+
+// Sets Sapprilon's lair music
+void TrySetSapprilonsLairMusic(void)
+{
+    u32 music;
+    if (FlagGet(FLAG_SAPPRILON_PUZZLE_SOLVED))
+    {
+        music = MUS_ROUTE101;
+    }
+    else
+    {
+        music = MUS_B_FACTORY;
+    }
+    Overworld_SetSavedMusic(music);
+    PlayNewMapMusic(music);
 }

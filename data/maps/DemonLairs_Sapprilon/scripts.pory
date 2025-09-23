@@ -1,5 +1,9 @@
 mapscripts DemonLairs_Sapprilon_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_TEMP_0, 0 {
+            setvar(VAR_TEMP_0, 1)
+            callnative(TrySetSapprilonsLairMusic)
+        }
         VAR_DEMON_LORD_PROGRESS, 2 {
             autosave
             setvar(VAR_DEMON_LORD_PROGRESS, 3)
@@ -9,9 +13,7 @@ mapscripts DemonLairs_Sapprilon_MapScripts {
 }
 
 script DemonLairs_Sapprilon_EventScript_CompactDisks {
-    msgbox("It's a stack of luminescent discs,\n
-            encased in a clear, durable case with\l
-            different illustrations on the front.", MSGBOX_SIGN)
+    msgbox(format("It's a stack of luminescent discs encased in a clear illustrated case."), MSGBOX_SIGN)
     waitmessage
     closemessage
 }
@@ -31,8 +33,11 @@ script DemonLairs_Sapprilon_EventScript_Monster {
             ))
             waitmessage
 
+            playse(SE_PIN)
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_upset))
+
             speakername("Archie")
-            msgbox("Ugh! This is awful! Must be monster blood to taste so badly.")
+            msgbox(format("Ugh! This is awful! Must be monster blood to taste so badly."))
             waitmessage
             closemessage
             setvar(VAR_TEMP_0, 1)
@@ -58,7 +63,7 @@ script DemonLairs_Sapprilon_EventScript_RegularComputer {
 
 script DemonLairs_Sapprilon_EventScript_Bookshelf1 {
     checkitem(ITEM_ACRO_BIKE, 1)
-    if(var(VAR_RESULT) == 0){
+    if(var(VAR_RESULT) == 0 && !flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){
         msgbox(format("It's a bookshelf wrought from metal.\nA waxen paper slip is sticking out.\pTake it?"), MSGBOX_YESNO)
         closemessage
         waitmessage
@@ -80,7 +85,7 @@ script DemonLairs_Sapprilon_EventScript_Bookshelf1 {
 
 script DemonLairs_Sapprilon_EventScript_Bookshelf2 {
     checkitem(ITEM_MACH_BIKE, 1)
-    if(var(VAR_RESULT) == 0){
+    if(var(VAR_RESULT) == 0 && !flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){
         msgbox(format("It's a bookshelf wrought from metal.\nA waxen paper slip is sticking out.\pTake it?"), MSGBOX_YESNO)
         closemessage
         waitmessage
@@ -102,7 +107,7 @@ script DemonLairs_Sapprilon_EventScript_Bookshelf2 {
 
 script DemonLairs_Sapprilon_EventScript_Bookshelf3 {
     checkitem(ITEM_SS_TICKET, 1)
-    if(var(VAR_RESULT) == 0){
+    if(var(VAR_RESULT) == 0 && !flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){
         msgbox(format("It's a bookshelf wrought from metal.\nA waxen paper slip is sticking out.\pTake it?"), MSGBOX_YESNO)
         closemessage
         waitmessage
@@ -124,7 +129,7 @@ script DemonLairs_Sapprilon_EventScript_Bookshelf3 {
 
 script DemonLairs_Sapprilon_EventScript_Bookshelf4 {
     checkitem(ITEM_EON_TICKET, 1)
-    if(var(VAR_RESULT) == 0){
+    if(var(VAR_RESULT) == 0 && !flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){
         msgbox(format("It's a bookshelf wrought from metal.\nA waxen paper slip is sticking out.\pTake it?"), MSGBOX_YESNO)
         closemessage
         waitmessage
@@ -145,8 +150,9 @@ script DemonLairs_Sapprilon_EventScript_Bookshelf4 {
 }
 
 script DemonLairs_Sapprilon_EventScript_MainComputer {
+    playse(SE_PC_ON)
     msgbox(format(
-        "An odd contraption of glass and metal. Looks like you can select some options."
+        "An odd contraption of glass and metal.\nStrange words appear!"
     ))
     waitmessage
     closemessage
@@ -154,12 +160,13 @@ script DemonLairs_Sapprilon_EventScript_MainComputer {
     dynmultipush("DISKS", 1)
     dynmultipush("PRINTER", 2)
     if(flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){dynmultipush("TRANSPORT", 3)}
-    dynmultistack(16, 0, FALSE, 3, FALSE, 0, DYN_MULTICHOICE_CB_NONE)
+    dynmultistack(16, 0, FALSE, 10, FALSE, 0, DYN_MULTICHOICE_CB_NONE)
+
     switch(var(VAR_RESULT)){
         case 0:
             if(!flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){call(DemonLairs_Sapprilon_EventScript_Puzzle)}
             else {
-                msgbox("No need to go over this again.")
+                msgbox(format("The song is very soothing, but you have to go."))
                 waitmessage
                 closemessage
             }
@@ -176,6 +183,10 @@ script DemonLairs_Sapprilon_EventScript_MainComputer {
             call(DemonLairs_Sapprilon_EventScript_Printer)
             break
         case 3:
+            playse(SE_PC_LOGIN)
+            waitse
+            delay(48)
+
             warpwhitefade(MAP_DEMONLAIRS_SAPPRILON_INTERIOR, 5, 9)
     }
 }
@@ -196,6 +207,8 @@ script DemonLairs_Sapprilon_EventScript_Puzzle {
 }
 
 script DemonLairs_Sapprilon_EventScript_DiskInsert{
+    playse(SE_PC_LOGIN)
+
     call(DemonLairs_ItemChecker)
     if(var(VAR_TEMP_1) == 1 || var(VAR_TEMP_2) == 1 || var(VAR_TEMP_3) == 1 ||var(VAR_TEMP_4) == 1 ){
         if(var(VAR_TEMP_1) == TRUE){
@@ -211,24 +224,28 @@ script DemonLairs_Sapprilon_EventScript_DiskInsert{
             dynmultipush("Insert Magenta disk", 1)
         }
 
-        dynmultistack(16, 1, FALSE, 3, FALSE, 0, DYN_MULTICHOICE_CB_NONE)
+        dynmultistack(16, 0, FALSE, 4, FALSE, 4, DYN_MULTICHOICE_CB_NONE)
         switch(var(VAR_RESULT)){
             case 0:
-                playse(MUS_SAPPRILON1)
-                waitse
-                break
+                fadeoutbgm(0)
+                playbgm(MUS_SAPPRILON1, FALSE)
+                fadeoutbgm(0)
+                fadedefaultbgm
             case 1:
-                playse(MUS_SAPPRILON2)
-                waitse
-                break
+                fadeoutbgm(0)
+                playbgm(MUS_SAPPRILON2, FALSE)
+                fadeoutbgm(0)
+                fadedefaultbgm
             case 2:
-                playse(MUS_SAPPRILON3)
-                waitse
-                break
+                fadeoutbgm(0)
+                playbgm(MUS_SAPPRILON3, FALSE)
+                fadeoutbgm(0)
+                fadedefaultbgm
             case 3:
-                playse(MUS_SAPPRILON4)
-                waitse
-                break
+                fadeoutbgm(0)
+                playbgm(MUS_SAPPRILON4, FALSE)
+                fadeoutbgm(0)
+                fadedefaultbgm
         }
     } else {
         msgbox(format("Looks like you have to insert something for this option to work."), MSGBOX_SIGN)
@@ -238,9 +255,10 @@ script DemonLairs_Sapprilon_EventScript_DiskInsert{
 }
 
 script DemonLairs_Sapprilon_EventScript_Printer {
+    playse(SE_PC_LOGIN)
+
     msgbox(format(
-        "You select the option that's labelled\n“PRINTER.”\p"
-        "…{PAUSE 16} …{PAUSE 16} …{PAUSE 16} …\p"
+        "…{PAUSE 16}…{PAUSE 16}…{PAUSE 16}…\p"
         "“PRINTER CANNOT COMPLETE OPERATION\nPLEASE REFILL CMYK CARTRIDGES”"
     ))
     waitmessage
@@ -261,7 +279,7 @@ script(local) DemonLairs_ItemChecker {
 
 script(local) DemonLairs_DiskInsertPuzzle {
     call(DemonLairs_ItemChecker)
-    dynmultichoice(16, 1, FALSE, 4, 0, DYN_MULTICHOICE_CB_NONE, "Insert Black disk", "Insert Yellow disk", "Insert Cyan disk", "Insert Magenta disk")
+    dynmultichoice(16, 0, FALSE, 4, 0, DYN_MULTICHOICE_CB_NONE, "Insert Black disk", "Insert Yellow disk", "Insert Cyan disk", "Insert Magenta disk")
     if(var(VAR_TEMP_1) == 1 || var(VAR_TEMP_2) == 1 || var(VAR_TEMP_3) == 1 || var(VAR_TEMP_4) == 1)
     {
         switch(var(VAR_RESULT)){
@@ -270,6 +288,7 @@ script(local) DemonLairs_DiskInsertPuzzle {
             if(var(VAR_TEMP_1) == 1){
                 sappypuzzle(1)
                 removeitem(ITEM_ACRO_BIKE, 1)
+                playse(SE_SWITCH)
                 msgbox("Inserted Black disk.")
                 waitmessage
                 closemessage
@@ -290,6 +309,7 @@ script(local) DemonLairs_DiskInsertPuzzle {
             if(var(VAR_TEMP_2) == 1){
                 sappypuzzle(2)
                 removeitem(ITEM_MACH_BIKE, 1)
+                playse(SE_SWITCH)
                 msgbox("Inserted Yellow disk.")
                 waitmessage
                 closemessage
@@ -310,6 +330,7 @@ script(local) DemonLairs_DiskInsertPuzzle {
             if(var(VAR_TEMP_3) == 1){
                 sappypuzzle(3)
                 removeitem(ITEM_SS_TICKET, 1)
+                playse(SE_SWITCH)
                 msgbox("Inserted Cyan disk.")
                 waitmessage
                 closemessage
@@ -330,8 +351,8 @@ script(local) DemonLairs_DiskInsertPuzzle {
             if(var(VAR_TEMP_4) == 1){
                 sappypuzzle(4)
                 removeitem(ITEM_EON_TICKET, 1)
-                msgbox("Inserted Magneta disk.")
-                waitmessage
+                playse(SE_SWITCH)
+                msgbox("Inserted Magenta disk.")
                 closemessage
                 if(var(VAR_TEMP_1) == 1 || var(VAR_TEMP_2) == 1 || var(VAR_TEMP_3) == 1){
                     call(DemonLairs_DiskInsertPuzzle)
@@ -363,13 +384,75 @@ script(local) EarlyExit{
 script(local) WinCondition {
     if (var(VAR_SAPPRILON_PUZZLE_VAL) == 3421) {
         setflag(FLAG_SAPPRILON_PUZZLE_SOLVED)
-        msgbox("Congrats ur a great dev ruby")
-        waitmessage
+
+        msgbox(format(
+            "…{PAUSE 16}…{PAUSE 16}…{PAUSE 16}…"
+        ))
         closemessage
+
+        playse(SE_SUCCESS)
+        waitse
+
+        delay(48)
+
+        msgbox(format(
+            "Hmm…\p"
+            "Did something happen?"
+        ))
+
+        fadeoutbgm(0)
+        playbgm(MUS_ROUTE101, FALSE)
+
+        applymovement(OBJ_EVENT_ID_PLAYER, moves(
+            delay_16 * 3,
+            walk_in_place_fast_down,
+            delay_16 * 2,
+            face_right,
+            lock_facing_direction,
+            walk_left,
+            unlock_facing_direction,
+            face_left,
+            lock_facing_direction,
+            walk_right,
+            unlock_facing_direction,
+            face_right,
+            lock_facing_direction,
+            walk_left,
+            unlock_facing_direction,
+            face_left,
+            lock_facing_direction,
+            walk_right,
+            unlock_facing_direction,
+            face_down,
+            delay_16 * 2
+        ))
+        waitmovement(0)
+
+        msgbox(format(
+            "The song is surprisingly catchy."
+        ))
+        closemessage
+
+        autosave
     } else {
         setvar(VAR_SAPPRILON_PUZZLE_VAL, 0)
-        msgbox("Hmm… that wasn't right.")
-        waitmessage
+
+        msgbox(format(
+            "…{PAUSE 16}…{PAUSE 16}…{PAUSE 16}…\p"
+        ))
+        closemessage
+
+        playse(SE_FAILURE)
+        waitse
+
+        delay(48)
+
+        msgbox(format(
+            "Hmm…\p"
+            "Nothing happened."
+        ))
         closemessage
     }
+
+    release
 }
