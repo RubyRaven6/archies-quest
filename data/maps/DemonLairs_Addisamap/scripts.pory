@@ -17,3 +17,10 @@ script DemonLairs_Addisamap_EventScript_Sign {
     ), MSGBOX_SIGN)
     release
 }
+
+script DemonLairs_Addisamap_EventScript_Warp {
+    msgbox(format("Go to Addisamap's inner lair?"), MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES){
+        warp(MAP_DEMON_LAIRS_ADDISAMAP_INTERIOR, 12, 17)
+    }
+}

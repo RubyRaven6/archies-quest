@@ -199,14 +199,14 @@ script HubWorld_EventScript_SapprilonWarp {
     end
 }
 
-script HubWorld_EventScript_Warp {
+script HubWorld_EventScript_AddisamapWarp {
     if(!flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_ADDISAMAP) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)){
-        msgbox(format("It's a corroded, porous stone tablet.\pTouch it?"), MSGBOX_YESNO)
+        msgbox(format("It's an enormous globe: a diorama of R'mhakking.\pTouch it?"), MSGBOX_YESNO)
         closemessage
         if(var(VAR_RESULT) == YES) {
             setrespawn(HEAL_LOCATION_DEMON_LAIRS_ADDISAMAP)
             playse(SE_LAVARIDGE_FALL_WARP)
-            warpwhitefade(MAP_DEMON_LAIRS_ADDISAMAP, 9, 19)
+            warpwhitefade(MAP_DEMON_LAIRS_ADDISAMAP, 12, 31)
         } else {}
     } elif(flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_ADDISAMAP) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)) {
         msgbox("No need to go back.")

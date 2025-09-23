@@ -2,6 +2,7 @@ mapscripts DemonLairs_Nessie_Interior_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_FIRST_TIME_ENTERING_NESSIE, 0 {
             lockall
+            autosave
             setvar(VAR_FIRST_TIME_ENTERING_NESSIE, 1)
             delay(24)
             playse(SE_CONTEST_CONDITION_LOSE)
@@ -43,13 +44,13 @@ script DemonLairs_EventScript_Nessie {
         msgbox(format(
             "Weeeell, who's this pretty young thing?\p"
             "I'm {COLOR RED}Nessereign{COLOR DARK_GRAY}.\nBut YOU, you can call me {COLOR RED}Nessie{COLOR DARK_GRAY}!\p"
-            "Are you lost?\nYou delicious,{PAUSE 8} GODFORSAKEN{PAUSE 8} INTRUDER?"
+            "Are you lost?\nYou delicious,{PAUSE 16} GODFORSAKEN{PAUSE 16} INTRUDER?"
         ))
         closemessage
 
         playse(SE_LEDGE)
-        applymovement(LOCALID_PLAYER, moves(lock_facing_direction, jump_in_place_down, delay_1, unlock_facing_direction))
-        waitmovement(0)
+        //applymovement(LOCALID_PLAYER, moves(lock_facing_direction, jump_in_place_down, delay_1, unlock_facing_direction))
+        //waitmovement(0)
 
         speakername("Archie")
         msgbox(format(

@@ -805,10 +805,11 @@ static void GreehaseetPuzzle_HandleShellContents(void)
             if(*cursorY == 1){ //For when Ten Shell to Seven Shell
                 if (*tenShell == 0 || *sevenShell == MAX_SEVEN_SHELL){
                 }
-                else if (*tenShell == 6)
+                else if (*tenShell == 6 && *sevenShell > 0)
                 {
-                    *tenShell = MAX_SEVEN_SHELL - *sevenShell;
+                    temp = MAX_SEVEN_SHELL - *sevenShell;
                     *sevenShell = MAX_SEVEN_SHELL;
+                    *tenShell = *tenShell - temp;
                 }
                 else if (*tenShell > MAX_SEVEN_SHELL && *sevenShell == 0){
                     *tenShell = *tenShell - MAX_SEVEN_SHELL;
