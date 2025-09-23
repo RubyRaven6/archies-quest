@@ -378,7 +378,7 @@ script(local) WinCondition {
         setflag(FLAG_SAPPRILON_PUZZLE_SOLVED)
 
         msgbox(format(
-            "…{PAUSE 16}…{PAUSE 16}…{PAUSE 16}…\p"
+            "…{PAUSE 16}…{PAUSE 16}…{PAUSE 16}…"
         ))
         closemessage
         

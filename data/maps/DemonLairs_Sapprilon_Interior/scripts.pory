@@ -9,6 +9,8 @@ mapscripts DemonLairs_Sapprilon_Interior_MapScripts {
 script DemonLairs_EventScript_Sapprilon {
     lockall
 
+    autosave
+
     applymovement(LOCALID_PLAYER, moves(walk_up * 2, walk_right, walk_up))
     waitmovement(LOCALID_PLAYER)
     

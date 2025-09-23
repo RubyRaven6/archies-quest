@@ -2,7 +2,7 @@
   "id": "MAP_DEMON_LAIRS_ADDISAMAP_INTERIOR",
   "name": "DemonLairs_Addisamap_Interior",
   "layout": "LAYOUT_DEMON_LAIRS_ADDISAMAP_INTERIOR",
-  "music": "MUS_SAFARI_ZONE",
+  "music": "MUS_B_PALACE",
   "region_map_section": "MAPSEC_ADDISAMAP_LAIR",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -26,10 +26,18 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "DemonLairs_EventScript_Addisamap",
-      "flag": "0"
+      "flag": "FLAG_HIDE_ADDISAMAP"
     }
   ],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "x": 12,
+      "y": 18,
+      "elevation": 0,
+      "dest_map": "MAP_DEMON_LAIRS_ADDISAMAP",
+      "dest_warp_id": "0"
+    }
+  ],
   "coord_events": [
     {
       "type": "trigger",
