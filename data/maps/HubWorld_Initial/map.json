@@ -2,7 +2,7 @@
   "id": "MAP_HUB_WORLD_INITIAL",
   "name": "HubWorld_Initial",
   "layout": "LAYOUT_HUB_WORLD_INITIAL",
-  "music": "MUS_DUMMY",
+  "music": "MUS_SEALED_CHAMBER",
   "region_map_section": "MAPSEC_HUB_WORLD",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
