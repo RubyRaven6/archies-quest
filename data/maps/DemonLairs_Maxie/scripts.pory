@@ -1,4 +1,24 @@
 mapscripts DemonLairs_Maxie_MapScripts {
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_ENTERED_MAXIES_LAIR, 0 {
+            lockall
+            setvar(VAR_ENTERED_MAXIES_LAIR, 1)
+
+            delay(60)
+
+            playse(SE_PIN)
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_sad))
+
+            speakername("Archie")
+            msgbox(format(
+                "What… Where am I…?\p"
+                "Owww… My head hurts…"
+            ))
+            closemessage
+
+            releaseall
+        }
+    ]
 }
 
 script Demonlairs_Maxie_Trigger1{

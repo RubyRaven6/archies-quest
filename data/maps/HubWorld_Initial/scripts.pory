@@ -200,14 +200,14 @@ script HubWorld_EventScript_SapprilonWarp {
 }
 
 script HubWorld_EventScript_AddisamapWarp {
-    if(!flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_ADDISAMAP) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)){
-        msgbox(format("It's an enormous globe: a diorama of R'mhakking.\pTouch it?"), MSGBOX_YESNO)
+    if(var(VAR_DEMON_LORD_PROGRESS) == 3){
+        msgbox(format("It's an enormous globe: a diorama\nof R'mhakking.\pTouch it?"), MSGBOX_YESNO)
         closemessage
         if(var(VAR_RESULT) == YES) {
             setrespawn(HEAL_LOCATION_DEMON_LAIRS_ADDISAMAP)
             playse(SE_LAVARIDGE_FALL_WARP)
-            warpwhitefade(MAP_DEMON_LAIRS_ADDISAMAP, 12, 31)
-        } else {}
+            warpwhitefade(MAP_DEMON_LAIRS_ADDISAMAP, 12, 27)
+        }
     } elif(flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_ADDISAMAP) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)) {
         msgbox("No need to go back.")
         waitmessage
@@ -218,12 +218,37 @@ script HubWorld_EventScript_AddisamapWarp {
 }
 
 script HubWorld_EventScript_Maxie {
+    lockall
     setrespawn(HEAL_LOCATION_DEMON_LAIRS_MAXIE)
-    special(MaxieReboot)
     setvar(VAR_DEMON_LORD_PROGRESS, 5)
+
+    special(MaxieReboot)
+
     autosave
-    // Player comes back
-    // Screenshake
-    // Maxie talks
+
+    playse(SE_M_THUNDERBOLT2)
+	setvar(VAR_0x8004, 0)  // vertical pan
+	setvar(VAR_0x8005, 1)  // horizontal pan
+	setvar(VAR_0x8006, 5)  // num shakes
+	setvar(VAR_0x8007, 3)  // shake delay
+	special(ShakeCamera)
+    waitstate
+
+    delay(48)
+
+    speakername("Archie")
+    msgbox(format(
+        "…Huh?"
+    ))
+    closemessage
+
+    playse(SE_M_THUNDERBOLT2)
+    setvar(VAR_0x8004, 0)  // vertical pan
+	setvar(VAR_0x8005, 4)  // horizontal pan
+	setvar(VAR_0x8006, 50)  // num shakes
+	setvar(VAR_0x8007, 2)  // shake delay
+	special(ShakeCamera)
+    delay(48)
+
     callnative(0)
 }

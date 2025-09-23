@@ -1,5 +1,11 @@
 mapscripts DemonLairs_Addisamap_Interior_MapScripts {
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_TEMP_0, 0 {
+            call(DemonLairs_EventScript_Addisamap)
+        }
+    ]
     MAP_SCRIPT_ON_TRANSITION {
+        setrespawn(HEAL_LOCATION_DEMON_LAIRS_ADDISAMAP_2)
         if(!flag(FLAG_ADDISAMAP_PUZZLE_SOLVED)){
             setflag(FLAG_ADDISAMAP_PUZZLE_SOLVED)
         }
@@ -7,13 +13,23 @@ mapscripts DemonLairs_Addisamap_Interior_MapScripts {
 }
 
 script DemonLairs_EventScript_Addisamap {
-    lock
+    lockall
+
+    autosave
+
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 8))
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+
     if(!flag(FLAG_TALKED_TO_ADDISAMAP)){
         setflag(FLAG_TALKED_TO_ADDISAMAP)
+        
+        playse(SE_PIN)
+        applymovement(LOCALID_ADDISAMAP_RUIN_MANIAC, moves(emote_pensive))
+        waitmovement(LOCALID_ADDISAMAP_RUIN_MANIAC)
 
         speakername("Addisamap")
         msgbox(format(
-            "The troublemaker finally got here, hmm?\l"
+            "The troublemaker finally got here, hmm?\n"
             "Color me impressed."
         ))
         closemessage
@@ -28,20 +44,23 @@ script DemonLairs_EventScript_Addisamap {
         applymovement(LOCALID_ADDISAMAP_RUIN_MANIAC, moves(emote_music))
         speakername("Addisamap")
         msgbox(format(
-            "What reason do I have to be worried?\p"
-            "I am as ancient as time itself.\nThe ground the young man treads on\lwas crafted by these hands.\p"
+            "What reason do I have to be worried?\nI am as ancient as time itself.\p"
+            "The ground the young man treads on\nwas crafted by these hands.\p"
             "Does he think he can defeat the weight of the centuries?\p"
             "Ho ho ho…\p"
-            "He is ultimately failing this silly quest of his.\NEither by my hand, or by our Master's."
+            "He is ultimately failing this silly\nquest of his.\NEither by my hand, or by our Master's."
         ))
         closemessage
 
-        applymovement(LOCALID_PLAYER, moves(walk_in_place_up))
+        playse(SE_PIN)
+        applymovement(LOCALID_PLAYER, moves(emote_angry, walk_in_place_up))
         speakername("Archie")
         msgbox(format("Who's this Master of yours?!\nTell me his name!"))
         closemessage
 
         applymovement(LOCALID_ADDISAMAP_RUIN_MANIAC, moves(face_up, delay_16, emote_pensive, delay_16 * 3, face_down))
+        delay(16)
+        playse(SE_PIN)
         waitmovement(LOCALID_ADDISAMAP_RUIN_MANIAC)
 
         speakername("Addisamap")
@@ -124,5 +143,8 @@ script DemonLairs_EventScript_Addisamap {
     special(DrawWholeMapView)
 
     waitse
-    release
+
+    setvar(VAR_TEMP_0, 1)
+
+    releaseall
 }

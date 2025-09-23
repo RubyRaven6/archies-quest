@@ -1,8 +1,7 @@
 mapscripts DemonLairs_Nessie_Interior_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_FIRST_TIME_ENTERING_NESSIE, 0 {
+        VAR_TEMP_0, 0 {
             lockall
-            autosave
             setvar(VAR_FIRST_TIME_ENTERING_NESSIE, 1)
             delay(24)
             playse(SE_CONTEST_CONDITION_LOSE)
@@ -15,20 +14,23 @@ mapscripts DemonLairs_Nessie_Interior_MapScripts {
             msgbox(format(
                 "… …The entrance has closed."
             ))
-
             closemessage
-            releaseall
+
+            call(DemonLairs_EventScript_Nessie)
         }
     ]
 }
 
 script DemonLairs_EventScript_Nessie {
     lock
-    faceplayer
+
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 5, walk_right * 3))
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+
     if(!flag(FLAG_TALKED_TO_NESSEREIGN)){
         setflag(FLAG_TALKED_TO_NESSEREIGN)
         playse(SE_PIN)
-        applymovement(VAR_LAST_TALKED, moves(emote_upset))
+        applymovement(LOCALID_NESSIE_PAINTER, moves(emote_upset))
         speakername("Nessereign")
         msgbox(format(
             "What in the nine hells is that RACKET?! Can't you see I'm WORKING here?\p"
@@ -37,7 +39,7 @@ script DemonLairs_EventScript_Nessie {
         closemessage
 
         playse(SE_PIN)
-        applymovement(LOCALID_NESSIE_PAINTER, moves(emote_exclamation_mark, delay_16 * 6))
+        applymovement(LOCALID_NESSIE_PAINTER, moves(face_left, emote_exclamation_mark, delay_16 * 6))
         waitmovement(0)
 
         speakername("Nessereign")
@@ -49,8 +51,8 @@ script DemonLairs_EventScript_Nessie {
         closemessage
 
         playse(SE_LEDGE)
-        //applymovement(LOCALID_PLAYER, moves(lock_facing_direction, jump_in_place_down, delay_1, unlock_facing_direction))
-        //waitmovement(0)
+        applymovement(LOCALID_PLAYER, moves(jump_in_place_right))
+        waitmovement(0)
 
         speakername("Archie")
         msgbox(format(
@@ -76,7 +78,7 @@ script DemonLairs_EventScript_Nessie {
         closemessage
     } else {
         playse(SE_PIN)
-        applymovement(LOCALID_NESSIE_PAINTER, moves(emote_happy))
+        applymovement(LOCALID_NESSIE_PAINTER, moves(face_left, emote_happy))
         speakername("Nessereign")
         msgbox(format(
             "You just don't.{PAUSE 8} Know.{PAUSE 8} WHEN to quit, huh?\p"
@@ -169,6 +171,8 @@ script DemonLairs_EventScript_Nessie {
 
     playse(SE_POKENAV_HANG_UP)
     waitse
+
+    setvar(VAR_TEMP_0, 1)
 
     release
 }

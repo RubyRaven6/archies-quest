@@ -1,8 +1,17 @@
 mapscripts DemonLairs_Greehaseet_Interior_MapScripts {
-
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_TEMP_0, 0 {
+            call(DemonLairs_EventScript_Greehaseet)
+        }
+    ]
 }
 
 script DemonLairs_EventScript_Greehaseet {
+    lockall
+
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 8))
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+
     if(!flag(FLAG_TALKED_TO_GREEHASEET)){
         setflag(FLAG_TALKED_TO_GREEHASEET)
         speakername("Greehaseet")
@@ -12,7 +21,7 @@ script DemonLairs_EventScript_Greehaseet {
         playse(SE_PIN)
         applymovement(LOCALID_PLAYER, moves(emote_angry))
         speakername("Archie")
-        msgbox(format("That's right, Demon Lord! Your reigns of terror are gonna end by my hand!"), MSGBOX_DEFAULT)
+        msgbox(format("That's right, Demon Lord! Your reign of terror is gonna end by my hand!"), MSGBOX_DEFAULT)
         closemessage
 
         speakername("Greehaseet")
@@ -25,7 +34,7 @@ script DemonLairs_EventScript_Greehaseet {
     } else {
         faceplayer
         speakername("Greehaseet")
-        msgbox(format("Huehue. I can do this for longer than you have years in your life, boy!"), MSGBOX_DEFAULT)
+        msgbox(format("Huehue. I can do this for longer than you have years in your life, boy."), MSGBOX_DEFAULT)
         closemessage
     }
 
@@ -80,5 +89,9 @@ script DemonLairs_EventScript_Greehaseet {
     waitse
 
     applymovement(LOCALID_PLAYER, moves(face_down))
-    end
+    waitmovement(LOCALID_PLAYER)
+
+    setvar(VAR_TEMP_0, 1)
+
+    releaseall
 }
