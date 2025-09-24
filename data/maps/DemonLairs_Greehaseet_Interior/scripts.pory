@@ -32,6 +32,7 @@ script DemonLairs_EventScript_Greehaseet {
         ))
         closemessage
     } else {
+        faceplayer
         speakername("Greehaseet")
         msgbox(format("Huehue. I can do this for longer than you have years in your life, boy."), MSGBOX_DEFAULT)
         closemessage

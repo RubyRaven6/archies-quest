@@ -35,7 +35,7 @@ u32 GetCurrentLevelCap(void)
 
 u32 GetSoftLevelCapExpValue(u32 level, u32 expValue)
 {
-    
+
     return 0;
 
     // static const u32 sExpScalingDown[5] = { 4, 8, 16, 32, 64 };
@@ -118,9 +118,9 @@ u32 GetCurrentEVCap(void)
 void LevelMonsToCap(void)
 {
     u32 currentCap = GetCurrentLevelCap();
-    
-    for (u32 i = 0; i < 3; i++)
-    {            
+
+    for (u32 i = 0; i < 4; i++)
+    {
         u32 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
         SetMonData(&gPlayerParty[i], MON_DATA_EXP, &gExperienceTables[gSpeciesInfo[species].growthRate][currentCap]);
         CalculateMonStats(&gPlayerParty[i]);
