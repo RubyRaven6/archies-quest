@@ -156,13 +156,14 @@ script ArchiesHouse_EventScript_Archie {
             msgbox(format("Follow me!\nI'll transport us with this device…"))
             closemessage
 
-            
+
             playse(SE_SWITCH)
             waitse
             delay(48)
             playse(SE_LAVARIDGE_FALL_WARP)
 
             warpwhitefade(MAP_HUB_WORLD_INITIAL, 8, 4)
+            waitstate
         } else {
             msgbox(format("Wipe that grin off your face! How you gonna fight them with no Pokémon, huh?"),MSGBOX_DEFAULT)
             closemessage

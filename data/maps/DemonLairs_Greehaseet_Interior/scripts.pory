@@ -7,6 +7,7 @@ mapscripts DemonLairs_Greehaseet_Interior_MapScripts {
 }
 
 script DemonLairs_EventScript_Greehaseet {
+    autosave
     lockall
 
     applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 8))
@@ -44,7 +45,7 @@ script DemonLairs_EventScript_Greehaseet {
 
     speakername("Greehaseet")
     msgbox(format("This c-cannot be… I've reigned upon these depths since the very beginning of time…"))
-    
+
     playse(SE_M_THUNDERBOLT2)
 	setvar(VAR_0x8004, 0)  // vertical pan
 	setvar(VAR_0x8005, 1)  // horizontal pan

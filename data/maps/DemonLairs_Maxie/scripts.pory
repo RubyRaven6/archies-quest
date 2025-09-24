@@ -26,7 +26,7 @@ mapscripts DemonLairs_Maxie_MapScripts {
         setflag(FLAG_HIDE_ADDISAMAP_STONE)
         setflag(FLAG_HIDE_GREEHASEET_STONE)
         setflag(FLAG_HIDE_SAPPRILON_STONE)
-        
+
         setflag(FLAG_HIDE_NESSEREIGN)
         setflag(FLAG_HIDE_GREEHASEET)
         setflag(FLAG_HIDE_SAPPRILON)
@@ -318,7 +318,7 @@ script DemonLairs_EventScript_Maxie {
     applymovement(LOCALID_DEMONLORD_MAXIE, moves(face_left, delay_16 * 3, face_up, delay_16 * 3, face_right, delay_16 * 3, face_down))
 
     msgbox(format(
-        "The {COLOR RED}Bai'Narii{COLOR DARK_GRAY}…\nDefeated…\p"
+        "The {COLOR RED}Bai'Narii{COLOR DARK_GRAY}…\ndefeated…?!\p"
         "It can't end like this!\nThis world cannot function without us!"
     ))
 
@@ -348,7 +348,7 @@ script DemonLairs_EventScript_Maxie {
 	setvar(VAR_0x8006, 20)  // num shakes
 	setvar(VAR_0x8007, 2)   // shake delay
 	special(ShakeCamera)
-    
+
     delay(48)
 
     fadescreen(FADE_TO_WHITE)

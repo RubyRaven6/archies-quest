@@ -221,10 +221,24 @@ script HubWorld_EventScript_Maxie {
     lockall
     setrespawn(HEAL_LOCATION_DEMON_LAIRS_MAXIE)
     setvar(VAR_DEMON_LORD_PROGRESS, 5)
-
     special(MaxieReboot)
-
     autosave
+
+    applymovement(LOCALID_PLAYER, moves(walk_up * 4))
+    waitmovement(0)
+    speakername("Archie")
+    msgbox("I've defeated all four of them, but…\nthere's one more, right?",MSGBOX_DEFAULT)
+    waitmessage
+    closemessage
+    speakername("Old Archie")
+    msgbox(
+        "Indeed. The one who reigns above all.\nHis power has no equal.\l"
+        "We have to make sure to be as powerful\las possible to take him on.\p"
+        "I think we need to go back to your home,\nand get more-"
+    )
+    waitmessage
+    closemessage
+
 
     playse(SE_M_THUNDERBOLT2)
 	setvar(VAR_0x8004, 0)  // vertical pan
@@ -237,18 +251,27 @@ script HubWorld_EventScript_Maxie {
     delay(48)
 
     speakername("Archie")
-    msgbox(format(
-        "…Huh?"
-    ))
+    msgbox("…Huh?", MSGBOX_DEFAULT)
+    waitmessage
+    closemessage
+
+    speakername("Old Archie")
+    msgbox("Oh no…", MSGBOX_DEFAULT)
+    waitmessage
     closemessage
 
     playse(SE_M_THUNDERBOLT2)
     setvar(VAR_0x8004, 0)  // vertical pan
 	setvar(VAR_0x8005, 4)  // horizontal pan
-	setvar(VAR_0x8006, 50)  // num shakes
+	setvar(VAR_0x8006, 6501)  // num shakes
 	setvar(VAR_0x8007, 2)  // shake delay
 	special(ShakeCamera)
-    delay(48)
+    msgbox(
+        "I've found you, interlopers.\nYou thought you could hide from me?\l"
+        "You've made a terrible mistake!\p"
+        "Say your prayers, while you can still\nspeak at all!\p"
+        "HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA", MSGBOX_DEFAULT)
+    waitmessage
 
     callnative(0)
 }
