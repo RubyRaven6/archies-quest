@@ -107,6 +107,7 @@ script DemonLairs_EventScript_Sapprilon {
         ))
         closemessage
     } else {
+        faceplayer
         speakername("Sapprilon")
         msgbox(format("You wanna dance again, kid?\nLet's move it, yeah? Let's end this!"))
         closemessage

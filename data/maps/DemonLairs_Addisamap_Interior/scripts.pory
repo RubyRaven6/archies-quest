@@ -71,6 +71,7 @@ script DemonLairs_EventScript_Addisamap {
         ))
         closemessage
     } else {
+        faceplayer
         speakername("Addisamap")
         msgbox(format(
             "The quester returns.\nStubborn as ever.\p"
