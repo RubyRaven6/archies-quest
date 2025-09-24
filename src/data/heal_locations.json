@@ -190,8 +190,8 @@
     {
       "id": "HEAL_LOCATION_DEMON_LAIRS_MAXIE",
       "map": "MAP_DEMON_LAIRS_MAXIE",
-      "x": 15,
-      "y": 26
+      "x": 14,
+      "y": 25
     },
     {
       "id": "HEAL_LOCATION_DEMON_LAIRS_NESSIE",

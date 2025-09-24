@@ -475,10 +475,10 @@
 #define FLAG_REGISTERED_DRAKE                (TRAINER_REGISTERED_FLAGS_START + REMATCH_DRAKE)
 #define FLAG_REGISTERED_WALLACE              (TRAINER_REGISTERED_FLAGS_START + REMATCH_WALLACE)
 
-#define FLAG_UNUSED_0x1AA                    0x1AA // Unused Flag
+#define FLAG_HIDE_MAXIE_LAIR                 0x1AA
 #define FLAG_UNUSED_0x1AB                    0x1AB // Unused Flag
 
-#define FLAG_DEFEATED_DEOXYS                 0x1AC
+#define FLAG_DEFEATED_MAXIE                  0x1AC
 #define FLAG_BATTLED_DEOXYS                  0x1AD
 #define FLAG_SHOWN_EON_TICKET                0x1AE
 #define FLAG_SHOWN_AURORA_TICKET             0x1AF
@@ -531,11 +531,11 @@
 #define FLAG_DEFEATED_HO_OH                  0x1DC
 #define FLAG_DEFEATED_LUGIA                  0x1DD
 
-#define FLAG_UNUSED_0x1DE                    0x1DE // Unused Flag
-#define FLAG_UNUSED_0x1DF                    0x1DF // Unused Flag
-#define FLAG_UNUSED_0x1E0                    0x1E0 // Unused Flag
-#define FLAG_UNUSED_0x1E1                    0x1E1 // Unused Flag
-#define FLAG_UNUSED_0x1E2                    0x1E2 // Unused Flag
+#define FLAG_HIDE_NESSEREIGN_STONE           0x1DE
+#define FLAG_HIDE_ADDISAMAP_STONE            0x1DF
+#define FLAG_HIDE_GREEHASEET_STONE           0x1E0
+#define FLAG_HIDE_SAPPRILON_STONE            0x1E1
+#define FLAG_HIDE_ARCHIE_MAXIES_LAIR         0x1E2
 #define FLAG_UNUSED_0x1E3                    0x1E3 // Unused Flag
 
 // Mystery Gift Flags (Unknown)

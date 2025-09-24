@@ -201,6 +201,10 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_NessereignH
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AddisamapHuman;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GreehaseetHuman;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SapprilonHuman;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_NessereignStone;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GreehaseetStone;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AddisamapStone;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SapprilonStone;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KyogreFront;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GroudonFront;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Fossil;
@@ -261,6 +265,10 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_ADDISAMAP_HUMAN] =          &gObjectEventGraphicsInfo_AddisamapHuman,
     [OBJ_EVENT_GFX_SAPPRILON_HUMAN] =          &gObjectEventGraphicsInfo_SapprilonHuman,
     [OBJ_EVENT_GFX_GREEHASEET_HUMAN] =         &gObjectEventGraphicsInfo_GreehaseetHuman,
+    [OBJ_EVENT_GFX_NESSEREIGN_STONE] =         &gObjectEventGraphicsInfo_NessereignStone,
+    [OBJ_EVENT_GFX_GREEHASEET_STONE] =          &gObjectEventGraphicsInfo_GreehaseetStone,
+    [OBJ_EVENT_GFX_ADDISAMAP_STONE] =          &gObjectEventGraphicsInfo_AddisamapStone,
+    [OBJ_EVENT_GFX_SAPPRILON_STONE] =         &gObjectEventGraphicsInfo_SapprilonStone,
     [OBJ_EVENT_GFX_COOL_ARCHIE] =              &gObjectEventGraphicsInfo_CoolArchieNormal,
     [OBJ_EVENT_GFX_BRENDAN_NORMAL] =           &gObjectEventGraphicsInfo_BrendanNormal,
     [OBJ_EVENT_GFX_BRENDAN_MACH_BIKE] =        &gObjectEventGraphicsInfo_BrendanMachBike,

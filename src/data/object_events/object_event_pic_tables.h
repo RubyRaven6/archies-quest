@@ -964,6 +964,22 @@ static const struct SpriteFrameImage sPicTable_SapprilonHuman[] = {
     overworld_ascending_frames(gObjectEventPic_SapprilonHuman, 4, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_Nessereign_Stone[] = {
+    obj_frame_tiles(gObjectEventPic_Nessereign_Stone),
+};
+
+static const struct SpriteFrameImage sPicTable_Addisamap_Stone[] = {
+    obj_frame_tiles(gObjectEventPic_Addisamap_Stone),
+};
+
+static const struct SpriteFrameImage sPicTable_Sapprilon_Stone[] = {
+    obj_frame_tiles(gObjectEventPic_Sapprilon_Stone),
+};
+
+static const struct SpriteFrameImage sPicTable_Greehaseet_Stone[] = {
+    obj_frame_tiles(gObjectEventPic_Greehaseet_Stone),
+};
+
 static const struct SpriteFrameImage sPicTable_KyogreFront[] = {
     overworld_frame(gObjectEventPic_KyogreOld, 4, 4, 0),
     overworld_frame(gObjectEventPic_KyogreOld, 4, 4, 0),
