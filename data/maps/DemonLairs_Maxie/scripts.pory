@@ -19,6 +19,14 @@ mapscripts DemonLairs_Maxie_MapScripts {
             releaseall
         }
     ]
+    MAP_SCRIPT_ON_TRANSITION {
+        if(!flag(FLAG_TALKED_TO_MAXIE)){
+            setflag(FLAG_DEMON_FORM_NESSEREIGN)
+            setflag(FLAG_DEMON_FORM_GREEHASEET)
+            setflag(FLAG_DEMON_FORM_SAPPRILON)
+            setflag(FLAG_DEMON_FORM_ADDISAMAP)
+        }
+    }
 }
 
 script Demonlairs_Maxie_Trigger1{
@@ -67,6 +75,9 @@ script DemonLairs_Maxie_EventScript_WalkTowards{
 }
 
 script DemonLairs_Maxie_EventScript_MaxieCutscene {
+    if(flag(FLAG_TALKED_TO_MAXIE)) {
+        goto(DemonLairs_EventScript_Maxie)
+    }
     speakername("Archie")
     msgbox("Y-You're…", MSGBOX_DEFAULT)
     waitmessage
@@ -124,13 +135,52 @@ script DemonLairs_Maxie_EventScript_MaxieCutscene {
     msgbox("Have you now?", MSGBOX_DEFAULT)
     waitmessage
     closemessage
+
     fadescreen(FADE_TO_WHITE)
-    // unhide objects in
+    clearflag(FLAG_HIDE_NESSEREIGN)
+    clearflag(FLAG_HIDE_GREEHASEET)
+    clearflag(FLAG_HIDE_SAPPRILON)
+    clearflag(FLAG_HIDE_ADDISAMAP)
+    addobject(LOCALID_HUMAN_FORM_NESSEREIGN)
+    addobject(LOCALID_HUMAN_FORM_GREEHASEET)
+    addobject(LOCALID_HUMAN_FORM_SAPPRILON)
+    addobject(LOCALID_HUMAN_FORM_ADDISAMAP)
     fadescreen(FADE_FROM_WHITE)
+
+    applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+    waitmovement(LOCALID_PLAYER)
+
     speakername("Archie")
-    msgbox("What…", MSGBOX_DEFAULT)
+    msgbox("What… no…", MSGBOX_DEFAULT)
     waitmessage
     closemessage
+
+    applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+    applymovement(LOCALID_HUMAN_FORM_NESSEREIGN, moves(shake_vertical))
+    applymovement(LOCALID_HUMAN_FORM_GREEHASEET, moves(shake_vertical))
+    applymovement(LOCALID_HUMAN_FORM_SAPPRILON, moves(shake_vertical))
+    applymovement(LOCALID_HUMAN_FORM_ADDISAMAP, moves(shake_vertical))
+    waitmovement(LOCALID_PLAYER)
+    waitmovement(LOCALID_HUMAN_FORM_NESSEREIGN)
+    waitmovement(LOCALID_HUMAN_FORM_GREEHASEET)
+    waitmovement(LOCALID_HUMAN_FORM_SAPPRILON)
+    waitmovement(LOCALID_HUMAN_FORM_ADDISAMAP)
+
+    fadescreen(FADE_TO_WHITE)
+    removeobject(LOCALID_HUMAN_FORM_NESSEREIGN)
+    removeobject(LOCALID_HUMAN_FORM_GREEHASEET)
+    removeobject(LOCALID_HUMAN_FORM_SAPPRILON)
+    removeobject(LOCALID_HUMAN_FORM_ADDISAMAP)
+    clearflag(FLAG_DEMON_FORM_NESSEREIGN)
+    clearflag(FLAG_DEMON_FORM_GREEHASEET)
+    clearflag(FLAG_DEMON_FORM_SAPPRILON)
+    clearflag(FLAG_DEMON_FORM_ADDISAMAP)
+    addobject(LOCALID_DEMON_FORM_NESSEREIGN)
+    addobject(LOCALID_DEMON_FORM_GREEHASEET)
+    addobject(LOCALID_DEMON_FORM_SAPPRILON)
+    addobject(LOCALID_DEMON_FORM_ADDISAMAP)
+    fadescreen(FADE_FROM_WHITE)
+
     applymovement(LOCALID_DEMONLORD_MAXIE, moves(walk_in_place_down))
     speakername("Maxie")
     msgbox("Did you honestly think you beat the\n"
@@ -139,7 +189,6 @@ script DemonLairs_Maxie_EventScript_MaxieCutscene {
     waitmovement(0)
     waitmessage
     closemessage
-    setflag(FLAG_TALKED_TO_MAXIE)
     goto(DemonLairs_EventScript_Maxie)
 }
 
@@ -150,5 +199,6 @@ script DemonLairs_EventScript_Maxie {
         waitmessage
         closemessage
     }
+    setflag(FLAG_TALKED_TO_MAXIE)
     trainerbattle_no_intro(TRAINER_DEMONLORD_MAXIE, "…\nGggh…")
 }

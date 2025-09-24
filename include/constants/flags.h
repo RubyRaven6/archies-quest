@@ -94,11 +94,17 @@
 #define	FLAG_TALKED_TO_SAPPRILON        0x44 // After talking to Sapprilon the first time
 #define	FLAG_TALKED_TO_ADDISAMAP        0x45 // After talking to Addisamap the first time
 #define	FLAG_TALKED_TO_MAXIE	        0x46 // After talking to Maxie the first time
-/* Flags for Demon Lord OW Objects, both "human" and demon forms */
-#define	FLAG_HIDE_NESSEREIGN            0x47 // Nessereign OW
-#define	FLAG_HIDE_GREEHASEET            0x48 // Greehaseet OW
-#define FLAG_HIDE_SAPPRILON             0x49 // Sapprilon OW
-#define FLAG_HIDE_ADDISAMAP             0x4A // Addisamap OW
+/* Flags for Human Demon Lord OW Objects, both "human" and demon forms */
+#define	FLAG_HIDE_NESSEREIGN            0x47 // Nessereign Human OW
+#define	FLAG_HIDE_GREEHASEET            0x48 // Greehaseet Human OW
+#define FLAG_HIDE_SAPPRILON             0x49 // Sapprilon Human OW
+#define FLAG_HIDE_ADDISAMAP             0x4A // Addisamap Human OW
+
+#define FLAG_DEMON_FORM_NESSEREIGN      0x54  // Hides Demon Form Nessie
+#define FLAG_DEMON_FORM_GREEHASEET      0x55  // Hides Demon Form Greehaseet
+#define FLAG_DEMON_FORM_SAPPRILON       0x68  // Hides Demon Form Sapprilon
+#define FLAG_DEMON_FORM_ADDISAMAP       0x71  // Hides Demon Form Addisamap
+
 #define FLAG_SKIP_MAXIE_CUTSCENE        0x4B // Unused Flag
 #define FLAG_FIRST_TIME_AUTOSAVE        0x4D // Unused Flag
 #define FLAG_ARCHIE_TUTORIALMODE        0x4E // Tracks when Archie in Hub World; is in tutorial mode when set
@@ -109,9 +115,6 @@
 #define FLAG_SET_WALL_CLOCK                      0x51
 #define FLAG_RESCUED_BIRCH                       0x52
 #define FLAG_LEGENDARIES_IN_SOOTOPOLIS           0x53
-
-#define FLAG_UNUSED_0x054                    0x54  // Unused Flag
-#define FLAG_UNUSED_0x055                    0x55  // Unused Flag
 
 #define FLAG_HIDE_CONTEST_POKE_BALL          0x56  // Always set after new game, object it hides is added directly
 #define FLAG_MET_RIVAL_MOM                   0x57
@@ -132,7 +135,7 @@
 #define FLAG_MOSSDEEP_GYM_SWITCH_3           0x66 //
 #define FLAG_MOSSDEEP_GYM_SWITCH_4           0x67 //
 
-#define FLAG_UNUSED_0x068                    0x68  // Unused Flag
+
 
 #define FLAG_OCEANIC_MUSEUM_MET_REPORTER     0x69
 #define FLAG_RECEIVED_HM_STRENGTH            0x6A
@@ -142,7 +145,7 @@
 #define FLAG_RECEIVED_HM_FLY                 0x6E
 #define FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT  0x6F
 #define FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE  0x70
-#define FLAG_UNUSED_RS_LEGENDARY_BATTLE_DONE 0x71 // Unused Flag. Used in R/S to indicate whether player defeated or caught Groudon/Kyogre in Cave of Origin.
+
 #define FLAG_SCOTT_CALL_BATTLE_FRONTIER      0x72 // Used in order to activate a phone call from Scott, inviting the player to the SS Tidal.
 #define FLAG_RECEIVED_METEORITE              0x73
 #define FLAG_ADVENTURE_STARTED               0x74 // RECEIVED Pokédex.
