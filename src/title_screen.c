@@ -684,7 +684,7 @@ void CB2_InitTitleScreen(void)
                                     | DISPCNT_WIN0_ON
                                     | DISPCNT_OBJWIN_ON);
         if(VarGet(VAR_DEMON_LORD_PROGRESS) == 5)
-            m4aSongNumStart(MUS_AQUA_MAGMA_HIDEOUT);
+            m4aSongNumStart(MUS_RG_TEACHY_TV_MENU);
         else
             m4aSongNumStart(MUS_TITLE);
         gMain.state = 5;
