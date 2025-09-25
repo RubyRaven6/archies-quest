@@ -416,6 +416,7 @@ script DemonLairs_EventScript_Maxie {
 
     setflag(FLAG_DEFEATED_MAXIE)
     setvar(VAR_DEMON_LORD_PROGRESS, 6)
+    callnative(AutoSave)
 
     warp(MAP_ARCHIES_HOUSE_BACKYARD, 14, 9)
     // warp(MAP_ARCHIES_HOUSE_BACKYARD_SEA, 7, 4)
