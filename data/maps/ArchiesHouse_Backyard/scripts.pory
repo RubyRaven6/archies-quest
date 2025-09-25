@@ -30,6 +30,7 @@ mapscripts ArchiesHouse_Backyard_MapScripts {
 }
 
 script ArchiesHouse_EventScript_BuriedInMyBackyard {
+    special(SpawnCameraObject)
     setvar(VAR_DEMON_LORD_PROGRESS, 7)
 
     playbgm(MUS_OCEANIC_MUSEUM, FALSE)
@@ -65,7 +66,7 @@ script ArchiesHouse_EventScript_BuriedInMyBackyard {
     speakername("Old Archie")
     msgbox(format(
         "Well… I should probably go back to my timeline.\p"
-        "Wanna grab a beer first?\nThey're fresh from the fridge!"
+        "Wanna smoke some weed first?\nI got a nice stash of leaves right here."
     ))
     closemessage
 
@@ -83,7 +84,7 @@ script ArchiesHouse_EventScript_BuriedInMyBackyard {
 
     speakername("Archie")
     msgbox(format(
-        "You stole these beers from my fridge, didn't you?"
+        "You stole these leaves from my garden, didn't you?"
     ))
     closemessage
 
@@ -95,7 +96,9 @@ script ArchiesHouse_EventScript_BuriedInMyBackyard {
 
     delay(60)
 
-    fadescreenspeed(FADE_TO_BLACK, 16)
+    applymovement(LOCALID_CAMERA, moves(delay_16 * 3, walk_slow_up * 5))
+    fadescreenspeed(FADE_TO_WHITE, 16)
+    waitmovement(0)
 	delay(200)
 
 	callnative(StartCredits)
