@@ -1300,6 +1300,3 @@ const u8 gText_PM[] = _("PM");
 const u8 gText_Relearn[] = _("{START_BUTTON} Relearn"); // future note: don't decap this, because it mimics the summary screen BG graphics which will not get decapped; trying it and finding out ~prof-harpe
 const u8 gText_Rename[] = _("Rename");
 const u8 gText_CannotSendMonToBoxHM[] = _("Cannot send that mon to the box,\nbecause it knows a HM move.{PAUSE_UNTIL_PRESS}");
-const u8 gText_Prologue[] = _(
-    "Our World was made by four:{PAUSE 48}\nFrom {COLOR RED}Greehaseet{COLOR WHITE}'s gullet it came to be{PAUSE 24}\n{COLOR RED}Addisamap{COLOR WHITE} crafted its lands and seas{PAUSE 24}\n{COLOR RED}Nessereign{COLOR WHITE} painted its skies{PAUSE 24}\n{COLOR RED}Sapprilon{COLOR WHITE} cried its primal cry.{PAUSE 48}\nCalled the {COLOR RED}Bai'Narii{COLOR WHITE},{PAUSE 16} they were an Evil\nthat choked this World in an iron grasp.\n{PAUSE 32}Nothing nor no one ever defeated them,{PAUSE 16}\nand thus the World was not free.\p"
-);

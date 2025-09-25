@@ -72,6 +72,17 @@ static const struct WindowTemplate sWindowTemplate_PrologueText =
 
 static const u8 sPrologueTextColors[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY};
 
+const u8 sText_Prologue[] = _(
+    "This world is ruled by four tyrants:{PAUSE 48}\n"
+    "{COLOR LIGHT_BLUE}{SHADOW BLUE}Greehaseet{COLOR WHITE}{SHADOW DARK_GRAY} and his devouring, gluttinous maw,{PAUSE 24}\n"
+    "Inescapable {COLOR LIGHT_GREEN}{SHADOW GREEN}Addisamap {COLOR WHITE}{SHADOW DARK_GRAY}, the earth and trees,{PAUSE 24}\n"
+    "{COLOR LIGHT_GRAY}Nessereign{COLOR WHITE}{SHADOW DARK_GRAY} and her devious, maddening arts,{PAUSE 24}\n"
+    "and {COLOR LIGHT_RED}{SHADOW RED}Sapprilon{COLOR WHITE}{SHADOW DARK_GRAY}, who tormented minds with song.{PAUSE 48}\n"
+    "Called the {COLOR LIGHT_GRAY}{SHADOW RED}Bai'Narii{COLOR WHITE}{SHADOW DARK_GRAY},{PAUSE 16} they were Evil Lords\n"
+    "who choked this World in an iron grasp.\n"
+    "{PAUSE 32}Mortals stood no chance against them,{PAUSE 16}\nand thus the World was not free.\p"
+);
+
 static bool32 PrintPrologueMessage(u8 taskId, const u8 *text, u32 x, u32 y)
 {
     u32 windowId = gTasks[taskId].tWindowId;
@@ -122,7 +133,7 @@ void Task_OpenPrologueScreen(u8 taskId)
         break;
     case PROLOGUE_PRINT_MSG:
     {
-        const u8 *msg = gText_Prologue;
+        const u8 *msg = sText_Prologue;
 
         if (PrintPrologueMessage(taskId, msg, 2, 8))
         {
