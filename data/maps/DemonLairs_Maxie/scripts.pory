@@ -384,6 +384,8 @@ script DemonLairs_EventScript_Maxie {
 
     playse(SE_RG_BAG_POCKET)
     addobject(LOCALID_ARCHIE_MAXIES_LAIR)
+    setmetatile(13, 14, METATILE_SpaceMeteor_MaxiesLair_WarpTile, FALSE)
+    special(DrawWholeMapView)
 
     applymovement(LOCALID_ARCHIE_MAXIES_LAIR, moves(delay_16 * 6, walk_right))
     waitmovement(LOCALID_ARCHIE_MAXIES_LAIR)
