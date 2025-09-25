@@ -63,9 +63,9 @@ static const struct WindowTemplate sWindowTemplate_PrologueText =
 {
     .bg = 0,
     .tilemapLeft = 0,
-    .tilemapTop = 5,
+    .tilemapTop = 0,
     .width = 30,
-    .height = 11,
+    .height = 20,
     .paletteNum = 15,
     .baseBlock = 1,
 };

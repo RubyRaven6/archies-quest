@@ -139,6 +139,9 @@ script ArchiesHouse_EventScript_BeginningCutscene {
     waitmovement(0)
 
     setvar(VAR_ARCHIE_ARRIVES, 1)
+
+    autosave
+
     end
 }
 
