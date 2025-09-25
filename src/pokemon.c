@@ -688,10 +688,12 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
 #include "data/pokemon/trainer_class_lookups.h"
 #include "data/pokemon/experience_tables.h"
 
-//#if P_LVL_UP_LEARNSETS >= GEN_AQUEST
+#define LEVEL_UP_MOVE(lvl, moveLearned) {.move = moveLearned, .level = lvl}
+#define LEVEL_UP_END {.move = LEVEL_UP_MOVE_END, .level = 0}
+
 #include "data/pokemon/level_up_learnsets/gen_aquest.h" // Custom Movesets
-// #elif P_LVL_UP_LEARNSETS >= GEN_9
-// #include "data/pokemon/level_up_learnsets/gen_9.h" // Scarlet/Violet
+#include "data/pokemon/level_up_learnsets/gen_9.h" // The rest
+
 // #elif P_LVL_UP_LEARNSETS >= GEN_8
 // #include "data/pokemon/level_up_learnsets/gen_8.h" // Sword/Shield
 // #elif P_LVL_UP_LEARNSETS >= GEN_7

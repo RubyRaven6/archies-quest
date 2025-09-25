@@ -140,7 +140,6 @@ Insertable format: Rahtak
 
 ## Feature Branches and Code
 **UI Stat Editor, Party Screen**: [Archie (TeamAquasHideout)](https://github.com/TeamAquasHideout/pokeemerald/tree/sandbox)<br>
-**BW Summary Screen**: [RavePossum](https://github.com/ravepossum/pokeemerald-expansion/tree/bw_summary_screen_expansion)<br>
 **Decapitalized branch**: [ProfHarpe](https://github.com/prof-harpe/pokeemerald-expansion/tree/Decapitalized)<br>
 **Shake Movement Action**: [Jamie Foster](https://github.com/FosterProgramming/pokeemerald-expansion/tree/movement_action_shake)
 **Mon Levelling Code**: [Hedara](https://github.com/hedara90)
