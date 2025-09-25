@@ -1300,11 +1300,8 @@ static void Task_NewGameNoBirchSpeech(u8 taskId)
 
     FreeAllWindowBuffers();
     ResetAllPicSprites();
-    #ifdef ENABLE_INTRO
-        //gTasks[taskId].func = Task_OpenFireBg;
-    #else
-        SetMainCallback2(CB2_NewGame);
-    #endif
+    gTasks[taskId].func = Task_OpenPrologueScreen;
+    /* SetMainCallback2(CB2_NewGame); */
 }
 
 // static void Task_NewGameBirchSpeech_Init(u8 taskId)

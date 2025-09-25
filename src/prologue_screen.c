@@ -28,6 +28,11 @@
 #include "data.h"
 #include "pokedex.h"
 #include "gpu_regs.h"
+#include "strings.h"
+#include "field_screen_effect.h"
+
+static void Task_Prologue_Cleanup(u8 taskId);
+static bool32 PrintPrologueMessage(u8 taskId, const u8 *text, u32 x, u32 y);
 
 struct PrologueScreenState
 {
@@ -45,35 +50,28 @@ static EWRAM_DATA struct PrologueScreenState *sPrologueScreenState = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
 
 static const struct BgTemplate sPrologueScreenBgTemplates[] =
-{
     {
-        .bg = 0,
-        .charBaseIndex = 0,
-        .mapBaseIndex = 31,
-        .priority = 1
-    },
-    {
-        .bg = 1,
-        .charBaseIndex = 3,
-        .mapBaseIndex = 30,
-        .priority = 2
-    }
-};
+        {.bg = 0,
+         .charBaseIndex = 0,
+         .mapBaseIndex = 31,
+         .priority = 1},
+        {.bg = 1,
+         .charBaseIndex = 3,
+         .mapBaseIndex = 30,
+         .priority = 2}};
 
 static const struct WindowTemplate sPrologueScreenWindowTemplates[] =
-{
-    [WINDOW_0] =
     {
-        .bg = 0,
-        .tilemapLeft = 14,
-        .tilemapTop = 0,
-        .width = 16,
-        .height = 10,
-        .paletteNum = 15,
-        .baseBlock = 1
-    },
-    DUMMY_WIN_TEMPLATE
-};
+        [WINDOW_0] =
+            {
+                .bg = 0,
+                .tilemapLeft = 14,
+                .tilemapTop = 0,
+                .width = 16,
+                .height = 10,
+                .paletteNum = 15,
+                .baseBlock = 1},
+        DUMMY_WIN_TEMPLATE};
 
 static const u32 sPrologueScreenTiles[] = INCBIN_U32("graphics/sample_ui/tiles.4bpp.smol");
 
@@ -87,9 +85,9 @@ enum FontColor
     FONT_RED
 };
 static const u8 sPrologueScreenWindowFontColors[][3] =
-{
-    [FONT_WHITE]  = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE,      TEXT_COLOR_DARK_GRAY},
-    [FONT_RED]    = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED,        TEXT_COLOR_LIGHT_GRAY},
+    {
+        [FONT_WHITE] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY},
+        [FONT_RED] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED, TEXT_COLOR_LIGHT_GRAY},
 };
 
 // Callbacks for the sample UI
@@ -113,13 +111,99 @@ static void PrologueScreen_InitWindows(void);
 static void PrologueScreen_PrintUiSampleWindowText(void);
 static void PrologueScreen_FreeResources(void);
 
-// Declared in sample_ui.h
+enum
+{
+    PROLOGUE_ENTER_MSG_SCREEN,
+    PROLOGUE_PRINT_MSG,
+    PROLOGUE_LEAVE_MSG_SCREEN,
+    PROLOGUE_HEAL_SCRIPT,
+};
+
+#define tState data[0]
+#define tWindowId data[1]
+#define tPrintState data[2]
+
+static const struct WindowTemplate sWindowTemplate_PrologueText =
+    {
+        .bg = 0,
+        .tilemapLeft = 0,
+        .tilemapTop = 5,
+        .width = 30,
+        .height = 11,
+        .paletteNum = 15,
+        .baseBlock = 1,
+};
+
+static const u8 sPrologueTextColors[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY};
+
+static bool32 PrintPrologueMessage(u8 taskId, const u8 *text, u32 x, u32 y)
+{
+    u32 windowId = gTasks[taskId].tWindowId;
+
+    switch (gTasks[taskId].tPrintState)
+    {
+    case 0:
+        FillWindowPixelBuffer(windowId, PIXEL_FILL(0));
+        StringExpandPlaceholders(gStringVar4, text);
+        AddTextPrinterParameterized4(windowId, FONT_NORMAL, x, y, 1, 0, sPrologueTextColors, 1, gStringVar4);
+        gTextFlags.canABSpeedUpPrint = FALSE;
+        gTasks[taskId].tPrintState = 1;
+        break;
+    case 1:
+        RunTextPrinters();
+        if (!IsTextPrinterActive(windowId))
+        {
+            gTasks[taskId].tPrintState = 0;
+            return TRUE;
+        }
+        break;
+    }
+    return FALSE;
+}
+
 void Task_OpenPrologueScreen(u8 taskId)
+{
+    u32 windowId;
+
+    switch (gTasks[taskId].tState)
+    {
+    case PROLOGUE_ENTER_MSG_SCREEN:
+        windowId = AddWindow(&sWindowTemplate_PrologueText);
+        gTasks[taskId].tWindowId = windowId;
+        Menu_LoadStdPalAt(BG_PLTT_ID(15));
+        FillWindowPixelBuffer(windowId, PIXEL_FILL(0));
+        PutWindowTilemap(windowId);
+        CopyWindowToVram(windowId, COPYWIN_FULL);
+
+        gTasks[taskId].tState = PROLOGUE_PRINT_MSG;
+        break;
+    case PROLOGUE_PRINT_MSG:
+    {
+        const u8 *msg = gText_Prologue;
+
+        if (PrintPrologueMessage(taskId, msg, 2, 8))
+        {
+            gTasks[taskId].tState = PROLOGUE_LEAVE_MSG_SCREEN;
+        }
+        break;
+    }
+    case PROLOGUE_LEAVE_MSG_SCREEN:
+        windowId = gTasks[taskId].tWindowId;
+        ClearWindowTilemap(windowId);
+        CopyWindowToVram(windowId, COPYWIN_MAP);
+        RemoveWindow(windowId);
+        FadeInFromBlack();
+        gTasks[taskId].func = Task_Prologue_Cleanup;
+        break;
+    }
+}
+
+static void Task_Prologue_Cleanup(u8 taskId)
 {
     if (!gPaletteFade.active)
     {
-        CleanupOverworldWindowsAndTilemaps();
-        PrologueScreen_Init(CB2_NewGame);
+        FreeAllWindowBuffers();
+        SetMainCallback2(CB2_NewGame);
         DestroyTask(taskId);
     }
 }
@@ -367,9 +451,9 @@ static void PrologueScreen_PrintUiSampleWindowText(void)
     FillWindowPixelBuffer(WINDOW_0, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
     AddTextPrinterParameterized4(WINDOW_0, FONT_NORMAL, 0, 3, 0, 0,
-        sPrologueScreenWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, sText_Text1);
+                                 sPrologueScreenWindowFontColors[FONT_WHITE], TEXT_SKIP_DRAW, sText_Text1);
     AddTextPrinterParameterized4(WINDOW_0, FONT_SMALL, 0, 15, 0, 0,
-        sPrologueScreenWindowFontColors[FONT_RED], TEXT_SKIP_DRAW, sText_Text2);
+                                 sPrologueScreenWindowFontColors[FONT_RED], TEXT_SKIP_DRAW, sText_Text2);
 
     CopyWindowToVram(WINDOW_0, COPYWIN_GFX);
 }

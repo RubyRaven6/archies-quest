@@ -1300,3 +1300,4 @@ const u8 gText_PM[] = _("PM");
 const u8 gText_Relearn[] = _("{START_BUTTON} Relearn"); // future note: don't decap this, because it mimics the summary screen BG graphics which will not get decapped; trying it and finding out ~prof-harpe
 const u8 gText_Rename[] = _("Rename");
 const u8 gText_CannotSendMonToBoxHM[] = _("Cannot send that mon to the box,\nbecause it knows a HM move.{PAUSE_UNTIL_PRESS}");
+const u8 gText_Prologue[] = _("Romhacking is magic bro\p");
