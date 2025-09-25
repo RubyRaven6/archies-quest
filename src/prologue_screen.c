@@ -48,6 +48,7 @@ static const u8 sPrologueScreenWindowFontColors[][3] =
 
 enum
 {
+    PROLOGUE_ENTER_PREPARE,
     PROLOGUE_ENTER_MSG_SCREEN,
     PROLOGUE_PRINT_MSG,
     PROLOGUE_LEAVE_MSG_SCREEN,
@@ -102,6 +103,13 @@ void Task_OpenPrologueScreen(u8 taskId)
 
     switch (gTasks[taskId].tState)
     {
+    case PROLOGUE_ENTER_PREPARE:
+        SetGpuReg(REG_OFFSET_BLDCNT, 0);
+        SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+        SetGpuReg(REG_OFFSET_BLDY, 0);
+
+        gTasks[taskId].tState = PROLOGUE_ENTER_MSG_SCREEN;
+        break;
     case PROLOGUE_ENTER_MSG_SCREEN:
         windowId = AddWindow(&sWindowTemplate_PrologueText);
         gTasks[taskId].tWindowId = windowId;
