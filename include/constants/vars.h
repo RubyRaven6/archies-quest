@@ -104,7 +104,7 @@
 #define VAR_CURRENT_SECRET_BASE                          0x4054 // was probably allocated for VAR_FALLARBOR_TOWN_STATE at one point
 #define VAR_SAPPRILON_PUZZLE_VAL                         0x4055 // Var Used in sappy puzzle
 #define VAR_DEMON_LORD_PROGRESS                          0x4056 // Var used for tracking what demon boss is currently being battled
-                                                                // 1 = Nessie, 2 = Gigageh, 3 = Sapprilon, 4 = Addisamap
+                                                                // 1 = Nessie, 2 = Gigageh, 3 = Sapprilon, 4 = Addisamap, 5 = Maxie, 6 = All g bro
 #define VAR_PETALBURG_CITY_STATE                         0x4057
 #define VAR_SLATEPORT_CITY_STATE                         0x4058
 #define VAR_HUB_WORLD_INITIAL_SCENE                      0x4059 // Controls initial cutscene with archie

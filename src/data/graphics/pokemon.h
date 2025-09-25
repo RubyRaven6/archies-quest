@@ -26732,19 +26732,19 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
 #endif //OW_POKEMON_OBJECT_EVENTS
 #endif //P_FAMILY_PECHARUNT
 
-    const u32 gMonFrontPic_Nessereign[] = INCBIN_U32("graphics/pokemon/nessereign/front.4bpp.smol");
+    const u32 gMonFrontPic_Nessereign[] = INCBIN_U32("graphics/pokemon/nessereign/anim_front.4bpp.smol");
     const u16 gMonPalette_Nessereign[] = INCBIN_U16("graphics/pokemon/nessereign/normal.gbapal");
     const u32 gObjectEventPic_Nessereign[] = INCBIN_COMP("graphics/pokemon/nessereign/overworld.4bpp");
 
-    const u32 gMonFrontPic_Greehaseet[] = INCBIN_U32("graphics/pokemon/greehaseet/front.4bpp.smol");
+    const u32 gMonFrontPic_Greehaseet[] = INCBIN_U32("graphics/pokemon/greehaseet/anim_front.4bpp.smol");
     const u16 gMonPalette_Greehaseet[] = INCBIN_U16("graphics/pokemon/greehaseet/normal.gbapal");
     const u32 gObjectEventPic_Greehaseet[] = INCBIN_COMP("graphics/pokemon/greehaseet/overworld.4bpp");
 
-    const u32 gMonFrontPic_Sapprilon[] = INCBIN_U32("graphics/pokemon/sapprilon/front.4bpp.smol");
+    const u32 gMonFrontPic_Sapprilon[] = INCBIN_U32("graphics/pokemon/sapprilon/anim_front.4bpp.smol");
     const u16 gMonPalette_Sapprilon[] = INCBIN_U16("graphics/pokemon/sapprilon/normal.gbapal");
     const u32 gObjectEventPic_Sapprilon[] = INCBIN_COMP("graphics/pokemon/sapprilon/overworld.4bpp");
 
-    const u32 gMonFrontPic_Addisamap[] = INCBIN_U32("graphics/pokemon/addivhan_samap/front.4bpp.smol");
+    const u32 gMonFrontPic_Addisamap[] = INCBIN_U32("graphics/pokemon/addivhan_samap/anim_front.4bpp.smol");
     const u16 gMonPalette_Addisamap[] = INCBIN_U16("graphics/pokemon/addivhan_samap/normal.gbapal");
     const u32 gObjectEventPic_Addisamap[] = INCBIN_COMP("graphics/pokemon/addivhan_samap/overworld.4bpp");
 

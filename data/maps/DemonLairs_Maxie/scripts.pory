@@ -19,6 +19,26 @@ mapscripts DemonLairs_Maxie_MapScripts {
             releaseall
         }
     ]
+    MAP_SCRIPT_ON_TRANSITION {
+        setflag(FLAG_HIDE_ARCHIE_MAXIES_LAIR)
+
+        setflag(FLAG_HIDE_NESSEREIGN_STONE)
+        setflag(FLAG_HIDE_ADDISAMAP_STONE)
+        setflag(FLAG_HIDE_GREEHASEET_STONE)
+        setflag(FLAG_HIDE_SAPPRILON_STONE)
+
+        setflag(FLAG_HIDE_NESSEREIGN)
+        setflag(FLAG_HIDE_GREEHASEET)
+        setflag(FLAG_HIDE_SAPPRILON)
+        setflag(FLAG_HIDE_ADDISAMAP)
+
+        if(!flag(FLAG_TALKED_TO_MAXIE)){
+            setflag(FLAG_DEMON_FORM_NESSEREIGN)
+            setflag(FLAG_DEMON_FORM_GREEHASEET)
+            setflag(FLAG_DEMON_FORM_SAPPRILON)
+            setflag(FLAG_DEMON_FORM_ADDISAMAP)
+        }
+    }
 }
 
 script Demonlairs_Maxie_Trigger1{
@@ -42,6 +62,7 @@ script Demonlairs_Maxie_Trigger4{
 }
 
 script DemonLairs_Maxie_EventScript_WalkTowards{
+    lockall
     setflag(FLAG_SKIP_MAXIE_CUTSCENE)
     applymovement(LOCALID_PLAYER, moves(walk_up * 4))
     waitmovement(0)
@@ -67,79 +88,156 @@ script DemonLairs_Maxie_EventScript_WalkTowards{
 }
 
 script DemonLairs_Maxie_EventScript_MaxieCutscene {
+    if(flag(FLAG_TALKED_TO_MAXIE)) {
+        goto(DemonLairs_EventScript_Maxie)
+    }
+
+    playse(SE_PIN)
+    applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
     speakername("Archie")
     msgbox("Y-You're…", MSGBOX_DEFAULT)
-    waitmessage
     closemessage
+
     applymovement(LOCALID_DEMONLORD_MAXIE, moves(walk_in_place_slow_down))
     waitmovement(0)
     speakername("Maxie")
-    msgbox("You've been a thorn in our side, boy.\n"
-            "As such, my hand is forced.\p"
-            "I didn't believe it, but by sheer luck\n"
-            "you've somehow managed to defeat\l"
-            "the Demon Lords that serve under me.", MSGBOX_DEFAULT)
-    waitmessage
+    msgbox(format(
+        "You've been a thorn in our side, boy.\n"
+        "As such, my hand is forced.\p"
+        "I didn't believe it, but by sheer luck\n"
+        "you've somehow managed to defeat\l"
+        "the Demon Lords that serve under me."
+    ))
     closemessage
+
     applymovement(LOCALID_DEMONLORD_MAXIE, moves(walk_slow_left))
     waitmovement(0)
     speakername("Maxie")
-    msgbox("That being said, you've been so amusing\n"
-            "I had to see it for myself! Seeing you\l"
-            "struggle was delightfully fun.", MSGBOX_DEFAULT)
-    waitmessage
+    msgbox(format(
+        "That being said, you've been so amusing\n"
+        "I had to see it for myself!\p"
+        "Seeing you struggle was delightfully fun."
+    ))
     closemessage
+
     applymovement(LOCALID_DEMONLORD_MAXIE, moves(walk_slow_up, walk_slow_right, face_up))
     speakername("Maxie")
-    msgbox("It reminded me of days past, when you\n"
-            "pitiful humans first tried your hand at\l"
-            "stopping me with sticks and stones.", MSGBOX_DEFAULT)
+    msgbox(format(
+        "I recall when you pitiful humans tried to stop me with sticks and stones."
+    ))
     waitmovement(0)
-    waitmessage
     closemessage
+
     applymovement(LOCALID_DEMONLORD_MAXIE, moves(walk_slow_right, walk_slow_down, face_right))
     speakername("Maxie")
-    msgbox("Though if I'd known that any leniency\n"
-            "I showed meant you would eventually\l"
-            "rise to challenge me…", MSGBOX_DEFAULT)
+    msgbox(format(
+        "Had I known the leniency I showed meant you'd be challenging me again…"
+    ))
     waitmovement(0)
-    waitmessage
     closemessage
+
     applymovement(LOCALID_DEMONLORD_MAXIE, moves(walk_slow_left, face_down))
     speakername("Maxie")
     msgbox("I would have crushed you and this\n"
             "entire world underfoot!", MSGBOX_DEFAULT)
     waitmovement(0)
-    waitmessage
     closemessage
+
     applymovement(LOCALID_PLAYER, moves(walk_in_place_fast_up))
     speakername("Archie")
-    msgbox("You're not going to get away with this,\n"
-            "Demon Lord! I've already taken care of\l"
-            "all your underlings! It's over!", MSGBOX_DEFAULT)
+    msgbox(format(
+        "You won't get away with this, Demon Lord!\p"
+        "I've already taken care of all your underlings! It's over!"
+    ))
     waitmovement(0)
-    waitmessage
     closemessage
+
     speakername("Maxie")
     msgbox("Have you now?", MSGBOX_DEFAULT)
-    waitmessage
     closemessage
+
+    playse(SE_SHIP)
     fadescreen(FADE_TO_WHITE)
-    // unhide objects in
+    clearflag(FLAG_HIDE_NESSEREIGN)
+    clearflag(FLAG_HIDE_GREEHASEET)
+    clearflag(FLAG_HIDE_SAPPRILON)
+    clearflag(FLAG_HIDE_ADDISAMAP)
+    addobject(LOCALID_HUMAN_FORM_NESSEREIGN)
+    addobject(LOCALID_HUMAN_FORM_GREEHASEET)
+    addobject(LOCALID_HUMAN_FORM_SAPPRILON)
+    addobject(LOCALID_HUMAN_FORM_ADDISAMAP)
     fadescreen(FADE_FROM_WHITE)
+    waitse
+
+    playse(SE_PIN)
+    applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+
+    special(SpawnCameraObject)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_slow_up * 2))
+
     speakername("Archie")
-    msgbox("What…", MSGBOX_DEFAULT)
-    waitmessage
+    msgbox("What… no…")
     closemessage
-    applymovement(LOCALID_DEMONLORD_MAXIE, moves(walk_in_place_down))
+
+    applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+    applymovement(LOCALID_HUMAN_FORM_NESSEREIGN, moves(shake_horizontal * 2))
+    applymovement(LOCALID_HUMAN_FORM_GREEHASEET, moves(shake_horizontal * 2))
+    applymovement(LOCALID_HUMAN_FORM_SAPPRILON, moves(shake_horizontal * 2))
+    applymovement(LOCALID_HUMAN_FORM_ADDISAMAP, moves(shake_horizontal * 2))
+    waitmovement(LOCALID_HUMAN_FORM_NESSEREIGN)
+    waitmovement(LOCALID_HUMAN_FORM_GREEHASEET)
+    waitmovement(LOCALID_HUMAN_FORM_SAPPRILON)
+    waitmovement(LOCALID_HUMAN_FORM_ADDISAMAP)
+
+    playse(SE_SHIP)
+
+    fadescreen(FADE_TO_WHITE)
+    removeobject(LOCALID_HUMAN_FORM_NESSEREIGN)
+    removeobject(LOCALID_HUMAN_FORM_GREEHASEET)
+    removeobject(LOCALID_HUMAN_FORM_SAPPRILON)
+    removeobject(LOCALID_HUMAN_FORM_ADDISAMAP)
+    clearflag(FLAG_DEMON_FORM_NESSEREIGN)
+    clearflag(FLAG_DEMON_FORM_GREEHASEET)
+    clearflag(FLAG_DEMON_FORM_SAPPRILON)
+    clearflag(FLAG_DEMON_FORM_ADDISAMAP)
+    addobject(LOCALID_DEMON_FORM_NESSEREIGN)
+    addobject(LOCALID_DEMON_FORM_GREEHASEET)
+    addobject(LOCALID_DEMON_FORM_SAPPRILON)
+    addobject(LOCALID_DEMON_FORM_ADDISAMAP)
+
+    applymovement(LOCALID_DEMON_FORM_NESSEREIGN, moves(shake_horizontal * 3))
+    applymovement(LOCALID_DEMON_FORM_GREEHASEET, moves(shake_horizontal * 3))
+    applymovement(LOCALID_DEMON_FORM_SAPPRILON, moves(shake_horizontal * 3))
+    applymovement(LOCALID_DEMON_FORM_ADDISAMAP, moves(shake_horizontal * 3))
+
+    fadescreen(FADE_FROM_WHITE)
+
+    waitmovement(LOCALID_DEMON_FORM_NESSEREIGN)
+    waitmovement(LOCALID_DEMON_FORM_GREEHASEET)
+    waitmovement(LOCALID_DEMON_FORM_SAPPRILON)
+    waitmovement(LOCALID_DEMON_FORM_ADDISAMAP)
+
+    delay(48)
+
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down))
+    applymovement(LOCALID_PLAYER, moves(lock_facing_direction, walk_down, unlock_facing_direction, face_up))
+
+    speakername("Archie")
+    msgbox("Ugh…")
+    closemessage
+
+    waitmovement(LOCALID_PLAYER)
+
+    applymovement(LOCALID_DEMONLORD_MAXIE, moves(shake_vertical))
     speakername("Maxie")
-    msgbox("Did you honestly think you beat the\n"
-            "strongest beings in this world in go?\p"
-            "Your petulant rebellion ends here, boy!", MSGBOX_DEFAULT)
+    msgbox(format(
+        "HA HA HA HA HA HA!!\p"
+        "You really thought you beat the Gods of this world in one go?\p"
+        "Your petulant rebellion ends here\nand now, boy!"
+    ))
     waitmovement(0)
-    waitmessage
     closemessage
-    setflag(FLAG_TALKED_TO_MAXIE)
+
     goto(DemonLairs_EventScript_Maxie)
 }
 
@@ -150,5 +248,178 @@ script DemonLairs_EventScript_Maxie {
         waitmessage
         closemessage
     }
+
+    setflag(FLAG_TALKED_TO_MAXIE)
+
     trainerbattle_no_intro(TRAINER_DEMONLORD_MAXIE, "…\nGggh…")
+
+    // Nessereign turns to stone
+    applymovement(LOCALID_DEMON_FORM_NESSEREIGN, moves(shake_horizontal * 2))
+    playmoncry(SPECIES_NESSEREIGN, CRY_MODE_FAINT)
+
+    fadescreen(FADE_TO_WHITE)
+
+    removeobject(LOCALID_DEMON_FORM_NESSEREIGN)
+    addobject(LOCALID_STONE_NESSEREIGN)
+
+    fadescreen(FADE_FROM_WHITE)
+
+    applymovement(LOCALID_STONE_NESSEREIGN, moves(jump_in_place_down))
+    waitmovement(LOCALID_STONE_NESSEREIGN)
+
+    // Greehaseet turns to stone
+    applymovement(LOCALID_DEMON_FORM_GREEHASEET, moves(shake_horizontal * 2))
+    playmoncry(SPECIES_GREEHASEET, CRY_MODE_FAINT)
+
+    fadescreen(FADE_TO_WHITE)
+
+    removeobject(LOCALID_DEMON_FORM_GREEHASEET)
+    addobject(LOCALID_STONE_GREEHASEET)
+
+    fadescreen(FADE_FROM_WHITE)
+
+    applymovement(LOCALID_STONE_GREEHASEET, moves(jump_in_place_down))
+    waitmovement(LOCALID_STONE_GREEHASEET)
+
+    // Sapprilon turns to stone
+    applymovement(LOCALID_DEMON_FORM_SAPPRILON, moves(shake_horizontal * 2))
+    playmoncry(SPECIES_SAPPRILON, CRY_MODE_FAINT)
+
+    fadescreen(FADE_TO_WHITE)
+
+    removeobject(LOCALID_DEMON_FORM_SAPPRILON)
+    addobject(LOCALID_STONE_SAPPRILON)
+
+    fadescreen(FADE_FROM_WHITE)
+
+    applymovement(LOCALID_STONE_SAPPRILON, moves(jump_in_place_down))
+    waitmovement(LOCALID_STONE_SAPPRILON)
+
+    // Addisamap turns to stone
+    applymovement(LOCALID_DEMON_FORM_ADDISAMAP, moves(shake_horizontal * 2))
+    playmoncry(SPECIES_ADDISAMAP, CRY_MODE_FAINT)
+
+    fadescreen(FADE_TO_WHITE)
+
+    removeobject(LOCALID_DEMON_FORM_ADDISAMAP)
+    addobject(LOCALID_STONE_ADDISAMAP)
+
+    fadescreen(FADE_FROM_WHITE)
+
+    applymovement(LOCALID_STONE_ADDISAMAP, moves(jump_in_place_down))
+    waitmovement(LOCALID_STONE_ADDISAMAP)
+
+    speakername("Maxie")
+    msgbox(format(
+        "… … … … … …\n… … … … … …\p"
+        "That's… That's impossible!"
+    ))
+
+    applymovement(LOCALID_DEMONLORD_MAXIE, moves(face_left, delay_16 * 3, face_up, delay_16 * 3, face_right, delay_16 * 3, face_down))
+
+    msgbox(format(
+        "The {COLOR RED}Bai'Narii{COLOR DARK_GRAY}…\ndefeated…?!\p"
+        "It can't end like this!\nThis world cannot function without us!"
+    ))
+
+    waitmovement(LOCALID_DEMONLORD_MAXIE)
+
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_fast_up))
+
+    speakername("Archie")
+    msgbox(format("On the contrary!\nThis world will thrive on your absence!"))
+    closemessage
+
+    applymovement(LOCALID_DEMONLORD_MAXIE, moves(shake_horizontal * 2))
+    speakername("Maxie")
+    msgbox(format(
+        "No…{PAUSE 16} No!{PAUSE 16} NOOOOO!!!{PAUSE 8}"
+    ))
+    closemessage
+
+    playbgm(MUS_AWAKEN_LEGEND, TRUE)
+
+    waitmovement(LOCALID_DEMONLORD_MAXIE)
+    applymovement(LOCALID_DEMONLORD_MAXIE, moves(shake_horizontal * 2))
+    playse(SE_M_EARTHQUAKE)
+
+    setvar(VAR_0x8004, 0)   // vertical pan
+	setvar(VAR_0x8005, 10)  // horizontal pan
+	setvar(VAR_0x8006, 20)  // num shakes
+	setvar(VAR_0x8007, 2)   // shake delay
+	special(ShakeCamera)
+
+    delay(48)
+
+    fadescreen(FADE_TO_WHITE)
+
+    waitmovement(LOCALID_DEMONLORD_MAXIE)
+    removeobject(LOCALID_DEMONLORD_MAXIE)
+    setflag(FLAG_HIDE_MAXIE_LAIR)
+
+    waitse
+
+    fadescreen(FADE_FROM_WHITE)
+
+    playbgm(MUS_DUMMY, TRUE)
+
+    delay(60)
+
+    speakername("Archie")
+    msgbox(format("… … …"))
+    closemessage
+
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_slow_down * 2))
+    waitmovement(OBJ_EVENT_ID_CAMERA)
+
+    special(RemoveCameraObject)
+    playse(SE_PC_ON)
+    setmetatile(4, 5, 0x220, FALSE)
+    special(DrawWholeMapView)
+    waitse
+
+    playse(SE_PIN)
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(face_left, emote_question_mark, delay_16 * 6))
+    waitmovement(OBJ_EVENT_ID_PLAYER)
+
+    playse(SE_RG_BAG_POCKET)
+    addobject(LOCALID_ARCHIE_MAXIES_LAIR)
+
+    applymovement(LOCALID_ARCHIE_MAXIES_LAIR, moves(delay_16 * 6, walk_right))
+    waitmovement(LOCALID_ARCHIE_MAXIES_LAIR)
+
+    speakername("Old Archie")
+    msgbox(format(
+        "Nice job, kid!\nI knew you had it in ya!\p"
+        "Let's go home, shall we?"
+    ))
+    closemessage
+
+    applymovement(LOCALID_ARCHIE_MAXIES_LAIR, moves(walk_up * 3, face_left, delay_16))
+    waitmovement(LOCALID_ARCHIE_MAXIES_LAIR)
+
+    removeobject(LOCALID_STONE_NESSEREIGN)
+
+    applymovement(LOCALID_ARCHIE_MAXIES_LAIR, moves(walk_right * 2, delay_16))
+    waitmovement(LOCALID_ARCHIE_MAXIES_LAIR)
+
+    removeobject(LOCALID_STONE_ADDISAMAP)
+
+    applymovement(LOCALID_ARCHIE_MAXIES_LAIR, moves(walk_up, walk_left * 2, face_up, delay_16))
+
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(delay_16, walk_up * 5, face_right, delay_16))
+
+    delay(64)
+    removeobject(LOCALID_STONE_GREEHASEET)
+    delay(48)
+    removeobject(LOCALID_STONE_SAPPRILON)
+
+    setflag(FLAG_DEFEATED_MAXIE)
+    setvar(VAR_DEMON_LORD_PROGRESS, 6)
+
+    warp(MAP_ARCHIES_HOUSE_BACKYARD, 14, 9)
+    // warp(MAP_ARCHIES_HOUSE_BACKYARD_SEA, 7, 4)
+    // waitstate
+
+    releaseall
 }

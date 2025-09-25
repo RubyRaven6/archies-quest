@@ -397,7 +397,7 @@ static void PrintCreditsText(const u8 *string, u8 y, bool8 isTitle)
 void CB2_StartCreditsSequence(void)
 {
     u8 taskId;
-    s16 bikeTaskId;
+    //s16 bikeTaskId;
     u8 pageTaskId;
 
     ResetGpuAndVram();
@@ -414,14 +414,14 @@ void CB2_StartCreditsSequence(void)
     gTasks[taskId].tNextMode = MODE_NONE;
     gTasks[taskId].tCurrentMode = MODE_BIKE_SCENE;
 
-    while (TRUE)
-    {
-        if (LoadBikeScene(SCENE_OCEAN_MORNING, taskId))
-            break;
-    }
+    // while (TRUE)
+    // {
+    //     if (LoadBikeScene(SCENE_OCEAN_MORNING, taskId))
+    //         break;
+    // }
 
-    bikeTaskId = gTasks[taskId].tTaskId_BikeScene;
-    gTasks[bikeTaskId].tState = 40;
+    //bikeTaskId = gTasks[taskId].tTaskId_BikeScene;
+    //gTasks[bikeTaskId].tState = 40;
 
     SetGpuReg(REG_OFFSET_BG0VOFS, 0xFFFC);
 
@@ -449,7 +449,7 @@ void CB2_StartCreditsSequence(void)
 static void Task_WaitPaletteFade(u8 taskId)
 {
     if (!gPaletteFade.active)
-        gTasks[taskId].func = Task_CreditsMain;
+        gTasks[taskId].func = Task_CreditsTheEnd1;
 }
 
 static void Task_CreditsMain(u8 taskId)
