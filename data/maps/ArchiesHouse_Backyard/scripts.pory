@@ -13,7 +13,7 @@ mapscripts ArchiesHouse_Backyard_MapScripts {
             waitmovement(OBJ_EVENT_ID_PLAYER)
 
             speakername("Archie")
-            msgbox(format("I better hurry… and pick the best.\nFour should be enough, I think."))
+            msgbox(format("{CREATE_MUGSHOT MUGSHOT_MC 0}I better hurry… and pick the best.\nFour should be enough, I think."))
             waitmessage
             closemessage
             setvar(VAR_ARCHIE_ARRIVES, 2)
@@ -37,11 +37,22 @@ script ArchiesHouse_EventScript_BuriedInMyBackyard {
 
     delay(60)
 
-    applymovement(LOCALID_OLD_ARCHIE_BACKYARD, moves(walk_in_place_slow_right * 3, walk_up, face_right))
+    applymovement(LOCALID_OLD_ARCHIE_BACKYARD, moves(
+        lock_facing_direction, lock_anim,
+        walk_right,
+        walk_left,
+        walk_right,
+        walk_left,
+        walk_right,
+        walk_left,
+        unlock_facing_direction, unlock_anim
+        walk_up,
+        face_right
+    ))
     playse(SE_M_DIG)
-    delay(24)
+    delay(32)
     playse(SE_M_DIG)
-    delay(24)
+    delay(32)
     playse(SE_M_DIG)
     waitse
     waitmovement(LOCALID_OLD_ARCHIE_BACKYARD)
@@ -50,7 +61,7 @@ script ArchiesHouse_EventScript_BuriedInMyBackyard {
 
     speakername("Old Archie")
     msgbox(format(
-        "There!\p"
+        "{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}There!\p"
         "All nice and comfy, buried in our backyard."
     ))
     closemessage
@@ -65,7 +76,7 @@ script ArchiesHouse_EventScript_BuriedInMyBackyard {
 
     speakername("Old Archie")
     msgbox(format(
-        "Well… I should probably go back to my timeline.\p"
+        "{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}Well… I should probably go back to my timeline.\p"
         "Wanna smoke some weed first?\nI got a nice stash of leaves right here."
     ))
     closemessage
@@ -73,7 +84,7 @@ script ArchiesHouse_EventScript_BuriedInMyBackyard {
     applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
     speakername("Archie")
     msgbox(format(
-        "Sure, thanks."
+        "{CREATE_MUGSHOT MUGSHOT_MC 0}Sure, thanks."
     ))
     closemessage
 
@@ -84,13 +95,13 @@ script ArchiesHouse_EventScript_BuriedInMyBackyard {
 
     speakername("Archie")
     msgbox(format(
-        "You stole these leaves from my garden, didn't you?"
+        "{CREATE_MUGSHOT MUGSHOT_MC 0}You stole these from my garden, didn't you?"
     ))
     closemessage
 
     speakername("Old Archie")
     msgbox(format(
-        "Sure did."
+        "{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}Sure did."
     ))
     closemessage
 

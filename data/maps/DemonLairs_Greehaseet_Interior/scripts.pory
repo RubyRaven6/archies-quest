@@ -16,18 +16,18 @@ script DemonLairs_EventScript_Greehaseet {
     if(!flag(FLAG_TALKED_TO_GREEHASEET)){
         setflag(FLAG_TALKED_TO_GREEHASEET)
         speakername("Greehaseet")
-        msgbox(format("Hmmm. So what I heard was right.\nOur sister {COLOR RED}Nessereign{COLOR DARK_GRAY} was defeated."))
+        msgbox(format("{CREATE_MUGSHOT MUGSHOT_GREEHASEET 0}Hmmm. So what I heard was right.\nOur sister {COLOR RED}Nessereign{COLOR DARK_GRAY} was defeated."))
         closemessage
 
         playse(SE_PIN)
         applymovement(LOCALID_PLAYER, moves(emote_angry))
         speakername("Archie")
-        msgbox(format("That's right, Demon Lord! Your reign of terror is gonna end by my hand!"), MSGBOX_DEFAULT)
+        msgbox(format("{CREATE_MUGSHOT MUGSHOT_MC 0}That's right, Demon Lord! Your reign of terror is gonna end by my hand!"), MSGBOX_DEFAULT)
         closemessage
 
         speakername("Greehaseet")
         msgbox(format(
-            "Heahaheaha. You naive child.\p"
+            "{CREATE_MUGSHOT MUGSHOT_GREEHASEET 0}Heahaheaha. You naive child.\p"
             "I will take immense pleasure in skewering you like a fresh eel.\p"
             "Prepare to drown!"
         ))
@@ -35,7 +35,7 @@ script DemonLairs_EventScript_Greehaseet {
     } else {
         faceplayer
         speakername("Greehaseet")
-        msgbox(format("Huehue. I can do this for longer than you have years in your life, boy."), MSGBOX_DEFAULT)
+        msgbox(format("{CREATE_MUGSHOT MUGSHOT_GREEHASEET 0}Huehue. I can do this for longer than you have years in your life, boy."), MSGBOX_DEFAULT)
         closemessage
     }
 
@@ -44,7 +44,7 @@ script DemonLairs_EventScript_Greehaseet {
     playbgm(MUS_RAYQUAZA_APPEARS, TRUE)
 
     speakername("Greehaseet")
-    msgbox(format("This c-cannot be… I've reigned upon these depths since the very beginning of time…"))
+    msgbox(format("{CREATE_MUGSHOT MUGSHOT_GREEHASEET 0}This c-cannot be… I've reigned upon these depths since the very beginning of time…"))
 
     playse(SE_M_THUNDERBOLT2)
 	setvar(VAR_0x8004, 0)  // vertical pan
@@ -54,7 +54,7 @@ script DemonLairs_EventScript_Greehaseet {
 	special(ShakeCamera)
 
     msgbox(format(
-        "I am he who swallows all!\n"
+        "{CREATE_MUGSHOT MUGSHOT_GREEHASEET 0}I am he who swallows all!\n"
         "I am the devourer of matter and worlds!\p"
         "I cannot be defeated, for I am everything! I--\p"
         "AUUUUGHHHHH!!!"

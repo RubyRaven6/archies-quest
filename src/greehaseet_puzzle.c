@@ -27,6 +27,7 @@
 #include "pokedex.h"
 #include "gpu_regs.h"
 #include "event_data.h"
+#include "math_util.h"
 
 //Sprite Callbacks
 static void CursorCallback(struct Sprite *sprite);
@@ -63,7 +64,7 @@ enum ShellStates
     INPUT_TAKE_SHELL_AMOUNT,
     INPUT_POUR_INTO_SHELL,
     INPUT_SELECTED_TEN_SHELL,
-    INPUT_SELECTED_FIVE_SHELL,
+    INPUT_SELECTED_SEVEN_SHELL,
     INPUT_SELECTED_THREE_SHELL
 };
 
@@ -335,6 +336,7 @@ static void GreehaseetPuzzle_FreeResources(void);
 static u8 CreateCursor(void);
 static void DestroyCursor(void);
 static void GreehaseetPuzzle_HandleShellContents(void);
+static void TransferPearls(u8 * sourceShell, u8 * targetShell, u8 maxTarget);
 static void GreehaseetPuzzle_SelectShell(void);
 
 // Declared in sample_ui.h
@@ -781,7 +783,7 @@ static void GreehaseetPuzzle_SelectShell(void)
             *selectedShell = INPUT_SELECTED_TEN_SHELL;
             break;
         case 1:
-            *selectedShell = INPUT_SELECTED_FIVE_SHELL;
+            *selectedShell = INPUT_SELECTED_SEVEN_SHELL;
             break;
         case 2:
             *selectedShell = INPUT_SELECTED_THREE_SHELL;
@@ -789,9 +791,15 @@ static void GreehaseetPuzzle_SelectShell(void)
     }
 }
 
+static void TransferPearls(u8 * sourceShell, u8 * targetShell, u8 maxTarget) {
+    u8 rest = (*sourceShell + *targetShell <= maxTarget) ?
+        0 : MathUtil_Max(maxTarget, *sourceShell + *targetShell) - MathUtil_Min(maxTarget, *sourceShell + *targetShell);
+    *targetShell = (*sourceShell + *targetShell) - rest;
+    *sourceShell = rest;
+}
+
 static void GreehaseetPuzzle_HandleShellContents(void)
 {
-    u8 temp = 0;
     u8 *selectedShell = &sGreehaseetPuzzleState->selectedShell;
     u8 *tenShell = &sGreehaseetPuzzleState->tenPearlShell;
     u8 *sevenShell = &sGreehaseetPuzzleState->sevenPearlShell;
@@ -802,74 +810,27 @@ static void GreehaseetPuzzle_HandleShellContents(void)
     PlaySE(SE_SELECT);
     switch(*selectedShell){
         case INPUT_SELECTED_TEN_SHELL:
-            if(*cursorY == 1){ //For when Ten Shell to Seven Shell
-                if (*tenShell == 0 || *sevenShell == MAX_SEVEN_SHELL){
-                }
-                else if (*tenShell == 6 && *sevenShell > 0)
-                {
-                    temp = MAX_SEVEN_SHELL - *sevenShell;
-                    *sevenShell = MAX_SEVEN_SHELL;
-                    *tenShell = *tenShell - temp;
-                }
-                else if (*tenShell > MAX_SEVEN_SHELL && *sevenShell == 0){
-                    *tenShell = *tenShell - MAX_SEVEN_SHELL;
-                    *sevenShell = MAX_SEVEN_SHELL;
-                }
-                else if (*tenShell > MAX_SEVEN_SHELL && *sevenShell > 0){
-                    temp = MAX_SEVEN_SHELL - *sevenShell;
-                    *sevenShell += temp;
-                    *tenShell -= temp;
-                }
-                else {
-                    *sevenShell += *tenShell;
-                    *tenShell = 0;
-                }
+            if(*cursorY == 1){ // For when Ten Shell to Seven Shell
+                TransferPearls(tenShell, sevenShell, MAX_SEVEN_SHELL);
+
                 *inputMode = INPUT_SELECT_SHELL;
             }
             else if (*cursorY == 2){ //For when Ten Shell to Three Shell
-                if (*tenShell == 0 || *threeShell == MAX_THREE_SHELL){
-                }
-                else if (*tenShell > MAX_THREE_SHELL && *threeShell == 0){
-                    *tenShell = *tenShell - MAX_THREE_SHELL;
-                    *threeShell = MAX_THREE_SHELL;
-                }
-                else if (*tenShell > MAX_THREE_SHELL && *threeShell > 0){
-                    temp = MAX_THREE_SHELL - *threeShell;
-                    *threeShell += temp;
-                    *tenShell -= temp;
-                }
-                else {
-                    *threeShell += *tenShell;
-                    *tenShell = 0;
-                }
+                TransferPearls(tenShell, threeShell, MAX_THREE_SHELL);
+
                 *inputMode = INPUT_SELECT_SHELL;
             }
             else { //For Ten Shell back to Ten
                 *inputMode = INPUT_SELECT_SHELL;
             }
             break;
-        case INPUT_SELECTED_FIVE_SHELL:
+        case INPUT_SELECTED_SEVEN_SHELL:
             if(*cursorY == 0){ //For when Seven Shell to Ten Shell
-                *tenShell += *sevenShell;
-                *sevenShell = 0;
-                *inputMode = INPUT_SELECT_SHELL;
+                TransferPearls(sevenShell, tenShell, MAX_TEN_SHELL);
             }
             else if (*cursorY == 2){ //For when Seven Shell to Three Shell
-                if (*sevenShell == 0 || *threeShell == MAX_THREE_SHELL){
-                }
-                else if (*sevenShell > MAX_THREE_SHELL && *threeShell == 0){
-                    *sevenShell = *sevenShell - MAX_THREE_SHELL;
-                    *threeShell = MAX_THREE_SHELL;
-                }
-                else if (*sevenShell > MAX_THREE_SHELL && *threeShell > 0){
-                    temp = MAX_THREE_SHELL - *threeShell;
-                    *threeShell += temp;
-                    *sevenShell -= temp;
-                }
-                else {
-                    *threeShell += *sevenShell;
-                    *sevenShell = 0;
-                }
+                TransferPearls(sevenShell, threeShell, MAX_THREE_SHELL);
+
                 *inputMode = INPUT_SELECT_SHELL;
             }
             else { //For Seven Shell back to Seven
@@ -881,25 +842,14 @@ static void GreehaseetPuzzle_HandleShellContents(void)
                 *inputMode = INPUT_SELECT_SHELL;
             }
             else if (*cursorY == 1){//Three Shell to Seven Shell
-                if (*sevenShell == MAX_SEVEN_SHELL){}
-                else if ((*sevenShell + *threeShell) > MAX_SEVEN_SHELL)
-                {
-                    *threeShell = MAX_SEVEN_SHELL - *sevenShell;
-                    *sevenShell = MAX_SEVEN_SHELL;
-                }
-                else
-                {
-                    *sevenShell += *threeShell;
-                    *threeShell = 0;
-                }
+                TransferPearls(threeShell, sevenShell, MAX_SEVEN_SHELL);
                 *inputMode = INPUT_SELECT_SHELL;
             }
             else
             { //For Three Shell to Ten
                 if(*cursorY == 0)
                 {
-                    *tenShell += *threeShell;
-                    *threeShell = 0;
+                    TransferPearls(threeShell, tenShell, MAX_TEN_SHELL);
                 }
                 *inputMode = INPUT_SELECT_SHELL;
             }

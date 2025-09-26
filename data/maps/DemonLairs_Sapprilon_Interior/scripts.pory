@@ -24,7 +24,7 @@ script DemonLairs_EventScript_Sapprilon {
         setflag(FLAG_TALKED_TO_SAPPRILON)
         speakername("Sapprilon")
         msgbox(format(
-            "Aw FINALLY!\nI been waiting for you for ages!\p"
+            "{CREATE_MUGSHOT MUGSHOT_SAPPY 0}Aw FINALLY!\nI been waiting for you for ages!\p"
             "When I heard {COLOR RED}Greehaseet{COLOR DARK_GRAY} fell,\nI knew you'd eventually reach me.\p"
             "I'm not gonna lie, Nessie and Gree?\nThey were kinda soft, lowkey.\p"
             "Me though?{PAUSE 16} I'm just built different!"
@@ -35,7 +35,7 @@ script DemonLairs_EventScript_Sapprilon {
         applymovement(LOCALID_PLAYER, moves(emote_angry, walk_in_place_fast_up))
 
         speakername("Archie")
-        msgbox(format("Cut the crap, Demon Lord! You've underestimated us for the last time!"))
+        msgbox(format("{CREATE_MUGSHOT MUGSHOT_MC 0}Cut the crap, Demon Lord! You've underestimated us for the last time!"))
         closemessage
 
         applymovement(LOCALID_SAPPRILON_GUITARIST, SapprilonSpin)
@@ -50,7 +50,7 @@ script DemonLairs_EventScript_Sapprilon {
 
         speakername("Sapprilon")
         msgbox(format(
-            "Underestimatin' YOU?!\nHA!\p"
+            "{CREATE_MUGSHOT MUGSHOT_SAPPY 0}Underestimatin' YOU?!\nHA!\p"
             "Son, if anyone's “underestimating”,\nit sure as hell ain't me!\p"
             "Now where were we…\nOh yeah, time to whoop your ass.\p"
             "But first, some jams…"
@@ -103,13 +103,13 @@ script DemonLairs_EventScript_Sapprilon {
 
         speakername("Sapprilon")
         msgbox(format(
-            "Now THAT'S what I'm talkin' about!\NAre you ready to dance, son?\NCuz it's gonna be your last!"
+            "{CREATE_MUGSHOT MUGSHOT_SAPPY 0}Now THAT'S what I'm talkin' about!\NAre you ready to dance, son?\NCuz it's gonna be your last!"
         ))
         closemessage
     } else {
         faceplayer
         speakername("Sapprilon")
-        msgbox(format("You wanna dance again, kid?\nLet's move it, yeah? Let's end this!"))
+        msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAPPY 0}You wanna dance again, kid?\nLet's move it, yeah? Let's end this!"))
         closemessage
     }
 
@@ -119,7 +119,7 @@ script DemonLairs_EventScript_Sapprilon {
 
     speakername("Sapprilon")
     msgbox(format(
-        "How…\nHow did you…"
+        "{CREATE_MUGSHOT MUGSHOT_SAPPY 0}How…\nHow did you…"
     ))
 
     playse(SE_M_THUNDERBOLT2)
@@ -131,7 +131,7 @@ script DemonLairs_EventScript_Sapprilon {
 
     speakername("Sapprilon")
     msgbox(format(
-        "It can't end like this!\nHumanity's been hearing my voice\lsince the beginning of time!\p"
+        "{CREATE_MUGSHOT MUGSHOT_SAPPY 0}It can't end like this!\nHumanity's been hearing my voice\lsince the beginning of time!\p"
         "And yet… Nobody answered my call…\nI remained invisible to all…"
     ))
 
@@ -144,7 +144,7 @@ script DemonLairs_EventScript_Sapprilon {
 
     speakername("Sapprilon")
     msgbox(format(
-        "Hey, no, song's not over, bro!\n"
+        "{CREATE_MUGSHOT MUGSHOT_SAPPY 0}Hey, no, song's not over, bro!\n"
         "C-C'mon, let's…{PAUSE 8} Let's keep dancing…\p"
         "Just…{PAUSE 16} One more song…{PAUSE 8}"
     ))

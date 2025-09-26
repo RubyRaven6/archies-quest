@@ -62,6 +62,7 @@
 #include "constants/union_room.h"
 #include "constants/vars.h"
 #include "constants/weather.h"
+#include "constants/field_mugshots.h"
 	.include "asm/macros.inc"
 	.include "asm/macros/event.inc"
 	.include "constants/constants.inc"
@@ -1109,7 +1110,9 @@ CommonScript_Backyard_EventScripts_FullParty::
 	delay 30
 	msgbox CommonScript_Backyard_EventScripts_FullParty_Text_1
 	closemessage
+	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, CommonScript_Backyard_EventScripts_FullParty_Movement_0
+	waitse
 	end
 
 

@@ -11,9 +11,10 @@ script ArchiesHouse_Backyard_EventScripts_Ribombee {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Ribombee is diligently pollinating the small crops.\pGive her new orders?"), MSGBOX_YESNO)
+		msgbox(format("Ribombee is diligently pollinating the small crops.\pGive her new orders?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_RIBOMBEE, 50, abilityNum=2, gender=FEMALE, move1=MOVE_POLLEN_PUFF, move2=MOVE_DAZZLING_GLEAM, move3=MOVE_STUN_SPORE, move4=MOVE_PROTECT, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_GARDEN_RIBOMBEE)
 			msgbox("Ribombee joined your party!")
@@ -34,9 +35,10 @@ script ArchiesHouse_Backyard_EventScripts_Vileplume {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Vileplume is stopping to smell the flowers.\pShow him how he can protect them?"), MSGBOX_YESNO)
+		msgbox(format("Vileplume is stopping to smell the flowers.\pShow him how he can protect them?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_VILEPLUME, 50, abilityNum=2, gender=MALE, move1=MOVE_GIGA_DRAIN, move2=MOVE_LEECH_SEED, move3=MOVE_SLUDGE_BOMB, move4=MOVE_MOONLIGHT, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_GARDEN_VILEPLUME)
 			msgbox("Vileplume joined your party!")
@@ -57,9 +59,10 @@ script ArchiesHouse_Backyard_EventScripts_Annihilape {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Annihilape is trying her best to calm herself down.\pSupport women's wrongs and have her crash out?"), MSGBOX_YESNO)
+		msgbox(format("Annihilape is trying her best to calm herself down.\pSupport women's wrongs and have her crash out?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_ANNIHILAPE, 50, abilityNum=2, gender=FEMALE, move1=MOVE_RAGE_FIST, move2=MOVE_SHADOW_PUNCH, move3=MOVE_STOMPING_TANTRUM, move4=MOVE_SWAGGER, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_GARDEN_ANNIHILAPE)
 			msgbox("Annihilape joined your party!")
@@ -80,9 +83,10 @@ script ArchiesHouse_Backyard_EventScripts_Heliolisk {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Heliolisk is basking in the sun, taking in energy.\pShow him where to blast it?"), MSGBOX_YESNO)
+		msgbox(format("Heliolisk is basking in the sun, taking in energy.\pShow him where to blast it?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_HELIOLISK, 50, abilityNum=2, gender=MALE, move1=MOVE_EERIE_IMPULSE, move2=MOVE_THUNDER, move3=MOVE_THUNDER_WAVE, move4=MOVE_AGILITY, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_GARDEN_HELIOLISK)
 			msgbox("Heliolisk joined your party!")

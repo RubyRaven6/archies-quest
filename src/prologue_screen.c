@@ -73,13 +73,13 @@ static const struct WindowTemplate sWindowTemplate_PrologueText =
 static const u8 sPrologueTextColors[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY};
 
 const u8 sText_Prologue[] = _(
-    "This world is ruled by four tyrants:{PAUSE 48}\n"
-    "{COLOR LIGHT_BLUE}{SHADOW BLUE}Greehaseet{COLOR WHITE}{SHADOW DARK_GRAY} and his devouring, gluttinous maw,{PAUSE 24}\n"
+    "The land of {COLOR RED}R'mhakking{COLOR WHITE} was ruled by\nfour tyrants:{PAUSE 48}\n\n"
+    "{COLOR LIGHT_BLUE}{SHADOW BLUE}Greehaseet{COLOR WHITE}{SHADOW DARK_GRAY}, devouring, gluttinous maw,{PAUSE 24}\n"
     "Inescapable {COLOR LIGHT_GREEN}{SHADOW GREEN}Addisamap {COLOR WHITE}{SHADOW DARK_GRAY}, the earth and trees,{PAUSE 24}\n"
     "{COLOR LIGHT_GRAY}Nessereign{COLOR WHITE}{SHADOW DARK_GRAY} and her devious, maddening arts,{PAUSE 24}\n"
-    "and {COLOR LIGHT_RED}{SHADOW RED}Sapprilon{COLOR WHITE}{SHADOW DARK_GRAY}, who tormented minds with song.{PAUSE 48}\n"
-    "Called the {COLOR LIGHT_GRAY}{SHADOW RED}Bai'Narii{COLOR WHITE}{SHADOW DARK_GRAY},{PAUSE 16} they were Evil Lords\n"
-    "who choked this World in an iron grasp.\n"
+    "and {COLOR LIGHT_RED}{SHADOW RED}Sapprilon{COLOR WHITE}{SHADOW DARK_GRAY}, who tormented minds with song.\n\p"
+    "Called the {COLOR RED}Bai'Narii{COLOR WHITE},{PAUSE 16} they were Evil Lords\n"
+    "who choked this World in an iron grasp.\n\n"
     "{PAUSE 32}Mortals stood no chance against them,{PAUSE 16}\nand thus the World was not free.\p"
 );
 

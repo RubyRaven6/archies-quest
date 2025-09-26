@@ -18,7 +18,7 @@ script ArchiesHouse_EventScript_BeginningCutscene {
 
     speakername("Archie")
     msgbox(format(
-        "Despite the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}'s iron grasp on the world, this life is so peaceful…\p"
+        "{CREATE_MUGSHOT MUGSHOT_MC 0}Despite the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}'s iron grasp on the world, this life is so peaceful…\p"
         "I sure hope nothing comes in to ruin my day right about now!"
     ))
     closemessage
@@ -45,7 +45,7 @@ script ArchiesHouse_EventScript_BeginningCutscene {
     waitmovement(OBJ_EVENT_ID_PLAYER)
 
     speakername("Archie")
-    msgbox(format("… …What was that?"))
+    msgbox(format("{CREATE_MUGSHOT MUGSHOT_MC 0}… …What was that?"))
     closemessage
 
     delay(60)
@@ -71,8 +71,12 @@ script ArchiesHouse_EventScript_BeginningCutscene {
 
     fadescreen(FADE_FROM_WHITE)
 
+    playse(SE_RG_BAG_POCKET)
     clearflag(FLAG_HIDE_ARCHIE)
     addobject(OBJ_FUTUREARCHIE)
+
+    delay(16)
+    waitse
 
     playbgm(MUS_WEATHER_GROUDON, FALSE)
 
@@ -82,7 +86,7 @@ script ArchiesHouse_EventScript_BeginningCutscene {
     waitmovement(OBJ_EVENT_ID_PLAYER)
 
     speakername("Archie")
-    msgbox("What the-")
+    msgbox("{CREATE_MUGSHOT MUGSHOT_MC 0}What the-")
     closemessage
 
     applymovement(OBJ_FUTUREARCHIE, moves(walk_up, walk_right * 2))
@@ -91,32 +95,32 @@ script ArchiesHouse_EventScript_BeginningCutscene {
     playse(SE_LEDGE)
     applymovement(OBJ_EVENT_ID_PLAYER, moves(jump_in_place_left, emote_upset))
     speakername("Archie")
-    msgbox("The hell are you?!")
+    msgbox("{CREATE_MUGSHOT MUGSHOT_MC 0}The hell are you?!")
 
     applymovement(OBJ_FUTUREARCHIE, moves(walk_in_place_fast_right))
     speakername("Old Archie")
     msgbox(format(
-        "No time for lengthy explanations.\n{FONT_SMALL}Wow, I really used to dress like this?{FONT_NORMAL}\l"
+        "{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}No time for lengthy explanations.\n{FONT_SMALL}(Wow, I really used to dress like this?){FONT_NORMAL}\l"
         "Ahem…\p"
-        "I'm you from a different future, one where you're free from the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}, and I've come here to help you.\lWell, to help me, that is."
+        "I'm you from a different future, one where you're free from the {COLOR RED}Bai'Narii{COLOR DARK_GRAY},\Nand I've come here to help you.\lWell, to help me, that is."
     ))
 
     applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
     speakername("Archie")
-    msgbox(format("Defeating the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}?\nBut… how?"))
+    msgbox(format("{CREATE_MUGSHOT MUGSHOT_MC 0}Defeating the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}?\nBut… how?"))
     closemessage
 
     applymovement(OBJ_FUTUREARCHIE, moves(walk_in_place_fast_right))
     speakername("Old Archie")
     msgbox(format(
-        "You have to trust me. You won't stand a chance on your own, though."
+        "{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}You have to trust me. You won't stand a chance on your own, though."
     ))
     closemessage
 
     applymovement(OBJ_FUTUREARCHIE, moves(walk_in_place_fast_up))
     speakername("Old Archie")
     msgbox(format(
-        "I know you have your friends outside.\nGo get whoever you want, and come back!"
+        "{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}I know you have your friends outside.\nGo get whoever you want, and come back!"
     ))
     closemessage
 
@@ -124,13 +128,13 @@ script ArchiesHouse_EventScript_BeginningCutscene {
 
     applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
     speakername("Archie")
-    msgbox(format("Do I, like, get a say in any of this, at all?"))
+    msgbox(format("{CREATE_MUGSHOT MUGSHOT_MC 0}Do I, like, get a say in any of this, at all?"))
     closemessage
 
     applymovement(OBJ_FUTUREARCHIE, moves(walk_in_place_fast_up))
     speakername("Old Archie")
     msgbox(format(
-        "…No."
+        "{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}…No."
     ))
     closemessage
 
@@ -151,12 +155,14 @@ script ArchiesHouse_EventScript_Archie {
     getpartysize
     copyvar(VAR_TEMP_0, VAR_RESULT)
     speakername("Old Archie")
-    msgbox(format("Ready to face the Demon Lords, kid…\nI mean uh, me?"), MSGBOX_YESNO)
-    waitmessage
-    if(var(VAR_RESULT) == YES){
+    msgbox(format("{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}Ready to face the Demon Lords, kid…\nI mean uh, me?"))
+    dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Hell yes!", "Not yet.")
+    closemessage
+    if(var(VAR_RESULT) == 0){
         if(var(VAR_TEMP_0) > 0)
         {
-            msgbox(format("Follow me!\nI'll transport us with this device…"))
+            speakername("Old Archie")
+            msgbox(format("{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}Follow me!\nI'll transport us with this device…"))
             closemessage
 
 
@@ -168,12 +174,14 @@ script ArchiesHouse_EventScript_Archie {
             warpwhitefade(MAP_HUB_WORLD_INITIAL, 8, 4)
             waitstate
         } else {
-            msgbox(format("Wipe that grin off your face! How you gonna fight them with no Pokémon, huh?"),MSGBOX_DEFAULT)
+            speakername("Old Archie")
+            msgbox(format("{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}Wipe that grin off your face! How you gonna fight them with no Pokémon, huh?"),MSGBOX_DEFAULT)
             closemessage
         }
     }
-    elif(var(VAR_RESULT) == NO) {
-        msgbox(format("Sure, take your time! Not like the fate of the world is waiting, or anything!"), MSGBOX_DEFAULT)
+    else {
+        speakername("Old Archie")
+        msgbox(format("{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}Sure, take your time! Not like the fate of the world is waiting, or anything!"), MSGBOX_DEFAULT)
         closemessage
     }
     applymovement(0, moves(face_original_direction))
@@ -189,7 +197,7 @@ script ArchiesHouse_1F_Trigger_TryToLeave {
     waitmovement(0)
 
     speakername("Old Archie")
-    msgbox(format("Where d'you think you're going, kid?!"))
+    msgbox(format("{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}Where d'you think you're going, kid?!"))
     closemessage
 
     applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up))

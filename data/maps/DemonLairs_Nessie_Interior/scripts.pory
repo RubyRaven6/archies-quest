@@ -33,7 +33,7 @@ script DemonLairs_EventScript_Nessie {
         applymovement(LOCALID_NESSIE_PAINTER, moves(emote_upset))
         speakername("Nessereign")
         msgbox(format(
-            "What in the nine hells is that RACKET?! Can't you see I'm WORKING here?\p"
+            "{CREATE_MUGSHOT MUGSHOT_NESSIE 0}What in the nine hells is that RACKET?! Can't you see I'm WORKING here?\p"
             "Right when that SPLITTING HEADACHE was starting to wane…"
         ))
         closemessage
@@ -44,7 +44,7 @@ script DemonLairs_EventScript_Nessie {
 
         speakername("Nessereign")
         msgbox(format(
-            "Weeeell, who's this pretty young thing?\p"
+            "{CREATE_MUGSHOT MUGSHOT_NESSIE 0}Weeeell, who's this pretty young thing?\p"
             "I'm {COLOR RED}Nessereign{COLOR DARK_GRAY}.\nBut YOU, you can call me {COLOR RED}Nessie{COLOR DARK_GRAY}!\p"
             "Are you lost?\nYou delicious,{PAUSE 16} GODFORSAKEN{PAUSE 16} INTRUDER?"
         ))
@@ -56,7 +56,7 @@ script DemonLairs_EventScript_Nessie {
 
         speakername("Archie")
         msgbox(format(
-            "You {COLOR RED}Bai'Narii{COLOR DARK_GRAY} tyrants are about to meet your end, {COLOR RED}Nessereign{COLOR DARK_GRAY}!"
+            "{CREATE_MUGSHOT MUGSHOT_MC 0}You {COLOR RED}Bai'Narii{COLOR DARK_GRAY} tyrants are about to meet your end, {COLOR RED}Nessereign{COLOR DARK_GRAY}!"
         ))
         closemessage
 
@@ -64,12 +64,12 @@ script DemonLairs_EventScript_Nessie {
         applymovement(LOCALID_NESSIE_PAINTER, moves(emote_happy, shake_vertical))
         speakername("Nessereign")
         msgbox(format(
-            "Ha ha ha ha ha…"
+            "{CREATE_MUGSHOT MUGSHOT_NESSIE 0}Ha ha ha ha ha…"
         ))
         waitmovement(LOCALID_NESSIE_PAINTER)
         applymovement(LOCALID_NESSIE_PAINTER, moves(shake_vertical * 2))
         msgbox(format(
-            "HA HA HA HA HA\nHA HA HA HA HA!!\p"
+            "{CREATE_MUGSHOT MUGSHOT_NESSIE 0}HA HA HA HA HA\nHA HA HA HA HA!!\p"
             "You made me laugh so hard the headaches have come!{PAUSE 8} Right!{PAUSE 8} BACK!\p"
             "If you think I'll let you get away, you have another thing coming!\p"
             "Surprise, surprise…{PAUSE 16} IT'S DEATH!"
@@ -81,7 +81,7 @@ script DemonLairs_EventScript_Nessie {
         applymovement(LOCALID_NESSIE_PAINTER, moves(face_left, emote_happy))
         speakername("Nessereign")
         msgbox(format(
-            "You just don't.{PAUSE 8} Know.{PAUSE 8} WHEN to quit, huh?\p"
+            "{CREATE_MUGSHOT MUGSHOT_NESSIE 0}You just don't.{PAUSE 8} Know.{PAUSE 8} WHEN to quit, huh?\p"
             "My sweet, sweet friend…\nYou're in luck! Neither do I!"
         ))
         waitmessage
@@ -95,7 +95,7 @@ script DemonLairs_EventScript_Nessie {
     applymovement(LOCALID_NESSIE_PAINTER, moves(emote_sad))
     speakername("Nessereign")
     msgbox(format(
-        "Impossible…{PAUSE 16} You HEATHEN…{PAUSE 16}\nThis simply CAN-{PAUSE 8}NOT-{PAUSE 8}BE…"
+        "{CREATE_MUGSHOT MUGSHOT_NESSIE 0}Impossible…{PAUSE 16} You HEATHEN…{PAUSE 16}\nThis simply CAN-{PAUSE 8}NOT-{PAUSE 8}BE…"
     ))
 
     playse(SE_M_THUNDERBOLT2)
@@ -107,7 +107,7 @@ script DemonLairs_EventScript_Nessie {
 
     speakername("Nessereign")
     msgbox(format(
-        "I was standing here, painting before you were even BORN!\p"
+        "{CREATE_MUGSHOT MUGSHOT_NESSIE 0}I was standing here, painting before you were even BORN!\p"
         "I have painted{PAUSE 8} EVERYTHING your eyes will ever SEE!"
     ))
 
@@ -120,7 +120,7 @@ script DemonLairs_EventScript_Nessie {
 
     speakername("Nessereign")
     msgbox(format(
-        "The… The headaches…\n"
+        "{CREATE_MUGSHOT MUGSHOT_NESSIE 0}The… The headaches…\n"
         "The h-headaches…{PAUSE 8} are so painful…\p"
         "Huuuuh…{PAUSE 24} {FONT_SMALL}H-Help{FONT_NORMAL}…{PAUSE 16}"
     ))
@@ -178,20 +178,16 @@ script DemonLairs_EventScript_Nessie {
 }
 
 script DemonLairs_Nessie_Interior_EventScript_InvertedMelon {
-    msgbox(format("You look curiously at the painting. It seems to be a depiction of a ruptured watermelon."), MSGBOX_DEFAULT)
-    waitmessage
+    msgbox(format("You look curiously at the painting. It seems to be a depiction of a ruptured watermelon."))
     closemessage
 }
 
 script DemonLairs_Nessie_Interior_EventScript_RedSea {
-    msgbox(format("It's an illustration of a raging, blood red ocean."), MSGBOX_DEFAULT)
-    waitmessage
+    msgbox(format("It's an illustration of a raging, blood red ocean."))
     closemessage
 }
 
 script DemonLairs_Nessie_Interior_EventScript_FamiliarPainting {
-    msgbox(format("You have the feeling you saw this painting before. Was it in a mine?\lOr a craftsman's house?"), MSGBOX_DEFAULT)
-    waitmessage
+    msgbox(format("You have the feeling you saw this painting before. Was it in a mine?\lOr a craftsman's house?"))
     closemessage
-    applymovement(LOCALID_PLAYERS_HOUSE_1F_DAD, moves(face_original_direction))
 }

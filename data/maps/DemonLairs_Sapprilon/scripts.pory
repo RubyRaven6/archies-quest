@@ -20,13 +20,13 @@ script DemonLairs_Sapprilon_EventScript_CompactDisks {
 
 script DemonLairs_Sapprilon_EventScript_Monster {
     if(var(VAR_TEMP_0) == 0) {
-            msgbox(format(
-                "It's a metallic cylinder.\nThere's a large “MONSTER” written on it.\p"
-                "Examine the metallic cylinder?"
-            ), MSGBOX_YESNO)
-        waitmessage
+        msgbox(format(
+            "It's a metallic cylinder.\nThere's a large “MONSTER” written on it.\p"
+            "Examine the metallic cylinder?"
+        ))
+        dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
         closemessage
-        if(var(VAR_RESULT) == YES){
+        if(var(VAR_RESULT) == 0){
             msgbox(format(
                 "You pick up the cylinder and hear the sloshing of liquid inside.\p"
                 "In your infinite curiosity, you take a sip."
@@ -37,7 +37,7 @@ script DemonLairs_Sapprilon_EventScript_Monster {
             applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_upset))
 
             speakername("Archie")
-            msgbox(format("Ugh! This is awful! Must be monster blood to taste so badly."))
+            msgbox(format("{CREATE_MUGSHOT MUGSHOT_MC 0}Ugh! This is awful! Must be monster blood to taste so badly."))
             waitmessage
             closemessage
             setvar(VAR_TEMP_0, 1)
@@ -64,10 +64,11 @@ script DemonLairs_Sapprilon_EventScript_RegularComputer {
 script DemonLairs_Sapprilon_EventScript_Bookshelf1 {
     checkitem(ITEM_ACRO_BIKE, 1)
     if(var(VAR_RESULT) == 0 && !flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){
-        msgbox(format("It's a bookshelf wrought from metal.\nA waxen paper slip is sticking out.\pTake it?"), MSGBOX_YESNO)
+        msgbox(format("It's a bookshelf wrought from metal.\nA waxen paper slip is sticking out.\pTake it?"))
+        dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
         closemessage
         waitmessage
-        if(var(VAR_RESULT) == YES){
+        if(var(VAR_RESULT) == 0){
             additem(ITEM_ACRO_BIKE, 1)
             playse(MUS_OBTAIN_ITEM)
             msgbox(format("You got the Black disk!"), MSGBOX_DEFAULT)
@@ -86,10 +87,11 @@ script DemonLairs_Sapprilon_EventScript_Bookshelf1 {
 script DemonLairs_Sapprilon_EventScript_Bookshelf2 {
     checkitem(ITEM_MACH_BIKE, 1)
     if(var(VAR_RESULT) == 0 && !flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){
-        msgbox(format("It's a bookshelf wrought from metal.\nA waxen paper slip is sticking out.\pTake it?"), MSGBOX_YESNO)
+        msgbox(format("It's a bookshelf wrought from metal.\nA waxen paper slip is sticking out.\pTake it?"))
+        dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
         closemessage
         waitmessage
-        if(var(VAR_RESULT) == YES){
+        if(var(VAR_RESULT) == 0){
             additem(ITEM_MACH_BIKE, 1)
             playse(MUS_OBTAIN_ITEM)
             msgbox(format("You got the Yellow disk!"), MSGBOX_DEFAULT)
@@ -108,10 +110,11 @@ script DemonLairs_Sapprilon_EventScript_Bookshelf2 {
 script DemonLairs_Sapprilon_EventScript_Bookshelf3 {
     checkitem(ITEM_SS_TICKET, 1)
     if(var(VAR_RESULT) == 0 && !flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){
-        msgbox(format("It's a bookshelf wrought from metal.\nA waxen paper slip is sticking out.\pTake it?"), MSGBOX_YESNO)
+        msgbox(format("It's a bookshelf wrought from metal.\nA waxen paper slip is sticking out.\pTake it?"))
+        dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
         closemessage
         waitmessage
-        if(var(VAR_RESULT) == YES){
+        if(var(VAR_RESULT) == 0){
             additem(ITEM_SS_TICKET, 1)
             playse(MUS_OBTAIN_ITEM)
             msgbox(format("You got the Cyan disk!"), MSGBOX_DEFAULT)
@@ -130,10 +133,11 @@ script DemonLairs_Sapprilon_EventScript_Bookshelf3 {
 script DemonLairs_Sapprilon_EventScript_Bookshelf4 {
     checkitem(ITEM_EON_TICKET, 1)
     if(var(VAR_RESULT) == 0 && !flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){
-        msgbox(format("It's a bookshelf wrought from metal.\nA waxen paper slip is sticking out.\pTake it?"), MSGBOX_YESNO)
+        msgbox(format("It's a bookshelf wrought from metal.\nA waxen paper slip is sticking out.\pTake it?"))
+        dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
         closemessage
         waitmessage
-        if(var(VAR_RESULT) == YES){
+        if(var(VAR_RESULT) == 0){
             additem(ITEM_EON_TICKET, 1)
             playse(MUS_OBTAIN_ITEM)
             msgbox(format("You got the Magenta disk!"), MSGBOX_DEFAULT)
@@ -187,6 +191,8 @@ script DemonLairs_Sapprilon_EventScript_MainComputer {
             waitse
             delay(48)
 
+            playse(SE_LAVARIDGE_FALL_WARP)
+
             warpwhitefade(MAP_DEMONLAIRS_SAPPRILON_INTERIOR, 5, 9)
             waitstate
     }
@@ -194,12 +200,13 @@ script DemonLairs_Sapprilon_EventScript_MainComputer {
 
 script DemonLairs_Sapprilon_EventScript_Puzzle {
     call(DemonLairs_ItemChecker)
-    msgbox("Launch the program?", MSGBOX_YESNO)
+    msgbox("Launch the program?")
+    dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
     closemessage
-    if(var(VAR_RESULT) == TRUE && var(VAR_TEMP_1) == 1 && var(VAR_TEMP_2) == 1 && var(VAR_TEMP_3) == 1 && var(VAR_TEMP_4) == 1){
+    if(var(VAR_RESULT) == 0 && var(VAR_TEMP_1) == 1 && var(VAR_TEMP_2) == 1 && var(VAR_TEMP_3) == 1 && var(VAR_TEMP_4) == 1){
         msgbox(format("Which disk will you select first?"))
         call(DemonLairs_DiskInsertPuzzle)
-    } elif (var(VAR_RESULT) == NO){
+    } elif (var(VAR_RESULT) == 1){
 
     } else {
         msgbox(format("Looks like you can't solve this yet."))

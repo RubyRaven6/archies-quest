@@ -29,7 +29,7 @@ script DemonLairs_EventScript_Addisamap {
 
         speakername("Addisamap")
         msgbox(format(
-            "The troublemaker finally got here, hmm?\n"
+            "{CREATE_MUGSHOT MUGSHOT_ADDISAMAP 0}The troublemaker finally got here, hmm?\n"
             "Color me impressed."
         ))
         closemessage
@@ -37,14 +37,14 @@ script DemonLairs_EventScript_Addisamap {
         playse(SE_LEDGE)
         applymovement(LOCALID_PLAYER, moves(jump_in_place_up))
         speakername("Archie")
-        msgbox(format("You sound calm, when you should be panicking!"))
+        msgbox(format("{CREATE_MUGSHOT MUGSHOT_MC 0}You sound calm, when you should be panicking!"))
         closemessage
 
         playse(SE_PIN)
         applymovement(LOCALID_ADDISAMAP_RUIN_MANIAC, moves(emote_music))
         speakername("Addisamap")
         msgbox(format(
-            "What reason do I have to be worried?\nI am as ancient as time itself.\p"
+            "{CREATE_MUGSHOT MUGSHOT_ADDISAMAP 0}What reason do I have to be worried?\nI am as ancient as time itself.\p"
             "The ground the young man treads on\nwas crafted by these hands.\p"
             "Does he think he can defeat the weight of the centuries?\p"
             "Ho ho ho…\p"
@@ -55,7 +55,7 @@ script DemonLairs_EventScript_Addisamap {
         playse(SE_PIN)
         applymovement(LOCALID_PLAYER, moves(emote_angry, walk_in_place_up))
         speakername("Archie")
-        msgbox(format("Who's this Master of yours?!\nTell me his name!"))
+        msgbox(format("{CREATE_MUGSHOT MUGSHOT_MC 0}Who's this Master of yours?!\nTell me his name!"))
         closemessage
 
         applymovement(LOCALID_ADDISAMAP_RUIN_MANIAC, moves(face_up, delay_16, emote_pensive, delay_16 * 3, face_down))
@@ -65,7 +65,7 @@ script DemonLairs_EventScript_Addisamap {
 
         speakername("Addisamap")
         msgbox(format(
-            "I shan't. The young man doesn't deserve to hear His name.\p"
+            "{CREATE_MUGSHOT MUGSHOT_ADDISAMAP 0}I shan't. The young man doesn't deserve to hear His name.\p"
             "It's a shame, really…\p"
             "He will never have the chance to meet Him."
         ))
@@ -74,7 +74,7 @@ script DemonLairs_EventScript_Addisamap {
         faceplayer
         speakername("Addisamap")
         msgbox(format(
-            "The quester returns.\nStubborn as ever.\p"
+            "{CREATE_MUGSHOT MUGSHOT_ADDISAMAP 0}The quester returns.\nStubborn as ever.\p"
             "He will soon realize my patience is infinite."
         ))
         waitmessage
@@ -89,7 +89,7 @@ script DemonLairs_EventScript_Addisamap {
     applymovement(LOCALID_ADDISAMAP_RUIN_MANIAC, moves(emote_pensive))
     speakername("Addisamap")
     msgbox(format(
-        "… … … … … …\n… … … … … …\p"
+        "{CREATE_MUGSHOT MUGSHOT_ADDISAMAP 0}… … … … … …\n… … … … … …\p"
         "Very well. It seems my time has come.\nBut the boy's is fast approaching."
     ))
 
@@ -102,7 +102,7 @@ script DemonLairs_EventScript_Addisamap {
 
     speakername("Addisamap")
     msgbox(format(
-        "He should consider turning back now, unless he wishes to die in regret."
+        "{CREATE_MUGSHOT MUGSHOT_ADDISAMAP 0}He should consider turning back now, unless he wishes to die in regret."
     ))
 
     playse(SE_M_THUNDERBOLT2)
@@ -114,7 +114,7 @@ script DemonLairs_EventScript_Addisamap {
 
     speakername("Addisamap")
     msgbox(format(
-        "Now…\nI return to the Earth I made."
+        "{CREATE_MUGSHOT MUGSHOT_ADDISAMAP 0}Now…\nI return to the Earth I made."
     ))
     closemessage
 

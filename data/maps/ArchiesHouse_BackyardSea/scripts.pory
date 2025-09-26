@@ -7,9 +7,10 @@ mapscripts ArchiesHouse_BackyardSea_MapScripts {
 }
 
 script ArchiesHouse_BackyardSea_Boat {
-    msgbox(("It's a boat to back home. Take it?"), MSGBOX_YESNO)
+    msgbox(("It's a boat to back home. Take it?"))
+	dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
     closemessage
-    if(var(VAR_RESULT) == YES){
+    if(var(VAR_RESULT) == 0){
         warp(MAP_ARCHIES_HOUSE_BACKYARD_BEACH, 22, 10)
     } else {
         msgbox(("You decide to stay for a while longer."), MSGBOX_DEFAULT)
@@ -22,9 +23,10 @@ script ArchiesHouse_Backyard_EventScripts_Milotic {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Milotic is grooming herself in the water's reflection.\pMaximize your joint slay?"), MSGBOX_YESNO)
+		msgbox(format("Milotic is grooming herself in the water's reflection.\pMaximize your joint slay?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_MILOTIC, 50, abilityNum=0, gender=FEMALE, move1=MOVE_ICE_BEAM, move2=MOVE_DISARMING_VOICE, move3=MOVE_ATTRACT, move4=MOVE_LIFE_DEW, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_SEA_MILOTIC)
 			msgbox("Milotic joined your party!")
@@ -45,9 +47,10 @@ script ArchiesHouse_Backyard_EventScripts_Dhelmise {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Dhelmise is unsure how it got here, but is happy regardless.\pTake her someplace else?"), MSGBOX_YESNO)
+		msgbox(format("Dhelmise is unsure how it got here, but is happy regardless.\pTake her someplace else?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_DHELMISE, 50, abilityNum=0, gender=FEMALE, move1=MOVE_HEAVY_SLAM, move2=MOVE_WOOD_HAMMER, move3=MOVE_GROWTH, move4=MOVE_POLTERGEIST, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_SEA_DHELMISE)
 			msgbox("Dhelmise joined your party!")
@@ -68,9 +71,10 @@ script ArchiesHouse_Backyard_EventScripts_Ceruledge {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Ceruledge is sharpening her blades as she takes in the scenery.\pGive her something to test the edge on?"), MSGBOX_YESNO)
+		msgbox(format("Ceruledge is sharpening her blades as she takes in the scenery.\pGive her something to test the edge on?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_CERULEDGE, 50, abilityNum=2, gender=FEMALE, move1=MOVE_BITTER_BLADE, move2=MOVE_SHADOW_SNEAK, move3=MOVE_SOLAR_BLADE, move4=MOVE_SWORDS_DANCE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_SEA_CERULEDGE)
 			msgbox("Ceruledge joined your party!")
@@ -91,9 +95,10 @@ script ArchiesHouse_Backyard_EventScripts_Pelipper {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Pelipper is resting from her mail delivery duties for the day.\pGive her a new duty for today?"), MSGBOX_YESNO)
+		msgbox(format("Pelipper is resting from her mail delivery duties for the day.\pGive her a new duty for today?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_PELIPPER, 50, abilityNum=1, gender=FEMALE, move1=MOVE_WATER_PULSE, move2=MOVE_RAIN_DANCE, move3=MOVE_TAILWIND, move4=MOVE_AIR_SLASH, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_SEA_PELIPPER)
 			msgbox("Pelipper joined your party!")

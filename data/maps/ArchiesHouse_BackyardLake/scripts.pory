@@ -11,9 +11,10 @@ script ArchiesHouse_Backyard_EventScripts_Gyarados {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Gyarados is simmering in anger in the lake.\pFind a common enemy?"), MSGBOX_YESNO)
+		msgbox(format("Gyarados is simmering in anger in the lake.\pFind a common enemy?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_GYARADOS, 50, abilityNum=0, gender=MALE, move1=MOVE_DRAGON_DANCE, move2=MOVE_WATERFALL, move3=MOVE_BOUNCE, move4=MOVE_ICE_FANG, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_LAKE_GYARADOS)
 			msgbox("Gyarados your party!")
@@ -31,9 +32,10 @@ script ArchiesHouse_Backyard_EventScripts_Ludicolo {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Ludicolo is spinning happily.\pInvite her to tango?"), MSGBOX_YESNO)
+		msgbox(format("Ludicolo is spinning happily.\pInvite her to tango?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_LUDICOLO, 50, abilityNum=0, gender=FEMALE, move1=MOVE_RAIN_DANCE, move2=MOVE_TEETER_DANCE, move3=MOVE_GIGA_DRAIN, move4=MOVE_HYDRO_PUMP, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_LAKE_LUDICOLO)
 			msgbox("Ludicolo joined your party!")
@@ -54,9 +56,10 @@ script ArchiesHouse_Backyard_EventScripts_Azumarill {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Azumarill is doing his reps for swimming.\pGive him a better workout?"), MSGBOX_YESNO)
+		msgbox(format("Azumarill is doing his reps for swimming.\pGive him a better workout?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_AZUMARILL, 50, abilityNum=1, gender=MALE, move1=MOVE_PLAY_ROUGH, move2=MOVE_WATERFALL, move3=MOVE_TRAILBLAZE, move4=MOVE_BULLDOZE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_LAKE_AZUMARILL)
 			msgbox("Azumarill joined your party!")
@@ -77,9 +80,10 @@ script ArchiesHouse_Backyard_EventScripts_Gardevoir {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Gardevoir is watching his friends enjoy themselves in water.\pGive him his own fun?"), MSGBOX_YESNO)
+		msgbox(format("Gardevoir is watching his friends enjoy themselves in water.\pGive him his own fun?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_GARDEVOIR, 50, abilityNum=1, gender=MALE, move1=MOVE_PSYCHIC, move2=MOVE_DAZZLING_GLEAM, move3=MOVE_CALM_MIND, move4=MOVE_MISTY_TERRAIN, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_LAKE_GARDEVOIR)
 			msgbox("Gardevoir joined your party!")
@@ -97,21 +101,21 @@ script ArchiesHouse_Backyard_EventScripts_Gardevoir {
 
 script ArchiesHouse_Backyard_EventScripts_Uxie {
     lock
-	msgbox(format("Uxie is looking at the lake peacefully."), MSGBOX_YESNO)
+	msgbox(format("Uxie is looking at the lake peacefully."))
 	closemessage
 	end
 }
 
 script ArchiesHouse_Backyard_EventScripts_Mesprit {
     lock
-	msgbox(format("Mesprit is looking at the lake happily."), MSGBOX_YESNO)
+	msgbox(format("Mesprit is looking at the lake happily."))
 	closemessage
 	end
 }
 
 script ArchiesHouse_Backyard_EventScripts_Azelf {
     lock
-	msgbox(format("Azelf is looking at the lake haughtily."), MSGBOX_YESNO)
+	msgbox(format("Azelf is looking at the lake haughtily."))
 	closemessage
 	end
 }
