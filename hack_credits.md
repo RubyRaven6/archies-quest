@@ -1,7 +1,12 @@
 # CREDITS
-## Developers
-### Ruby (@RubyRaven6)
-### Doodle (@purrfectdoodle)
+
+## Breakdown of Work
+This section is meant to show the different areas of work made between Ruby and Eva, for the purposes of attributing specific sections of the hack that you may want in yours. :)
+
+| Ruby                       | Eva                                                                                      |
+|----------------------------|------------------------------------------------------------------------------------------|
+| EV System, code and design | All Demon Lord Overworld and Trainer Sprites (Human, Demon)                              |
+| Greehaseet Puzzle Code     | Archie Sprites (Overworld for Old  and Young, Young Archie Backsprite  and Front Sprite) |
 
 ## Tilesets
 **Fence in Archie's Backyard**: KyuZee<br>
@@ -143,6 +148,7 @@ Insertable format: Rahtak
 **Decapitalized branch**: [ProfHarpe](https://github.com/prof-harpe/pokeemerald-expansion/tree/Decapitalized)<br>
 **Shake Movement Action**: [Jamie Foster](https://github.com/FosterProgramming/pokeemerald-expansion/tree/movement_action_shake)
 **Mon Levelling Code**: [Hedara](https://github.com/hedara90)
+**Porylive**: [Teon](https://github.com/Porylive/porylive)
 
 ## Battle and Balance
 **Slow Start Cresselia, Sand Spit Palossand, Corrosion Toxapex, and Merciless Salazzle**: [x_bell](https://youtu.be/CCu-Q-5mxec?si=ij8UNkm-pHCtMSvX)
