@@ -11,7 +11,7 @@ mapscripts DemonLairs_Maxie_MapScripts {
 
             speakername("Archie")
             msgbox(format(
-                "What… Where am I…?\p"
+                "{CREATE_MUGSHOT MUGSHOT_MC 0}What… Where am I…?\p"
                 "Owww… My head hurts…"
             ))
             closemessage
@@ -94,15 +94,15 @@ script DemonLairs_Maxie_EventScript_MaxieCutscene {
 
     playse(SE_PIN)
     applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
-    speakername("Archie")
-    msgbox("Y-You're…", MSGBOX_DEFAULT)
+    speakername("{CREATE_MUGSHOT MUGSHOT_MC 0}Archie")
+    msgbox(format("Y-You're…"))
     closemessage
 
     applymovement(LOCALID_DEMONLORD_MAXIE, moves(walk_in_place_slow_down))
     waitmovement(0)
     speakername("Maxie")
     msgbox(format(
-        "You've been a thorn in our side, boy.\n"
+        "{CREATE_MUGSHOT MUGSHOT_MAXIE 0}You've been a thorn in our side, boy.\n"
         "As such, my hand is forced.\p"
         "I didn't believe it, but by sheer luck\n"
         "you've somehow managed to defeat\l"
@@ -114,7 +114,7 @@ script DemonLairs_Maxie_EventScript_MaxieCutscene {
     waitmovement(0)
     speakername("Maxie")
     msgbox(format(
-        "That being said, you've been so amusing\n"
+        "{CREATE_MUGSHOT MUGSHOT_MAXIE 0}That being said, you've been so amusing\n"
         "I had to see it for myself!\p"
         "Seeing you struggle was delightfully fun."
     ))
@@ -123,7 +123,7 @@ script DemonLairs_Maxie_EventScript_MaxieCutscene {
     applymovement(LOCALID_DEMONLORD_MAXIE, moves(walk_slow_up, walk_slow_right, face_up))
     speakername("Maxie")
     msgbox(format(
-        "I recall when you pitiful humans tried to stop me with sticks and stones."
+        "{CREATE_MUGSHOT MUGSHOT_MAXIE 0}I recall when you pitiful humans tried to stop me with sticks and stones."
     ))
     waitmovement(0)
     closemessage
@@ -131,14 +131,14 @@ script DemonLairs_Maxie_EventScript_MaxieCutscene {
     applymovement(LOCALID_DEMONLORD_MAXIE, moves(walk_slow_right, walk_slow_down, face_right))
     speakername("Maxie")
     msgbox(format(
-        "Had I known the leniency I showed meant you'd be challenging me again…"
+        "{CREATE_MUGSHOT MUGSHOT_MAXIE 0}Had I known the leniency I showed meant you'd be challenging me again…"
     ))
     waitmovement(0)
     closemessage
 
     applymovement(LOCALID_DEMONLORD_MAXIE, moves(walk_slow_left, face_down))
     speakername("Maxie")
-    msgbox("I would have crushed you and this\n"
+    msgbox("{CREATE_MUGSHOT MUGSHOT_MAXIE 0}I would have crushed you and this\n"
             "entire world underfoot!", MSGBOX_DEFAULT)
     waitmovement(0)
     closemessage
@@ -146,14 +146,14 @@ script DemonLairs_Maxie_EventScript_MaxieCutscene {
     applymovement(LOCALID_PLAYER, moves(walk_in_place_fast_up))
     speakername("Archie")
     msgbox(format(
-        "You won't get away with this, Demon Lord!\p"
+        "{CREATE_MUGSHOT MUGSHOT_MC 0}You won't get away with this, Demon Lord!\p"
         "I've already taken care of all your underlings! It's over!"
     ))
     waitmovement(0)
     closemessage
 
     speakername("Maxie")
-    msgbox("Have you now?", MSGBOX_DEFAULT)
+    msgbox("{CREATE_MUGSHOT MUGSHOT_MAXIE 0}Have you now?", MSGBOX_DEFAULT)
     closemessage
 
     playse(SE_SHIP)
@@ -176,7 +176,7 @@ script DemonLairs_Maxie_EventScript_MaxieCutscene {
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_slow_up * 2))
 
     speakername("Archie")
-    msgbox("What… no…")
+    msgbox("{CREATE_MUGSHOT MUGSHOT_MC 0}What… no…")
     closemessage
 
     applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
@@ -223,7 +223,7 @@ script DemonLairs_Maxie_EventScript_MaxieCutscene {
     applymovement(LOCALID_PLAYER, moves(lock_facing_direction, walk_down, unlock_facing_direction, face_up))
 
     speakername("Archie")
-    msgbox("Ugh…")
+    msgbox("{CREATE_MUGSHOT MUGSHOT_MC 0}Ugh…")
     closemessage
 
     waitmovement(LOCALID_PLAYER)
@@ -231,7 +231,7 @@ script DemonLairs_Maxie_EventScript_MaxieCutscene {
     applymovement(LOCALID_DEMONLORD_MAXIE, moves(shake_vertical))
     speakername("Maxie")
     msgbox(format(
-        "HA HA HA HA HA HA!!\p"
+        "{CREATE_MUGSHOT MUGSHOT_MAXIE 0}HA HA HA HA HA HA!!\p"
         "You really thought you beat the Gods of {COLOR RED}Rm'hakking{COLOR DARK_GRAY} in one go?\p"
         "Your petulant rebellion ends here\nand now, boy!"
     ))
@@ -243,7 +243,7 @@ script DemonLairs_Maxie_EventScript_MaxieCutscene {
 
 script DemonLairs_EventScript_Maxie {
     if(flag(FLAG_TALKED_TO_MAXIE)) {
-        msgbox("So, have you come to bargain?\n"
+        msgbox("{CREATE_MUGSHOT MUGSHOT_MAXIE 0}So, have you come to bargain?\n"
                 "Or have you come to suffer?", MSGBOX_DEFAULT)
         waitmessage
         closemessage
@@ -311,14 +311,14 @@ script DemonLairs_EventScript_Maxie {
 
     speakername("Maxie")
     msgbox(format(
-        "… … … … … …\n… … … … … …\p"
+        "{CREATE_MUGSHOT MUGSHOT_MAXIE 0}… … … … … …\n… … … … … …\p"
         "That's… That's impossible!"
     ))
 
     applymovement(LOCALID_DEMONLORD_MAXIE, moves(face_left, delay_16 * 3, face_up, delay_16 * 3, face_right, delay_16 * 3, face_down))
 
     msgbox(format(
-        "The {COLOR RED}Bai'Narii{COLOR DARK_GRAY}…\ndefeated…?!\p"
+        "{CREATE_MUGSHOT MUGSHOT_MAXIE 0}The {COLOR RED}Bai'Narii{COLOR DARK_GRAY}…\ndefeated…?!\p"
         "It can't end like this!\nThis world cannot function without us!"
     ))
 
@@ -327,13 +327,13 @@ script DemonLairs_EventScript_Maxie {
     applymovement(LOCALID_PLAYER, moves(walk_in_place_fast_up))
 
     speakername("Archie")
-    msgbox(format("On the contrary!\nThis world will thrive on your absence!"))
+    msgbox(format("{CREATE_MUGSHOT MUGSHOT_MC 0}On the contrary!\nThis world will thrive on your absence!"))
     closemessage
 
     applymovement(LOCALID_DEMONLORD_MAXIE, moves(shake_horizontal * 2))
     speakername("Maxie")
     msgbox(format(
-        "No…{PAUSE 16} No!{PAUSE 16} NOOOOO!!!{PAUSE 8}"
+        "{CREATE_MUGSHOT MUGSHOT_MAXIE 0}No…{PAUSE 16} No!{PAUSE 16} NOOOOO!!!{PAUSE 8}"
     ))
     closemessage
 
@@ -366,7 +366,7 @@ script DemonLairs_EventScript_Maxie {
     delay(60)
 
     speakername("Archie")
-    msgbox(format("… … …"))
+    msgbox(format("{CREATE_MUGSHOT MUGSHOT_MC 0}… … …"))
     closemessage
 
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_slow_down * 2))
@@ -390,7 +390,7 @@ script DemonLairs_EventScript_Maxie {
 
     speakername("Old Archie")
     msgbox(format(
-        "Nice job, kid!\nI knew you had it in ya!\p"
+        "{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}Nice job, kid!\nI knew you had it in ya!\p"
         "Let's go home, shall we?"
     ))
     closemessage

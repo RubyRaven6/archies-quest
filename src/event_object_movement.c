@@ -11718,3 +11718,32 @@ bool8 MovementAction_ShakeVertical_Step1(struct ObjectEvent *objectEvent, struct
     }
     return FALSE;
 }
+
+bool32 IsObjectEventPaletteTagInUse(u16 paletteTag)
+{
+    u32 res = FALSE;
+
+    for (u32 i = 0; i < OBJECT_EVENTS_COUNT; i++)
+    {
+        struct ObjectEvent *objectEvent = &gObjectEvents[i];
+
+        if (
+            objectEvent->active
+            && !objectEvent->isPlayer
+            && objectEvent->localId != OBJ_EVENT_ID_FOLLOWER
+            && objectEvent->localId != OBJ_EVENT_ID_NPC_FOLLOWER
+        )
+        {
+            const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
+
+            if (graphicsInfo->paletteTag == paletteTag)
+            {
+                res = TRUE;
+
+                break;
+            }
+        }
+    }
+
+    return res;
+}

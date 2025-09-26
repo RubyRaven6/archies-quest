@@ -28,7 +28,7 @@ mapscripts HubWorld_Initial_MapScripts {
 
             speakername("Old Archie")
             msgbox(format(
-                "This is going to be our base of operations."
+                "{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}This is going to be our base of operations."
             ))
 
             applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 4, delay_16 * 3, walk_up * 4))
@@ -63,12 +63,12 @@ mapscripts HubWorld_Initial_MapScripts {
 
 script HubWorld_EventScript_Archie {
     speakername("Old Archie")
-    msgbox(format("Need something, kid?"), MSGBOX_DEFAULT)
+    msgbox(format("{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}Need something, kid?"), MSGBOX_DEFAULT)
     dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Demon Lords?", "Storage device?", "Retraining?")
     switch(var(VAR_RESULT)) {
         case 1:
             msgbox(format(
-                "It's a “PC”. It comes from the future.\p"
+                "{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}It's a “PC”. It comes from the future.\p"
                 "Back home we use it for a lot of cool stuff, but this one only stores items.\p"
                 "Thankfully, all the items I brought with me are intact!"
             ))
@@ -76,12 +76,12 @@ script HubWorld_EventScript_Archie {
             closemessage
             break
         case 0:
-            msgbox(format("Ah, you wanted to know about the next Demon Lord?"))
+            msgbox(format("{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}Ah, you wanted to know about the next Demon Lord?"))
             waitmessage
             switch(var(VAR_DEMON_LORD_PROGRESS)){
                 case 0:
                     msgbox(format(
-                        "{COLOR RED}Nessereign{COLOR DARK_GRAY}.\nThe first and weakest of the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}.\p"
+                        "{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}{COLOR RED}Nessereign{COLOR DARK_GRAY}.\nThe first and weakest of the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}.\p"
                         "But don't let this fool you! She's crafty, and most importantly, crazy.\p"
                         "She's swift and cunning when she battles, but also extremely frail.\p"
                         "Nessereign is duplicitous in nature; as such, her minions are Normal and Dark."
@@ -90,7 +90,7 @@ script HubWorld_EventScript_Archie {
                     closemessage
                 case 1:
                     msgbox(format(
-                        "{COLOR RED}Greehaseet{COLOR DARK_GRAY}.\nThe {COLOR RED}Bai'Narii{COLOR DARK_GRAY}'s unrelenting chariot.\p"
+                        "{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}{COLOR RED}Greehaseet{COLOR DARK_GRAY}.\nThe {COLOR RED}Bai'Narii{COLOR DARK_GRAY}'s unrelenting chariot.\p"
                         "Despite his looks, he possesses great strength, but also great stamina\p"
                         "He depletes his opponent's strength, then crushes them!\p"
                         "He rules the depths with his minions of Ice and Water."
@@ -99,7 +99,7 @@ script HubWorld_EventScript_Archie {
                     closemessage
                 case 2:
                     msgbox(format(
-                        "{COLOR RED}Sapprilon{COLOR DARK_GRAY}.\nThe {COLOR RED}Bai'Narii{COLOR DARK_GRAY}'s screaming wall.\p"
+                        "{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}{COLOR RED}Sapprilon{COLOR DARK_GRAY}.\nThe {COLOR RED}Bai'Narii{COLOR DARK_GRAY}'s screaming wall.\p"
                         "He creates forcefields of noise that can repel attacks without much effort.\p"
                         "You'll have to sweat a little to breach his defenses.\p"
                         "He enlists minions he believes can be utilized best: Steel and Psychic."
@@ -109,7 +109,7 @@ script HubWorld_EventScript_Archie {
                 case 3:
                     speakername("Old Archie")
                     msgbox(format(
-                        "{COLOR RED}Addisamap{COLOR DARK_GRAY}.\nThe wise brain of the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}.\p"
+                        "{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}{COLOR RED}Addisamap{COLOR DARK_GRAY}.\nThe wise brain of the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}.\p"
                         "She watches over them and keeps them in check for their master."
                     ))
                     closemessage
@@ -118,12 +118,12 @@ script HubWorld_EventScript_Archie {
                     applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_question_mark, delay_16 * 6))
                     waitse
                     speakername("Archie")
-                    msgbox(format("Wait, aren't there only four {COLOR RED}Bai'Narii{COLOR DARK_GRAY}?"))
+                    msgbox(format("{CREATE_MUGSHOT MUGSHOT_MC 0}Wait, aren't there only four {COLOR RED}Bai'Narii{COLOR DARK_GRAY}?"))
                     closemessage
 
                     speakername("Old Archie")
                     msgbox(format(
-                        "No, there's one more, behind them all.\nBut first things first!\p"
+                        "{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}No, there's one more, behind them all.\nBut first things first!\p"
                         "The shrewd {COLOR RED}Addisamap{COLOR DARK_GRAY} controls life and death in her own terms.\p"
                         "Make sure that you can outdo the healing she can do to herself.\p"
                         "Her minions are of Grass and Ground."
@@ -134,7 +134,7 @@ script HubWorld_EventScript_Archie {
             break
         case 2:
             msgbox(format(
-                "Hm? You want to retrain your Pokémon? Well, it's quite simple.\p"
+                "{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}Hm? You want to retrain your Pokémon? Well, it's quite simple.\p"
                 "Each Pokémon has its own well of strength it can draw from.\l"
                 "Let's call these “effort values”.\p"
                 "As their trainer, your responsibility is to train them in the best possible way.\p"
@@ -151,16 +151,16 @@ script HubWorld_EventScript_Archie {
 
 script HubWorld_EventScript_NessereignWarp {
     if(!flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)){
-        msgbox(format("It's a marble pedestal.\nIt's missing a statue.\pTouch it?"), MSGBOX_YESNO)
+        msgbox(format("It's a marble pedestal.\nIt's missing a statue.\pTouch it?"))
+        dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
         closemessage
-        if(var(VAR_RESULT) == YES) {
+        if(var(VAR_RESULT) == 0) {
             setrespawn(HEAL_LOCATION_DEMON_LAIRS_NESSIE)
             playse(SE_LAVARIDGE_FALL_WARP)
             warpwhitefade(MAP_DEMON_LAIRS_NESSIE, 6, 8)
         } else {}
     } else {
         msgbox("No need to go back.")
-        waitmessage
         closemessage
     }
     end
@@ -168,16 +168,16 @@ script HubWorld_EventScript_NessereignWarp {
 
 script HubWorld_EventScript_GreehaseetWarp {
     if(!flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)){
-        msgbox(format("It's a corroded, porous stone tablet.\pTouch it?"), MSGBOX_YESNO)
+        msgbox(format("It's a corroded, porous stone tablet.\pTouch it?"))
+        dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
         closemessage
-        if(var(VAR_RESULT) == YES) {
+        if(var(VAR_RESULT) == 0) {
             setrespawn(HEAL_LOCATION_DEMON_LAIRS_GREEHASEET)
             playse(SE_LAVARIDGE_FALL_WARP)
             warpwhitefade(MAP_DEMON_LAIRS_GREEHASEET, 9, 19)
         } else {}
     } elif(flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)) {
         msgbox("No need to go back.")
-        waitmessage
         closemessage
     } else {
     }
@@ -186,16 +186,16 @@ script HubWorld_EventScript_GreehaseetWarp {
 
 script HubWorld_EventScript_SapprilonWarp {
     if(!flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)){
-        msgbox(format("It's a wooden box with a waxen disc on it, spinning under a needle.\pTouch it?"), MSGBOX_YESNO)
+        msgbox(format("It's a wooden box with a waxen disc on it, spinning under a needle.\pTouch it?"))
+        dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
         closemessage
-        if(var(VAR_RESULT) == YES) {
+        if(var(VAR_RESULT) == 0) {
             setrespawn(HEAL_LOCATION_DEMON_LAIRS_SAPPRILON)
             playse(SE_LAVARIDGE_FALL_WARP)
             warpwhitefade(MAP_DEMON_LAIRS_SAPPRILON, 6, 12)
         } else {}
     } elif(flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)) {
         msgbox("No need to go back.")
-        waitmessage
         closemessage
     } else {
     }
@@ -204,16 +204,16 @@ script HubWorld_EventScript_SapprilonWarp {
 
 script HubWorld_EventScript_AddisamapWarp {
     if(var(VAR_DEMON_LORD_PROGRESS) == 3){
-        msgbox(format("It's an enormous globe: a diorama\nof {COLOR RED}R'mhakking{COLOR DARK_GRAY}.\pTouch it?"), MSGBOX_YESNO)
+        msgbox(format("It's an enormous globe: a diorama\nof {COLOR RED}R'mhakking{COLOR DARK_GRAY}.\pTouch it?"))
+        dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
         closemessage
-        if(var(VAR_RESULT) == YES) {
+        if(var(VAR_RESULT) == 0) {
             setrespawn(HEAL_LOCATION_DEMON_LAIRS_ADDISAMAP)
             playse(SE_LAVARIDGE_FALL_WARP)
             warpwhitefade(MAP_DEMON_LAIRS_ADDISAMAP, 12, 27)
         }
     } elif(flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_ADDISAMAP) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)) {
         msgbox("No need to go back.")
-        waitmessage
         closemessage
     } else {
     }
@@ -234,7 +234,7 @@ script HubWorld_EventScript_Maxie {
 
     speakername("Archie")
     msgbox(format(
-        "Old Archie! Old Archie! I did it!\nI've defeated all four of them!"
+        "{CREATE_MUGSHOT MUGSHOT_MC 0}Old Archie! Old Archie! I did it!\nI've defeated all four of them!"
     ))
     closemessage
 
@@ -242,7 +242,7 @@ script HubWorld_EventScript_Maxie {
 
     speakername("Old Archie")
     msgbox(format(
-        "Whaddyawant, a medal or something?\nYour job ain't done! There's one left!\p"
+        "{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}Whaddyawant, a medal or something?\nYour job ain't done! There's one left!\p"
         "The one who reigns above all.\nHis power has no equal.\p"
         "You have to be as prepared as possible to stand a chance against him.\p"
         "We should go back home, and get a couple more-"
@@ -262,13 +262,13 @@ script HubWorld_EventScript_Maxie {
     applymovement(LOCALID_PLAYER, moves(face_down))
 
     speakername("Archie")
-    msgbox("…Huh?")
+    msgbox("{CREATE_MUGSHOT MUGSHOT_MC 0}…Huh?")
     closemessage
 
     playse(SE_PIN)
     applymovement(LOCALID_HUBWORLD_ARCHIE, moves(emote_sweat))
     speakername("Old Archie")
-    msgbox("Oh no no no…")
+    msgbox("{CREATE_MUGSHOT MUGSHOT_OLD_ARCHIE 0}Oh no no no…")
     waitmessage
     closemessage
 

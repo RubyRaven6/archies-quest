@@ -6,9 +6,10 @@ script ArchiesHouse_Backyard_EventScripts_Sceptile {
     faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Sceptile is relaxing under the shade.\pMake him step into the light?"), MSGBOX_YESNO)
+		msgbox(format("Sceptile is relaxing under the shade.\pMake him step into the light?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_SCEPTILE, 50, abilityNum=1, gender=MALE, move1=MOVE_GRASSY_GLIDE,move2=MOVE_NIGHT_SLASH,move3=MOVE_LEAF_BLADE,move4=MOVE_SHED_TAIL, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_FOREST_SCEPTILE)
 			msgbox("Sceptile joined your party!")
@@ -29,9 +30,10 @@ script ArchiesHouse_Backyard_EventScripts_Breloom {
     faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Breloom is munching on some grass.\pOffer some of your own grass?"), MSGBOX_YESNO)
+		msgbox(format("Breloom is munching on some grass.\pOffer some of your own grass?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_BRELOOM, 50, abilityNum=2, gender=FEMALE, move1=MOVE_CUT, move2=MOVE_MACH_PUNCH,move3=MOVE_SPORE,move4=MOVE_HEADBUTT, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_FOREST_BRELOOM)
 			msgbox("Breloom joined your party!")
@@ -52,9 +54,10 @@ script ArchiesHouse_Backyard_EventScripts_Hatterene {
     faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Hatterene is staring at you menacingly.\pBeg for mercy?"), MSGBOX_YESNO)
+		msgbox(format("Hatterene is staring at you menacingly.\pBeg for mercy?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_HATTERENE, 50, abilityNum=2, gender=FEMALE, move1=MOVE_PSYCHO_CUT, move2=MOVE_FOCUS_BLAST,move3=MOVE_MOONBLAST,move4=MOVE_DISARMING_VOICE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_FOREST_HATTERENE)
 			msgbox("Hatterene joined your party!")
@@ -75,9 +78,10 @@ script ArchiesHouse_Backyard_EventScripts_Altaria {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Altaria is rustling through the grass joyously.\pAsk her nicely if she wants to join you?"), MSGBOX_YESNO)
+		msgbox(format("Altaria is rustling through the grass joyously.\pAsk her nicely if she wants to join you?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_ALTARIA, 50, abilityNum=0, gender=FEMALE, move1=MOVE_EARTHQUAKE, move2=MOVE_PLAY_NICE, move3=MOVE_DRILL_PECK, move4=MOVE_DRAGON_CLAW, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_FOREST_ALTARIA)
 			msgbox("Altaria joined your party!")

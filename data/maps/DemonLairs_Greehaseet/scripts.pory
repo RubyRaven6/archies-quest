@@ -17,21 +17,22 @@ script DemonLairs_Greehaseet_EventScript_Door {
 			"“Five for Five! Don't forget!”\p"
 			"Three shells are embedded onto the door, brimming with pearls.\p"
 			"Attempt to unlock the door?"
-			), MSGBOX_YESNO)
+			))
+			dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 			closemessage
-		if(var(VAR_RESULT) == YES){
+		if(var(VAR_RESULT) == 0){
 			call(DemonLairs_Greehaseet_EventScript_Puzzle)
 		}
 	} elif (!flag(FLAG_GREEHASEET_PUZZLE_SOLVED)){
 		call(DemonLairs_Greehaseet_EventScript_Puzzle)
 	} else {
-		msgbox("The door is open!\nEnter?", MSGBOX_YESNO)
+		msgbox("The door is open!\nEnter?")
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
 
-		if(var(VAR_RESULT) == YES) {
+		if(var(VAR_RESULT) == 0) {
 			warp(MAP_DEMON_LAIRS_GREEHASEET_INTERIOR, 8, 16)
 		}
-		closemessage
 	}
 	releaseall
 	end

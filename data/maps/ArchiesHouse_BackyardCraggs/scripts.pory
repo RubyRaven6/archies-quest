@@ -7,9 +7,10 @@ script ArchiesHouse_Backyard_EventScripts_Lucario {
 
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Lucario is just standing there, aura farming.\pShow him more aura?"), MSGBOX_YESNO)
+		msgbox(format("Lucario is just standing there, aura farming.\pShow him more aura?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_LUCARIO, 50, abilityNum=2, gender=MALE, move1=MOVE_AURA_SPHERE, move2=MOVE_FEINT, move3=MOVE_METAL_CLAW, move4=MOVE_VACUUM_WAVE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_CRAG_LUCARIO)
 			msgbox("Lucario joined your party!")
@@ -30,9 +31,10 @@ script ArchiesHouse_Backyard_EventScripts_Blaziken {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Blaziken is trying to beat his personal best.\pGive him an even loftier goal?"), MSGBOX_YESNO)
+		msgbox(format("Blaziken is trying to beat his personal best.\pGive him an even loftier goal?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_BLAZIKEN, 50, abilityNum=2, gender=MALE, move1=MOVE_FIRE_PUNCH, move2=MOVE_HIGH_JUMP_KICK, move3=MOVE_THUNDER_PUNCH, move4=MOVE_DETECT, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_CRAG_BLAZIKEN)
 			msgbox("Blaziken joined your party!")
@@ -53,9 +55,10 @@ script ArchiesHouse_Backyard_EventScripts_Tinkaton {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Tinkaton seems to be practicing her aims with stone.\pHave her shoot for the sky?"), MSGBOX_YESNO)
+		msgbox(format("Tinkaton seems to be practicing her aims with stone.\pHave her shoot for the sky?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_TINKATON, 50, abilityNum=2, gender=FEMALE, move1=MOVE_SMACK_DOWN, move2=MOVE_GIGATON_HAMMER, move3=MOVE_PLAY_ROUGH, move4=MOVE_FAKE_OUT, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_CRAG_TINKATON)
 			msgbox("Tinkaton joined your party!")
@@ -76,9 +79,10 @@ script ArchiesHouse_Backyard_EventScripts_Salamence {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Salamence seems to be antsy, looking at you excitedly.\pMake a bad decision together?"), MSGBOX_YESNO)
+		msgbox(format("Salamence seems to be antsy, looking at you excitedly.\pMake a bad decision together?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_SALAMENCE, 50, abilityNum=2, gender=MALE, move1=MOVE_DRAGON_CLAW, move2=MOVE_DUAL_WINGBEAT, move3=MOVE_IRON_TAIL, move4=MOVE_SWAGGER, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_CAVE_SALAMENCE)
 			msgbox("Salamence joined your party!")

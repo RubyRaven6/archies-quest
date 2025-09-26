@@ -7,9 +7,10 @@ mapscripts ArchiesHouse_BackyardBeach_MapScripts {
 }
 
 script ArchiesHouse_BackyardBeach_Boat {
-    msgbox(("It's a boat to your small island. Take it?"), MSGBOX_YESNO)
+    msgbox(("It's a boat to your small island.\nTake it?"))
+	dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Take the boat", "Stay on shore")
     closemessage
-    if(var(VAR_RESULT) == YES){
+    if(var(VAR_RESULT) == 0){
         warp(MAP_ARCHIES_HOUSE_BACKYARD_SEA, 7, 4)
     } else {
         msgbox(("You decide to sail another day."), MSGBOX_DEFAULT)
@@ -22,9 +23,10 @@ script ArchiesHouse_Backyard_EventScripts_Swampert {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Swampert is building a sandcastle.\pGive her a bigger project?"), MSGBOX_YESNO)
+		msgbox(format("Swampert is building a sandcastle.\pGive her a bigger project?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_SWAMPERT, 50, abilityNum=2, gender=FEMALE, move1=MOVE_MUDDY_WATER, move2=MOVE_MUD_SHOT, move3=MOVE_HAMMER_ARM, move4=MOVE_REST, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_BEACH_SWAMPERT)
 			msgbox("Swampert joined your party!")
@@ -45,9 +47,10 @@ script ArchiesHouse_Backyard_EventScripts_AlolanRaichu {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Raichu is practicing its gnarly rip on his sick board.\pShow him total posers to wipe out?"), MSGBOX_YESNO)
+		msgbox(format("Raichu is practicing its gnarly rip on his sick board.\pShow him total posers to wipe out?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_RAICHU_ALOLA, 50, abilityNum=2, gender=MALE, move1=MOVE_SURF, move2=MOVE_ELECTRO_BALL, move3=MOVE_NASTY_PLOT, move4=MOVE_AGILITY, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_BEACH_RAICHU)
 			msgbox("Raichu joined your party!")
@@ -68,9 +71,10 @@ script ArchiesHouse_Backyard_EventScripts_Salazzle {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Salazzle is pleasantly warming herself in the sun.\pAnnoy her?"), MSGBOX_YESNO)
+		msgbox(format("Salazzle is pleasantly warming herself in the sun.\pAnnoy her?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_SALAZZLE, 50, abilityNum=2, gender=FEMALE, move1=MOVE_INCINERATE, move2=MOVE_VENOSHOCK, move3=MOVE_TOXIC, move4=MOVE_DRAGON_DANCE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_BEACH_SALAZZLE)
 			msgbox("Salazzle joined your party!")
@@ -91,9 +95,10 @@ script ArchiesHouse_Backyard_EventScripts_HisuianGoodra {
 	faceplayer
     getpartysize
 	if(var(VAR_RESULT) < 4){
-		msgbox(format("Goodra has been going to the shore for the past two weeks now.\pAsk her to follow you instead?"), MSGBOX_YESNO)
+		msgbox(format("Goodra has been going to the shore for the past two weeks now.\pAsk her to follow you instead?"))
+		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
-		if(var(VAR_RESULT) == TRUE){
+		if(var(VAR_RESULT) == 0){
 			givemon(SPECIES_GOODRA_HISUI, 50, abilityNum=2, gender=FEMALE, move1=MOVE_TEARFUL_LOOK, move2=MOVE_DRAGON_BREATH, move3=MOVE_IRON_HEAD, move4=MOVE_CURSE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_BEACH_GOODRA)
 			msgbox("Goodra joined your party!")

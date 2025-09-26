@@ -25,9 +25,10 @@ mapscripts DemonLairs_Nessie_MapScripts{
 
 script DemonLairs_Nessie_EventScript_NessiePuzzle{
     if(!flag(FLAG_NESSIE_PUZZLE_SOLVED)){
-        msgbox("It's an impressive painting.\nView it closer?", MSGBOX_YESNO)
+        msgbox("It's an impressive painting.\nView it closer?")
+        dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
         closemessage
-        if(var(VAR_RESULT) == YES){
+        if(var(VAR_RESULT) == 0){
             special(OpenNessiePuzzle)
         }
         waitstate
@@ -59,22 +60,24 @@ script DemonLairs_Nessie_EventScript_NessiePuzzle{
             autosave
         }
     } else {
-        msgbox(format("Enter the antechamber?"), MSGBOX_YESNO)
+        msgbox(format("Enter the antechamber?"))
+        dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
         closemessage
-        if(var(VAR_RESULT) == YES) {warp(MAP_DEMON_LAIRS_NESSIE_INTERIOR, 3, 8)}
+        if(var(VAR_RESULT) == 0) {warp(MAP_DEMON_LAIRS_NESSIE_INTERIOR, 3, 8)}
     }
     end
 }
 
 script DemonLairs_Nessie_EventScript_Knife {
     if(flag(FLAG_NESSIE_GOT_DAGGER) == FALSE){
-        msgbox("It's a small dagger.\nTake it?", MSGBOX_YESNO)
-        if(var(VAR_RESULT) == YES){
+        msgbox("It's a small dagger.\nTake it?")
+        dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
+        closemessage
+        if(var(VAR_RESULT) == 0){
             waitmessage
             setflag(FLAG_NESSIE_GOT_DAGGER)
             setmetatile(3, 7, METATILE_NessereignLairPrimary_TableCorner, TRUE)
             special(DrawWholeMapView)
-            closemessage
         }
     } else {
         goto(DemonLairs_Nessie_EventScript_Table)
@@ -87,10 +90,11 @@ script DemonLairs_Nessie_EventScript_Book {
     {
         msgbox(format(
             "It's an ancient tome with pages yellow with age.\p"
-            "There are no words, but merely looking at it makes you feel nauseous.\p"
-            "Continue?"
-        ), MSGBOX_YESNO)
-        if(var(VAR_RESULT) == YES)
+            "There are no words, but merely looking at it makes you feel nauseous."
+        ))
+        dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Keep reading", "Look away")
+        closemessage
+        if(var(VAR_RESULT) == 0)
         {
             msgbox(
                 "You thumb through and find gross\nand disgusting images.\p"
@@ -100,11 +104,8 @@ script DemonLairs_Nessie_EventScript_Book {
                 "It feels like you learned something\nimportant."
             )
             setflag(FLAG_NESSIE_READ_BOOK)
-            waitmessage
             closemessage
         }
-        waitmessage
-        closemessage
     }
     else{
         msgbox(
@@ -114,7 +115,6 @@ script DemonLairs_Nessie_EventScript_Book {
             "Screams screams screams screams screams\nscreams screams screams screams”\p"
             "It's a dizzying tome.\nNo need to see the rest."
         )
-        waitmessage
         closemessage
     }
     end
