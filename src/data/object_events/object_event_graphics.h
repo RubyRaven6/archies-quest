@@ -6,7 +6,7 @@ const u16 gObjectEventPal_RubySapphireBrendan[] = INCBIN_U16("graphics/object_ev
 const u32 gObjectEventPic_CoolArchieNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/cool_archie/walking.4bpp", "graphics/object_events/pics/people/cool_archie/running.4bpp");
 const u16 gObjectEventPal_CoolArchie[] = INCBIN_U16("graphics/object_events/pics/people/cool_archie/walking.gbapal");
 const u32 gObjectEventPic_CoolArchieUnderwater[] = INCBIN_U32("graphics/object_events/pics/people/cool_archie/underwater.4bpp");
-const u16 gObjectEventPal_Maxie[] = INCBIN_U16("graphics/object_events/pics/people/team_magma/maxie.gbapal");
+const u16 gObjectEventPal_Maxie[] = INCBIN_U16("graphics/field_mugshots/maxie.gbapal");
 
 const u32 gObjectEventPic_NessereignHuman[] = INCBIN_U32("graphics/object_events/pics/people/demons/nessereign-human.4bpp");
 const u32 gObjectEventPic_AddisamapHuman[] = INCBIN_U32("graphics/object_events/pics/people/demons/addisamap-human.4bpp");
