@@ -93,3 +93,19 @@ u32 MathUtil_Exponent(u32 x, u32 y)
 
     return result;
 }
+
+u32 MathUtil_Min(s32 x, s32 y)
+{
+    if (x < y) {
+        return x;
+    }
+    return y;
+}
+
+u32 MathUtil_Max(s32 x, s32 y)
+{
+    if (x > y) {
+        return x;
+    }
+    return y;
+}
