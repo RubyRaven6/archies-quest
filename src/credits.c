@@ -433,7 +433,7 @@ void CB2_StartCreditsSequence(void)
     BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
     EnableInterrupts(INTR_FLAG_VBLANK);
     SetVBlankCallback(VBlankCB_Credits);
-    m4aSongNumStart(MUS_CREDITS);
+    m4aSongNumStart(MUS_END);
     SetMainCallback2(CB2_Credits);
     sCreditsData = AllocZeroed(sizeof(struct CreditsData));
 
@@ -672,11 +672,11 @@ static void Task_CreditsTheEnd6(u8 taskId)
             return;
         }
 
-        if (gTasks[taskId].tDelay == 7144)
-            FadeOutBGM(8);
+        // if (gTasks[taskId].tDelay == 7144)
+        //     FadeOutBGM(8);
 
-        if (gTasks[taskId].tDelay == 6840)
-            m4aSongNumStart(MUS_END);
+        // if (gTasks[taskId].tDelay == 6840)
+        //     m4aSongNumStart(MUS_END);
 
         gTasks[taskId].tDelay--;
     }
