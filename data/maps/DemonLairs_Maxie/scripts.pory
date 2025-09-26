@@ -232,7 +232,7 @@ script DemonLairs_Maxie_EventScript_MaxieCutscene {
     speakername("Maxie")
     msgbox(format(
         "HA HA HA HA HA HA!!\p"
-        "You really thought you beat the Gods of this world in one go?\p"
+        "You really thought you beat the Gods of {COLOR RED}Rm'hakking{COLOR DARK_GRAY} in one go?\p"
         "Your petulant rebellion ends here\nand now, boy!"
     ))
     waitmovement(0)
@@ -374,7 +374,7 @@ script DemonLairs_EventScript_Maxie {
 
     special(RemoveCameraObject)
     playse(SE_PC_ON)
-    setmetatile(4, 5, 0x220, FALSE)
+    setmetatile(13, 14, METATILE_SpaceMeteor_MaxiesLair_WarpTile, FALSE)
     special(DrawWholeMapView)
     waitse
 
@@ -384,8 +384,6 @@ script DemonLairs_EventScript_Maxie {
 
     playse(SE_RG_BAG_POCKET)
     addobject(LOCALID_ARCHIE_MAXIES_LAIR)
-    setmetatile(13, 14, METATILE_SpaceMeteor_MaxiesLair_WarpTile, FALSE)
-    special(DrawWholeMapView)
 
     applymovement(LOCALID_ARCHIE_MAXIES_LAIR, moves(delay_16 * 6, walk_right))
     waitmovement(LOCALID_ARCHIE_MAXIES_LAIR)

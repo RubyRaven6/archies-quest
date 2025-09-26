@@ -37,11 +37,22 @@ script ArchiesHouse_EventScript_BuriedInMyBackyard {
 
     delay(60)
 
-    applymovement(LOCALID_OLD_ARCHIE_BACKYARD, moves(walk_in_place_slow_right * 3, walk_up, face_right))
+    applymovement(LOCALID_OLD_ARCHIE_BACKYARD, moves(
+        lock_facing_direction, lock_anim,
+        walk_right,
+        walk_left,
+        walk_right,
+        walk_left,
+        walk_right,
+        walk_left,
+        unlock_facing_direction, unlock_anim
+        walk_up,
+        face_right
+    ))
     playse(SE_M_DIG)
-    delay(24)
+    delay(32)
     playse(SE_M_DIG)
-    delay(24)
+    delay(32)
     playse(SE_M_DIG)
     waitse
     waitmovement(LOCALID_OLD_ARCHIE_BACKYARD)

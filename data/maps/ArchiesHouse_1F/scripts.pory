@@ -100,7 +100,7 @@ script ArchiesHouse_EventScript_BeginningCutscene {
     applymovement(OBJ_FUTUREARCHIE, moves(walk_in_place_fast_right))
     speakername("Old Archie")
     msgbox(format(
-        "No time for lengthy explanations.\n{FONT_SMALL}Wow, I really used to dress like this?{FONT_NORMAL}\l"
+        "No time for lengthy explanations.\n{FONT_SMALL}(Wow, I really used to dress like this?){FONT_NORMAL}\l"
         "Ahem…\p"
         "I'm you from a different future, one where you're free from the {COLOR RED}Bai'Narii{COLOR DARK_GRAY},\Nand I've come here to help you.\lWell, to help me, that is."
     ))

@@ -187,6 +187,8 @@ script DemonLairs_Sapprilon_EventScript_MainComputer {
             waitse
             delay(48)
 
+            playse(SE_LAVARIDGE_FALL_WARP)
+
             warpwhitefade(MAP_DEMONLAIRS_SAPPRILON_INTERIOR, 5, 9)
             waitstate
     }

@@ -112,12 +112,15 @@ script HubWorld_EventScript_Archie {
                         "{COLOR RED}Addisamap{COLOR DARK_GRAY}.\nThe wise brain of the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}.\p"
                         "She watches over them and keeps them in check for their master."
                     ))
-                    waitmessage
                     closemessage
+
+                    playse(SE_PIN)
+                    applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_question_mark, delay_16 * 6))
+                    waitse
                     speakername("Archie")
                     msgbox(format("Wait, aren't there only four {COLOR RED}Bai'Narii{COLOR DARK_GRAY}?"))
-                    waitmessage
                     closemessage
+
                     speakername("Old Archie")
                     msgbox(format(
                         "No, there's one more, behind them all.\nBut first things first!\p"
@@ -201,7 +204,7 @@ script HubWorld_EventScript_SapprilonWarp {
 
 script HubWorld_EventScript_AddisamapWarp {
     if(var(VAR_DEMON_LORD_PROGRESS) == 3){
-        msgbox(format("It's an enormous globe: a diorama\nof R'mhakking.\pTouch it?"), MSGBOX_YESNO)
+        msgbox(format("It's an enormous globe: a diorama\nof {COLOR RED}R'mhakking{COLOR DARK_GRAY}.\pTouch it?"), MSGBOX_YESNO)
         closemessage
         if(var(VAR_RESULT) == YES) {
             setrespawn(HEAL_LOCATION_DEMON_LAIRS_ADDISAMAP)
@@ -226,19 +229,25 @@ script HubWorld_EventScript_Maxie {
 
     applymovement(LOCALID_PLAYER, moves(walk_up * 4))
     waitmovement(0)
+    playse(SE_PIN)
+    applymovement(LOCALID_PLAYER, moves(emote_happy))
+
     speakername("Archie")
-    msgbox("I've defeated all four of them, but…\nthere's one more, right?",MSGBOX_DEFAULT)
-    waitmessage
-    closemessage
-    speakername("Old Archie")
-    msgbox(
-        "Indeed. The one who reigns above all.\nHis power has no equal.\l"
-        "We have to make sure to be as powerful\las possible to take him on.\p"
-        "I think we need to go back to your home,\nand get more-"
-    )
-    waitmessage
+    msgbox(format(
+        "Old Archie! Old Archie! I did it!\nI've defeated all four of them!"
+    ))
     closemessage
 
+    applymovement(LOCALID_HUBWORLD_ARCHIE, moves(walk_in_place_fast_down))
+
+    speakername("Old Archie")
+    msgbox(format(
+        "Whaddyawant, a medal or something?\nYour job ain't done! There's one left!\p"
+        "The one who reigns above all.\nHis power has no equal.\p"
+        "You have to be as prepared as possible to stand a chance against him.\p"
+        "We should go back home, and get a couple more-"
+    ))
+    closemessage
 
     playse(SE_M_THUNDERBOLT2)
 	setvar(VAR_0x8004, 0)  // vertical pan
@@ -250,27 +259,33 @@ script HubWorld_EventScript_Maxie {
 
     delay(48)
 
+    applymovement(LOCALID_PLAYER, moves(face_down))
+
     speakername("Archie")
-    msgbox("…Huh?", MSGBOX_DEFAULT)
-    waitmessage
+    msgbox("…Huh?")
     closemessage
 
+    playse(SE_PIN)
+    applymovement(LOCALID_HUBWORLD_ARCHIE, moves(emote_sweat))
     speakername("Old Archie")
-    msgbox("Oh no…", MSGBOX_DEFAULT)
+    msgbox("Oh no no no…")
     waitmessage
     closemessage
 
-    playse(SE_M_THUNDERBOLT2)
+    playse(SE_M_EARTHQUAKE)
     setvar(VAR_0x8004, 0)  // vertical pan
 	setvar(VAR_0x8005, 4)  // horizontal pan
 	setvar(VAR_0x8006, 6501)  // num shakes
 	setvar(VAR_0x8007, 2)  // shake delay
 	special(ShakeCamera)
+
+    speakername("???")
     msgbox(
-        "I've found you, interlopers.\nYou thought you could hide from me?\l"
-        "You've made a terrible mistake!\p"
-        "Say your prayers, while you can still\nspeak at all!\p"
-        "HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA", MSGBOX_DEFAULT)
+        "I'VE FOUND YOU, INTERLOPERS.\nYOU THOUGHT YOU COULD HIDE FROM ME?\p"
+        "YOU'VE MADE A TERRIBLE MISTAKE!\p"
+        "SAY YOUR PRAYERS…{PAUSE 8}\nWHILE YOU CAN STILL SPEAK AT ALL!\p"
+        "HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA\nHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA"
+    )
     waitmessage
 
     callnative(0)
