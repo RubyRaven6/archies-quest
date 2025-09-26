@@ -66,7 +66,7 @@
 #endif
 
 typedef u16 (*SpecialFunc)(void);
-typedef void (*NativeFunc)(struct ScriptContext *ctx);
+typedef void (*NativeFunc)(struct ScriptContext *);
 
 EWRAM_DATA const u8 *gRamScriptRetAddr = NULL;
 static EWRAM_DATA u32 sAddressOffset = 0; // For relative addressing in vgoto etc., used by saved scripts (e.g. Mystery Event)
