@@ -16965,8 +16965,9 @@ Pic: Sapprilon
 Gender: Male
 Music: Magma
 Party Size: 4
-Double Battle: No
+Double Battle: Yes
 Mugshot: Pink
+Pool Rules: Weather Doubles
 
 Cresselia @ Leftovers
 Ability: Slow Start
@@ -17041,9 +17042,10 @@ Class: Demon Lord
 Pic: Addisamap
 Gender: Male
 Music: Magma
-Double Battle: No
+Double Battle: Yes
 Mugshot: Green
 Party Size: 4
+Pool Rules: Weather Doubles
 
 Sinistcha @ Terrain Extender
 Ability: Heatproof

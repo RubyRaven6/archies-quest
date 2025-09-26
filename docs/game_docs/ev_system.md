@@ -83,8 +83,8 @@ You get a certain number of EVs depending on your level. Each time you level up,
         <td>128</td>
     </tr>
     <tr>
-        <td>TOTAL</td>
-        <td colspan=2>128</td>
+        <td colspan=2 style="text-align:right;">TOTAL</td>
+        <td>128</td>
     </tr>
 </table>
 
