@@ -1109,7 +1109,9 @@ CommonScript_Backyard_EventScripts_FullParty::
 	delay 30
 	msgbox CommonScript_Backyard_EventScripts_FullParty_Text_1
 	closemessage
+	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, CommonScript_Backyard_EventScripts_FullParty_Movement_0
+	waitse
 	end
 
 

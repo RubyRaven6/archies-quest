@@ -71,8 +71,12 @@ script ArchiesHouse_EventScript_BeginningCutscene {
 
     fadescreen(FADE_FROM_WHITE)
 
+    playse(SE_RG_BAG_POCKET)
     clearflag(FLAG_HIDE_ARCHIE)
     addobject(OBJ_FUTUREARCHIE)
+
+    delay(16)
+    waitse
 
     playbgm(MUS_WEATHER_GROUDON, FALSE)
 
@@ -98,7 +102,7 @@ script ArchiesHouse_EventScript_BeginningCutscene {
     msgbox(format(
         "No time for lengthy explanations.\n{FONT_SMALL}Wow, I really used to dress like this?{FONT_NORMAL}\l"
         "Ahem…\p"
-        "I'm you from a different future, one where you're free from the {COLOR RED}Bai'Narii{COLOR DARK_GRAY}, and I've come here to help you.\lWell, to help me, that is."
+        "I'm you from a different future, one where you're free from the {COLOR RED}Bai'Narii{COLOR DARK_GRAY},\Nand I've come here to help you.\lWell, to help me, that is."
     ))
 
     applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))

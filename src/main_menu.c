@@ -39,6 +39,7 @@
 #include "title_screen.h"
 #include "window.h"
 #include "mystery_gift_menu.h"
+#include "m4a.h"
 
 /*
  * Main menu state machine
@@ -1300,6 +1301,9 @@ static void Task_NewGameNoBirchSpeech(u8 taskId)
 
     FreeAllWindowBuffers();
     ResetAllPicSprites();
+
+    m4aSongNumStart(MUS_RG_ENCOUNTER_DEOXYS);
+
     gTasks[taskId].data[0] = 0;
     gTasks[taskId].func = Task_OpenPrologueScreen;
 }
