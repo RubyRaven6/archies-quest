@@ -15,7 +15,7 @@ script ArchiesHouse_Backyard_EventScripts_Ribombee {
 		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
 		if(var(VAR_RESULT) == 0){
-			givemon(SPECIES_RIBOMBEE, 50, abilityNum=2, gender=FEMALE, move1=MOVE_POLLEN_PUFF, move2=MOVE_DAZZLING_GLEAM, move3=MOVE_STUN_SPORE, move4=MOVE_PROTECT, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_RIBOMBEE, 50, abilityNum=1, gender=FEMALE, move1=MOVE_POLLEN_PUFF, move2=MOVE_DAZZLING_GLEAM, move3=MOVE_STUN_SPORE, move4=MOVE_PROTECT, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_GARDEN_RIBOMBEE)
 			msgbox("Ribombee joined your party!")
 			closemessage
@@ -39,7 +39,7 @@ script ArchiesHouse_Backyard_EventScripts_Vileplume {
 		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
 		if(var(VAR_RESULT) == 0){
-			givemon(SPECIES_VILEPLUME, 50, abilityNum=2, gender=MALE, move1=MOVE_GIGA_DRAIN, move2=MOVE_LEECH_SEED, move3=MOVE_SLUDGE_BOMB, move4=MOVE_MOONLIGHT, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_VILEPLUME, 50, abilityNum=1, gender=MALE, move1=MOVE_GIGA_DRAIN, move2=MOVE_LEECH_SEED, move3=MOVE_SLUDGE_BOMB, move4=MOVE_MOONLIGHT, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_GARDEN_VILEPLUME)
 			msgbox("Vileplume joined your party!")
 			closemessage
@@ -87,7 +87,7 @@ script ArchiesHouse_Backyard_EventScripts_Heliolisk {
 		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
 		if(var(VAR_RESULT) == 0){
-			givemon(SPECIES_HELIOLISK, 50, abilityNum=2, gender=MALE, move1=MOVE_EERIE_IMPULSE, move2=MOVE_THUNDER, move3=MOVE_THUNDER_WAVE, move4=MOVE_AGILITY, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_HELIOLISK, 50, abilityNum=0, gender=MALE, move1=MOVE_EERIE_IMPULSE, move2=MOVE_THUNDER, move3=MOVE_THUNDER_WAVE, move4=MOVE_AGILITY, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_GARDEN_HELIOLISK)
 			msgbox("Heliolisk joined your party!")
 			closemessage

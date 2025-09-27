@@ -272,6 +272,7 @@ static const u16 sNewGamePCItems[][2] =
     { ITEM_DRAGON_FANG, 1 },
     { ITEM_BLACK_GLASSES, 1 },
     { ITEM_METAL_COAT, 1 },
+    { ITEM_FAIRY_FEATHER, 1 },
 
     // Choice Items
     { ITEM_CHOICE_BAND, 1 },

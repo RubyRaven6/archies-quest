@@ -27,7 +27,7 @@ script ArchiesHouse_Backyard_EventScripts_Swampert {
 		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
 		if(var(VAR_RESULT) == 0){
-			givemon(SPECIES_SWAMPERT, 50, abilityNum=2, gender=FEMALE, move1=MOVE_MUDDY_WATER, move2=MOVE_MUD_SHOT, move3=MOVE_HAMMER_ARM, move4=MOVE_REST, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_SWAMPERT, 50, abilityNum=1, gender=FEMALE, move1=MOVE_MUDDY_WATER, move2=MOVE_MUD_SHOT, move3=MOVE_HAMMER_ARM, move4=MOVE_REST, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_BEACH_SWAMPERT)
 			msgbox("Swampert joined your party!")
 			closemessage
@@ -75,7 +75,7 @@ script ArchiesHouse_Backyard_EventScripts_Salazzle {
 		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
 		if(var(VAR_RESULT) == 0){
-			givemon(SPECIES_SALAZZLE, 50, abilityNum=2, gender=FEMALE, move1=MOVE_INCINERATE, move2=MOVE_VENOSHOCK, move3=MOVE_TOXIC, move4=MOVE_DRAGON_DANCE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_SALAZZLE, 50, abilityNum=0, gender=FEMALE, move1=MOVE_INCINERATE, move2=MOVE_VENOSHOCK, move3=MOVE_TOXIC, move4=MOVE_DRAGON_DANCE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_BEACH_SALAZZLE)
 			msgbox("Salazzle joined your party!")
 			closemessage
@@ -99,7 +99,7 @@ script ArchiesHouse_Backyard_EventScripts_HisuianGoodra {
 		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
 		if(var(VAR_RESULT) == 0){
-			givemon(SPECIES_GOODRA_HISUI, 50, abilityNum=2, gender=FEMALE, move1=MOVE_TEARFUL_LOOK, move2=MOVE_DRAGON_BREATH, move3=MOVE_IRON_HEAD, move4=MOVE_CURSE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_GOODRA_HISUI, 50, abilityNum=1, gender=FEMALE, move1=MOVE_TEARFUL_LOOK, move2=MOVE_DRAGON_BREATH, move3=MOVE_IRON_HEAD, move4=MOVE_CURSE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_BEACH_GOODRA)
 			msgbox("Goodra joined your party!")
 			closemessage
