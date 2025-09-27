@@ -187,6 +187,9 @@ script DemonLairs_EventScript_Sapprilon {
 
 script DemonLairs_EventScript_SapprilonsPC {
     lock
+    msgbox("Hmm… seems that this machine can also play music.", MSGBOX_DEFAULT)
+    waitmessage
+    closemessage
     playse(SE_SWITCH)
     waitse
 
@@ -202,6 +205,17 @@ script DemonLairs_EventScript_SapprilonsPC {
             playbgm(MUS_VS_AQUA_MAGMA, FALSE)
     }
 
+    release
+}
+
+script DemonLairs_EventScript_SapprilonsLibrary {
+    lock
+    msgbox(format("You see countless disks with different covers adorning them in the shelves.\p"
+                "Pokemon_R/S/E_Remix:_Abandoned_Ship_ytmp3.mp3\p"
+                "GoodKidMaadCity_HighQualityRip_BackseatFreestyle\p"
+                "Pokemon_RSE_-_Hideout_(MIDI_Brass_Band_Cover)/.mp3\p"), MSGBOX_DEFAULT)
+    waitmessage
+    closemessage
     release
 }
 
