@@ -164,7 +164,7 @@ script DemonLairs_Sapprilon_EventScript_MainComputer {
     dynmultipush("DISKS", 1)
     dynmultipush("PRINTER", 2)
     if(flag(FLAG_SAPPRILON_PUZZLE_SOLVED)){dynmultipush("TRANSPORT", 3)}
-    dynmultistack(16, 0, FALSE, 10, FALSE, 0, DYN_MULTICHOICE_CB_NONE)
+    dynmultistack(20, 0, FALSE, 10, FALSE, 0, DYN_MULTICHOICE_CB_NONE)
 
     switch(var(VAR_RESULT)){
         case 0:
@@ -287,7 +287,7 @@ script(local) DemonLairs_ItemChecker {
 
 script(local) DemonLairs_DiskInsertPuzzle {
     call(DemonLairs_ItemChecker)
-    dynmultichoice(16, 0, FALSE, 4, 0, DYN_MULTICHOICE_CB_NONE, "Insert Black disk", "Insert Yellow disk", "Insert Cyan disk", "Insert Magenta disk")
+    dynmultichoice(17, 0, FALSE, 4, 0, DYN_MULTICHOICE_CB_NONE, "Insert Black disk", "Insert Yellow disk", "Insert Cyan disk", "Insert Magenta disk")
     if(var(VAR_TEMP_1) == 1 || var(VAR_TEMP_2) == 1 || var(VAR_TEMP_3) == 1 || var(VAR_TEMP_4) == 1)
     {
         switch(var(VAR_RESULT)){
