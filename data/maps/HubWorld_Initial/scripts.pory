@@ -48,7 +48,7 @@ mapscripts HubWorld_Initial_MapScripts {
             applymovement(LOCALID_HUBWORLD_ARCHIE, moves(walk_in_place_fast_down))
             applymovement(OBJ_EVENT_ID_PLAYER, moves(delay_16 * 2, face_up))
             msgbox(format(
-                "Well then, break a leg! I'll just be waiting here, doing nothing, I mean, surveiling the area."
+                "Well then, break a leg! If you need any help or hints, I'll just be waiting here, doing nothing, I mean, surveiling the area."
             ))
             closemessage
 
