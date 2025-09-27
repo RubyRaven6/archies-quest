@@ -16968,6 +16968,7 @@ Party Size: 4
 Double Battle: Yes
 Mugshot: Pink
 Pool Rules: Weather Doubles
+AI: Smart Trainer, Prediction
 
 Cresselia @ Leftovers
 Ability: Slow Start
@@ -17046,6 +17047,7 @@ Double Battle: Yes
 Mugshot: Green
 Party Size: 4
 Pool Rules: Weather Doubles
+AI: Smart Trainer, Prediction
 
 Sinistcha @ Terrain Extender
 Ability: Heatproof
@@ -17119,6 +17121,7 @@ Pic: Magma Leader Maxie
 Gender: Male
 Music: Magma
 Double Battle: Yes
+AI: Smart Trainer, Prediction, Assumption
 
 Nessereign @ Ability Shield
 Ability: Protean
