@@ -13,7 +13,7 @@ mapscripts HubWorld_Initial_MapScripts {
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_TEMP_0, 0 {
-            if(var(VAR_DEMON_LORD_PROGRESS) == 4){autosave}
+            if(var(VAR_DEMON_LORD_PROGRESS) == 4){}else{autosave}
             callnative(LevelMonsToCap)
             special(HealPlayerParty)
             setvar(VAR_TEMP_0, 1)
