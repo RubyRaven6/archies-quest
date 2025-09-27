@@ -11,7 +11,7 @@ script ArchiesHouse_Backyard_EventScripts_Lucario {
 		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
 		if(var(VAR_RESULT) == 0){
-			givemon(SPECIES_LUCARIO, 50, abilityNum=2, gender=MALE, move1=MOVE_AURA_SPHERE, move2=MOVE_FEINT, move3=MOVE_METAL_CLAW, move4=MOVE_VACUUM_WAVE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_LUCARIO, 50, abilityNum=1, gender=MALE, move1=MOVE_AURA_SPHERE, move2=MOVE_FEINT, move3=MOVE_METAL_CLAW, move4=MOVE_VACUUM_WAVE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_CRAG_LUCARIO)
 			msgbox("Lucario joined your party!")
 			closemessage
@@ -59,7 +59,7 @@ script ArchiesHouse_Backyard_EventScripts_Tinkaton {
 		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
 		if(var(VAR_RESULT) == 0){
-			givemon(SPECIES_TINKATON, 50, abilityNum=2, gender=FEMALE, move1=MOVE_SMACK_DOWN, move2=MOVE_GIGATON_HAMMER, move3=MOVE_PLAY_ROUGH, move4=MOVE_FAKE_OUT, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_TINKATON, 50, abilityNum=0, gender=FEMALE, move1=MOVE_SMACK_DOWN, move2=MOVE_GIGATON_HAMMER, move3=MOVE_PLAY_ROUGH, move4=MOVE_FAKE_OUT, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_CRAG_TINKATON)
 			msgbox("Tinkaton joined your party!")
 			closemessage

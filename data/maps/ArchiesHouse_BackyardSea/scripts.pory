@@ -75,7 +75,7 @@ script ArchiesHouse_Backyard_EventScripts_Ceruledge {
 		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
 		if(var(VAR_RESULT) == 0){
-			givemon(SPECIES_CERULEDGE, 50, abilityNum=2, gender=FEMALE, move1=MOVE_BITTER_BLADE, move2=MOVE_SHADOW_SNEAK, move3=MOVE_SOLAR_BLADE, move4=MOVE_SWORDS_DANCE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_CERULEDGE, 50, abilityNum=1, gender=FEMALE, move1=MOVE_BITTER_BLADE, move2=MOVE_SHADOW_SNEAK, move3=MOVE_SOLAR_BLADE, move4=MOVE_SWORDS_DANCE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_SEA_CERULEDGE)
 			msgbox("Ceruledge joined your party!")
 			closemessage

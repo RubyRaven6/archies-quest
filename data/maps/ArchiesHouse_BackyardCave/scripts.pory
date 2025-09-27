@@ -11,7 +11,7 @@ script ArchiesHouse_Backyard_EventScripts_Excadrill {
 		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
 		if(var(VAR_RESULT) == 0){
-			givemon(SPECIES_EXCADRILL, 50, abilityNum=2, gender=MALE, move1=MOVE_EARTHQUAKE, move2=MOVE_METAL_CLAW, move3=MOVE_DRILL_RUN, move4=MOVE_CRUSH_CLAW, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_EXCADRILL, 50, abilityNum=0, gender=MALE, move1=MOVE_EARTHQUAKE, move2=MOVE_METAL_CLAW, move3=MOVE_DRILL_RUN, move4=MOVE_CRUSH_CLAW, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_CAVE_EXCADRILL)
 			msgbox("Excadrill joined your party!")
 			closemessage
@@ -35,7 +35,7 @@ script ArchiesHouse_Backyard_EventScripts_Galvantula {
 		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
 		if(var(VAR_RESULT) == 0){
-			givemon(SPECIES_GALVANTULA, 50, abilityNum=2, gender=FEMALE, move1=MOVE_THUNDER, move2=MOVE_STICKY_WEB, move3=MOVE_BUG_BUZZ, move4=MOVE_QUIVER_DANCE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_GALVANTULA, 50, abilityNum=0, gender=FEMALE, move1=MOVE_THUNDER, move2=MOVE_STICKY_WEB, move3=MOVE_BUG_BUZZ, move4=MOVE_QUIVER_DANCE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_CAVE_GALVANTULA)
 			msgbox(" joined your party!")
 			closemessage
@@ -59,7 +59,7 @@ script ArchiesHouse_Backyard_EventScripts_Garganacl {
 		dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
 		closemessage
 		if(var(VAR_RESULT) == 0){
-			givemon(SPECIES_GARGANACL, 50, abilityNum=2, gender=FEMALE, move1=MOVE_HAMMER_ARM, move2=MOVE_SALT_CURE, move3=MOVE_STEALTH_ROCK, move4=MOVE_ROCK_SLIDE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
+			givemon(SPECIES_GARGANACL, 50, abilityNum=0, gender=FEMALE, move1=MOVE_HAMMER_ARM, move2=MOVE_SALT_CURE, move3=MOVE_STEALTH_ROCK, move4=MOVE_ROCK_SLIDE, hpIv=31, atkIv=31, defIv=31, speedIv=31, spAtkIv=31, spDefIv=31)
 			removeobject(LOCALID_BACKYARD_CAVE_GARGANACL)
 			msgbox("Garganacl joined your party!")
 			closemessage

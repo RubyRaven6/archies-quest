@@ -15,8 +15,8 @@ Required fields for trainers:
     - Name
     - Pic
 Optional (but still recommended) fields for trainers:
-    - Class (if not specified, PkMn Trainer will be used)
-    - Gender (Male/Female, affects random gender weights of party if not specified)
+    - Class (if not specified / PkMn Trainer will be used)
+    - Gender (Male/Female / affects random gender weights of party if not specified)
     - Music
     - Items (Some Item / Another Item / Third Item)
             (Can also be specified with ITEM_SOME_ITEM)
@@ -24,15 +24,15 @@ Optional (but still recommended) fields for trainers:
     - AI (AI Flag / Another Flag / Third Flag / ...
           see "include/constants/battle_ai.h" for all flags)
     - Mugshot (enable Mugshots during battle transition
-               set to one of Purple, Green, Pink, Blue or Yellow)
+               set to one of Purple / Green / Pink / Blue or Yellow)
     - Starting Status (see "include/constants/battle.h" for values)
 
 Pokemon are then specified using the Showdown Export format.
-If a field is not specified, it will use its default value.
+If a field is not specified / it will use its default value.
 
 Required fields for Pokemon:
     - Species (Either as SPECIES_ABRA or Abra)
-      This line also specifies Gender, Nickname and Held item.
+      This line also specifies Gender / Nickname and Held item.
       Alfred (Abra) (M) @ Eviolite
       Roberta (SPECIES_ABRA) (F) @ ITEM_CHOICE_SPECS
       Both lines are valid. Gender (M) or (F) must use a capital letter.
@@ -40,24 +40,24 @@ Required fields for Pokemon:
       With narrow font it's increased to 12. Longer strings will be silently shortened.
 
 Optional fields for Pokemon:
-    - Level (Number between 1 and 100, defaults to 100)
+    - Level (Number between 1 and 100 / defaults to 100)
     - Ability (Ability Name or ABILITY_ABILITY_NAME)
-    - IVs (0 HP / 1 Atk / 2 Def / 3 SpA / 4 SpD / 5 Spe, defaults to all 31)
+    - IVs (0 HP / 1 Atk / 2 Def / 3 SpA / 4 SpD / 5 Spe / defaults to all 31)
           (Order does not matter)
-    - EVs (252 HP / 128 Spe / 48 Def, defaults to all 0, is not capped at 512 total)
+    - EVs (252 HP / 128 Spe / 48 Def / defaults to all 0 / is not capped at 512 total)
           (Order does not matter)
-    - Ball (Poke Ball or ITEM_POKE_BALL, defaults to Poke Ball)
+    - Ball (Poke Ball or ITEM_POKE_BALL / defaults to Poke Ball)
     - Happiness (Number between 1 and 255)
-    - Nature (Rash or NATURE_RASH, defaults to Hardy)
-    - Shiny (Yes/No, defaults to No)
-    - Dynamax Level (Number between 0 and 10, default 10, also sets "shouldDynamax" to True)
-    - Gigantamax (Yes/No, sets to Gigantamax factor)
-                 (doesn't do anything to Pokemon without a Gigantamax form, also sets "shouldDynamax" to True)
-    - Tera Type (Set to a Type, either Fire or TYPE_FIRE, also sets "shouldTerastal" to True)
-Moves are defined with a - (dash) followed by a single space, then the move name.
+    - Nature (Rash or NATURE_RASH / defaults to Hardy)
+    - Shiny (Yes/No / defaults to No)
+    - Dynamax Level (Number between 0 and 10 / default 10 / also sets "shouldDynamax" to True)
+    - Gigantamax (Yes/No / sets to Gigantamax factor)
+                 (doesn't do anything to Pokemon without a Gigantamax form / also sets "shouldDynamax" to True)
+    - Tera Type (Set to a Type / either Fire or TYPE_FIRE / also sets "shouldTerastal" to True)
+Moves are defined with a - (dash) followed by a single space / then the move name.
 Either "- Tackle" or "- MOVE_TACKLE" works. One move per line.
 Moves have to be the last lines of a Pokemon.
-If no moves are specified, the Pokemon will use the last 4 moves it learns
+If no moves are specified / the Pokemon will use the last 4 moves it learns
 through levelup at its level.
 
 Default IVs and Level can be changed in the "main" function of tools/trainerproc/main.c
@@ -16856,7 +16856,7 @@ Adamant Nature
 - Knock Off
 
 Porygon-Z @ Choice Specs
-Ability: Normalize
+Ability: Competitive
 Level: 50
 EVs: 63 SpA / 7 Spe
 Adamant Nature
@@ -16968,6 +16968,7 @@ Party Size: 4
 Double Battle: Yes
 Mugshot: Pink
 Pool Rules: Weather Doubles
+AI: Smart Trainer / Prediction
 
 Cresselia @ Leftovers
 Ability: Slow Start
@@ -17046,6 +17047,7 @@ Double Battle: Yes
 Mugshot: Green
 Party Size: 4
 Pool Rules: Weather Doubles
+AI: Smart Trainer / Prediction
 
 Sinistcha @ Terrain Extender
 Ability: Heatproof
@@ -17119,6 +17121,7 @@ Pic: Magma Leader Maxie
 Gender: Male
 Music: Magma
 Double Battle: Yes
+AI: Smart Trainer / Prediction / Assumptions
 
 Nessereign @ Ability Shield
 Ability: Protean

@@ -537,7 +537,7 @@ static void DestroySelector()
 #define SECOND_COLUMN ((8 * 4))
 #define THIRD_COLUMN ((8 * 8))
 #define STARTING_X 60
-#define STARTING_Y 18
+#define STARTING_Y 19
 
 struct MonPrintData {
     u16 x;
