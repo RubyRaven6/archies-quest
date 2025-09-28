@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - dev
   pull_request:
 
 jobs:
@@ -41,13 +42,13 @@ jobs:
           sudo mv tools/poryscript-linux/font_config.json tools/poryscript/
           sudo chmod +x tools/poryscript/poryscript
           sudo rm -rf tools/poryscript-linux.zip
-          sudo rm -rf tools/poryscript-linux  
+          sudo rm -rf tools/poryscript-linux
 
       - name: ROM
         env:
           COMPARE: 0
         run: make -j${nproc} -O all
-        
+
       - name: LTO
         run: |
           make tidy
@@ -59,4 +60,3 @@ jobs:
           TEST: 1
         run: |
           make -j${nproc} check
-
