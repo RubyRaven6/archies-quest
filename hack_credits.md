@@ -6,7 +6,7 @@ This section is meant to show the different areas of work made between Ruby and 
 | Ruby                       | Eva                                                                                      |
 |----------------------------|------------------------------------------------------------------------------------------|
 | EV System, code and design | All Demon Lord Overworld and Trainer Sprites (Human, Demon)                              |
-| Greehaseet Puzzle Code     | Archie Sprites (Overworld for Old  and Young, Young Archie Backsprite  and Front Sprite) |
+| Greehaseet Puzzle Code     | Archie Sprites (Overworld for Old  and Young, Young Archie Backsprite  and Front Sprite), Greehaseet Puzzle Code |
 
 ## Tilesets
 **Fence in Archie's Backyard**: KyuZee<br>
@@ -149,6 +149,7 @@ Insertable format: Rahtak
 **Shake Movement Action**: [Jamie Foster](https://github.com/FosterProgramming/pokeemerald-expansion/tree/movement_action_shake)
 **Mon Levelling Code**: [Hedara](https://github.com/hedara90)
 **Porylive**: [Teon](https://github.com/Porylive/porylive)
+**Starter Mon Give Code**: [khbsd](https://github.com/khbsd)
 
 ## Battle and Balance
 **Slow Start Cresselia, Sand Spit Palossand, Corrosion Toxapex, and Merciless Salazzle**: [x_bell](https://youtu.be/CCu-Q-5mxec?si=ij8UNkm-pHCtMSvX)
