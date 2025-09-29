@@ -105,10 +105,15 @@
 #define FLAG_DEMON_FORM_SAPPRILON       0x68  // Hides Demon Form Sapprilon
 #define FLAG_DEMON_FORM_ADDISAMAP       0x71  // Hides Demon Form Addisamap
 
-#define FLAG_SKIP_MAXIE_CUTSCENE        0x4B // Unused Flag
-#define FLAG_FIRST_TIME_AUTOSAVE        0x4D // Unused Flag
+#define FLAG_SKIP_MAXIE_CUTSCENE        0x4B
+#define FLAG_FIRST_TIME_AUTOSAVE        0x4D
 #define FLAG_ARCHIE_TUTORIALMODE        0x4E // Tracks when Archie in Hub World; is in tutorial mode when set
 #define FLAG_TOGGLE_WATER_INTERACT      0x4F // When set, allows player to interact with OW Events in water
+
+#define FLAG_CONSISTENT_POOLS                0x64 // Enables/disables consistent pools for TPP
+#define FLAG_MOSSDEEP_GYM_SWITCH_2           0x65 //
+#define FLAG_MOSSDEEP_GYM_SWITCH_3           0x66 //
+#define FLAG_MOSSDEEP_GYM_SWITCH_4           0x67 //
 
 // Scripts
 #define FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL  0x50
@@ -130,11 +135,6 @@
 #define FLAG_MET_TEAM_AQUA_HARBOR            0x61
 #define FLAG_TV_EXPLAINED                    0x62
 #define FLAG_MAUVILLE_GYM_BARRIERS_STATE     0x63
-#define FLAG_MOSSDEEP_GYM_SWITCH_1           0x64 // Leftover from the RS version of Mossdeep Gym, functionally unused
-#define FLAG_MOSSDEEP_GYM_SWITCH_2           0x65 //
-#define FLAG_MOSSDEEP_GYM_SWITCH_3           0x66 //
-#define FLAG_MOSSDEEP_GYM_SWITCH_4           0x67 //
-
 
 
 #define FLAG_OCEANIC_MUSEUM_MET_REPORTER     0x69
