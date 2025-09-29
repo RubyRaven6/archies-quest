@@ -4640,6 +4640,16 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/DemonLairs_Sapprilon_Interior/border.bin",
       "blockdata_filepath": "data/layouts/DemonLairs_Sapprilon_Interior/map.bin"
+    },
+    {
+      "id": "LAYOUT_HUB_WORLD_POSTGAME",
+      "name": "HubWorld_Postgame_Layout",
+      "width": 17,
+      "height": 17,
+      "primary_tileset": "gTileset_HubWorld",
+      "secondary_tileset": "gTileset_EliteFour",
+      "border_filepath": "data/layouts/HubWorld_Postgame/border.bin",
+      "blockdata_filepath": "data/layouts/HubWorld_Postgame/map.bin"
     }
   ]
 }
