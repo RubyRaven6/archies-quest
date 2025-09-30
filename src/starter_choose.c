@@ -729,7 +729,7 @@ static void SpriteCB_StarterPokemon(struct Sprite *sprite)
 void CreateAndGiveStarterMon(u32 species)
 {
     struct Pokemon mon;
-    CreateMon(&mon, species, 60, USE_RANDOM_IVS, 0, 0, OT_ID_PLAYER_ID, 0);
+    CreateMon(&mon, species, 100, MAX_PER_STAT_IVS, 0, 0, OT_ID_PLAYER_ID, 0);
 
     GiveMonToPlayer(&mon);
 }
