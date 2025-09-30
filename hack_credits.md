@@ -159,4 +159,5 @@ Insertable format: Rahtak
 - James (ruby's bf)
 - MGriffin for help with UI code
 - SBird for Math of Sapprilon puzzle
+- Sylph for telling us what binary tools were used in the olden times.
 - Pokémon Expansion and its Senate
