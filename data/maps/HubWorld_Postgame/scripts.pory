@@ -1,1 +1,57 @@
-mapscripts HubWorld_Postgame_MapScripts {}
+mapscripts HubWorld_Postgame_MapScripts {
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_DEMON_LORD_PROGRESS, 6 {
+            msgbox(format("Congratulations on finishing Archie's Quest!"), MSGBOX_DEFAULT)
+            waitmessage
+            closemessage
+            setvar(VAR_DEMON_LORD_PROGRESS, 7)
+        }
+    ]
+    MAP_SCRIPT_ON_TRANSITION {
+        clearflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)
+        clearflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET)
+        clearflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON)
+        clearflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_ADDISAMAP)
+        clearflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_MAXIE)
+    }
+}
+
+script HubWorld_EventScript_Postgame_Nessereign {
+    msgbox(format("Challenge Nessereign?"), MSGBOX_DEFAULT)
+    trainerbattle_no_intro(TRAINER_DEMONLORD_NESSEREIGN, "Drat!")
+    clearflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)
+    special(HealPlayerParty)
+    end
+
+}
+script HubWorld_EventScript_Postgame_Greehaseet {
+    msgbox(format("Challenge Greehaseet?"), MSGBOX_DEFAULT)
+    trainerbattle_no_intro(TRAINER_DEMONLORD_GREEHASEET, "Curses!")
+    clearflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET)
+    special(HealPlayerParty)
+    end
+
+}
+script HubWorld_EventScript_Postgame_Sapprilon {
+    msgbox(format("Challenge Sapprilon?"), MSGBOX_DEFAULT)
+    trainerbattle_no_intro(TRAINER_DEMONLORD_SAPPRILON, "Damn!")
+    clearflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON)
+    special(HealPlayerParty)
+    end
+
+}
+script HubWorld_EventScript_Postgame_Addisamap {
+    msgbox(format("Challenge Addisamap?"), MSGBOX_DEFAULT)
+    trainerbattle_no_intro(TRAINER_DEMONLORD_ADDISAMAP, "I see.")
+    clearflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_ADDISAMAP)
+    special(HealPlayerParty)
+    end
+
+}
+script HubWorld_EventScript_Postgame_Maxie {
+    msgbox(format("Challenge Maxie?"), MSGBOX_DEFAULT)
+    trainerbattle_no_intro(TRAINER_DEMONLORD_MAXIE, "Confound it!")
+    clearflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_MAXIE)
+    special(HealPlayerParty)
+    end
+}

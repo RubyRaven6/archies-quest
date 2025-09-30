@@ -151,43 +151,43 @@ static const struct BgTemplate sBgTemplates[3] =
 
 static const u8 sTextColors[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY};
 
-static const u32 sStarterArray[] =
+static const u32 sStarterArray[28][3] =
 {
     /* Forest Mons */
-    SPECIES_SCEPTILE,
-    SPECIES_BRELOOM,
-    SPECIES_HATTERENE,
-    SPECIES_ALTARIA,
+    {SPECIES_SCEPTILE, 1, MON_MALE},
+    {SPECIES_BRELOOM, 2, MON_FEMALE},
+    {SPECIES_HATTERENE, 2, MON_FEMALE},
+    {SPECIES_ALTARIA, 0, MON_FEMALE},
     /* Lake Mons */
-    SPECIES_GYARADOS,
-    SPECIES_LUDICOLO,
-    SPECIES_AZUMARILL,
-    SPECIES_GARDEVOIR,
+    {SPECIES_GYARADOS, 0, MON_MALE},
+    {SPECIES_LUDICOLO, 0, MON_FEMALE},
+    {SPECIES_AZUMARILL, 1, MON_MALE},
+    {SPECIES_GARDEVOIR, 1, MON_MALE},
     /* Sea Mons */
-    SPECIES_MILOTIC,
-    SPECIES_DHELMISE,
-    SPECIES_CERULEDGE,
-    SPECIES_PELIPPER,
+    {SPECIES_MILOTIC, 0, MON_FEMALE},
+    {SPECIES_DHELMISE, 0, MON_GENDERLESS},
+    {SPECIES_CERULEDGE, 1, MON_FEMALE},
+    {SPECIES_PELIPPER, 1, MON_FEMALE},
     /* Crags Mons */
-    SPECIES_LUCARIO,
-    SPECIES_BLAZIKEN,
-    SPECIES_SALAMENCE,
-    SPECIES_TINKATON,
+    {SPECIES_LUCARIO, 1, MON_MALE},
+    {SPECIES_BLAZIKEN, 2, MON_MALE},
+    {SPECIES_SALAMENCE, 2, MON_MALE},
+    {SPECIES_TINKATON, 0, MON_FEMALE},
     /* Cave Mons */
-    SPECIES_EXCADRILL,
-    SPECIES_GALVANTULA,
-    SPECIES_GARGANACL,
-    SPECIES_TORKOAL,
+    {SPECIES_EXCADRILL, 0, MON_MALE},
+    {SPECIES_GALVANTULA, 0, MON_FEMALE},
+    {SPECIES_GARGANACL, 0, MON_FEMALE},
+    {SPECIES_TORKOAL, 1, MON_FEMALE},
     /* Garden Mons */
-    SPECIES_RIBOMBEE,
-    SPECIES_VILEPLUME,
-    SPECIES_HELIOLISK,
-    SPECIES_ANNIHILAPE,
+    {SPECIES_RIBOMBEE, 1, MON_FEMALE},
+    {SPECIES_VILEPLUME, 1, MON_MALE},
+    {SPECIES_HELIOLISK, 0, MON_MALE},
+    {SPECIES_ANNIHILAPE, 2, MON_FEMALE},
     /* Beach Mons */
-    SPECIES_SWAMPERT,
-    SPECIES_RAICHU_ALOLA,
-    SPECIES_SALAZZLE,
-    SPECIES_GOODRA_HISUI,
+    {SPECIES_SWAMPERT, 1, MON_FEMALE},
+    {SPECIES_RAICHU_ALOLA, 0, MON_MALE},
+    {SPECIES_SALAZZLE, 0, MON_FEMALE},
+    {SPECIES_GOODRA_HISUI, 1, MON_FEMALE},
 };
 
 static const struct OamData sOam_Hand =
@@ -739,7 +739,9 @@ void CreateAndGiveStarterMon(u32 species)
         [STAT_SPDEF] = MAX_PER_STAT_IVS,
     };
     struct Pokemon mon;
-    u32 abilityNum = 0;
+    u32 starterIndex = GetSpeciesStarterArrayIndex(species);
+    u32 abilityNum = sStarterArray[starterIndex][1];
+    u32 gender = sStarterArray[starterIndex][2];
 
     CreateMonParameterized(
         &mon,           // pointer to the memory location of the mon we just defined
@@ -747,12 +749,12 @@ void CreateAndGiveStarterMon(u32 species)
         MAX_LEVEL,      // level
         NUM_NATURES,    // nature
         abilityNum,     // ability index
-        MON_FEMALE,     // gender
+        gender,     // gender
         ivs,            // ivs
         FALSE           // shiny?
     );
 
-    GiveMonToPlayer(&mon);
+    CopyMonToPC(&mon);
 }
 
 u32 GetSpeciesStarterArrayIndex(u32 species)
@@ -763,7 +765,7 @@ u32 GetSpeciesStarterArrayIndex(u32 species)
     u32 starterArrayCount = ARRAY_COUNT(sStarterArray);
     for (u32 i = 0; i < starterArrayCount; i++)
     {
-        if (sStarterArray[i] == species)
+        if (sStarterArray[i][0] == species)
             return i;
     }
 
@@ -807,6 +809,6 @@ void GivePlayerUnpickedStarters(void)
     for (u32 i = 0; i < starterArrayCount; i++)
     {
         if (!(starterFlags & (1 << i)))
-            CreateAndGiveStarterMon(sStarterArray[i]);
+            CreateAndGiveStarterMon(sStarterArray[i][0]);
     }
 }
