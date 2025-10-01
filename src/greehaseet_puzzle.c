@@ -69,19 +69,6 @@ enum ShellStates
     INPUT_SELECTED_THREE_SHELL
 };
 
-enum NumberSprites
-{
-    SPRITE_NUM_ZERO,
-    SPRITE_NUM_ONE,
-    SPRITE_NUM_TWO,
-    SPRITE_NUM_THREE,
-    SPRITE_NUM_FOUR,
-    SPRITE_NUM_FIVE,
-    SPRITE_NUM_SIX,
-    SPRITE_NUM_SEVEN,
-    SPRITE_NUM_TEN,
-};
-
 enum FontColor
 {
     FONT_WHITE,
@@ -102,7 +89,7 @@ static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
 #define TAG_SELECTEDCURSOR          30006
 
 #define MAX_TEN_SHELL       10
-#define MAX_SEVEN_SHELL      7
+#define MAX_SEVEN_SHELL     7
 #define MAX_THREE_SHELL     3
 
 static const u16 sCursor_Pal[] = INCBIN_U16("graphics/greehaseet_puzzle/cursor.gbapal");
@@ -608,6 +595,9 @@ static void Task_GreehaseetPuzzleMainInput(u8 taskId)
     {
         if(*inputMode == INPUT_POUR_INTO_SHELL){
             *inputMode = INPUT_SELECT_SHELL;
+            if (sGreehaseetPuzzleState->selectedSpriteId != 0xFF)
+                DestroySprite(&gSprites[sGreehaseetPuzzleState->selectedSpriteId]);
+            sGreehaseetPuzzleState->selectedSpriteId = 0xFF;
             PlaySE(SE_PC_OFF);
         }
         else
@@ -627,13 +617,13 @@ static void Task_GreehaseetPuzzleMainInput(u8 taskId)
                 switch(*selectedShell)
                 {
                     case INPUT_SELECTED_TEN_SHELL:
-                        sGreehaseetPuzzleState->selectedSpriteId = CreateSprite(&sSpriteTemplate_SelectedCursor, 1, 9, 0);
+                        sGreehaseetPuzzleState->selectedSpriteId = CreateSprite(&sSpriteTemplate_SelectedCursor, 1, 80, 0);
                         break;
                     case INPUT_SELECTED_SEVEN_SHELL:
-                        sGreehaseetPuzzleState->selectedSpriteId = CreateSprite(&sSpriteTemplate_SelectedCursor, 10, 9, 0);
+                        sGreehaseetPuzzleState->selectedSpriteId = CreateSprite(&sSpriteTemplate_SelectedCursor, 144, 35, 0);
                         break;
                     case INPUT_SELECTED_THREE_SHELL:
-                        sGreehaseetPuzzleState->selectedSpriteId = CreateSprite(&sSpriteTemplate_SelectedCursor, 100, 9, 0);
+                        sGreehaseetPuzzleState->selectedSpriteId = CreateSprite(&sSpriteTemplate_SelectedCursor, 144, 115, 0);
                         break;
                 }
             }
