@@ -474,6 +474,8 @@ static void GreehaseetPuzzle_SetupCB(void)
     case 4:
         LoadCompressedSpriteSheet(&sSpriteSheet_Cursor);
         LoadSpritePalette(&sSpritePal_Cursor);
+        LoadCompressedSpriteSheet(&sSpriteSheet_SelectedCursor);
+        LoadSpritePalette(&sSpritePal_SelectedCursor);
         LoadCompressedSpriteSheet(&sSpriteSheet_Numbers);
         LoadSpritePalette(&sSpritePal_Numbers);
         gMain.state++;
