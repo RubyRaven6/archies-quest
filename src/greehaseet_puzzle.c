@@ -639,6 +639,9 @@ static void Task_GreehaseetPuzzleMainInput(u8 taskId)
             //destroy sprites
         }
 
+        DebugPrintf("Current input mode: %u", *inputMode);
+        DebugPrintf("Currently selected shell: %u", *selectedShell);
+
         CreateNumberSpriteAt(32, 56, sGreehaseetPuzzleState->tenPearlShell, &sGreehaseetPuzzleState->tenShellSpriteId); // Ten Shell
         CreateNumberSpriteAt(176, 16, sGreehaseetPuzzleState->sevenPearlShell, &sGreehaseetPuzzleState->sevenShellSpriteId); // Seven Shell
         CreateNumberSpriteAt(176, 96, sGreehaseetPuzzleState->threePearlShell, &sGreehaseetPuzzleState->threeShellSpriteId); // Three Shell
@@ -675,13 +678,6 @@ static void Task_GreehaseetPuzzleMainInput(u8 taskId)
         else {
             sGreehaseetPuzzleState->cursorY--;
         }
-    }
-    if(JOY_NEW(SELECT_BUTTON)){
-        u8 *inputMode = &sGreehaseetPuzzleState->inputMode;
-        u8 *selectedShell = &sGreehaseetPuzzleState->selectedShell;
-
-        DebugPrintf("Current input mode: %u", *inputMode);
-        DebugPrintf("Currently selected shell: %u", *selectedShell);
     }
 }
 
@@ -859,17 +855,13 @@ static void GreehaseetPuzzle_HandleShellContents(void)
         case INPUT_SELECTED_TEN_SHELL:
             if(*cursorY == 1){ // For when Ten Shell to Seven Shell
                 TransferPearls(tenShell, sevenShell, MAX_SEVEN_SHELL);
-
-                *inputMode = INPUT_SELECT_SHELL;
             }
             else if (*cursorY == 2){ //For when Ten Shell to Three Shell
                 TransferPearls(tenShell, threeShell, MAX_THREE_SHELL);
-
-                *inputMode = INPUT_SELECT_SHELL;
             }
             else { //For Ten Shell back to Ten
-                *inputMode = INPUT_SELECT_SHELL;
             }
+            *inputMode = INPUT_SELECT_SHELL;
             break;
         case INPUT_SELECTED_SEVEN_SHELL:
             if(*cursorY == 0){ //For when Seven Shell to Ten Shell
@@ -877,20 +869,16 @@ static void GreehaseetPuzzle_HandleShellContents(void)
             }
             else if (*cursorY == 2){ //For when Seven Shell to Three Shell
                 TransferPearls(sevenShell, threeShell, MAX_THREE_SHELL);
-
-                *inputMode = INPUT_SELECT_SHELL;
             }
             else { //For Seven Shell back to Seven
-                *inputMode = INPUT_SELECT_SHELL;
             }
+            *inputMode = INPUT_SELECT_SHELL;
             break;
         case INPUT_SELECTED_THREE_SHELL:
             if(*cursorY == 2){ //For Three Shell back to Three
-                *inputMode = INPUT_SELECT_SHELL;
             }
             else if (*cursorY == 1){//Three Shell to Seven Shell
                 TransferPearls(threeShell, sevenShell, MAX_SEVEN_SHELL);
-                *inputMode = INPUT_SELECT_SHELL;
             }
             else
             { //For Three Shell to Ten
@@ -898,8 +886,8 @@ static void GreehaseetPuzzle_HandleShellContents(void)
                 {
                     TransferPearls(threeShell, tenShell, MAX_TEN_SHELL);
                 }
-                *inputMode = INPUT_SELECT_SHELL;
             }
+            *inputMode = INPUT_SELECT_SHELL;
             break;
     }
 
