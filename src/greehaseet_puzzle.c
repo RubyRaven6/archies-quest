@@ -45,6 +45,7 @@ struct GreehaseetPuzzleState
     u8 cursorX;
     u8 cursorY;
     u16 cursorSpriteId;
+    u16 selectedSpriteId;
     u8 inputMode;
     u8 selectedShell;
     u16 tenShellSpriteId;
@@ -61,24 +62,10 @@ enum WindowIds
 enum ShellStates
 {
     INPUT_SELECT_SHELL,
-    INPUT_TAKE_SHELL_AMOUNT,
     INPUT_POUR_INTO_SHELL,
     INPUT_SELECTED_TEN_SHELL,
     INPUT_SELECTED_SEVEN_SHELL,
     INPUT_SELECTED_THREE_SHELL
-};
-
-enum NumberSprites
-{
-    SPRITE_NUM_ZERO,
-    SPRITE_NUM_ONE,
-    SPRITE_NUM_TWO,
-    SPRITE_NUM_THREE,
-    SPRITE_NUM_FOUR,
-    SPRITE_NUM_FIVE,
-    SPRITE_NUM_SIX,
-    SPRITE_NUM_SEVEN,
-    SPRITE_NUM_TEN,
 };
 
 enum FontColor
@@ -96,15 +83,19 @@ static const u8 sGreehaseetPuzzleWindowFontColors[][3] =
 static EWRAM_DATA struct GreehaseetPuzzleState *sGreehaseetPuzzleState = NULL;
 static EWRAM_DATA u8 *sBg1TilemapBuffer = NULL;
 
-#define TAG_CURSOR          30004
-#define TAG_NUMBERS         30005
+#define TAG_CURSOR                  30004
+#define TAG_NUMBERS                 30005
+#define TAG_SELECTEDCURSOR          30006
 
 #define MAX_TEN_SHELL       10
-#define MAX_SEVEN_SHELL      7
+#define MAX_SEVEN_SHELL     7
 #define MAX_THREE_SHELL     3
 
 static const u16 sCursor_Pal[] = INCBIN_U16("graphics/greehaseet_puzzle/cursor.gbapal");
 static const u32 sCursor_Gfx[] = INCBIN_U32("graphics/greehaseet_puzzle/cursor.4bpp.smol");
+
+static const u16 sSelectedCursor_Pal[] = INCBIN_U16("graphics/greehaseet_puzzle/selected_arrow.gbapal");
+static const u32 sSelectedCursor_Gfx[] = INCBIN_U32("graphics/greehaseet_puzzle/selected_arrow.4bpp.smol");
 
 static const u16 sNumbers_Pal[] = INCBIN_U16("graphics/greehaseet_puzzle/num_spritesheet.gbapal");
 static const u32 sNumbers_Gfx[] = INCBIN_U32("graphics/greehaseet_puzzle/num_spritesheet.4bpp.smol");
@@ -141,6 +132,36 @@ static const struct SpriteTemplate sSpriteTemplate_Cursor =
     .anims = gDummySpriteAnimTable,
     .images = NULL,
     .callback = CursorCallback
+};
+
+static const struct OamData sOamData_SelectedCursor =
+{
+    .size = SPRITE_SIZE(16x32),
+    .shape = SPRITE_SHAPE(16x32),
+    .priority = 0,
+};
+
+static const struct CompressedSpriteSheet sSpriteSheet_SelectedCursor =
+{
+    .data = sSelectedCursor_Gfx,
+    .size = 16*32/2,
+    .tag = TAG_SELECTEDCURSOR,
+};
+
+static const struct SpritePalette sSpritePal_SelectedCursor =
+{
+    .data = sSelectedCursor_Pal,
+    .tag = TAG_SELECTEDCURSOR
+};
+
+static const struct SpriteTemplate sSpriteTemplate_SelectedCursor =
+{
+    .tileTag = TAG_SELECTEDCURSOR,
+    .paletteTag = TAG_SELECTEDCURSOR,
+    .oam = &sOamData_SelectedCursor,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .callback = NumberCallback
 };
 
 static const struct OamData sOamDataNumbers =
@@ -265,7 +286,7 @@ static const struct SpriteTemplate sSpriteTemplateNumbers =
     .anims = sSpriteAnimTableNumbers,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = NumberCallback
+    .callback = SpriteCallbackDummy
 };
 
 static const struct BgTemplate sGreehaseetPuzzleBgTemplates[] =
@@ -362,6 +383,7 @@ static void GreehaseetPuzzle_Init(MainCallback callback)
     sGreehaseetPuzzleState->loadState = 0;
     sGreehaseetPuzzleState->savedCallback = callback;
     sGreehaseetPuzzleState->cursorSpriteId = 0xFF;
+    sGreehaseetPuzzleState->selectedSpriteId = 0xFF;
     sGreehaseetPuzzleState->tenShellSpriteId = 0xFF;
     sGreehaseetPuzzleState->sevenShellSpriteId = 0xFF;
     sGreehaseetPuzzleState->threeShellSpriteId = 0xFF;
@@ -451,6 +473,8 @@ static void GreehaseetPuzzle_SetupCB(void)
     case 4:
         LoadCompressedSpriteSheet(&sSpriteSheet_Cursor);
         LoadSpritePalette(&sSpritePal_Cursor);
+        LoadCompressedSpriteSheet(&sSpriteSheet_SelectedCursor);
+        LoadSpritePalette(&sSpritePal_SelectedCursor);
         LoadCompressedSpriteSheet(&sSpriteSheet_Numbers);
         LoadSpritePalette(&sSpritePal_Numbers);
         gMain.state++;
@@ -512,7 +536,7 @@ static void CursorCallback(struct Sprite *sprite)
 {
     struct SpriteCoordsStruct spriteCoords[3][1] = { //Thanks Jaizu
         {{88, 64}}, //INPUT_SELECTED_TEN_SHELL
-        {{224, 17}}, //INPUT_SELECTED_FIVE_SHELL
+        {{224, 17}}, //INPUT_SELECTED_SEVEN_SHELL
         {{224, 97}}, //INPUT_SELECTED_THREE_SHELL
     };
 
@@ -566,11 +590,15 @@ static void Task_GreehaseetPuzzleMainInput(u8 taskId)
 {
     u8 *cursorY = &sGreehaseetPuzzleState->cursorY;
     u8 *inputMode = &sGreehaseetPuzzleState->inputMode;
+    u8 *selectedShell = &sGreehaseetPuzzleState->selectedShell;
 
     if (JOY_NEW(B_BUTTON))
     {
         if(*inputMode == INPUT_POUR_INTO_SHELL){
             *inputMode = INPUT_SELECT_SHELL;
+            if (sGreehaseetPuzzleState->selectedSpriteId != 0xFF)
+                DestroySprite(&gSprites[sGreehaseetPuzzleState->selectedSpriteId]);
+            sGreehaseetPuzzleState->selectedSpriteId = 0xFF;
             PlaySE(SE_PC_OFF);
         }
         else
@@ -583,13 +611,41 @@ static void Task_GreehaseetPuzzleMainInput(u8 taskId)
     if (JOY_NEW(A_BUTTON))
     {
         if(*inputMode == INPUT_SELECT_SHELL)
+        {
             GreehaseetPuzzle_SelectShell();
+            if (sGreehaseetPuzzleState->selectedSpriteId == 0xFF)
+            {
+                switch(*selectedShell)
+                {
+                    case INPUT_SELECTED_TEN_SHELL:
+                        sGreehaseetPuzzleState->selectedSpriteId = CreateSprite(&sSpriteTemplate_SelectedCursor, 1, 80, 0);
+                        break;
+                    case INPUT_SELECTED_SEVEN_SHELL:
+                        sGreehaseetPuzzleState->selectedSpriteId = CreateSprite(&sSpriteTemplate_SelectedCursor, 144, 35, 0);
+                        break;
+                    case INPUT_SELECTED_THREE_SHELL:
+                        sGreehaseetPuzzleState->selectedSpriteId = CreateSprite(&sSpriteTemplate_SelectedCursor, 144, 115, 0);
+                        break;
+                }
+            }
+        }
         else if(*inputMode == INPUT_POUR_INTO_SHELL)
+        {
             GreehaseetPuzzle_HandleShellContents();
+
+            if (sGreehaseetPuzzleState->selectedSpriteId != 0xFF)
+                DestroySprite(&gSprites[sGreehaseetPuzzleState->selectedSpriteId]);
+            sGreehaseetPuzzleState->selectedSpriteId = 0xFF;
+            //destroy sprites
+        }
+
+        DebugPrintf("Current input mode: %u", *inputMode);
+        DebugPrintf("Currently selected shell: %u", *selectedShell);
 
         CreateNumberSpriteAt(32, 56, sGreehaseetPuzzleState->tenPearlShell, &sGreehaseetPuzzleState->tenShellSpriteId); // Ten Shell
         CreateNumberSpriteAt(176, 16, sGreehaseetPuzzleState->sevenPearlShell, &sGreehaseetPuzzleState->sevenShellSpriteId); // Seven Shell
         CreateNumberSpriteAt(176, 96, sGreehaseetPuzzleState->threePearlShell, &sGreehaseetPuzzleState->threeShellSpriteId); // Three Shell
+
 
         if (sGreehaseetPuzzleState->sevenPearlShell == 5 && sGreehaseetPuzzleState->tenPearlShell == 5){
             FlagSet(FLAG_GREEHASEET_PUZZLE_SOLVED);
@@ -622,19 +678,6 @@ static void Task_GreehaseetPuzzleMainInput(u8 taskId)
         else {
             sGreehaseetPuzzleState->cursorY--;
         }
-    }
-    if(JOY_NEW(SELECT_BUTTON)){
-        u8 *inputMode = &sGreehaseetPuzzleState->inputMode;
-        u8 *selectedShell = &sGreehaseetPuzzleState->selectedShell;
-        u8 *tenPearlShell = &sGreehaseetPuzzleState->tenPearlShell;
-        u8 *sevenPearlShell = &sGreehaseetPuzzleState->sevenPearlShell;
-        u8 *threePearlShell = &sGreehaseetPuzzleState->threePearlShell;
-
-        DebugPrintf("*inputMode: %u", *inputMode);
-        DebugPrintf("*selectedShell: %u", *selectedShell);
-        DebugPrintf("*tenPearlShell: %u", *tenPearlShell);
-        DebugPrintf("*sevenPearlShell: %u", *sevenPearlShell);
-        DebugPrintf("*threePearlShell: %u", *threePearlShell);
     }
 }
 
@@ -812,17 +855,13 @@ static void GreehaseetPuzzle_HandleShellContents(void)
         case INPUT_SELECTED_TEN_SHELL:
             if(*cursorY == 1){ // For when Ten Shell to Seven Shell
                 TransferPearls(tenShell, sevenShell, MAX_SEVEN_SHELL);
-
-                *inputMode = INPUT_SELECT_SHELL;
             }
             else if (*cursorY == 2){ //For when Ten Shell to Three Shell
                 TransferPearls(tenShell, threeShell, MAX_THREE_SHELL);
-
-                *inputMode = INPUT_SELECT_SHELL;
             }
             else { //For Ten Shell back to Ten
-                *inputMode = INPUT_SELECT_SHELL;
             }
+            *inputMode = INPUT_SELECT_SHELL;
             break;
         case INPUT_SELECTED_SEVEN_SHELL:
             if(*cursorY == 0){ //For when Seven Shell to Ten Shell
@@ -830,20 +869,16 @@ static void GreehaseetPuzzle_HandleShellContents(void)
             }
             else if (*cursorY == 2){ //For when Seven Shell to Three Shell
                 TransferPearls(sevenShell, threeShell, MAX_THREE_SHELL);
-
-                *inputMode = INPUT_SELECT_SHELL;
             }
             else { //For Seven Shell back to Seven
-                *inputMode = INPUT_SELECT_SHELL;
             }
+            *inputMode = INPUT_SELECT_SHELL;
             break;
         case INPUT_SELECTED_THREE_SHELL:
             if(*cursorY == 2){ //For Three Shell back to Three
-                *inputMode = INPUT_SELECT_SHELL;
             }
             else if (*cursorY == 1){//Three Shell to Seven Shell
                 TransferPearls(threeShell, sevenShell, MAX_SEVEN_SHELL);
-                *inputMode = INPUT_SELECT_SHELL;
             }
             else
             { //For Three Shell to Ten
@@ -851,8 +886,8 @@ static void GreehaseetPuzzle_HandleShellContents(void)
                 {
                     TransferPearls(threeShell, tenShell, MAX_TEN_SHELL);
                 }
-                *inputMode = INPUT_SELECT_SHELL;
             }
+            *inputMode = INPUT_SELECT_SHELL;
             break;
     }
 
