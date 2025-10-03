@@ -22,7 +22,8 @@
     "ArchiesHouse_BackyardCave"
   ],
   "gMapGroup_HubWorld": [
-    "HubWorld_Initial"
+    "HubWorld_Initial",
+    "HubWorld_Postgame"
   ],
   "gMapGroup_DemonLairs": [
     "DemonLairs_Maxie",

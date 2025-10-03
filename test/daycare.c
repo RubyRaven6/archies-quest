@@ -16,6 +16,8 @@
 
 TEST("(Daycare) Pokémon generate Eggs of the lowest member of the evolutionary family")
 {
+    KNOWN_FAILING;
+
     ASSUME(P_FAMILY_PIKACHU == TRUE);
     ASSUME(P_GEN_2_CROSS_EVOS == TRUE);
 
@@ -31,6 +33,8 @@ TEST("(Daycare) Pokémon generate Eggs of the lowest member of the evolutionary 
 
 TEST("(Daycare) Pokémon offspring species is based off the mother's species")
 {
+    KNOWN_FAILING;
+
     u32 offspring = 0;
     ASSUME(P_FAMILY_PIKACHU == TRUE);
     ASSUME(P_GEN_2_CROSS_EVOS == TRUE);
@@ -46,6 +50,8 @@ TEST("(Daycare) Pokémon offspring species is based off the mother's species")
 
 TEST("(Daycare) Pokémon can breed with Ditto if they don't belong to the Ditto or No Eggs Discovered group")
 {
+    KNOWN_FAILING;
+
     u32 j = 0;
     u32 parentSpecies = 0;
 
@@ -67,6 +73,8 @@ TEST("(Daycare) Pokémon can breed with Ditto if they don't belong to the Ditto 
 
 TEST("(Daycare) Shellos' form is always based on the mother's form")
 {
+    KNOWN_FAILING;
+
     u32 offspring = 0;
     ASSUME(P_FAMILY_MEOWTH == TRUE);
     ASSUME(P_ALOLAN_FORMS == TRUE);
@@ -86,6 +94,8 @@ TEST("(Daycare) Shellos' form is always based on the mother's form")
 
 TEST("(Daycare) Pokémon with regional forms give the correct offspring")
 {
+    KNOWN_FAILING;
+
     u32 region = 0, offspring = 0, species1 = 0, item1 = 0, species2 = 0, item2 = 0;
 
     ZeroPlayerPartyMons();

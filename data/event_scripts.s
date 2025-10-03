@@ -1260,3 +1260,5 @@ Common_EventScript_ReturnToHub_Text_0:
 	.include "data/maps/DemonLairs_Sapprilon/scripts.inc"
 
 	.include "data/maps/DemonLairs_Sapprilon_Interior/scripts.inc"
+
+	.include "data/maps/HubWorld_Postgame/scripts.inc"

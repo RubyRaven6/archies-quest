@@ -4384,6 +4384,15 @@ void MaxieReboot(void)
     SetContinueGameWarpToHealLocation(HEAL_LOCATION_DEMON_LAIRS_MAXIE);
 }
 
+void PostgameReboot(void)
+{
+    FlagClear(FLAG_CONSISTENT_POOLS);
+    GivePlayerUnpickedStarters();
+    HealPlayerParty();
+    SetContinueGameWarpStatus();
+    SetContinueGameWarpToHealLocation(HEAL_LOCATION_HUB_WORLD_POSTGAME);
+}
+
 void OpenSampleUi(void)
 {
     FadeScreen(FADE_TO_BLACK, 0);
