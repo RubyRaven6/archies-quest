@@ -287,7 +287,7 @@ static const struct SpriteTemplate sSpriteTemplateNumbers =
     .anims = sSpriteAnimTableNumbers,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = NumberCallback
+    .callback = SpriteCallbackDummy
 };
 
 static const struct BgTemplate sGreehaseetPuzzleBgTemplates[] =
