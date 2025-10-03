@@ -566,4 +566,5 @@ gSpecials::
 	def_special OpenNessiePuzzle
 	def_special OpenGreehaseetPuzzle
 	def_special MaxieReboot
+	def_special PostgameReboot
 	def_special SetHiddenNature

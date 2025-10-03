@@ -1,0 +1,125 @@
+mapscripts HubWorld_Postgame_MapScripts {
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_DEMON_LORD_PROGRESS, 6 {
+            autosave
+            msgbox(format("Congratulations on finishing Archie's Quest!"), MSGBOX_DEFAULT)
+            waitmessage
+            closemessage
+            setvar(VAR_DEMON_LORD_PROGRESS, 7)
+        }
+    ]
+    MAP_SCRIPT_ON_TRANSITION {
+        call(ClearAllDemonLordFlags)
+    }
+}
+
+script HubWorld_EventScript_Postgame_Nessereign {
+    msgbox(format("Challenge Nessereign?"), MSGBOX_YESNO)
+    waitmessage
+    closemessage
+    if(var(VAR_RESULT) == YES)
+    {
+        setvar(VAR_DEMON_LORD_POSTGAME, 0)
+        call(SetMonLevels)
+        callnative(LevelMonsToCap)
+        trainerbattle_no_intro(TRAINER_DEMONLORD_NESSEREIGN, "Drat!")
+        call(ClearAllDemonLordFlags)
+        special(HealPlayerParty)
+    }
+    end
+
+}
+script HubWorld_EventScript_Postgame_Greehaseet {
+    msgbox(format("Challenge Greehaseet?"), MSGBOX_YESNO)
+    waitmessage
+    closemessage
+    if(var(VAR_RESULT) == YES)
+    {
+        setvar(VAR_DEMON_LORD_POSTGAME, 1)
+        call(SetMonLevels)
+        callnative(LevelMonsToCap)
+        trainerbattle_no_intro(TRAINER_DEMONLORD_GREEHASEET, "Curses!")
+        call(ClearAllDemonLordFlags)
+        special(HealPlayerParty)
+    }
+    end
+
+}
+script HubWorld_EventScript_Postgame_Sapprilon {
+    msgbox(format("Challenge Sapprilon?"), MSGBOX_YESNO)
+    waitmessage
+    closemessage
+    if(var(VAR_RESULT) == YES)
+    {
+        setvar(VAR_DEMON_LORD_POSTGAME, 2)
+        call(SetMonLevels)
+        callnative(LevelMonsToCap)
+        trainerbattle_no_intro(TRAINER_DEMONLORD_SAPPRILON, "Damn!")
+        call(ClearAllDemonLordFlags)
+        special(HealPlayerParty)
+    }
+    end
+
+}
+script HubWorld_EventScript_Postgame_Addisamap {
+    msgbox(format("Challenge Addisamap?"), MSGBOX_YESNO)
+    waitmessage
+    closemessage
+    if(var(VAR_RESULT) == YES)
+    {
+        setvar(VAR_DEMON_LORD_POSTGAME, 3)
+        call(SetMonLevels)
+        callnative(LevelMonsToCap)
+        trainerbattle_no_intro(TRAINER_DEMONLORD_ADDISAMAP, "I see.")
+        call(ClearAllDemonLordFlags)
+        special(HealPlayerParty)
+    }
+    end
+
+}
+script HubWorld_EventScript_Postgame_Maxie {
+    msgbox(format("Challenge Maxie?"), MSGBOX_YESNO)
+    waitmessage
+    closemessage
+    if(var(VAR_RESULT) == YES)
+    {
+        setvar(VAR_DEMON_LORD_POSTGAME, 4)
+        call(SetMonLevels)
+        callnative(LevelMonsToCap)
+        trainerbattle_no_intro(TRAINER_DEMONLORD_MAXIE, "Confound it!")
+        call(ClearAllDemonLordFlags)
+        special(HealPlayerParty)
+    }
+    end
+}
+
+script(local) SetMonLevels {
+    switch(var(VAR_DEMON_LORD_POSTGAME))
+    {
+        case 1:
+            setflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)
+        case 2:
+            setflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)
+            setflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET)
+        case 3:
+            setflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)
+            setflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET)
+            setflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON)
+        case 4:
+            setflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)
+            setflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET)
+            setflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON)
+            setflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_ADDISAMAP)
+        default:
+            break
+    }
+    return
+}
+
+script(local) ClearAllDemonLordFlags{
+    clearflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)
+    clearflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET)
+    clearflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON)
+    clearflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_ADDISAMAP)
+    clearflag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_MAXIE)
+}

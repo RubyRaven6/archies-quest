@@ -222,6 +222,12 @@
       "map": "MAP_DEMON_LAIRS_ADDISAMAP",
       "x": 12,
       "y": 8
+    },
+    {
+      "id": "HEAL_LOCATION_HUB_WORLD_POSTGAME",
+      "map": "MAP_HUB_WORLD_POSTGAME",
+      "x": 8,
+      "y": 8
     }
   ]
 }

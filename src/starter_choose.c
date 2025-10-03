@@ -10,6 +10,7 @@
 #include "palette.h"
 #include "pokedex.h"
 #include "pokemon.h"
+#include "pokemon_storage_system.h"
 #include "scanline_effect.h"
 #include "sound.h"
 #include "sprite.h"
@@ -149,6 +150,45 @@ static const struct BgTemplate sBgTemplates[3] =
 };
 
 static const u8 sTextColors[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY};
+
+static const u32 sStarterArray[28][3] =
+{
+    /* Forest Mons */
+    {SPECIES_SCEPTILE, 1, MON_MALE},
+    {SPECIES_BRELOOM, 2, MON_FEMALE},
+    {SPECIES_HATTERENE, 2, MON_FEMALE},
+    {SPECIES_ALTARIA, 0, MON_FEMALE},
+    /* Lake Mons */
+    {SPECIES_GYARADOS, 0, MON_MALE},
+    {SPECIES_LUDICOLO, 0, MON_FEMALE},
+    {SPECIES_AZUMARILL, 1, MON_MALE},
+    {SPECIES_GARDEVOIR, 1, MON_MALE},
+    /* Sea Mons */
+    {SPECIES_MILOTIC, 0, MON_FEMALE},
+    {SPECIES_DHELMISE, 0, MON_GENDERLESS},
+    {SPECIES_CERULEDGE, 1, MON_FEMALE},
+    {SPECIES_PELIPPER, 1, MON_FEMALE},
+    /* Crags Mons */
+    {SPECIES_LUCARIO, 1, MON_MALE},
+    {SPECIES_BLAZIKEN, 2, MON_MALE},
+    {SPECIES_SALAMENCE, 2, MON_MALE},
+    {SPECIES_TINKATON, 0, MON_FEMALE},
+    /* Cave Mons */
+    {SPECIES_EXCADRILL, 0, MON_MALE},
+    {SPECIES_GALVANTULA, 0, MON_FEMALE},
+    {SPECIES_GARGANACL, 0, MON_FEMALE},
+    {SPECIES_TORKOAL, 1, MON_FEMALE},
+    /* Garden Mons */
+    {SPECIES_RIBOMBEE, 1, MON_FEMALE},
+    {SPECIES_VILEPLUME, 1, MON_MALE},
+    {SPECIES_HELIOLISK, 0, MON_MALE},
+    {SPECIES_ANNIHILAPE, 2, MON_FEMALE},
+    /* Beach Mons */
+    {SPECIES_SWAMPERT, 1, MON_FEMALE},
+    {SPECIES_RAICHU_ALOLA, 0, MON_MALE},
+    {SPECIES_SALAZZLE, 0, MON_FEMALE},
+    {SPECIES_GOODRA_HISUI, 1, MON_FEMALE},
+};
 
 static const struct OamData sOam_Hand =
 {
@@ -664,4 +704,111 @@ static void SpriteCB_StarterPokemon(struct Sprite *sprite)
         sprite->y -= 2;
     if (sprite->y < STARTER_PKMN_POS_Y)
         sprite->y += 2;
+}
+/*
+    hi ruby! so basically what we are doing is using 28 of the 32 bits in a u32
+    to indicate two things: 1, if a mon is in the players party or storage, and 2,
+    the index of the species in the array above.
+
+    the index is indicated by how many zeroes are before the 1, from right to left;
+    for instance, "00000000 00000000 00000000 00000000" is our u32. we can call her "flags."
+    if we wanted to say Blaziken, (index 13 in sStarterMonsArray), is owned by the player,
+    we would set the 13th 0 to a 1:
+
+    flags |= (1 << 13);
+    // flags is now: 00000000 00000000 00010000 00000000
+
+    we do that for every mon the player has, switching a 0 for a 1 in each bit of flags that
+    corresponds to a starter the player already has, ie if the species is in the array above.
+    then, we just check every bit in flags, and if that bit is a 0, meaning that species wasnt found
+    in the party or storage system, we can give that starter to them! and since the
+    amount of shifts for each bit corresponds to the species index, we can iterate through them
+    with a for loop!
+*/
+
+// void CreateMonParameterized(struct Pokemon *mon, u16 species, u8 level, /*u16 item, enum PokeBall ball,*/ u8 nature, u8 abilityNum, u8 gender, /*u8 *evs,*/ u8 *ivs, /*u16 *moves,*/ bool8 isShiny /*bool8 gmaxFactor, u8 teraType, u8 dmaxLevel*/) args for reference
+void CreateAndGiveStarterMon(u32 species)
+{
+    u8 ivs[] =
+    {
+        [STAT_HP]    = MAX_PER_STAT_IVS,
+        [STAT_ATK]   = MAX_PER_STAT_IVS,
+        [STAT_DEF]   = MAX_PER_STAT_IVS,
+        [STAT_SPEED] = MAX_PER_STAT_IVS,
+        [STAT_SPATK] = MAX_PER_STAT_IVS,
+        [STAT_SPDEF] = MAX_PER_STAT_IVS,
+    };
+    struct Pokemon mon;
+    u32 starterIndex = GetSpeciesStarterArrayIndex(species);
+    u32 abilityNum = sStarterArray[starterIndex][1];
+    u32 gender = sStarterArray[starterIndex][2];
+
+    CreateMonParameterized(
+        &mon,           // pointer to the memory location of the mon we just defined
+        species,        // species
+        MAX_LEVEL,      // level
+        NUM_NATURES,    // nature
+        abilityNum,     // ability index
+        gender,     // gender
+        ivs,            // ivs
+        FALSE           // shiny?
+    );
+
+    CopyMonToPC(&mon);
+}
+
+u32 GetSpeciesStarterArrayIndex(u32 species)
+{
+    // check the species against every mon in sStarterArray
+    // if it exists, return its index, if not, return the
+    // total count
+    u32 starterArrayCount = ARRAY_COUNT(sStarterArray);
+    for (u32 i = 0; i < starterArrayCount; i++)
+    {
+        if (sStarterArray[i][0] == species)
+            return i;
+    }
+
+    return starterArrayCount;
+}
+
+void GivePlayerUnpickedStarters(void)
+{
+    u32 starterArrayCount = ARRAY_COUNT(sStarterArray);
+    u32 starterFlags = 0;
+
+    // check player storage for starters
+    for (u32 i = 0; i < TOTAL_BOXES_COUNT; i++)
+    {
+        for (u32 j = 0; j < IN_BOX_COUNT; j++)
+        {
+            u32 boxMonSpecies = GetBoxMonData(&gPokemonStoragePtr->boxes[i][j], MON_DATA_SPECIES);
+            if (boxMonSpecies != SPECIES_NONE)
+            {
+                u32 starterMonIndex = GetSpeciesStarterArrayIndex(boxMonSpecies);
+                if (starterMonIndex < starterArrayCount)
+                    starterFlags |= (1 << starterMonIndex);
+            }
+        }
+    }
+
+    // make sure gPlayersPartyCount is updated
+    CalculatePlayerPartyCount();
+
+    // check player party for starters
+    for (u32 i = 0; i < gPlayerPartyCount; i++)
+    {
+        u32 partySpecies = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
+
+        u32 starterMonIndex = GetSpeciesStarterArrayIndex(partySpecies);
+        if (starterMonIndex < starterArrayCount)
+            starterFlags |= (1 << starterMonIndex);
+    }
+
+    // if player does not have starter, give it to them
+    for (u32 i = 0; i < starterArrayCount; i++)
+    {
+        if (!(starterFlags & (1 << i)))
+            CreateAndGiveStarterMon(sStarterArray[i][0]);
+    }
 }

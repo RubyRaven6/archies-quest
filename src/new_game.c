@@ -223,6 +223,7 @@ void NewGameInitData(void)
     FlagSet(FLAG_HIDE_ARCHIE);
     FlagSet(FLAG_SYS_POKEMON_GET);
     FlagSet(FLAG_SYS_B_DASH);
+    FlagSet(FLAG_CONSISTENT_POOLS);
     BountifulHarvestOfNature();
 }
 
