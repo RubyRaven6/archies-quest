@@ -62,7 +62,6 @@ enum WindowIds
 enum ShellStates
 {
     INPUT_SELECT_SHELL,
-    INPUT_TAKE_SHELL_AMOUNT,
     INPUT_POUR_INTO_SHELL,
     INPUT_SELECTED_TEN_SHELL,
     INPUT_SELECTED_SEVEN_SHELL,
@@ -677,13 +676,13 @@ static void Task_GreehaseetPuzzleMainInput(u8 taskId)
             sGreehaseetPuzzleState->cursorY--;
         }
     }
-    // if(JOY_NEW(SELECT_BUTTON)){
-    //     u8 *inputMode = &sGreehaseetPuzzleState->inputMode;
-    //     u8 *selectedShell = &sGreehaseetPuzzleState->selectedShell;
-    //     u8 *tenPearlShell = &sGreehaseetPuzzleState->tenPearlShell;
-    //     u8 *sevenPearlShell = &sGreehaseetPuzzleState->sevenPearlShell;
-    //     u8 *threePearlShell = &sGreehaseetPuzzleState->threePearlShell;
-    // }
+    if(JOY_NEW(SELECT_BUTTON)){
+        u8 *inputMode = &sGreehaseetPuzzleState->inputMode;
+        u8 *selectedShell = &sGreehaseetPuzzleState->selectedShell;
+
+        DebugPrintf("Current input mode: %u", *inputMode);
+        DebugPrintf("Currently selected shell: %u", *selectedShell);
+    }
 }
 
 static void Task_GreehaseetWaitForPuzzleFade(u8 taskId)
