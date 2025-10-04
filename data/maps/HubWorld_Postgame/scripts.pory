@@ -2,7 +2,12 @@ mapscripts HubWorld_Postgame_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_DEMON_LORD_PROGRESS, 6 {
             autosave
-            msgbox(format("Congratulations on finishing Archie's Quest!"), MSGBOX_DEFAULT)
+            msgbox(format("Congratulations on finishing Archie's Quest!\p"
+                            "Now that you've completed the game, you've now unlocked the postgame area.\p"
+                            "Here, you can battle each demon lord with new teams each time,
+                            now with all the Pokémon from your base!\p"
+                            "Enjoy, and thank you for playing Archie's Quest!\p"
+                            "- {EMOJI_HEART} Ruby and Eva"), MSGBOX_DEFAULT)
             waitmessage
             closemessage
             setvar(VAR_DEMON_LORD_PROGRESS, 7)
