@@ -5,7 +5,6 @@ mapscripts DemonLairs_Addisamap_Interior_MapScripts {
         }
     ]
     MAP_SCRIPT_ON_TRANSITION {
-        setrespawn(HEAL_LOCATION_DEMON_LAIRS_ADDISAMAP_2)
         if(!flag(FLAG_ADDISAMAP_PUZZLE_SOLVED)){
             setflag(FLAG_ADDISAMAP_PUZZLE_SOLVED)
         }
@@ -22,7 +21,7 @@ script DemonLairs_EventScript_Addisamap {
 
     if(!flag(FLAG_TALKED_TO_ADDISAMAP)){
         setflag(FLAG_TALKED_TO_ADDISAMAP)
-        
+
         playse(SE_PIN)
         applymovement(LOCALID_ADDISAMAP_RUIN_MANIAC, moves(emote_pensive))
         waitmovement(LOCALID_ADDISAMAP_RUIN_MANIAC)
