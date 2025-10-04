@@ -17,4 +17,16 @@ Try a unique spin on the classic effort values system, where instead of defeatin
 Using the Trainer Party Pools made by the Expansion Senate's hedara, the game's bosses feature different team compositions for different people, ensuring that no two saves are the same! Create a dynamic and adaptable team in order to secure your victory!
 
 ### Small Rebalances
-To keep the experience a bit fresher than your average Pokémon game, there have been some minor balance tweaks! You can find them [here](./docs/game_docs/changes.md).
+To keep the experience a bit fresher than your average Pokémon game, there have been some minor balance tweaks!
+
+#### General
+- Many movesets have been changed. In particular, level-up movesets have been expanded with certain tutor-only moves or TMs.
+- Many Pokémon have been given new abilities.
+
+#### Specific
+- Ice now resists Water and Electric.
+- Bug now resists Psychic and Fairy.
+- Cut is now a Grass-type move.
+- Mud Shot is now a Pulse move.
+
+## [Changelog](./hack_changelog.md)
