@@ -19,7 +19,7 @@ script DemonLairs_Sapprilon_EventScript_CompactDisks {
 }
 
 script DemonLairs_Sapprilon_EventScript_Monster {
-    if(var(VAR_TEMP_0) == 0) {
+    if(var(VAR_TEMP_1) == 0) {
         msgbox(format(
             "It's a metallic cylinder.\nThere's a large “MONSTER” written on it.\p"
             "Examine the metallic cylinder?"
@@ -40,7 +40,7 @@ script DemonLairs_Sapprilon_EventScript_Monster {
             msgbox(format("{CREATE_MUGSHOT MUGSHOT_MC 0}Ugh! This is awful! Must be monster blood to taste so badly."))
             waitmessage
             closemessage
-            setvar(VAR_TEMP_0, 1)
+            setvar(VAR_TEMP_1, 1)
         } else {
             msgbox("Feels like a good decision.", MSGBOX_DEFAULT)
             waitmessage
