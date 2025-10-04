@@ -1,6 +1,7 @@
 mapscripts DemonLairs_Nessie_MapScripts{
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_DEMON_LORD_PROGRESS, 0 {
+            setrespawn(HEAL_LOCATION_DEMON_LAIRS_NESSIE)
             autosave
             setvar(VAR_DEMON_LORD_PROGRESS, 1)
             setflag(FLAG_SYS_BOSS_IN_PROG)
@@ -64,6 +65,7 @@ script DemonLairs_Nessie_EventScript_NessiePuzzle{
         dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
         closemessage
         if(var(VAR_RESULT) == 0) {warp(MAP_DEMON_LAIRS_NESSIE_INTERIOR, 3, 8)}
+        elif(var(VAR_RESULT) == 1) {}
     }
     end
 }

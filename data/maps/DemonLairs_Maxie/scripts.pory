@@ -63,8 +63,8 @@ script Demonlairs_Maxie_Trigger4{
 
 script DemonLairs_Maxie_EventScript_WalkTowards{
     lockall
-    setflag(FLAG_SKIP_MAXIE_CUTSCENE)
-    applymovement(LOCALID_PLAYER, moves(walk_up * 4))
+    if(!flag(FLAG_TALKED_TO_MAXIE)){applymovement(LOCALID_PLAYER, moves(walk_up * 4))}
+    else {applymovement(LOCALID_PLAYER, moves(walk_up * 3))}
     waitmovement(0)
     switch(var(VAR_TEMP_1)) {
         case 0:
@@ -243,6 +243,7 @@ script DemonLairs_Maxie_EventScript_MaxieCutscene {
 
 script DemonLairs_EventScript_Maxie {
     if(flag(FLAG_TALKED_TO_MAXIE)) {
+        speakername("Maxie")
         msgbox("{CREATE_MUGSHOT MUGSHOT_MAXIE 0}So, have you come to bargain?\n"
                 "Or have you come to suffer?", MSGBOX_DEFAULT)
         waitmessage
@@ -417,7 +418,7 @@ script DemonLairs_EventScript_Maxie {
     setflag(FLAG_DEFEATED_MAXIE)
     setvar(VAR_DEMON_LORD_PROGRESS, 6)
     special(PostgameReboot)
-    callnative(AutoSave)
+    autosave
 
     warp(MAP_ARCHIES_HOUSE_BACKYARD, 14, 9)
     // warp(MAP_ARCHIES_HOUSE_BACKYARD_SEA, 7, 4)

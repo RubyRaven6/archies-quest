@@ -203,7 +203,7 @@
       "id": "HEAL_LOCATION_DEMON_LAIRS_ADDISAMAP",
       "map": "MAP_DEMON_LAIRS_ADDISAMAP",
       "x": 12,
-      "y": 27
+      "y": 8
     },
     {
       "id": "HEAL_LOCATION_DEMON_LAIRS_GREEHASEET",
@@ -216,12 +216,6 @@
       "map": "MAP_DEMON_LAIRS_SAPPRILON",
       "x": 6,
       "y": 12
-    },
-    {
-      "id": "HEAL_LOCATION_DEMON_LAIRS_ADDISAMAP_2",
-      "map": "MAP_DEMON_LAIRS_ADDISAMAP",
-      "x": 12,
-      "y": 8
     },
     {
       "id": "HEAL_LOCATION_HUB_WORLD_POSTGAME",
