@@ -158,6 +158,7 @@ script HubWorld_EventScript_NessereignWarp {
             setrespawn(HEAL_LOCATION_DEMON_LAIRS_NESSIE)
             playse(SE_LAVARIDGE_FALL_WARP)
             warpwhitefade(MAP_DEMON_LAIRS_NESSIE, 6, 8)
+            waitstate
         } else {}
     } else {
         msgbox("No need to go back.")
@@ -175,6 +176,7 @@ script HubWorld_EventScript_GreehaseetWarp {
             setrespawn(HEAL_LOCATION_DEMON_LAIRS_GREEHASEET)
             playse(SE_LAVARIDGE_FALL_WARP)
             warpwhitefade(MAP_DEMON_LAIRS_GREEHASEET, 9, 19)
+            waitstate
         } else {}
     } elif(flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)) {
         msgbox("No need to go back.")
@@ -193,6 +195,7 @@ script HubWorld_EventScript_SapprilonWarp {
             setrespawn(HEAL_LOCATION_DEMON_LAIRS_SAPPRILON)
             playse(SE_LAVARIDGE_FALL_WARP)
             warpwhitefade(MAP_DEMON_LAIRS_SAPPRILON, 6, 12)
+            waitstate
         } else {}
     } elif(flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)) {
         msgbox("No need to go back.")
@@ -211,6 +214,7 @@ script HubWorld_EventScript_AddisamapWarp {
             setrespawn(HEAL_LOCATION_DEMON_LAIRS_ADDISAMAP)
             playse(SE_LAVARIDGE_FALL_WARP)
             warpwhitefade(MAP_DEMON_LAIRS_ADDISAMAP, 12, 27)
+            waitstate
         }
     } elif(flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_ADDISAMAP) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_SAPPRILON) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_GREEHASEET) && flag(TRAINER_FLAGS_START + TRAINER_DEMONLORD_NESSEREIGN)) {
         msgbox("No need to go back.")
