@@ -1,6 +1,7 @@
 mapscripts HubWorld_Postgame_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_DEMON_LORD_PROGRESS, 6 {
+            setrespawn(HEAL_LOCATION_HUB_WORLD_POSTGAME)
             autosave
             msgbox(format("Congratulations on finishing Archie's Quest!\p"
                             "Now that you've completed the game, you've now unlocked the postgame area.\p"

@@ -1,6 +1,7 @@
 mapscripts DemonLairs_Greehaseet_MapScripts {
     MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_DEMON_LORD_PROGRESS, 1 {
+			setrespawn(HEAL_LOCATION_DEMON_LAIRS_GREEHASEET)
             autosave
             setvar(VAR_DEMON_LORD_PROGRESS, 2)
 			setflag(FLAG_SYS_BOSS_IN_PROG)
