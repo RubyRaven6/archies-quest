@@ -243,6 +243,7 @@ script DemonLairs_Maxie_EventScript_MaxieCutscene {
 
 script DemonLairs_EventScript_Maxie {
     if(flag(FLAG_TALKED_TO_MAXIE)) {
+        speakername("Maxie")
         msgbox("{CREATE_MUGSHOT MUGSHOT_MAXIE 0}So, have you come to bargain?\n"
                 "Or have you come to suffer?", MSGBOX_DEFAULT)
         waitmessage
