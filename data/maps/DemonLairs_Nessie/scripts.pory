@@ -64,7 +64,10 @@ script DemonLairs_Nessie_EventScript_NessiePuzzle{
         msgbox(format("Enter the chamber?"))
         dynmultichoice(0, 0, FALSE, 3, 0, DYN_MULTICHOICE_CB_NONE, "Yes", "No")
         closemessage
-        if(var(VAR_RESULT) == 0) {warp(MAP_DEMON_LAIRS_NESSIE_INTERIOR, 3, 8)}
+        if(var(VAR_RESULT) == 0) {
+            warp(MAP_DEMON_LAIRS_NESSIE_INTERIOR, 3, 8)
+            waitstate
+        }
         elif(var(VAR_RESULT) == 1) {}
     }
     end
