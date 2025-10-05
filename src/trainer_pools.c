@@ -252,17 +252,14 @@ static void RandomizePoolIndices(const struct Trainer *trainer, u8 *poolIndexArr
         poolIndexArray[i] = i;
     u32 rnd;
     rng_value_t localRngState;
-    if (B_POOL_SETTING_CONSISTENT_RNG == TRUE)
-    {
+    #if B_POOL_SETTING_CONSISTENT_RNG != 0
         u32 seed = GetPoolSeed(trainer);
         localRngState = LocalRandomSeed(seed);
         //  Replace the LocalRandom with LocalRandom32 when implemented
         rnd = LocalRandom32(&localRngState);
-    }
-    else
-    {
+    # else
         rnd = Random32();
-    }
+    #endif
     u32 usedBits = 0;
     for (u32 i = 0; i < poolSize - 1; i++)
     {
@@ -283,10 +280,11 @@ static void RandomizePoolIndices(const struct Trainer *trainer, u8 *poolIndexArr
             numBits = 2;
         if (usedBits + numBits > 32)
         {
-            if (B_POOL_SETTING_CONSISTENT_RNG == TRUE)
+            #if B_POOL_SETTING_CONSISTENT_RNG != 0
                 rnd = LocalRandom32(&localRngState);
-            else
+            #else
                 rnd = Random32();
+            #endif
             usedBits = 0;
         }
         u32 currIndex = (rnd & ((1u << numBits) - 1)) % (poolSize - i);
