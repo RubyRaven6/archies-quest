@@ -426,3 +426,8 @@ script DemonLairs_EventScript_Maxie {
 
     releaseall
 }
+
+script WarpToPostgameArea {
+    warp(MAP_HUB_WORLD_POSTGAME, 8, 8)
+    waitstate
+}
