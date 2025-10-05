@@ -70,7 +70,6 @@ script DemonLairs_EventScript_Addisamap {
         ))
         closemessage
     } else {
-        faceplayer
         speakername("Addisamap")
         msgbox(format(
             "{CREATE_MUGSHOT MUGSHOT_ADDISAMAP 0}The quester returns.\nStubborn as ever.\p"

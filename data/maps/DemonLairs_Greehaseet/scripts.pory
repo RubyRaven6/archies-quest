@@ -33,6 +33,7 @@ script DemonLairs_Greehaseet_EventScript_Door {
 
 		if(var(VAR_RESULT) == 0) {
 			warp(MAP_DEMON_LAIRS_GREEHASEET_INTERIOR, 8, 16)
+			waitstate
 		}
 	}
 	releaseall
